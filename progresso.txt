@@ -1,0 +1,9 @@
+QUI SCRIVIAMO TUTTO QUELLO DOBBIAMO COMPLETARE PASSO PASSO:
+-testare cwarl4ai per capire come isolare i campi richiesti (soprattutto il titolo: proviamo
+    o dall'url o dal html isolando il blocco del titolo)
+-finire il GS con 5 pagine di argomenti diversi:
+    DOMINI: 
+            https://en.wikipedia.org
+            https://www.nbcnews.com	NICO
+            https://weather.com GABBO DM 
+            https://www.uefa.com GABBO G 
