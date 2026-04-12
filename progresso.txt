@@ -1,9 +1,18 @@
 QUI SCRIVIAMO TUTTO QUELLO DOBBIAMO COMPLETARE PASSO PASSO:
 -testare cwarl4ai per capire come isolare i campi richiesti (soprattutto il titolo: proviamo
-    o dall'url o dal html isolando il blocco del titolo)
+    o dall'url o dal html isolando il blocco del titolo) 
 -finire il GS con 5 pagine di argomenti diversi:
     DOMINI: 
             https://en.wikipedia.org
             https://www.nbcnews.com	NICO
             https://weather.com GABBO DM 
             https://www.uefa.com GABBO G 
+        
+-X nico e gabbo lunedì: 
+create una cartella per ogni gold standard e incollateci il json_generator.py, cambiando 
+poi i parametri seguendo i commenti e alla fine eseguite. Dovete avere nella stessa cartella
+due file, uno .html con l'html originale e un .txt con il gs estratto a mano. Il nome 
+dei file andrà nel rispettivo file nel json_generator. 
+se volete andare avanti iniziate a scrivere un codice per ripulire l'output del crawler di 
+test che ho configurato per wikipedia in modo da ottenere una lista di parole in minuscolo.
+Iniziare magari con una strip() e poi per ripulire bene andrebbero usate le regex.
