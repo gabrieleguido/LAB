@@ -19,7 +19,7 @@ async def main():
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun(
-            url = "https://en.wikipedia.org/wiki/Peroni_(company)",
+            url = "https://en.wikipedia.org/wiki/ChatGPT",
             config= crawler_cfg
         )
 
