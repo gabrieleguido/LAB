@@ -1,5 +1,6 @@
 import asyncio 
 from crawl4ai import AsyncWebCrawler,BrowserConfig,CrawlerRunConfig,CacheMode
+from parse_cleaner import ParseCleaner
 
 async def main():
 
@@ -8,12 +9,6 @@ async def main():
     crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         word_count_threshold=20,
-        
-        # css_selector="#mw-content-text",
-        # excluded_selector=".mw-editsection, .reflist, .navbox, .infobox," \
-        # "#Notes, #See_also, #External_links, #References, #Citations" \
-        # ".navbar, .stub, .plainlinks, .metadata, " \
-        # ".vertical-navbox, .printfooter"
         target_elements=["h1","h2","h3","title","p"]
         ) 
 
@@ -26,4 +21,5 @@ async def main():
         file = open("crawler_result_test.txt","w")
         file.write(result.markdown)
         file.close()
+        ParseCleaner.parsed_clean("crawler_result_test.txt","clean_test.txt",'UTF-8')
 asyncio.run(main())
