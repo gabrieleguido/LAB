@@ -20,3 +20,5 @@ json_entry = {
 #----->dare un nome sensato al file output, cambiare nome per ogni pagina
 result = open("./wikipedia/Python/Python.json","w",encoding='UTF-8')
 result.write(json.dumps(json_entry,indent=1))
+html_file.close()
+golden_file.close()
