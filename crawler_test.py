@@ -14,7 +14,7 @@ async def main():
         # "#Notes, #See_also, #External_links, #References, #Citations" \
         # ".navbar, .stub, .plainlinks, .metadata, " \
         # ".vertical-navbox, .printfooter"
-        target_elements=["h1","h2","h3","p"]
+        target_elements=["h1","h2","h3","title","p"]
         ) 
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
