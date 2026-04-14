@@ -14,7 +14,7 @@ async def main():
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun(
-            url = "",
+            url = "https://www.nbcnews.com/science/space/artemis-ii-astronauts-return-nasa-moon-mission-rcna273651",
             config= crawler_cfg
         )
 
