@@ -26,4 +26,5 @@ async def main():
         file.write(result.markdown)
         file.close()
         ParseCleaner.parsed_clean("crawler_result_test.md","clean_test.txt",'UTF-8')
+        ParseCleaner.get_domain_from_url(result.url)
 asyncio.run(main())

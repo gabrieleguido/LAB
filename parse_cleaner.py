@@ -27,4 +27,12 @@ class ParseCleaner(BaseModel):
                     clean_file.write(w+',')
         markdown_file.close()
         clean_file.close()
+
+    @staticmethod 
+    def get_domain_from_url(url:str)->str:
+        """
+            Restituisce il dominio estratto dalla stringa url
+        """
+        line = url.split('/')
+        return line[2]
         
