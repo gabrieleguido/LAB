@@ -1,3 +1,6 @@
 #ignora la cache di python
 __pycache__/
 *.pyc
+
+#ignora la cartella vscode
+.vscode/
