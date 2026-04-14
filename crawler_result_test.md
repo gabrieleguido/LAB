@@ -1,87 +1,14 @@
-#  **Previsioni meteo per 10 giorni** - 
+#  **Meteo mensile** - 
 ## Recenti
 ## Products & Account
-## Allerta grave per pioggia
-## Oggi
 ## Giorno
 ## Notte
-## mer 15
-## Giorno
-## Notte
-## gio 16
-## Giorno
-## Notte
-## ven 17
-## Giorno
-## Notte
-## sab 18
-## Giorno
-## Notte
-## dom 19
-## Giorno
-## Notte
-## lun 20
-## Giorno
-## Notte
-## mar 21
-## Giorno
-## Notte
-## mer 22
-## Giorno
-## Notte
-## gio 23
-## Giorno
-## Notte
-## ven 24
-## Giorno
-## Notte
-## sab 25
-## Giorno
-## Notte
-## dom 26
-## Giorno
-## Notte
-## lun 27
-## Giorno
-## Notte
-## mar 28
-## Giorno
-## Notte
-## Radar
 ### Previsioni specializzate
-Previsioni meteo per 10 giorni per Pigna, città metropolitana di Roma Capitale - The Weather Channel | weather.com Hamburger The Weather Company Today Hourly Daily Monthly Radar Allergy Breathing Close The Weather Company Today Hourly Daily Monthly Radar Allergy Breathing The Weather Company Search Globe Add Add Add Add Add Menu Arrow down alertLevel3 Partly Cloudy Day Rain drop Subtract Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Mostly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 26 Thunderstorms Rain drop Add Thunderstorms Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 27 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 28 Sunny Rain drop Add Sunny Rain drop Humidity UV index Sunrise Sunset Mostly Clear Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 0 Sunny Rain drop Add Sunny Rain drop Humidity UV index Sunrise Sunset Clear Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 1 Mostly Clear Day Rain drop Add Mostly Clear Day Rain drop Humidity UV index Sunrise Sunset Mostly Clear Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 2 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Mostly Clear Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 3 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 4 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 5 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 6 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 7 Mostly Cloudy Day Rain drop Add Mostly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 9 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Mostly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 10 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 10 Partly Cloudy Day Rain drop Add Partly Cloudy Day Rain drop Humidity UV index Sunrise Sunset Partly Cloudy Night Rain drop Humidity UV index Moonrise Moonset Moon Phase - Day 11 Mapbox Logo
-Poco nuvoloso. Massime 20° C. Venti da SSE, da 10 a 15 km/h.
+Previsioni meteo mensili per Pigna, città metropolitana di Roma Capitale - weather.com Hamburger The Weather Company Today Hourly Close Monthly Radar Allergy Breathing Close The Weather Company Today Hourly Close Monthly Radar Allergy Breathing The Weather Company Search Globe Add Add Add Add Add Menu Arrow down Arrow down Arrow down Moon Phase - Day 10 Partly Cloudy Day Moon Phase - Day 11 Scattered Showers Day Moon Phase - Day 12 Windy Moon Phase - Day 13 Windy Moon Phase - Day 14 Partly Cloudy Day Moon Phase - Day 15 Partly Cloudy Day Moon Phase - Day 16 Sunny Moon Phase - Day 17 Sunny Moon Phase - Day 18 Sunny Moon Phase - Day 19 Sunny Moon Phase - Day 20 Foggy Moon Phase - Day 21 Sunny Moon Phase - Day 22 Sunny Moon Phase - Day 23 Sunny Moon Phase - Day 24 Partly Cloudy Day Moon Phase - Day 25 Scattered Showers Day Moon Phase - Day 26 Partly Cloudy Day Moon Phase - Day 27 Thunderstorms Moon Phase - Day 28 Partly Cloudy Day Moon Phase - Day 0 Sunny Moon Phase - Day 1 Sunny Close Partly Cloudy Day Rain drop Record High Average High Sunrise Sunset Mostly Cloudy Night Rain drop Record Low Average Low Moonrise Moonset Moon Phase - Day 26 Moon Phase - Day 2 Mostly Clear Day Moon Phase - Day 3 Partly Cloudy Day Moon Phase - Day 4 Partly Cloudy Day Moon Phase - Day 5 Partly Cloudy Day Moon Phase - Day 6 Partly Cloudy Day Moon Phase - Day 7 Partly Cloudy Day Moon Phase - Day 9 Partly Cloudy Day Moon Phase - Day 10 Partly Cloudy Day Moon Phase - Day 10 Partly Cloudy Day Moon Phase - Day 11 Partly Cloudy Day Moon Phase - Day 12 Moon Phase - Day 13 Moon Phase - Day 14 Moon Phase - Day 15
+Poco nuvoloso. Massime 21° C. Venti da S, da 10 a 15 km/h.
 Molto nuvoloso. Minime 13° C. Venti deboli e variabili.
-Temporali. Caldo. Massime 22° C. Venti deboli e variabili. Prob. pioggia: 70%.
-Poco nuvoloso. Minime 13° C. Venti deboli e variabili.
-Poco nuvoloso. Caldo. Massime 24° C. Venti da NO, da 10 a 15 km/h.
-Poco nuvoloso. Minime 12° C. Venti deboli e variabili.
-Quasi sereno. Massime 26° C. Venti da NNO, da 10 a 15 km/h.
-Quasi sereno. Minime 13° C. Venti deboli e variabili.
-Quasi sereno. Massime 26° C. Venti da NO, da 10 a 15 km/h.
-Quasi sereno. Minime 12° C. Venti da SE, da 10 a 15 km/h.
-Quasi sereno. Massime 24° C. Venti da S, da 10 a 15 km/h.
-Quasi sereno. Minime 14° C. Venti da SSE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 22° C. Venti da S, da 15 a 25 km/h.
-Quasi sereno. Minime 14° C. Venti da SSE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 22° C. Venti da S, da 10 a 15 km/h.
-Poco nuvoloso. Minime 13° C. Venti da ESE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 22° C. Venti da NO, da 10 a 15 km/h.
-Poco nuvoloso. Minime 12° C. Venti da NE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 22° C. Venti da NO, da 10 a 15 km/h.
-Poco nuvoloso. Minime 13° C. Venti da ESE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 23° C. Venti da SSE, da 15 a 25 km/h.
-Poco nuvoloso. Minime 14° C. Venti da ESE, da 10 a 15 km/h.
-Molto nuvoloso. Massime 24° C. Venti da SSE, da 10 a 15 km/h.
-Poco nuvoloso. Minime 15° C. Venti da SSE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 24° C. Venti da S, da 10 a 15 km/h.
-Molto nuvoloso. Minime 14° C. Venti da ESE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 24° C. Venti da SSO, da 10 a 15 km/h.
-Poco nuvoloso. Minime 14° C. Venti da ESE, da 10 a 15 km/h.
-Poco nuvoloso. Massime 25° C. Venti da O, da 10 a 15 km/h.
-Poco nuvoloso. Minime 15° C. Venti da ENE, da 10 a 15 km/h.
 Riconosciamo la nostra responsabilità di utilizzare dati e tecnologia a fin di bene. Possiamo utilizzare o condividere i tuoi dati con i nostri fornitori di dati. Assumi il controllo dei tuoi dati.
 The Weather Channel è il sistema di meteorologia più accurato al mondo secondo ForecastWatch, [Panoramica dell'accuratezza delle previsioni meteo globali e regionali](https://forecastwatch.com/AccuracyOverview2021-2024), 2021-2024, commissionato da The Weather Company.
 Weather Channel
 © The Weather Company, LLC 2026
-Hamburger The Weather Company Today OggiOggi Hourly OrarieOrarie Daily 10 giorni10 giorni Monthly MensileMensile Radar RadarRadar Allergy Monitoraggio allergieMonitoraggio allergie Breathing Indice di qualità dell'ariaIndice di qualità dell'aria Close The Weather Company Today OggiOggi Hourly OrarieOrarie Daily 10 giorni10 giorni Monthly MensileMensile Radar RadarRadar Allergy Monitoraggio allergieMonitoraggio allergie Breathing Indice di qualità dell'ariaIndice di qualità dell'aria The Weather Company Search Globe IT°C Add Add Add Add Add Menu La mia dashboardOggiOrario10 giorni15 giorniWeekendMensileRadarAltre previsioniAltroArrow down Monitoraggio allergiePrevisioni della qualità dell'aria- +4 aggiuntivi Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso20°°/13°13°° Rain drop 24% Subtract 20°° Partly Cloudy Day Rain drop 24% SSE 17 km/hSSE 17 km/h Humidity Umidità70% UV index Indice UV5 di 11 Sunrise Alba6:31 Sunset Tramonto19:4913°° Mostly Cloudy Night Rain drop 19% NNE 9 km/hNNE 9 km/h Humidity Umidità85% UV index Indice UV0 di 11 Moonrise Sorgere della luna4:55 Moonset Tramonto della luna16:30Moon Phase - Day 26 Luna calante Thunderstorms TemporaliTemporaliTemporali22°°/13°13°° Rain drop 68% Add 22°° Thunderstorms Rain drop 68% N 10 km/hN 10 km/h Humidity Umidità73% UV index Indice UV5 di 11 Sunrise Alba6:29 Sunset Tramonto19:5113°° Partly Cloudy Night Rain drop 19% NNE 8 km/hNNE 8 km/h Humidity Umidità83% UV index Indice UV0 di 11 Moonrise Sorgere della luna5:17 Moonset Tramonto della luna17:42Moon Phase - Day 27 Luna calante Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso24°°/12°12°° Rain drop 10% Add 24°° Partly Cloudy Day Rain drop 10% NO 13 km/hNO 13 km/h Humidity Umidità64% UV index Indice UV6 di 11 Sunrise Alba6:28 Sunset Tramonto19:5212°° Partly Cloudy Night Rain drop 8% ENE 10 km/hENE 10 km/h Humidity Umidità81% UV index Indice UV0 di 11 Moonrise Sorgere della luna5:39 Moonset Tramonto della luna18:57Moon Phase - Day 28 Luna calante Sunny SoleggiatoSoleggiatoSoleggiato26°°/13°13°° Rain drop 19% Add 26°° Sunny Rain drop 19% NNO 12 km/hNNO 12 km/h Humidity Umidità62% UV index Indice UV6 di 11 Sunrise Alba6:26 Sunset Tramonto19:5313°° Mostly Clear Night Rain drop 5% NE 9 km/hNE 9 km/h Humidity Umidità71% UV index Indice UV0 di 11 Moonrise Sorgere della luna6:03 Moonset Tramonto della luna20:16Moon Phase - Day 0 Novilunio Sunny SoleggiatoSoleggiatoSoleggiato26°°/12°12°° Rain drop 5% Add 26°° Sunny Rain drop 5% NO 13 km/hNO 13 km/h Humidity Umidità55% UV index Indice UV6 di 11 Sunrise Alba6:25 Sunset Tramonto19:5412°° Clear Night Rain drop 5% SE 11 km/hSE 11 km/h Humidity Umidità70% UV index Indice UV0 di 11 Moonrise Sorgere della luna6:32 Moonset Tramonto della luna21:37Moon Phase - Day 1 Luna crescente Mostly Clear Day Prevalentemente soleggiatoPrevalentemente soleggiatoPrevalentemente soleggiato24°°/14°14°° Rain drop 8% Add 24°° Mostly Clear Day Rain drop 8% S 16 km/hS 16 km/h Humidity Umidità59% UV index Indice UV7 di 11 Sunrise Alba6:23 Sunset Tramonto19:5514°° Mostly Clear Night Rain drop 10% SSE 12 km/hSSE 12 km/h Humidity Umidità75% UV index Indice UV0 di 11 Moonrise Sorgere della luna7:08 Moonset Tramonto della luna22:59Moon Phase - Day 2 Luna crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso22°°/14°14°° Rain drop 15% Add 22°° Partly Cloudy Day Rain drop 15% S 18 km/hS 18 km/h Humidity Umidità67% UV index Indice UV7 di 11 Sunrise Alba6:21 Sunset Tramonto19:5614°° Mostly Clear Night Rain drop 24% SSE 14 km/hSSE 14 km/h Humidity Umidità79% UV index Indice UV0 di 11 Moonrise Sorgere della luna7:53 Moonset Tramonto della luna--Moon Phase - Day 3 Luna crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso22°°/13°13°° Rain drop 24% Add 22°° Partly Cloudy Day Rain drop 24% S 16 km/hS 16 km/h Humidity Umidità66% UV index Indice UV7 di 11 Sunrise Alba6:20 Sunset Tramonto19:5713°° Partly Cloudy Night Rain drop 18% ESE 11 km/hESE 11 km/h Humidity Umidità78% UV index Indice UV0 di 11 Moonrise Sorgere della luna8:50 Moonset Tramonto della luna0:15Moon Phase - Day 4 Luna crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso22°°/12°12°° Rain drop 15% Add 22°° Partly Cloudy Day Rain drop 15% NO 14 km/hNO 14 km/h Humidity Umidità61% UV index Indice UV7 di 11 Sunrise Alba6:18 Sunset Tramonto19:5812°° Partly Cloudy Night Rain drop 13% NE 12 km/hNE 12 km/h Humidity Umidità71% UV index Indice UV0 di 11 Moonrise Sorgere della luna9:59 Moonset Tramonto della luna1:20Moon Phase - Day 5 Luna crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso22°°/13°13°° Rain drop 11% Add 22°° Partly Cloudy Day Rain drop 11% NO 15 km/hNO 15 km/h Humidity Umidità56% UV index Indice UV7 di 11 Sunrise Alba6:17 Sunset Tramonto19:5913°° Partly Cloudy Night Rain drop 10% ESE 12 km/hESE 12 km/h Humidity Umidità69% UV index Indice UV0 di 11 Moonrise Sorgere della luna11:13 Moonset Tramonto della luna2:11Moon Phase - Day 6 Luna crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso23°°/14°14°° Rain drop 23% Add 23°° Partly Cloudy Day Rain drop 23% SSE 17 km/hSSE 17 km/h Humidity Umidità57% UV index Indice UV7 di 11 Sunrise Alba6:16 Sunset Tramonto20:0014°° Partly Cloudy Night Rain drop 23% ESE 13 km/hESE 13 km/h Humidity Umidità66% UV index Indice UV0 di 11 Moonrise Sorgere della luna12:28 Moonset Tramonto della luna2:51Moon Phase - Day 7 Primo quarto Mostly Cloudy Day Molto nuvolosoMolto nuvolosoMolto nuvoloso24°°/15°15°° Rain drop 20% Add 24°° Mostly Cloudy Day Rain drop 20% SSE 17 km/hSSE 17 km/h Humidity Umidità55% UV index Indice UV6 di 11 Sunrise Alba6:14 Sunset Tramonto20:0115°° Partly Cloudy Night Rain drop 22% SSE 13 km/hSSE 13 km/h Humidity Umidità64% UV index Indice UV0 di 11 Moonrise Sorgere della luna13:42 Moonset Tramonto della luna3:22Moon Phase - Day 9 Gibbosa crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso24°°/14°14°° Rain drop 24% Add 24°° Partly Cloudy Day Rain drop 24% S 16 km/hS 16 km/h Humidity Umidità59% UV index Indice UV7 di 11 Sunrise Alba6:13 Sunset Tramonto20:0214°° Mostly Cloudy Night Rain drop 24% ESE 12 km/hESE 12 km/h Humidity Umidità74% UV index Indice UV0 di 11 Moonrise Sorgere della luna14:52 Moonset Tramonto della luna3:47Moon Phase - Day 10 Gibbosa crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso24°°/14°14°° Rain drop 19% Add 24°° Partly Cloudy Day Rain drop 19% SSO 15 km/hSSO 15 km/h Humidity Umidità60% UV index Indice UV7 di 11 Sunrise Alba6:11 Sunset Tramonto20:0414°° Partly Cloudy Night Rain drop 23% ESE 11 km/hESE 11 km/h Humidity Umidità72% UV index Indice UV0 di 11 Moonrise Sorgere della luna15:59 Moonset Tramonto della luna4:09Moon Phase - Day 10 Gibbosa crescente Partly Cloudy Day Poco nuvolosoPoco nuvolosoPoco nuvoloso25°°/15°15°° Rain drop 14% Add 25°° Partly Cloudy Day Rain drop 14% O 14 km/hO 14 km/h Humidity Umidità58% UV index Indice UV7 di 11 Sunrise Alba6:10 Sunset Tramonto20:0515°° Partly Cloudy Night Rain drop 18% ENE 10 km/hENE 10 km/h Humidity Umidità70% UV index Indice UV0 di 11 Moonrise Sorgere della luna17:04 Moonset Tramonto della luna4:29Moon Phase - Day 11 Gibbosa crescenteOraOra |Impostazioni cookieThe Weather Company.© The Weather Company, LLC 2026
+Hamburger The Weather Company Today OggiOggi Hourly OrarieOrarie Close 10 giorni10 giorni Monthly MensileMensile Radar RadarRadar Allergy Monitoraggio allergieMonitoraggio allergie Breathing Indice di qualità dell'ariaIndice di qualità dell'aria Close The Weather Company Today OggiOggi Hourly OrarieOrarie Close 10 giorni10 giorni Monthly MensileMensile Radar RadarRadar Allergy Monitoraggio allergieMonitoraggio allergie Breathing Indice di qualità dell'ariaIndice di qualità dell'aria The Weather Company Search Globe IT°C Add Add Add Add Add Menu La mia dashboardOggiOrario10 giorni15 giorniWeekendMensileRadarAltre previsioniAltroArrow down Monitoraggio allergiePrevisioni della qualità dell'aria-  marArrow down Arrow down maggio Moon Phase - Day 10 29 Partly Cloudy Day 19°°8°°Moon Phase - Day 11 30 Scattered Showers Day 20°°7°°Moon Phase - Day 12 31 Windy 15°°10°°Moon Phase - Day 13 1 Windy 15°°10°°Moon Phase - Day 14 2 Partly Cloudy Day 15°°11°°Moon Phase - Day 15 3 Partly Cloudy Day 22°°10°°Moon Phase - Day 16 4 Sunny 24°°10°°Moon Phase - Day 17 5 Sunny 23°°10°°Moon Phase - Day 18 6 Sunny 25°°10°°Moon Phase - Day 19 7 Sunny 24°°10°°Moon Phase - Day 20 8 Foggy 24°°9°°Moon Phase - Day 21 9 Sunny 24°°10°°Moon Phase - Day 22 10 Sunny 24°°12°°Moon Phase - Day 23 11 Sunny 25°°12°°Moon Phase - Day 24 12 Partly Cloudy Day 24°°17°°Moon Phase - Day 25 13 Scattered Showers Day 21°°15°°Moon Phase - Day 26 14 Partly Cloudy Day 21°°13°°Moon Phase - Day 27 15 Thunderstorms 22°°13°°Moon Phase - Day 28 16 Partly Cloudy Day 24°°12°°Moon Phase - Day 0 17 Sunny 26°°13°°Moon Phase - Day 1 18 Sunny 26°°12°°Close 21°° Partly Cloudy Day Rain drop 24% S 17 km/hS 17 km/hRecord High Massima record27°27°°Average High Media massima18°18°° Sunrise Alba6:31 Sunset Tramonto19:4913°° Mostly Cloudy Night Rain drop 19% NNE 9 km/hNNE 9 km/hRecord Low Minima record2°2°°Average Low Media minima8°8°° Moonrise Sorgere della luna4:55 Moonset Tramonto della luna16:30Moon Phase - Day 26 Luna calanteMoon Phase - Day 2 19 Mostly Clear Day 24°°15°°Moon Phase - Day 3 20 Partly Cloudy Day 22°°14°°Moon Phase - Day 4 21 Partly Cloudy Day 22°°13°°Moon Phase - Day 5 22 Partly Cloudy Day 22°°12°°Moon Phase - Day 6 23 Partly Cloudy Day 22°°13°°Moon Phase - Day 7 24 Partly Cloudy Day 23°°14°°Moon Phase - Day 9 25 Partly Cloudy Day 24°°15°°Moon Phase - Day 10 26 Partly Cloudy Day 24°°14°°Moon Phase - Day 10 27 Partly Cloudy Day 24°°14°°Moon Phase - Day 11 28 Partly Cloudy Day 25°°15°°Moon Phase - Day 12 29Med.21°°10°°Moon Phase - Day 13 30Med.21°°10°°Moon Phase - Day 14 1Med.21°°11°°Moon Phase - Day 15 2Med.21°°11°°Almanacco18°C°C8°°27°°(2024)2°°(1986)21°°15°°0.50 mm0.50 mm25°°9°°0.50 0.50 25°°9°°1.76 1.76 18°°8°°0 0 23°°12°°0 0 28°°17°°0 0 Impostazioni cookieThe Weather Company.© The Weather Company, LLC 2026
