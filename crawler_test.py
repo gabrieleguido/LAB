@@ -19,6 +19,7 @@ async def main():
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun(
             url = "https://weather.com/it-IT/tempo/mensile/l/5a9159203c0f5b210a73c1822acb841a4445db8af8c42fae6bfc392b8b9d7b48",
+
             config= weather_crawler_cfg
         )
 

@@ -93,3 +93,8 @@ sab 18
 13°
 Soleggiato
 Possibilità di pioggia5%
+
+Indice di qualità dell'aria
+68
+Moderata
+La qualità dell'aria è accettabile; tuttavia, per alcuni inquinanti potrebbe presentarsi un rischio moderato per la salute in un numero molto ridotto di persone che in genere non `è sensibile all'inquinamento dell'aria.
