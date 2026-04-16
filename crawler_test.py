@@ -17,15 +17,23 @@ async def main():
         ) 
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
-        result = await crawler.arun(
-            url = "https://weather.com/it-IT/tempo/mensile/l/5a9159203c0f5b210a73c1822acb841a4445db8af8c42fae6bfc392b8b9d7b48",
+        result = await crawler.arun_many(
+            urls = [
+                "https://www.nbcnews.com/science/space/artemis-ii-astronauts-return-nasa-moon-mission-rcna273651",
+                "https://www.nbcnews.com/world/europe/europe-celebrates-orban-defeat-hungary-election-putin-trump-maga-rcna331478",
+                "https://www.nbcnews.com/sports/golf/masters-2026-rory-mcilroy-holds-win-second-straight-masters-rcna330988",
+                "https://www.nbcnews.com/pop-culture/pop-culture-news/britney-spears-voluntarily-checks-into-treatment-facility-rcna331449",
+                "https://www.nbcnews.com/business/markets/oil-prices-surge-trump-says-us-will-blockade-strait-hormuz-rcna330824"
+            ],
 
-            config= weather_crawler_cfg
+            config= wiki_crawler_cfg
         )
 
         file = open("crawler_result_test.md","w",encoding = 'UTF-8')
-        file.write(result.markdown)
+        res = ""
+        for r in result:
+            res = res+r.markdown
+        file.write(res)
         file.close()
         ParseCleaner.parsed_clean("crawler_result_test.md","clean_test.txt",'UTF-8')
-        ParseCleaner.get_domain_from_url(result.url)
 asyncio.run(main())
