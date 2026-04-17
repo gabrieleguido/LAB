@@ -31,7 +31,8 @@ class TokenCompare:
         markdown_file.close()
 
         return token_set
-
+    
+    @staticmethod
     def GS_tokenizer(gs_file_name:str,enc:str='UTF-8')->Set[str]:
         """Dato il nome del file del GS restituisce l'insieme dei token
             gs_file_name(str) = nome del file .json del gs 
@@ -48,18 +49,27 @@ class TokenCompare:
                 if(w):
                     token_set.add(w)
         return token_set
+    
+    @staticmethod
+    def get_domain_list(domain_json_file:str="domains.json",enc:str='UTF-8')->List[str]:
+        file = open(domain_json_file,"r",encoding=enc)
+        domains_dict = json.load(file) 
+        domains_list = domains_dict.get("domains")
+        return domains_list
 
-gs_tokens = TokenCompare.GS_tokenizer("./GS/nbcnews/GS.json")
-parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
-ordered_gs = sorted(gs_tokens)
-ordered_parsed = sorted(parsed_tokens)
+# gs_tokens = TokenCompare.GS_tokenizer("../GS/nbcnews/GS.json")
+# parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
+# ordered_gs = sorted(gs_tokens)
+# ordered_parsed = sorted(parsed_tokens)
 
-print(ordered_gs)
-print("\n\n\n")
-print(ordered_parsed)
-print("STATS:\n")
-precision = len(gs_tokens&parsed_tokens)/len(parsed_tokens)
-recall = len(gs_tokens&parsed_tokens)/len(gs_tokens)
-f1 = 2*precision*recall/(precision+recall)
-print(f"Precision = {precision},\nRecall = {recall},\nF1 = {f1}")
+# print(ordered_gs)
+# print("\n\n\n")
+# print(ordered_parsed)
+# print("STATS:\n")
+# precision = len(gs_tokens&parsed_tokens)/len(parsed_tokens)
+# recall = len(gs_tokens&parsed_tokens)/len(gs_tokens)
+# f1 = 2*precision*recall/(precision+recall)
+# print(f"Precision = {precision},\nRecall = {recall},\nF1 = {f1}")
+
+# print(TokenCompare.get_domain_list())
 
