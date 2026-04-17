@@ -6,7 +6,8 @@ from token_compare import TokenCompare
 import os
 from typing import List
 from bs4 import BeautifulSoup
-from PARSER import parser_nbcnews, parser_uefa
+import parser_nbcnews
+import parser_uefa
 import httpx
 app = FastAPI()
 
