@@ -55,7 +55,7 @@ def get_domains()->DomainsListModel:
     """
     Restituisce oggetto JSON contenente la lista dei domini assegnati
     """
-    return {"domains": domains_list}
+    return DomainsListModel(domains=domains_list)
 
 
 
@@ -85,7 +85,7 @@ def get_gold_standard(url: str)->GoldStandardModel:
 
             for gs in gs_list:
                 if gs.get("url") == url:
-                    return gs
+                    return GoldStandardModel(**gs)
             raise HTTPException(status_code=404, detail="Url non trovato")
             
         except json.JSONDecodeError:
@@ -111,7 +111,7 @@ def get_full_gold_standard(domain:str)->FullGoldStandardModel:
     with open(file_path, "r", encoding="utf-8") as f:
         try:
             gs_list = json.load(f)
-            return {"gold_standard": gs_list}
+            return FullGoldStandardModel(gold_standard=gs_list)
 
         except json.JSONDecodeError:
             raise HTTPException(status_code=500, detail="File json corrrotto")
