@@ -12,7 +12,7 @@ app = FastAPI()
 domains_list = TokenCompare.get_domain_list()
 
 folder_map = {
-    "en.wikipedia.org": "wikipedia",
+    "en.wikipedia.org": domains_list[0].split(".")[1],
     "www.nbcnews.com": "nbcnews",
     "www.weather.com": "weather",
     "it.uefa.com": "uefa"
