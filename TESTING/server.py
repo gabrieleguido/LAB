@@ -5,7 +5,10 @@ from urllib.parse import urlparse
 from token_compare import TokenCompare
 import os
 from typing import List
-
+from bs4 import BeautifulSoup
+import parser_nbcnews
+import parser_uefa
+import httpx
 app = FastAPI()
 
 # Lista dei domini assegnati
