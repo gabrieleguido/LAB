@@ -1,6 +1,6 @@
 import asyncio 
 from crawl4ai import AsyncWebCrawler,BrowserConfig,CrawlerRunConfig,CacheMode
-from parse_cleaner import ParseCleaner
+from cleaner import Cleaner
 
 async def main():
 
@@ -19,7 +19,7 @@ async def main():
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun_many(
             urls = [
-                "https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league"
+                "https://en.wikipedia.org/wiki/Bermuda_Triangle"
             ],
 
             config= wiki_crawler_cfg
@@ -31,5 +31,6 @@ async def main():
             res = res+r.markdown
         file.write(res)
         file.close()
-        ParseCleaner.parsed_clean("crawler_result_test.md","clean_test.md",'UTF-8')
+        Cleaner.parsed_clean_to_file("crawler_result_test.md","clean_test.md",'UTF-8')
+        print(Cleaner.get_title_from_html(result[0].html))
 asyncio.run(main())

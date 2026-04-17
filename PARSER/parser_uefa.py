@@ -1,22 +1,25 @@
-import re
+import asyncio 
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
+from parse_cleaner import ParseCleaner
 
-class ParseCleaner: 
-    
-    @staticmethod
-    def clean_string(text: str) -> str:
-        text = re.sub(r'\(\s*https?://[^)]*\)', ' ', text)
-        text = re.sub(r'\[\[\d+\]\]', ' ', text)
-        text = re.sub(r'[^a-zA-Z0-9]', ' ', text)
-        words = [w for w in text.split(" ") if w]
+async def extract(url: str):
+    browser_cfg = BrowserConfig(headless=True) 
+    crawler_cfg = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS,
+        word_count_threshold=20,
+        target_elements=["h1","h2","h3","title","p"]
+    ) 
+
+    async with AsyncWebCrawler(config=browser_cfg) as crawler:
+        #usiamo l'url passato come argomento
+        result = await crawler.arun(
+            url = url, 
+            config = crawler_cfg
+        )
+
+        if not result.success:
+            return "Errore nel recupero della pagina."
+        cleaner = ParseCleaner()
+        final_result = cleaner.clean_string(result.markdown)
         
-        # Restituisce i termini separati da spazio in un'unica stringa
-        return " ".join(words)
-
-    @staticmethod
-    def parsed_clean(file_name_src: str, file_name_dst: str, enc: str) -> None:
-        with open(file_name_src, "r", encoding=enc) as src, \
-             open(file_name_dst, "w", encoding=enc) as dst:
-            
-            raw_text = src.read()
-            cleaned = ParseCleaner.clean_string(raw_text)
-            dst.write(cleaned)
+        return final_result
