@@ -40,7 +40,7 @@ class FullGoldStandardModel(BaseModel):
 
 
 @app.get("/domains", response_model=DomainsListModel)
-async def get_domains()->DomainsListModel:
+def get_domains()->DomainsListModel:
     """
     Restituisce oggetto JSON contenente la lista dei domini assegnati
     """
@@ -49,7 +49,7 @@ async def get_domains()->DomainsListModel:
 
 
 @app.get("/gold_standard", response_model=GoldStandardModel)
-async def get_gold_standard(url: str)->GoldStandardModel:
+def get_gold_standard(url: str)->GoldStandardModel:
     """
     Restituisce oggetto JSON contenente il gold standard del dominio in input
     """
@@ -83,7 +83,7 @@ async def get_gold_standard(url: str)->GoldStandardModel:
 
 
 @app.get("/full_gold_standard", response_model=FullGoldStandardModel)
-async def get_full_gold_standard(domain:str)->FullGoldStandardModel:
+def get_full_gold_standard(domain:str)->FullGoldStandardModel:
     """
     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
     """
