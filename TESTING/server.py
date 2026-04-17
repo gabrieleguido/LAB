@@ -136,16 +136,7 @@ async def parse_url(url: str)->ParserOutputModel:
     
     if domain not in CUSTOM_PARSERS:
         raise HTTPException(status_code=500, detail="Funzione di parsing non trovata per il dominio")
-    # 2. Fetch dell'HTML 
-    async with httpx.AsyncClient(timeout=10.0) as client:
-        try:
-            response = await client.get(url, headers={"User-Agent": "Mozilla/5.0"})
-            response.raise_for_status()
-            html_content = response.text
-        except httpx.HTTPStatusError:
-            raise HTTPException(status_code=404, detail="Pagina non trovata sul server remoto")
-        except Exception:
-            raise HTTPException(status_code=503, detail="Servizio di rete non disponibile")
+    
 
     try:
         #chiamata alla funzione di parsing specifica per il dominio
