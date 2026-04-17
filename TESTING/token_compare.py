@@ -56,6 +56,14 @@ class TokenCompare:
         domains_dict = json.load(file) 
         domains_list = domains_dict.get("domains")
         return domains_list
+    
+    @staticmethod 
+    def get_domain_from_url(url:str)->str:
+        """
+            Restituisce il dominio estratto dalla stringa url
+        """
+        line = url.split('/')
+        return line[2]
 
 # gs_tokens = TokenCompare.GS_tokenizer("../GS/nbcnews/GS.json")
 # parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
