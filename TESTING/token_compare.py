@@ -1,6 +1,6 @@
 import json 
 from typing import List,Dict,Set
-from parse_cleaner import ParseCleaner
+from cleaner import Cleaner
 import re 
 
 class TokenCompare:
@@ -61,14 +61,6 @@ class TokenCompare:
         domains_list = domains_dict.get("domains")
         return domains_list
     
-    @staticmethod 
-    def get_domain_from_url(url:str)->str:
-        """
-            Restituisce il dominio estratto dalla stringa url
-        """
-        line = url.split('/')
-        return line[2]
-    
     @staticmethod
     def get_stats(markdown_tokens_set:Set[str],gs_tokens_set:Set[str])->Dict[str,float]:
         """
@@ -77,21 +69,21 @@ class TokenCompare:
             gs_tokens_set(set):risultato di GS_tokenizer
         """
         stats = {} 
-        stats["precision"] = float(len(gs_tokens&parsed_tokens)/len(parsed_tokens))
-        stats["recall"] = float(len(gs_tokens&parsed_tokens)/len(gs_tokens))
+        stats["precision"] = float(len(gs_tokens_set&markdown_tokens_set)/len(markdown_tokens_set))
+        stats["recall"] = float(len(gs_tokens_set&markdown_tokens_set)/len(gs_tokens_set))
         stats["f1"] = float(2*stats["precision"]*stats["recall"]/(stats["precision"]+stats["recall"]))
         return stats
 
     
 
-url = "https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league"
-gs_tokens = TokenCompare.GS_tokenizer("../GS/uefa/GS.json",url)
-parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
-ordered_gs = sorted(gs_tokens)
-ordered_parsed = sorted(parsed_tokens)
-stats = TokenCompare.get_stats(gs_tokens,parsed_tokens)
-for k in stats.keys():
-    print(stats[k])
+# url = "https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league"
+# gs_tokens = TokenCompare.GS_tokenizer("../GS/uefa/GS.json",url)
+# parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
+# ordered_gs = sorted(gs_tokens)
+# ordered_parsed = sorted(parsed_tokens)
+# stats = TokenCompare.get_stats(gs_tokens,parsed_tokens)
+# for k in stats.keys():
+#     print(stats[k])
 
 # print(ordered_gs)
 # print("\n\n\n")
