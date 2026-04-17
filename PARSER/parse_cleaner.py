@@ -1,26 +1,22 @@
-from pydantic import BaseModel
-import re 
+import re
 
-class ParseCleaner(BaseModel):
+class ParseCleaner: 
+    
     @staticmethod
-    def parsed_clean(file_name_src:str,file_name_dst:str,enc:str)->None:
-        """
-            Scrive nel file di output il testo markdown preso in input pulito
-            Argomenti:
-                file_name_src(str):Nome file del markdown da pulire
-                file_name_dst(str):Nome file destinazione del testo pulito
-                enc(str):Encoding dei file 
-        """
-        markdown_file = open(file_name_src,"r",encoding=enc)
-        clean_file = open(file_name_dst,"w",encoding=enc)
-        for line in markdown_file:
-            line = re.sub(r'\(\s*https?://[^)]*\)',' ',line)
-            line = re.sub(r'\[\[\d+\]\]',' ',line)
-            line = re.sub(r'[^a-zA-Z0-9]',' ',line)
-            line = line.split(" ")
-            for w in line:
-                if(w):
-                    clean_file.write(w+',')
-        markdown_file.close()
-        clean_file.close()
+    def clean_string(text: str) -> str:
+        text = re.sub(r'\(\s*https?://[^)]*\)', ' ', text)
+        text = re.sub(r'\[\[\d+\]\]', ' ', text)
+        text = re.sub(r'[^a-zA-Z0-9]', ' ', text)
+        words = [w for w in text.split(" ") if w]
         
+        # Restituisce i termini separati da spazio in un'unica stringa
+        return " ".join(words)
+
+    @staticmethod
+    def parsed_clean(file_name_src: str, file_name_dst: str, enc: str) -> None:
+        with open(file_name_src, "r", encoding=enc) as src, \
+             open(file_name_dst, "w", encoding=enc) as dst:
+            
+            raw_text = src.read()
+            cleaned = ParseCleaner.clean_string(raw_text)
+            dst.write(cleaned)
