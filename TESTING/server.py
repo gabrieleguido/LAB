@@ -10,6 +10,7 @@ from parser_nbcnews import extract
 import parser_nbcnews
 from cleaner import Cleaner
 import asyncio
+import crawler_test
 app = FastAPI()
 
 # Lista dei domini assegnati
@@ -39,6 +40,14 @@ class GoldStandardModel(BaseModel):
 # Modello di risposta per GET /full_gold_standard
 class FullGoldStandardModel(BaseModel):
     gold_standard: List[GoldStandardModel]
+
+class ParserOutputModel(BaseModel):
+    url:str
+    title:str
+    domain:str
+    html_text:str
+    parsed_text:str
+
 
 
 
@@ -115,7 +124,7 @@ CUSTOM_PARSERS = {
     "en.wikipedia.it":parser_nbcnews
 }
 @app.get("/parse/{url_in}")
-async def parse_url(url_in: str)->ParserOutputModel:
+def parse_url(url_in: str)->ParserOutputModel:
     """
     Restituisce oggetto JSON contenente il risultato del parsing del testo di una pagina web
     """
@@ -131,12 +140,16 @@ async def parse_url(url_in: str)->ParserOutputModel:
 
     try:
         #chiamata alla funzione di parsing specifica per il dominio
-        parser_module = CUSTOM_PARSERS[domain]
-        result_dict = await parser_module.extract(url)
+        #parser_module = CUSTOM_PARSERS[domain]
+        domain=Cleaner.get_domain_from_url(url)
+
+        if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
+            result_dict = asyncio.run(parser_nbcnews.extract(url))
+        else:
+            raise HTTPException(status_code=404, detail="Dominio non supportato")
         # Estrazione titolo della pagina
         title = Cleaner.get_title_from_html(result_dict["html"])
 
-        domain=Cleaner.get_domain_from_url(url),
         
         return ParserOutputModel(
             url=url,

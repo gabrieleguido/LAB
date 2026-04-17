@@ -2,7 +2,7 @@ import asyncio
 from crawl4ai import AsyncWebCrawler,BrowserConfig,CrawlerRunConfig,CacheMode
 from cleaner import Cleaner
 
-async def main():
+async def fun(url):
 
     browser_cfg = BrowserConfig(headless=False) 
 
@@ -17,20 +17,20 @@ async def main():
         ) 
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
-        result = await crawler.arun_many(
-            urls = [
-                "https://en.wikipedia.org/wiki/Bermuda_Triangle"
-            ],
-
+        result = await crawler.arun(
+            url =  url,
             config= wiki_crawler_cfg
         )
 
-        file = open("crawler_result_test.md","w",encoding = 'UTF-8')
-        res = ""
-        for r in result:
-            res = res+r.markdown
-        file.write(res)
-        file.close()
-        Cleaner.parsed_clean_to_file("crawler_result_test.md","clean_test.md",'UTF-8')
-        print(Cleaner.get_title_from_html(result[0].html))
-asyncio.run(main())
+        # file = open("crawler_result_test.md","w",encoding = 'UTF-8')
+        # res = ""
+        # for r in result:
+        #     res = res+r.markdown
+        # file.write(res)
+        # file.close()
+        # Cleaner.parsed_clean_to_file("crawler_result_test.md","clean_test.md",'UTF-8')
+        # print(Cleaner.get_title_from_html(result[0].html))
+        final_result = Cleaner.parsed_clean_to_string(result.markdown)
+        
+    return {"html":result.html,"parsed":final_result}
+#asyncio.run(main())
