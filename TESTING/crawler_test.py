@@ -19,11 +19,7 @@ async def main():
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun_many(
             urls = [
-                "https://www.nbcnews.com/science/space/artemis-ii-astronauts-return-nasa-moon-mission-rcna273651",
-                "https://www.nbcnews.com/world/europe/europe-celebrates-orban-defeat-hungary-election-putin-trump-maga-rcna331478",
-                "https://www.nbcnews.com/sports/golf/masters-2026-rory-mcilroy-holds-win-second-straight-masters-rcna330988",
-                "https://www.nbcnews.com/pop-culture/pop-culture-news/britney-spears-voluntarily-checks-into-treatment-facility-rcna331449",
-                "https://www.nbcnews.com/business/markets/oil-prices-surge-trump-says-us-will-blockade-strait-hormuz-rcna330824"
+                "https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league"
             ],
 
             config= wiki_crawler_cfg
@@ -35,5 +31,5 @@ async def main():
             res = res+r.markdown
         file.write(res)
         file.close()
-        ParseCleaner.parsed_clean("crawler_result_test.md","clean_test.txt",'UTF-8')
+        ParseCleaner.parsed_clean("crawler_result_test.md","clean_test.md",'UTF-8')
 asyncio.run(main())

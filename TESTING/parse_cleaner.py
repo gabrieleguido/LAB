@@ -21,10 +21,6 @@ class ParseCleaner(BaseModel):
                 line = re.sub(r'\[\[\d+\]\]',' ',line)
 
             line = re.sub(r'[^a-zA-Z0-9]',' ',line)
-            line = line.split(" ")
-            for w in line:
-                if(w):
-                    clean_file.write(w+',')
         markdown_file.close()
         clean_file.close()
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <TITLE>Web UI</TITLE>
+    </HEAD>
+
+    <BODY>
+        <H1>Web UI</H1>
+        <FORM action="/" method="get">
+            <LABEL>Dominio: </LABEL>
+            <SELECT required>
+                <OPTION>en.wikipedia.org</OPTION>
+                <OPTION>www.nbcnews.com</OPTION>
+                <OPTION>it.uefa.com</OPTION>
+                <OPTION>www.weather.com</OPTION>
+            </SELECT>
+            <br><br>
+
+            <LABEL>URL: </LABEL>
+            <SELECT required>
+                <OPTION></OPTION>
+                <OPTION></OPTION>
+                <OPTION></OPTION>
+                <OPTION></OPTION>
+            </SELECT>
+            <br><br>
+            
+            <BUTTON type="submit">Invia</BUTTON>
+        </FORM>
+        <br><br>
+
+        <H2>Risultati</H2>
+        <br>
+
+        <TABLE>
+            <TR>
+                <TH>Html grezzo</TH>
+                <TH>Testo pulito</TH>
+                <TH>Testo GS</TH>
+            </TR>
+            <TR>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly></TEXTAREA>
+                </TD>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly></TEXTAREA>
+                </TD>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly></TEXTAREA>
+                </TD>
+            </TR>
+        </TABLE>
+        
+        <br><br>
+
+        <TABLE border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+            <TR>
+                <TH>Precision</TH>
+                <TH>Recall</TH>
+                <TH>F1</TH>
+            </TR>
+            <TR>
+                <TD>{{precision}}</TD>
+                <TD>{{recall}}</TD>
+                <TD>{{f1}}</TD>
+            </TR>
+        </TABLE>
+    </BODY>
+</HTML>
