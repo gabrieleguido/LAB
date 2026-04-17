@@ -2,25 +2,28 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
 from urllib.parse import urlparse
+from token_compare import TokenCompare
 import os
 
 app = FastAPI()
 
 # Lista dei domini assegnati
-domains_list = ["en.wikipedia.org", "www.nbcnews.com", "www.weather.com", "www.uefa.com"]
+domains_list = TokenCompare.get_domain_list()
+for d in domains_list:
+    print(d)
 
 folder_map = {
     "en.wikipedia.org": "wikipedia",
     "www.nbcnews.com": "nbcnews",
     "www.weather.com": "weather",
-    "www.uefa.com": "uefa"
+    "it.uefa.com": "uefa"
 }
 
 # Modello di risposta per GET /domains
-class DomainsModel(BaseModel):
+class DomainsListModel(BaseModel):
     domains: list[str]
 
-class GsModel(BaseModel):
+class GoldStandardModel(BaseModel):
     url: str
     domain: str
     title: str
@@ -30,30 +33,31 @@ class GsModel(BaseModel):
 
 
 
-@app.get("/domains", response_model=DomainsModel)
-async def get_domains()->json:
+@app.get("/domains", response_model=DomainsListModel)
+async def get_domains()->DomainsListModel:
     """
     Restituisce oggetto JSON contenente la lista dei domini assegnati
     """
     return {"domains": domains_list}
 
 
-@app.get("/gold_standard", response_model=GsModel)
-async def get_gold_standard(url: str)->json:
-    """
-    Restituisce oggetto JSON contenente un gold standard del dominio in input
-    """
 
+@app.get("/gold_standard", response_model=GoldStandardModel)
+async def get_gold_standard(url: str)->GoldStandardModel:
+    """
+    Restituisce oggetto JSON contenente il gold standard del dominio in input
+    """
+    
     try:
-        domain = urlparse(url).netloc
+        domain = TokenCompare.get_domain_from_url(url)
     except Exception:
         raise HTTPException(status_code=400, detail="Formato url non valido")
     
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
-    folder_name = folder_map[domain]
-    file_path = f"GS/{folder_name}/GS.json"
+    file_name = folder_map[domain]
+    file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
         raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
@@ -62,10 +66,10 @@ async def get_gold_standard(url: str)->json:
         try:
             gs_list = json.load(f)
 
-            if len(gs_list)>0:
-                return gs_list[0]
-            else:
-                raise HTTPException(status_code=404, detail="Gs list vuota")
+            for gs in gs_list:
+                if gs.get("url") == url:
+                    return gs
+            raise HTTPException(status_code=404, detail="Url non trovato")
             
         except json.JSONDecodeError:
             raise HTTPException(status_code=500, detail="File json corrrotto")
