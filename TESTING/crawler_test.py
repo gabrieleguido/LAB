@@ -2,15 +2,18 @@ import asyncio
 from crawl4ai import AsyncWebCrawler,BrowserConfig,CrawlerRunConfig,CacheMode
 from cleaner import Cleaner
 from token_compare import TokenCompare
+import json
 
-async def fun():
+async def fun(url):
 
     browser_cfg = BrowserConfig(headless=False) 
 
     wiki_crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         word_count_threshold=20,
-        target_elements=["h1","h2","h3","title","p"]
+        target_elements=["h1","h2","h3","title","p"],
+        # excluded_selector="[href]",
+        remove_forms=True
         ) 
     weather_crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
@@ -19,17 +22,29 @@ async def fun():
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
         result = await crawler.arun(
-            url =  "https://www.nbcnews.com/world/europe/europe-celebrates-orban-defeat-hungary-election-putin-trump-maga-rcna331478",
+            url =  url,
             config= wiki_crawler_cfg
         )
 
         final_result = Cleaner.parsed_clean_to_string(result.markdown)
+        file = open("result.md","w",encoding='UTF-8')
+        file.write(result.markdown)
+        file.close()
 
         
     return {"html":result.html,"parsed":final_result}
-res = asyncio.run(fun())
+
+
+json_file = open("./gs_data/wikipedia_gs.json","r",encoding='UTF-8')
+json_list = json.load(json_file)
+index = 3
+url = json_list[index].get("url")
+gs_text = json_list[index].get("gold_text")
+res = asyncio.run(fun(url))
 TokenCompare.build_eval_from_parsed_gs_string(
     res["parsed"],
-    "Europe celebrates as Orb\u00e1n's stunning defeat deals a blow to Putin and Trump\nLeaders across the continent hailed the end of Viktor Orb\u00e1n's 16-year rule in Hungary as a return to unity in the European Union, the 27-nation bloc that he criticized and sought to undermine.\n\nLONDON \u2014 \u201cEurope! Europe!\u201d was the chant ringing out from the banks of the Danube after an election upset that was celebrated across the continent Monday as a stunning defeat for those threatening its security.\n\nPresidents, prime ministers and European Union officials hailed the end of Viktor Orb\u00e1n's 16-year rule in Hungary as a return to unity and shared values in the European Union, the 27-nation bloc that he criticized and sought to undermine.\n\nOrb\u00e1n, a close ally of Russia's Vladimir Putin and President Donald Trump, is viewed as a trailblazer for the global hard right. He conceded defeat Sunday night in what turned out to be a sweeping victory for challenger Peter Magyar and the center-right Tisza Party, which successfully united the country's opposition behind a vow to restore ties with Europe.\n\nTisza was set to win 138 seats in the 199-seat parliament, with almost all votes counted.\n\nIn a news conference Monday, Magyar offered pragmatic support for the United Nations and the European Union, a huge shift in Hungary's position towards Brussels.\n\n\"We are not going there to fight for the sake of fighting so we can write on billboards that Brussels is evil and needs to be stopped,\" he told supporters in a direct swipe at Orb\u00e1n's negative campaigning, which also painted Ukraine's Volodymyr Zelenskyy as a potential enemy.\n\nMagyar, who added that it was clear that Ukraine was the \"victim\" in the war, also accused the outgoing government of shredding documents relating to sanctions against Russia, citing an \"insider\" at the foreign ministry.\n\nA succession of leaders called Magyar to offer their congratulations even before he took to the stage to address large crowds in the capital, Budapest, to declare victory.\n\nPolish Prime Minister Donald Tusk wrote on X: \u201cHungary, Poland, Europe, Back together! Glorious victory, dear friends!\u201d He added \u201cRuszkik haza,\u201d meaning \u201cRussians go home\u201d in Hungarian, a reference to Orban's backing for Putin and repeated veto on European support for Ukraine against Russia's invasion.\n\nIn a video clip posted by Tusk, the clearly delighted Polish leader is seen speaking to Magyar by phone and says \"I think I'm happier than you.\"\n\nSpanish Prime Minister Pedro S\u00e1nchez spoke for many on the continent when he posted: \"Today Europe wins and European values win.\"\n\nThe European Democratic Party, a pan-European centrist group that supports greater integration across the continent, called Magyar's victory \"a cry that shakes the conscience of us all\" and posted a clip of crowds chanting \"Europe! Europe!\" at his victory rally in Budapest.\n\nPrime Minister Keir Starmer of Britain \u2014 no longer a member of the E.U. but a close supporter of Ukraine \u2014 said: \"This is an historic moment, not only for Hungary, but for European democracy.\"\n\nThe Kremlin, for its part, said Monday it hoped to continue its \"pragmatic\" ties with Hungary. \u201cThe Hungarians have made their choice. We respect this choice,\" spokesman Dmitry Peskov said.\n\nBut asked later whether the Kremlin would congratulate Magyar, Peskov said \u201cWe don\u2019t extend greetings to unfriendly countries. And Hungary is an unfriendly country.\"\n\nThose celebrating the fall of Orb\u00e1n should be mindful, analysts cautioned, that the huge influence he and his supporters built across the country\u2019s institutions will not be easily removed.\n\n\u201cThe structure of the last 16 years has been so entrenched and so much concerned with capturing all the commanding heights of the Hungarian state that it will take quite some time for anyone to unravel this,\u201d said Jonathan Eyal, associated director of the Royal United Services Institute, a think tank in London.\n\nOrb\u00e1n, 62, is a key European ally of Trump whose populism and culture war posturing has provided a model for the MAGA movement.\n\nIn two decades at the helm of the Fidesz Party, he has staked out a reputation as a committed anti-immigration Christian nationalist who spoke of defending the West against what he framed as radical Islam and globalist forces.\n\nThe now former Hungarian leader has been widely criticized for dismantling or impairing many democratic institutions including the Constitution, law courts and the media, and packing influential committees with loyalists.\n\nTizsa is expected to have won at least two-thirds of the Hungarian parliament in the election, giving it a supermajority that means it can amend the Hungarian Constitution. \"We will restore the system of checks and balances,\" Magyar told celebrating supporters Sunday.\n\nHe has vowed to unlock billions of dollars of in funding from the E.U. that had been halted due to repeated infringements and concerns about corruption and the democratic process.\n\nBut there are a series of official bodies stuffed with Orb\u00e1n loyalists who have taken power away from Hungary's parliament to make policy, Eyal pointed out, as well as a powerful constitutional court full of his appointees.\n\n\"So sweeping away all these cobwebs is not something that could happen after a party on the Danube River,\" Eyal warned.\n\nMagyar, a relatively young leader at 45, is a former member of Orb\u00e1n's Fidesz Party and a former official in the Foreign Ministry \u2014 he only broke away to join Tisza in 2024.\n\nMagyar is a traditionalist who support the hardline stance of the previous administration on immigration and has even signaled he may go further, by scrapping the country's guest worker scheme for non-E.U. citizens.\n\n\"Magyar is not exactly a dissident that has emerged out of pure thin air into into the new leader,\" Eyal said. \"So there is, there is a legitimate question about how much of a break this is from someone who clearly shared some of the Orb\u00e1n government's views for a lot of his political career.\"\n\nAnd there is unlikely to be a complete severing of ties with Moscow. At his press conference on Monday, Magyar said he hoped the war in Ukraine would soon end so international sanctions on Russia can be lifted \u2014 Hungary is a major importer of Russian oil. Hungary will try to diversify, he said, but added that the country can't \"change geography.\"\n\nWhatever happens, this result is blow to the regime in Moscow, Eyal added.\n\n\"Most Hungarian voters when they're asked, they say we don't want to be part of Russia, we want to be part of Europe,\" he said. \"And so this is a very major lesson for far right.\"",
-    print_flag=True
-    )
+    gs_text,
+    tokens_file="tokens_result.txt",
+    print_stats_flag=True,
+    print_diff=True
+)

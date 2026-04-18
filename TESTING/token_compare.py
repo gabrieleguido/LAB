@@ -105,23 +105,39 @@ class TokenCompare:
         return stats
     
     @staticmethod
-    def build_eval_from_parsed_gs_string(md_string:str,gs_string:str,print_flag:bool=False)->Dict[str,float]:
+    def build_eval_from_parsed_gs_string(md_string:str,gs_string:str,tokens_file:str="",print_stats_flag:bool=False,print_diff:bool=False)->Dict[str,float]:
         """
             Date le stringhe di testo parsato e di gold text in iput costruisce in 
-            automatico le statistiche ritornate come dizionario:
-                precision:float
-                recall:float
-                f1:float
+            automatico le statistiche ritornate come dizionario:\n
+                precision:float\n
+                recall:float\n
+                f1:float\n
+            tokens_file(str) se inserito stampa i token sul file 
+            di nome tokenfile\n
+            print_stats_flag(bool) se impostato a true stampa le stats\n
+            print_diff(bool): se impostato a true stampa il set differenza di token
         """
         md_set = TokenCompare.markdown_string_tokenizer(md_string)
         gs_set = TokenCompare.gs_string_tokenizer(gs_string)
         stats = TokenCompare.get_stats(md_set,gs_set)
-        if(print_flag):
+        if(tokens_file):
+            file = open(tokens_file,"w",encoding='UTF-8')
+            file.write("MD tokens:\n"
+                       +str(sorted(md_set))+"\n"
+                       +"gs_set:\n"
+                       +str(sorted(gs_set))
+                       )
+            file.close()
+        if(print_stats_flag):
             print("STATS:")
             print(stats["precision"])
             print(stats["recall"])
             print(stats["f1"])
+        
+        if(print_diff):
+            print(sorted(md_set-gs_set))
         return stats
+    
     
 
 

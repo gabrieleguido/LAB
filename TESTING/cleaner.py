@@ -3,7 +3,7 @@ import re
 
 class Cleaner(BaseModel):
     @staticmethod
-    def parsed_clean_to_file(file_name_src:str,file_name_dst:str,enc:str,link_del_flag:bool=True)->None:
+    def parsed_clean_to_file(file_name_src:str,file_name_dst:str,enc:str,link_del_flag:bool=False)->None:
         """
             Scrive nel file di output il testo markdown preso in input pulito
             Argomenti:
@@ -28,7 +28,11 @@ class Cleaner(BaseModel):
         """Data la stringa markdown in input restituisce la stringa
             markdown pulita
         """
+        #regex per le note []
         cleaned = re.sub(r'\[\[\d+\]\]',' ',markdown)
+        #regex per le #cite_note...
+        cleaned = re.sub(r'#cite_note[^)]*\)'," ",cleaned)
+        #regex per caratteri non alfanumerici
         cleaned = re.sub(r'[^a-zA-Z0-9]',' ',cleaned)
         return cleaned
     
