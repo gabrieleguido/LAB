@@ -22,7 +22,9 @@ def web_ui(request:Request, domain:str=None, url:str=None):
     
     domains_list = []
     url_list = []
-    testo_gs = ''
+    html_grezzo = ""
+    testo_parsato = ""
+    testo_gs = ""
 
     # GET /domains
     try:
@@ -44,7 +46,7 @@ def web_ui(request:Request, domain:str=None, url:str=None):
             url_fake = f"https://{domain}/"
             url_cod = urllib.parse.quote(url_fake, safe='')
             url_full_gs = f"{backend_url}/full_gold_standard/{url_cod}"
-            
+
             with urllib.request.urlopen(url_full_gs) as response:
                 if response.status == 200:
                     gs = response.read().decode('utf-8')
@@ -57,8 +59,9 @@ def web_ui(request:Request, domain:str=None, url:str=None):
 
 
     
-    # GET /gold_standard
+    # GET /gold_standard e GET /parse
     if url:
+        # blocco per GET /gold_standard e riempe textarea "Testo GS"
         try:
             url_cod = urllib.parse.quote(url, safe='')  # codifica l'url
             url_gs = f"{backend_url}/gold_standard/{url_cod}"
@@ -75,6 +78,22 @@ def web_ui(request:Request, domain:str=None, url:str=None):
         except Exception as e:
             print(f"Errore generico {e}") 
 
+        # blocco per GET /parse e riempe textarea "Testo pulito" e "HTML grezzo"
+        try:
+            url_parse = f"{backend_url}/parse/{url_cod}"    # riutilizzo lo stesso url codificato di get/gold_standard
+            
+            with urllib.request.urlopen(url_parse) as response:
+                if response.status == 200:
+                    data = response.read().decode('utf-8')
+                    data_json = json.loads(data)
+
+                    html_grezzo = data_json.get("html_text", "ERRORE: testo html non trovato")
+                    testo_parsato = data_json.get("parsed_text", "ERRORE: testo parsato non trovato")
+        except urllib.error.HTTPError as e:
+            html_grezzo = f"Errore del server, code: {e.code}"
+            testo_parsato = f"Errore del server, code: {e.code}"
+        except Exception as e:
+            print(f"Errore generico parser {e}")
 
 
 
@@ -82,8 +101,10 @@ def web_ui(request:Request, domain:str=None, url:str=None):
         "request": request,
         "lista_domini": domains_list,
         "dominio_scelto": domain,
-        "testo_gs": testo_gs,
-        "lista_url": url_list
+        "lista_url": url_list,
+        "testo_html": html_grezzo,
+        "testo_parsato": testo_parsato,
+        "testo_gs": testo_gs
     }
 
     return templates.TemplateResponse(request=request, name="index.html", context=ui_data)

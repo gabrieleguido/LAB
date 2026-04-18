@@ -137,7 +137,7 @@ CUSTOM_PARSERS = {
     "it.uefa.com": parser_wikipedia,
     "en.wikipedia.it":parser_wikipedia
 }
-@app.get("/parse/{url_in}")
+@app.get("/parse/{url_in:path}")
 def parse_url(url_in: str)->ParserOutputModel:
     """
     Restituisce oggetto JSON contenente il risultato del parsing del testo di una pagina web
