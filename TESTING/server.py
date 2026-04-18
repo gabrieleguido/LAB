@@ -4,13 +4,10 @@ import json
 from urllib.parse import urlparse,unquote
 from token_compare import TokenCompare
 import os
-from typing import List
-from bs4 import BeautifulSoup
-from parser_nbcnews import extract
-import parser_nbcnews
+from typing import List,Dict 
+import parser_wikipedia as parser_wikipedia
 from cleaner import Cleaner
 import asyncio
-import crawler_test
 app = FastAPI()
 
 # Lista dei domini assegnati
@@ -43,6 +40,23 @@ class ParserOutputModel(BaseModel):
     domain:str
     html_text:str
     parsed_text:str
+
+#modello del body nella POST /evaluate
+class EvaluateInputModel(BaseModel):
+    """
+        parsed_text:str\n
+        gold_text:str
+    """
+    parsed_text:str
+    gold_text:str 
+
+#modello di risposta nella POST /evaluate
+class EvaluateOutputModel(BaseModel):
+    """
+        token_level_eval:Dict[str,float]
+
+    """
+    token_level_eval:Dict[str,float]
 
 
 
@@ -116,9 +130,9 @@ def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
         
 # Mapping dominio -> funzione parser
 CUSTOM_PARSERS = {
-    "www.nbcnews.com": parser_nbcnews,
-    "it.uefa.com": parser_nbcnews,
-    "en.wikipedia.it":parser_nbcnews
+    "www.nbcnews.com": parser_wikipedia,
+    "it.uefa.com": parser_wikipedia,
+    "en.wikipedia.it":parser_wikipedia
 }
 @app.get("/parse/{url_in}")
 def parse_url(url_in: str)->ParserOutputModel:
@@ -137,11 +151,13 @@ def parse_url(url_in: str)->ParserOutputModel:
 
     try:
         #chiamata alla funzione di parsing specifica per il dominio
+
         #parser_module = CUSTOM_PARSERS[domain]
+        
         domain=Cleaner.get_domain_from_url(url)
 
         if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
-            result_dict = asyncio.run(parser_nbcnews.extract(url))
+            result_dict = asyncio.run(parser_wikipedia.extract(url))
         else:
             raise HTTPException(status_code=404, detail="Dominio non supportato")
         # Estrazione titolo della pagina
@@ -159,4 +175,9 @@ def parse_url(url_in: str)->ParserOutputModel:
         # Errore nel parser 
         raise HTTPException(status_code=500, detail=f"Errore interno del parser: {str(e)}")
 
-
+@app.post("/evaluate")
+def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
+    #prendo il dizionario con le statistiche di token evaluation, 
+    #vedere TokenCompare per i dettagli
+    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_flag=True)
+    return EvaluateOutputModel(token_level_eval=stats)
