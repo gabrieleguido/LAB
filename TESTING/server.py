@@ -16,12 +16,6 @@ app = FastAPI()
 # Lista dei domini assegnati
 domains_list = TokenCompare.get_domain_list()
 
-folder_map = {
-    "en.wikipedia.org": "wikipedia",
-    "www.nbcnews.com": "nbcnews",
-    "www.weather.com": "weather",
-    "it.uefa.com": "uefa"
-}
 
 # Modello di risposta per GET /domains
 class DomainsListModel(BaseModel):
@@ -41,6 +35,8 @@ class GoldStandardModel(BaseModel):
 class FullGoldStandardModel(BaseModel):
     gold_standard: List[GoldStandardModel]
 
+
+# Modello di risposta per GET /parse
 class ParserOutputModel(BaseModel):
     url:str
     title:str
@@ -72,7 +68,8 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
-    file_name = folder_map[domain]
+    
+    file_name = domain.split('.')[1]
     file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
@@ -103,7 +100,7 @@ def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
-    file_name = folder_map[domain]    
+    file_name = domain.split('.')[1]    
     file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
