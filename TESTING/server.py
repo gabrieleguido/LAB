@@ -74,7 +74,7 @@ def get_domains()->DomainsListModel:
 
 
 
-@app.get("/gold_standard/{url_in}")
+@app.get("/gold_standard/{url_in:path}")
 def get_gold_standard(url_in: str)->GoldStandardModel:
     """
     Restituisce oggetto JSON contenente il gold standard del dominio in input
@@ -106,7 +106,7 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
         
 
 
-@app.get("/full_gold_standard/{url_in}")
+@app.get("/full_gold_standard/{url_in:path}")
 def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
     """
     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico

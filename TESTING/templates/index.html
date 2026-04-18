@@ -8,20 +8,19 @@
         <H1>Web UI</H1>
         <FORM action="/" method="get">
             <LABEL>Dominio: </LABEL>
-            <SELECT required>
+            <SELECT name="domain" onchange="this.form.submit()" required>
                 {% for d in lista_domini %}
-                    <OPTION>{{d}}</OPTION>
+                    <OPTION value="{{d}}" {% if d == dominio_scelto %}selected{% endif %}>{{d}}</OPTION>
                 {% endfor %}
             </SELECT>
             <br><br>
 
             <LABEL>URL: </LABEL>
-            <INPUT type="text" list="urls" required>
-            <DATALIST id="urls" required>
-                <OPTION value="url1"></OPTION>
-                <OPTION value="url2"></OPTION>
-                <OPTION value="url3"></OPTION>
-                <OPTION value="url4"></OPTION>
+            <INPUT type="text" list="urls" name="url" size="80">
+            <DATALIST id="urls">
+                {% for u in lista_url %}
+                    <OPTION value="{{u}}"></OPTION>
+                {% endfor %}
             </DATALIST>
             <br><br>
             
@@ -46,7 +45,7 @@
                     <TEXTAREA cols="60" rows="20" style="resize: none;" readonly></TEXTAREA>
                 </TD>
                 <TD>
-                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly></TEXTAREA>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly>{{testo_gs}}</TEXTAREA>
                 </TD>
             </TR>
         </TABLE>
