@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
 from urllib.parse import urlparse,unquote
@@ -8,8 +8,6 @@ from typing import List,Dict
 import parser_wikipedia as parser_wikipedia
 from cleaner import Cleaner
 import asyncio
-import crawler_test
-
 app = FastAPI()
 
 # Lista dei domini assegnati
@@ -176,3 +174,10 @@ def parse_url(url_in: str)->ParserOutputModel:
     except Exception as e:
         # Errore nel parser 
         raise HTTPException(status_code=500, detail=f"Errore interno del parser: {str(e)}")
+
+@app.post("/evaluate")
+def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
+    #prendo il dizionario con le statistiche di token evaluation, 
+    #vedere TokenCompare per i dettagli
+    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_flag=True)
+    return EvaluateOutputModel(token_level_eval=stats)
