@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 import json
 from urllib.parse import urlparse,unquote
@@ -11,6 +11,11 @@ import parser_nbcnews
 from cleaner import Cleaner
 import asyncio
 import crawler_test
+
+#librerie web UI
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
 app = FastAPI()
 
 # Lista dei domini assegnati
@@ -160,3 +165,19 @@ def parse_url(url_in: str)->ParserOutputModel:
         raise HTTPException(status_code=500, detail=f"Errore interno del parser: {str(e)}")
 
 
+
+
+
+templates = Jinja2Templates(directory="templates")
+
+# funzione per web ui
+@app.get("/", response_class=HTMLResponse)
+def web_ui(request:Request, url:str=None, domain:str=None):
+    domains_list = get_domains()    #chiama l'API e restituisce un oggetto DomainsListModel
+    ui_data = {
+        "request": request,
+        "lista_domini": domains_list.domains,
+        "dominio_scelto": domain
+    }
+
+    return templates.TemplateResponse(request=request, name="index.html", context=ui_data)

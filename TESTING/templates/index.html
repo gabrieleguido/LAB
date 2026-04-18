@@ -9,20 +9,20 @@
         <FORM action="/" method="get">
             <LABEL>Dominio: </LABEL>
             <SELECT required>
-                <OPTION>en.wikipedia.org</OPTION>
-                <OPTION>www.nbcnews.com</OPTION>
-                <OPTION>it.uefa.com</OPTION>
-                <OPTION>www.weather.com</OPTION>
+                {% for d in lista_domini %}
+                    <OPTION>{{d}}</OPTION>
+                {% endfor %}
             </SELECT>
             <br><br>
 
             <LABEL>URL: </LABEL>
-            <SELECT required>
-                <OPTION></OPTION>
-                <OPTION></OPTION>
-                <OPTION></OPTION>
-                <OPTION></OPTION>
-            </SELECT>
+            <INPUT type="text" list="urls" required>
+            <DATALIST id="urls" required>
+                <OPTION value="url1"></OPTION>
+                <OPTION value="url2"></OPTION>
+                <OPTION value="url3"></OPTION>
+                <OPTION value="url4"></OPTION>
+            </DATALIST>
             <br><br>
             
             <BUTTON type="submit">Invia</BUTTON>
