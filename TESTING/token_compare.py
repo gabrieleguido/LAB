@@ -5,7 +5,7 @@ import re
 
 class TokenCompare:
     @staticmethod
-    def Markdown_tokenizer(file_name:str,links_del_flag:bool=False,enc:str='UTF-8')->Set[str]:
+    def markdown_file_tokenizer(file_name:str,links_del_flag:bool=False,enc:str='UTF-8')->Set[str]:
         """
             Dato il nome di un file .md restituisce l'insieme dei token puliti.
             file_name(str) = nome del markdown 
@@ -33,7 +33,7 @@ class TokenCompare:
         return token_set
     
     @staticmethod
-    def GS_tokenizer(gs_file_name:str,url:str="",enc:str='UTF-8')->Set[str]:
+    def gs_file_tokenizer(gs_file_name:str,url:str="",enc:str='UTF-8')->Set[str]:
         """Dato il nome del file del GS restituisce l'insieme dei token
             gs_file_name(str) = nome del file .json del gs 
             url(str) = url passato se si vuole solo il gs di un singolo url
@@ -55,7 +55,37 @@ class TokenCompare:
         return token_set
     
     @staticmethod
+    def markdown_string_tokenizer(md_string:str)->Set[str]:
+        """
+            Data una stringa di testo parsato in markdown restituisce
+            l'insieme di token da usare per la funzione di valutazione
+        """
+        parsed_text = re.sub(r'[^a-zA-Z0-9]',',',md_string)
+        parsed_text = parsed_text.split(",")
+        token_set = set()
+        for w in parsed_text:
+            if(w):
+                token_set.add(w.lower())
+        return token_set
+    
+    @staticmethod
+    def gs_string_tokenizer(gs_string:str)->Set[str]:
+        """
+            Data una stringa di testo gs restituisce
+            l'insieme di token da usare per la funzione di valutazione
+        """
+        golden_text = re.sub(r'[^a-zA-Z0-9]',',',gs_string)
+        golden_text = golden_text.split(",")
+        token_set = set()
+        for w in golden_text:
+            if(w):
+                token_set.add(w.lower())
+        return token_set
+
+    
+    @staticmethod
     def get_domain_list(domain_json_file:str="domains.json",enc:str='UTF-8')->List[str]:
+        "restituisce la lista di domini presa dal file json"
         file = open(domain_json_file,"r",encoding=enc)
         domains_dict = json.load(file) 
         domains_list = domains_dict.get("domains")
@@ -73,6 +103,28 @@ class TokenCompare:
         stats["recall"] = float(len(gs_tokens_set&markdown_tokens_set)/len(gs_tokens_set))
         stats["f1"] = float(2*stats["precision"]*stats["recall"]/(stats["precision"]+stats["recall"]))
         return stats
+    
+    @staticmethod
+    def build_eval_from_parsed_gs_string(md_string:str,gs_string:str,print_flag:bool=False)->Dict[str,float]:
+        """
+            Date le stringhe di testo parsato e di gold text in iput costruisce in 
+            automatico le statistiche ritornate come dizionario:
+                precision:float
+                recall:float
+                f1:float
+        """
+        md_set = TokenCompare.markdown_string_tokenizer(md_string)
+        gs_set = TokenCompare.gs_string_tokenizer(gs_string)
+        stats = TokenCompare.get_stats(md_set,gs_set)
+        if(print_flag):
+            print("STATS:")
+            print(stats["precision"])
+            print(stats["recall"])
+            print(stats["f1"])
+        return stats
+    
+
+
 
     
 
