@@ -4,11 +4,13 @@ from fastapi.templating import Jinja2Templates
 import urllib.request
 import json
 
+##   esegui con comando --->  uvicorn frontend:app --reload --port 8004    ##
+
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-backend_url = "http://127.0.0.1:8000"
+backend_url = "http://127.0.0.1:8003"
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
@@ -17,7 +19,7 @@ def web_ui(request:Request, domain:str=None):
     domains_list = []
 
     try:
-        url = f"{backend_url}/richiesta"
+        url = f"{backend_url}/domains"
         with urllib.request.urlopen(url) as response:
             if response.status == 200:
                 data = response.read().decode('utf-8')
@@ -29,7 +31,7 @@ def web_ui(request:Request, domain:str=None):
     
     ui_data = {
         "request": request,
-        "lista_domini": domains_list.domains,
+        "lista_domini": domains_list,
         "dominio_scelto": domain
     }
 

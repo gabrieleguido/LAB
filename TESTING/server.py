@@ -8,6 +8,9 @@ from typing import List,Dict
 import parser_wikipedia as parser_wikipedia
 from cleaner import Cleaner
 import asyncio
+
+##   esegui con comando --->  uvicorn server:app --reload --port 8003    ##
+
 app = FastAPI()
 
 # Lista dei domini assegnati
