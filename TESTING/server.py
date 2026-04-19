@@ -16,6 +16,7 @@ app = FastAPI()
 # Lista dei domini assegnati
 domains_list = TokenCompare.get_domain_list()
 
+#questo dizionario facilita la ricerca dei nomi dei file dato un dominio
 domain_to_name_dict = {
     "www.nbcnews.com":"nbcnews",
     "en.wikipedia.org":"wikipedia",
@@ -26,11 +27,21 @@ domain_to_name_dict = {
 
 # Modello di risposta per GET /domains
 class DomainsListModel(BaseModel):
+    """    
+        domains: List[str]
+    """
     domains: List[str]
 
 
 # Modello di risposta per GET /gold_standard
 class GoldStandardModel(BaseModel):
+    """
+        url: str\n
+        domain: str\n
+        title: str\n
+        html_text: str\n
+        gold_text: str
+    """
     url: str
     domain: str
     title: str
@@ -40,11 +51,21 @@ class GoldStandardModel(BaseModel):
 
 # Modello di risposta per GET /full_gold_standard
 class FullGoldStandardModel(BaseModel):
+    """
+            gold_standard: List[GoldStandardModel]
+    """
     gold_standard: List[GoldStandardModel]
 
 
 # Modello di risposta per GET /parse
 class ParseOutputModel(BaseModel):
+    """
+        url:str\n
+        domain:str\n
+        title:str\n
+        html_text:str\n
+        parsed_text:str
+    """
     url:str
     domain:str
     title:str
@@ -195,6 +216,9 @@ def parse_url(url_in: str)->ParseOutputModel:
 
 @app.post("/evaluate")
 def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
+    """
+        Restituisce le valutazioni per un testo parsato e il suo gs passati nel body
+    """
     #prendo il dizionario con le statistiche di token evaluation, 
     #vedere TokenCompare per i dettagli
     stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_stats_flag=True)
@@ -203,6 +227,15 @@ def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
 
 @app.post("/parse")
 def parse_html(input:PostParseInputModel)->ParseOutputModel:
+    """
+        Riceve in input un url e un html e restituisce :\n
+        url\n
+        dominio\n
+        titolo (estratto dall'html)\n
+        testo html\n
+        testo risultato del parser
+    """
+
     url = unquote(input.url)
     domain = Cleaner.get_domain_from_url(url)
     if(domain not in domains_list):
@@ -228,6 +261,10 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
 
 @app.get("/full_gs_eval/{url_in}")
 def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
+    """"
+        Restituisce l'intero gold standard del dominio dell'url in input
+    """
+
     url = unquote(url_in)
     domain = Cleaner.get_domain_from_url(url)
     if(domain not in domains_list):
