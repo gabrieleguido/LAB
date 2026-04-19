@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 import re 
+import mistune
+from bs4 import BeautifulSoup
 
 class Cleaner(BaseModel):
     @staticmethod
@@ -28,8 +30,10 @@ class Cleaner(BaseModel):
         """Data la stringa markdown in input restituisce la stringa
             markdown pulita
         """
+        #regex per i link
+        cleaned = re.sub(r'\(\s*https?://[^)]*\)',' ',markdown)
         #regex per le note []
-        cleaned = re.sub(r'\[\[\d+\]\]',' ',markdown)
+        cleaned = re.sub(r'\[\[\d+\]\]',' ',cleaned)
         #regex per le #cite_note...
         cleaned = re.sub(r'#cite_note[^)]*\)'," ",cleaned)
         #regex per caratteri non alfanumerici
@@ -53,6 +57,20 @@ class Cleaner(BaseModel):
         """
         line = url.split('/')
         return line[2]
+    
+    @staticmethod
+    def remove_markdown(md:str)->str:
+        """
+            Rimuove il markdown da una stringa restituendo il testo pulito
+        """
+        html = mistune.html(md)
+        soup = BeautifulSoup(html,"html.parser")
+        for tag in soup.find_all(True):
+            tag.unwrap()
+        text = re.sub(r'[\t]'," ",str(soup))
+        text = re.sub(r'\n+','\n',text)
+        return text.strip()
+
 
     
         

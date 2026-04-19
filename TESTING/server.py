@@ -37,10 +37,10 @@ class FullGoldStandardModel(BaseModel):
 
 
 # Modello di risposta per GET /parse
-class ParserOutputModel(BaseModel):
+class ParseOutputModel(BaseModel):
     url:str
-    title:str
     domain:str
+    title:str
     html_text:str
     parsed_text:str
 
@@ -60,6 +60,14 @@ class EvaluateOutputModel(BaseModel):
 
     """
     token_level_eval:Dict[str,float]
+
+class PostParseInputModel(BaseModel):
+    """
+        url:str\n
+        html_text:str
+    """
+    url:str
+    html_text:str
 
 
 
@@ -138,7 +146,7 @@ CUSTOM_PARSERS = {
     "en.wikipedia.it":parser_wikipedia
 }
 @app.get("/parse/{url_in:path}")
-def parse_url(url_in: str)->ParserOutputModel:
+def parse_url(url_in: str)->ParseOutputModel:
     """
     Restituisce oggetto JSON contenente il risultato del parsing del testo di una pagina web
     """
@@ -167,10 +175,10 @@ def parse_url(url_in: str)->ParserOutputModel:
         title = Cleaner.get_title_from_html(result_dict["html"])
 
         
-        return ParserOutputModel(
+        return ParseOutputModel(
             url=url,
-            title = title,
             domain = domain,
+            title = title,
             html_text = result_dict["html"],
             parsed_text = result_dict["parsed"]
             )
@@ -184,3 +192,26 @@ def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
     #vedere TokenCompare per i dettagli
     stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_stats_flag=True)
     return EvaluateOutputModel(token_level_eval=stats)
+
+
+@app.post("/parse")
+def parse_html(input:PostParseInputModel)->ParseOutputModel:
+    url = unquote(input.url)
+    domain = Cleaner.get_domain_from_url(url)
+    if(domain not in domains_list):
+        raise HTTPException(status_code=404, detail="Dominio non supportato")
+    html = input.html_text 
+
+    #impongo al crawler di parsare l'html che gli passo in url
+    url = f'raw:{html}'
+
+    if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
+        result_dict = asyncio.run(parser_wikipedia.extract(url))
+
+    return ParseOutputModel(
+            url=unquote(input.url),
+            domain = domain,
+            title = Cleaner.get_title_from_html(html),
+            html_text = result_dict["html"],
+            parsed_text = result_dict["parsed"]
+         )

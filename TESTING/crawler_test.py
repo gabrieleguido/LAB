@@ -11,9 +11,14 @@ async def fun(url):
     wiki_crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         word_count_threshold=20,
-        target_elements=["h1","h2","h3","title","p"],
-        # excluded_selector="[href]",
-        remove_forms=True
+        target_elements=["h1","h2","h3","title","p","li"],
+        excluded_tags=["style","nav","reference","footer","header","aside","script"],
+        only_text= True,
+        exclude_all_images=True,
+        exclude_external_links=True,
+        remove_overlay_elements=True,
+        exclude_internal_links=True,
+        parser_type="html.parser"
         ) 
     weather_crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
@@ -27,6 +32,7 @@ async def fun(url):
         )
 
         final_result = Cleaner.parsed_clean_to_string(result.markdown)
+        final_result = Cleaner.remove_markdown(final_result)
         file = open("result.md","w",encoding='UTF-8')
         file.write(result.markdown)
         file.close()

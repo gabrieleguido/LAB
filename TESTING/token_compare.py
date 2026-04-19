@@ -128,14 +128,19 @@ class TokenCompare:
                        +str(sorted(gs_set))
                        )
             file.close()
+        
+        if(print_diff):
+            print("MD-GS")
+            print(sorted(md_set-gs_set))
+            print("GS-MD")
+            print(sorted(gs_set-md_set))
+            
         if(print_stats_flag):
             print("STATS:")
             print(stats["precision"])
             print(stats["recall"])
             print(stats["f1"])
-        
-        if(print_diff):
-            print(sorted(md_set-gs_set))
+
         return stats
     
     

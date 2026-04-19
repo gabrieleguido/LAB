@@ -1,5 +1,3 @@
-# Python (programming language)
-## Contents
 ## History
 ## Design philosophy and features
 ## Syntax and semantics
@@ -29,8 +27,6 @@
 ### Performance
 ### Sources
 Python (programming language) - Wikipedia
-Donate your 5×1000 to Wikimedia Italia!  
-Write: 94039910156 
 **Python** is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language "High-level programming language"), [general-purpose programming language](https://en.wikipedia.org/wiki/General-purpose_programming_language "General-purpose programming language") that emphasizes [code readability](https://en.wikipedia.org/wiki/Code_readability "Code readability"), simplicity, and ease-of-writing with the use of [significant indentation](https://en.wikipedia.org/wiki/Significant_indentation "Significant indentation"),[[38]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-7-40) "plain English" naming, an extensive ("batteries-included") [standard library](https://en.wikipedia.org/wiki/Standard_library "Standard library"), and [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_\(computer_science\) "Garbage collection \(computer science\)"). Python supports multiple [programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm "Programming paradigm") but with an emphasis on [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming "Object-oriented programming") and [dynamic typing](https://en.wikipedia.org/wiki/Type_system#DYNAMIC "Type system"). 
 [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum "Guido van Rossum") began working on Python in the late 1980s as a successor to the [ABC](https://en.wikipedia.org/wiki/ABC_\(programming_language\) "ABC \(programming language\)") programming language. Python 3.0, released in 2008, was a major revision and not completely [backward-compatible](https://en.wikipedia.org/wiki/Backward-compatible "Backward-compatible") with earlier versions. Beginning with Python 3.5,[[39]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-41) capabilities and keywords for typing were added to the language, allowing optional [static typing](https://en.wikipedia.org/wiki/Static_typing "Static typing").[[40]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-42) As of 2026[[update]](https://en.wikipedia.org/w/index.php?title=Python_\(programming_language\)&action=edit), the [Python Software Foundation](https://en.wikipedia.org/wiki/Python_Software_Foundation "Python Software Foundation") supports Python 3.10, 3.11, 3.12, 3.13, and 3.14, following the project's annual release cycle and five-year support policy. Python 3.15 is currently in the alpha development phase, and the stable release is expected to come out in October 2026.[[41]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-43) Earlier versions in the 3.x series have reached end-of-life and no longer receive security updates. 
 Python has gained widespread use in the [machine learning](https://en.wikipedia.org/wiki/Machine_learning "Machine learning") community.[[42]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-44)[[43]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-45)[[44]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-tiobecurrent-46)[[45]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-47) It is widely taught as an introductory programming language.[[46]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-48) Since 2003, Python has consistently ranked in the top ten of the most popular programming languages in the [TIOBE Programming Community Index](https://en.wikipedia.org/wiki/TIOBE_Programming_Community_Index "TIOBE Programming Community Index"), which ranks based on searches in 24 platforms.[[47]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-49)
@@ -100,3 +96,947 @@ CPython's public releases have three types, distinguished by which part of the v
 Many [alpha, beta, and release-candidates](https://en.wikipedia.org/wiki/Beta_release "Beta release") are also released as previews and for testing before final releases. Although there is a rough schedule for releases, they are often delayed if the code is not ready yet. Python's development team monitors the state of the code by running a large [unit test](https://en.wikipedia.org/wiki/Unit_test "Unit test") suite during development.[[182]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-23-185)
 The major [academic conference](https://en.wikipedia.org/wiki/Academic_conference "Academic conference") on Python is [PyCon](https://en.wikipedia.org/wiki/PyCon "PyCon"). Also, there are special Python mentoring programs, such as [PyLadies](https://en.wikipedia.org/wiki/PyLadies "PyLadies"). 
 Python's name is inspired by the British comedy group [Monty Python](https://en.wikipedia.org/wiki/Monty_Python "Monty Python"), whom Python creator Guido van Rossum enjoyed while developing the language. Monty Python references appear frequently in Python code and culture;[[183]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-tutorial-chapter1-186) for example, the [metasyntactic variables](https://en.wikipedia.org/wiki/Metasyntactic_variable "Metasyntactic variable") often used in Python literature are [_spam_ and _eggs_](https://en.wikipedia.org/wiki/Spam_\(Monty_Python\) "Spam \(Monty Python\)"), rather than the traditional [_foo_ and _bar_](https://en.wikipedia.org/wiki/Foobar "Foobar").[[183]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-tutorial-chapter1-186)[[184]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-26-187) Also, the official Python documentation contains various references to Monty Python routines.[[185]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-FOOTNOTELutz201317-188)[[186]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-189) Python users are sometimes referred to as "Pythonistas".[[187]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-introducing_python-190)
+* [](https://en.wikipedia.org/wiki/File:Wikibooks-logo.svg) [Python Programming](https://en.wikibooks.org/wiki/Python_Programming "wikibooks:Python Programming") at Wikibooks
+* [BlueBream](https://en.wikipedia.org/wiki/BlueBream "BlueBream")
+* [CherryPy](https://en.wikipedia.org/wiki/CherryPy "CherryPy")
+* [CubicWeb](https://en.wikipedia.org/wiki/CubicWeb "CubicWeb")
+* [Django](https://en.wikipedia.org/wiki/Django_\(web_framework\) "Django \(web framework\)")
+* [FastAPI](https://en.wikipedia.org/wiki/FastAPI "FastAPI")
+* [Flask](https://en.wikipedia.org/wiki/Flask_\(web_framework\) "Flask \(web framework\)")
+* [Google App Engine](https://en.wikipedia.org/wiki/Google_App_Engine "Google App Engine")
+* [Grok](https://en.wikipedia.org/wiki/Grok_\(web_framework\) "Grok \(web framework\)")
+* [Kivy](https://en.wikipedia.org/wiki/Kivy_\(framework\) "Kivy \(framework\)")
+* [mod_wsgi](https://en.wikipedia.org/wiki/Mod_wsgi "Mod wsgi")
+* [Nevow](https://en.wikipedia.org/wiki/Nevow "Nevow")
+* [Pylons](https://en.wikipedia.org/wiki/Pylons_\(web_framework\) "Pylons \(web framework\)")
+* [Pyramid](https://en.wikipedia.org/wiki/Pyramid_\(web_framework\) "Pyramid \(web framework\)")
+* [Python Paste](https://en.wikipedia.org/wiki/Python_Paste "Python Paste")
+* [Quixote](https://en.wikipedia.org/wiki/Quixote_\(web_framework\) "Quixote \(web framework\)")
+* [RapidSMS](https://en.wikipedia.org/wiki/RapidSMS "RapidSMS")
+* [Robot Framework](https://en.wikipedia.org/wiki/Robot_Framework "Robot Framework")
+* [Spyce](https://en.wikipedia.org/wiki/Spyce_\(software\) "Spyce \(software\)")
+* [Tornado](https://en.wikipedia.org/wiki/Tornado_\(web_server\) "Tornado \(web server\)")
+* [TurboGears](https://en.wikipedia.org/wiki/TurboGears "TurboGears")
+* [web2py](https://en.wikipedia.org/wiki/Web2py "Web2py")
+* [Zope 2](https://en.wikipedia.org/wiki/Zope_2 "Zope 2")
+* [appJar](https://en.wikipedia.org/wiki/AppJar "AppJar")
+* [Anaconda](https://en.wikipedia.org/wiki/Anaconda_\(Python_distribution\) "Anaconda \(Python distribution\)")
+* [Apache MXNet](https://en.wikipedia.org/wiki/Apache_MXNet "Apache MXNet")
+* [Apache Singa](https://en.wikipedia.org/wiki/Apache_Singa "Apache Singa")
+* [Astropy](https://en.wikipedia.org/wiki/Astropy "Astropy")
+* [Beautiful Soup](https://en.wikipedia.org/wiki/Beautiful_Soup_\(HTML_parser\) "Beautiful Soup \(HTML parser\)")
+* [Biopython](https://en.wikipedia.org/wiki/Biopython "Biopython")
+* [Chainer](https://en.wikipedia.org/wiki/Chainer "Chainer")
+* [CatBoost](https://en.wikipedia.org/wiki/CatBoost "CatBoost")
+* [Cheetah](https://en.wikipedia.org/wiki/CheetahTemplate "CheetahTemplate")
+* [Construct](https://en.wikipedia.org/wiki/Construct_\(python_library\) "Construct \(python library\)")
+* [Cubes](https://en.wikipedia.org/wiki/Cubes_\(OLAP_server\) "Cubes \(OLAP server\)")
+* [CuPy](https://en.wikipedia.org/wiki/CuPy "CuPy")
+* [Dask](https://en.wikipedia.org/wiki/Dask_\(software\) "Dask \(software\)")
+* [DEAP](https://en.wikipedia.org/wiki/DEAP_\(software\) "DEAP \(software\)")
+* [DeepSpeed](https://en.wikipedia.org/wiki/DeepSpeed "DeepSpeed")
+* [Enthought](https://en.wikipedia.org/wiki/Enthought "Enthought")
+* [Genshi](https://en.wikipedia.org/wiki/Genshi_\(templating_language\) "Genshi \(templating language\)")
+* [Gensim](https://en.wikipedia.org/wiki/Gensim "Gensim")
+* [graph-tool](https://en.wikipedia.org/wiki/Graph-tool "Graph-tool")
+* [Horovod](https://en.wikipedia.org/wiki/Horovod_\(machine_learning\) "Horovod \(machine learning\)")
+* [Imaging Library](https://en.wikipedia.org/wiki/Python_Imaging_Library "Python Imaging Library")
+* [IPython](https://en.wikipedia.org/wiki/IPython "IPython")
+* [JAX](https://en.wikipedia.org/wiki/JAX_\(software\) "JAX \(software\)")
+* [Jinja](https://en.wikipedia.org/wiki/Jinja_\(template_engine\) "Jinja \(template engine\)")
+* [Keras](https://en.wikipedia.org/wiki/Keras "Keras")
+* [Manim](https://en.wikipedia.org/wiki/Manim "Manim")
+* [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib "Matplotlib")
+* [Mako](https://en.wikipedia.org/wiki/Mako_\(template_engine\) "Mako \(template engine\)")
+* [MindSpore](https://en.wikipedia.org/wiki/MindSpore "MindSpore")
+* [mlpy](https://en.wikipedia.org/wiki/Mlpy "Mlpy")
+* [MNE-Python](https://en.wikipedia.org/wiki/MNE-Python "MNE-Python")
+* [NLTK](https://en.wikipedia.org/wiki/Natural_Language_Toolkit "Natural Language Toolkit")
+* [NetworkX](https://en.wikipedia.org/wiki/NetworkX "NetworkX")
+* [NeuroKit](https://en.wikipedia.org/wiki/NeuroKit "NeuroKit")
+* [NumPy](https://en.wikipedia.org/wiki/NumPy "NumPy")
+* [OceanParcels](https://en.wikipedia.org/wiki/OceanParcels "OceanParcels")
+* [Orange](https://en.wikipedia.org/wiki/Orange_\(software\) "Orange \(software\)")
+* [Panda3D](https://en.wikipedia.org/wiki/Panda3D "Panda3D")
+* [Pandas](https://en.wikipedia.org/wiki/Pandas_\(software\) "Pandas \(software\)")
+* [PlaidML](https://en.wikipedia.org/wiki/PlaidML "PlaidML")
+* [Plotly](https://en.wikipedia.org/wiki/Plotly "Plotly")
+* [ProbLog](https://en.wikipedia.org/wiki/ProbLog#Implementations "ProbLog")
+* [pvlib python](https://en.wikipedia.org/wiki/Pvlib_python "Pvlib python")
+* [PyGObject](https://en.wikipedia.org/wiki/PyGObject "PyGObject")
+* [PyGTK](https://en.wikipedia.org/wiki/PyGTK "PyGTK")
+* [PyMC](https://en.wikipedia.org/wiki/PyMC3 "PyMC3")
+* [PyObjC](https://en.wikipedia.org/wiki/PyObjC "PyObjC")
+* [Pygame](https://en.wikipedia.org/wiki/Pygame "Pygame")
+* [PyQt](https://en.wikipedia.org/wiki/PyQt "PyQt")
+* [PyroBot library](https://en.wikipedia.org/wiki/Python_Robotics "Python Robotics")
+* [PySide](https://en.wikipedia.org/wiki/PySide "PySide")
+* [PyTorch](https://en.wikipedia.org/wiki/PyTorch "PyTorch")
+* [PyTorch Lightning](https://en.wikipedia.org/wiki/PyTorch_Lightning "PyTorch Lightning")
+* [Python-Ogre](https://en.wikipedia.org/wiki/Python-Ogre "Python-Ogre")
+* [Qiskit](https://en.wikipedia.org/wiki/Qiskit "Qiskit")
+* [QLattice](https://en.wikipedia.org/wiki/QLattice "QLattice")
+* [RDFLib](https://en.wikipedia.org/wiki/RDFLib "RDFLib")
+* [RDKit](https://en.wikipedia.org/wiki/RDKit "RDKit")
+* [RPyC](https://en.wikipedia.org/wiki/RPyC "RPyC")
+* [Sage Manifolds](https://en.wikipedia.org/wiki/Sage_Manifolds "Sage Manifolds")
+* [SageMath](https://en.wikipedia.org/wiki/SageMath "SageMath")
+* [ScientificPython](https://en.wikipedia.org/wiki/ScientificPython "ScientificPython")
+* [scikit-learn](https://en.wikipedia.org/wiki/Scikit-learn "Scikit-learn")
+* [scikit-multiflow](https://en.wikipedia.org/wiki/Scikit-multiflow "Scikit-multiflow")
+* [SciPy](https://en.wikipedia.org/wiki/SciPy "SciPy")
+* [SimpleITK](https://en.wikipedia.org/wiki/SimpleITK "SimpleITK")
+* [spaCy](https://en.wikipedia.org/wiki/SpaCy "SpaCy")
+* [Sphinx](https://en.wikipedia.org/wiki/Sphinx_\(documentation_generator\) "Sphinx \(documentation generator\)")
+* [SQLAlchemy](https://en.wikipedia.org/wiki/SQLAlchemy "SQLAlchemy")
+* [SQLObject](https://en.wikipedia.org/wiki/SQLObject "SQLObject")
+* [Storm](https://en.wikipedia.org/wiki/Storm_\(software\) "Storm \(software\)")
+* [SymPy](https://en.wikipedia.org/wiki/SymPy "SymPy")
+* [TensorFlow](https://en.wikipedia.org/wiki/TensorFlow "TensorFlow")
+* [Theano](https://en.wikipedia.org/wiki/Theano_\(software\) "Theano \(software\)")
+* [Tkinter](https://en.wikipedia.org/wiki/Tkinter "Tkinter")
+* [Twisted](https://en.wikipedia.org/wiki/Twisted_\(software\) "Twisted \(software\)")
+* [TomoPy](https://en.wikipedia.org/wiki/TomoPy "TomoPy")
+* [Transformers](https://en.wikipedia.org/wiki/Hugging_Face#Transformers_Library "Hugging Face")
+* [Veusz](https://en.wikipedia.org/wiki/Veusz "Veusz")
+* [VPython](https://en.wikipedia.org/wiki/VPython "VPython")
+* [wxPython](https://en.wikipedia.org/wiki/WxPython "WxPython")
+* [XDMF](https://en.wikipedia.org/wiki/XDMF "XDMF")
+* [Atom](https://en.wikipedia.org/wiki/Atom_\(text_editor\) "Atom \(text editor\)") / [Pulsar](https://en.wikipedia.org/wiki/Atom_\(text_editor\)#History "Atom \(text editor\)")
+* [Codelobster](https://en.wikipedia.org/wiki/Codelobster "Codelobster")
+* [EasyEclipse](https://en.wikipedia.org/wiki/EasyEclipse "EasyEclipse")
+* [Eclipse](https://en.wikipedia.org/wiki/Eclipse_\(software\) "Eclipse \(software\)")
+* [Emacs](https://en.wikipedia.org/wiki/Emacs "Emacs")
+* [Eric](https://en.wikipedia.org/wiki/Eric_Python_IDE "Eric Python IDE")
+* [Geany](https://en.wikipedia.org/wiki/Geany "Geany")
+* [Google Colab](https://en.wikipedia.org/wiki/Google_Colab "Google Colab")
+* [IDLE](https://en.wikipedia.org/wiki/IDLE "IDLE")
+* [Jupyter Notebook](https://en.wikipedia.org/wiki/Jupyter_notebook "Jupyter notebook")
+* [Kaggle Notebooks](https://en.wikipedia.org/wiki/Kaggle_Notebooks "Kaggle Notebooks")
+* [Komodo IDE](https://en.wikipedia.org/wiki/Komodo_IDE "Komodo IDE")
+* [NetBeans](https://en.wikipedia.org/wiki/NetBeans "NetBeans")
+* [PyCharm](https://en.wikipedia.org/wiki/PyCharm "PyCharm")
+* [PythonAnywhere](https://en.wikipedia.org/wiki/PythonAnywhere "PythonAnywhere")
+* [Python Tools for VS](https://en.wikipedia.org/wiki/Python_Tools_for_Visual_Studio "Python Tools for Visual Studio")
+* [Replit](https://en.wikipedia.org/wiki/Replit "Replit")
+* [Spyder](https://en.wikipedia.org/wiki/Spyder_\(software\) "Spyder \(software\)")
+* [Thonny](https://en.wikipedia.org/wiki/Thonny "Thonny")
+* [Vim](https://en.wikipedia.org/wiki/Vim_\(text_editor\) "Vim \(text editor\)")
+* [Visual Studio Code](https://en.wikipedia.org/wiki/Visual_Studio_Code "Visual Studio Code")
+* [Wing IDE](https://en.wikipedia.org/wiki/Wing_IDE "Wing IDE")
+* [ActivePython](https://en.wikipedia.org/wiki/ActivePython "ActivePython")
+* [CLPython](https://en.wikipedia.org/wiki/CLPython "CLPython")
+* [CPython](https://en.wikipedia.org/wiki/CPython "CPython")
+* [Cython](https://en.wikipedia.org/wiki/Cython "Cython")
+* [Intel Dist. for Python](https://en.wikipedia.org/wiki/Intel_Distribution_for_Python "Intel Distribution for Python")
+* [IronPython](https://en.wikipedia.org/wiki/IronPython "IronPython")
+* [Jython](https://en.wikipedia.org/wiki/Jython "Jython")
+* [MicroPython](https://en.wikipedia.org/wiki/MicroPython "MicroPython")
+* [Nuitka](https://en.wikipedia.org/wiki/Nuitka "Nuitka")
+* [Numba](https://en.wikipedia.org/wiki/Numba "Numba")
+* [Parrot](https://en.wikipedia.org/wiki/Parrot_virtual_machine "Parrot virtual machine")
+* [Psyco](https://en.wikipedia.org/wiki/Psyco "Psyco")
+* [PyPy](https://en.wikipedia.org/wiki/PyPy "PyPy")
+* [Pyrex](https://en.wikipedia.org/wiki/Pyrex_\(programming_language\) "Pyrex \(programming language\)")
+* [Python for S60](https://en.wikipedia.org/wiki/Python_for_S60 "Python for S60")
+* [Shed Skin](https://en.wikipedia.org/wiki/Shed_Skin "Shed Skin")
+* [Stackless Python](https://en.wikipedia.org/wiki/Stackless_Python "Stackless Python")
+* [Unladen Swallow](https://en.wikipedia.org/wiki/Unladen_Swallow "Unladen Swallow")
+* [History of Python](https://en.wikipedia.org/wiki/History_of_Python "History of Python")
+* [List of Python books](https://en.wikipedia.org/wiki/List_of_computer_books#Python "List of computer books")
+* [List of Python conferences](https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language#Python_conferences "Outline of the Python programming language")
+* [List of Python software](https://en.wikipedia.org/wiki/List_of_Python_software "List of Python software")
+* [List of unit testing frameworks for Python](https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#Python "List of unit testing frameworks")
+* [Outline of the Python programming language](https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language "Outline of the Python programming language")
+* [Python Package Index (PyPI)](https://en.wikipedia.org/wiki/Python_Package_Index "Python Package Index") and [pip](https://en.wikipedia.org/wiki/Pip_\(package_manager\) "Pip \(package manager\)")
+* [Python Software Foundation](https://en.wikipedia.org/wiki/Python_Software_Foundation "Python Software Foundation")
+* [Python syntax and semantics](https://en.wikipedia.org/wiki/Python_syntax_and_semantics "Python syntax and semantics")
+* [](https://en.wikipedia.org/wiki/File:Octicons-terminal.svg) [Computer programming portal](https://en.wikipedia.org/wiki/Portal:Computer_programming "Portal:Computer programming")
+* [Python Programming (Wikibook)](https://en.wikibooks.org/wiki/Python_Programming "b:Python Programming")
+* [v](https://en.wikipedia.org/wiki/Template:Python_sidebar "Template:Python sidebar")
+* [t](https://en.wikipedia.org/w/index.php?title=Template_talk:Python_sidebar&action=edit&redlink=1 "Template talk:Python sidebar \(page does not exist\)")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Python_sidebar "Special:EditPage/Template:Python sidebar")
+* Explicit is better than implicit.
+* Simple is better than complex.
+* Readability counts.
+* Special cases aren't special enough to break the rules.
+* Although practicality beats purity, errors should never pass silently, unless explicitly silenced.
+* There should be one-- and preferably only one --obvious way to do it.
+* The [assignment](https://en.wikipedia.org/wiki/Assignment_\(computer_science\) "Assignment \(computer science\)") statement, using a single equals sign `=`
+* The `if[](https://en.wikipedia.org/wiki/If-then-else "If-then-else")` statement, which conditionally executes a block of code, along with `else[](https://en.wikipedia.org/wiki/Conditional_\(computer_programming\)#If%E2%80%93then\(%E2%80%93else\) "Conditional \(computer programming\)")` and `elif` (a contraction of `else if[](https://en.wikipedia.org/wiki/Conditional_\(computer_programming\)#Else_if "Conditional \(computer programming\)")`)
+* The `for[](https://en.wikipedia.org/wiki/Foreach#Python "Foreach")` statement, which iterates over an _iterable_ object, capturing each element to a variable for use by the attached block; the variable is not deleted when the loop finishes
+* The `while[](https://en.wikipedia.org/wiki/While_loop#Python "While loop")` statement, which executes a block of code as long as boolean condition is true
+* The `try[](https://en.wikipedia.org/wiki/Exception_handling_syntax#Python "Exception handling syntax")` statement, which allows exceptions raised in its attached code block to be caught and handled by `except` clauses (or new syntax `except*` in Python 3.11 for exception groups);[[89]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-91) the `try` statement also ensures that clean-up code in a `finally` block is always run regardless of how the block exits
+* The `raise` statement, used to raise a specified exception or re-raise a caught exception
+* The `class` statement, which executes a block of code and attaches its local namespace to a [class](https://en.wikipedia.org/wiki/Class_\(computer_science\) "Class \(computer science\)"), for use in object-oriented programming
+* The `def` statement, which defines a [function](https://en.wikipedia.org/wiki/Function_\(computing\) "Function \(computing\)") or [method](https://en.wikipedia.org/wiki/Method_\(computing\) "Method \(computing\)")
+* The `with[](https://en.wikipedia.org/wiki/Dispose_pattern#Language_constructs "Dispose pattern")` statement, which encloses a code block within a context manager, allowing [resource-acquisition-is-initialization](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization "Resource acquisition is initialization") (RAII)-like behavior and replacing a common try/finally idiom[[90]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-92) Examples of a context include acquiring a [lock](https://en.wikipedia.org/wiki/Lock_\(computer_science\) "Lock \(computer science\)") before some code is run, and then releasing the lock; or opening and then closing a [file](https://en.wikipedia.org/wiki/Computer_file "Computer file")
+* The `break[](https://en.wikipedia.org/wiki/Break_statement "Break statement")` statement, which exits a loop
+* The `continue` statement, which skips the rest of the current iteration and continues with the next
+* The `del` statement, which removes a variable—deleting the reference from the name to the value, and producing an error if the variable is referred to before it is redefined[[c]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-93)
+* The `pass` statement, serving as a [NOP](https://en.wikipedia.org/wiki/NOP_\(code\) "NOP \(code\)") (i.e., no operation), which is syntactically needed to create an empty code block
+* The `assert[](https://en.wikipedia.org/wiki/Assertion_\(programming\) "Assertion \(programming\)")` statement, used in debugging to check for conditions that should apply
+* The `yield` statement, which returns a value from a [generator](https://en.wikipedia.org/wiki/Generator_\(computer_programming\)#Python "Generator \(computer programming\)") function (and also an operator); used to implement [coroutines](https://en.wikipedia.org/wiki/Coroutine "Coroutine")
+* The `return` statement, used to return a value from a function
+* The `import[](https://en.wikipedia.org/wiki/Include_directive "Include directive")` and `from` statements, used to import modules whose functions or variables can be used in the current program
+* The `match` and `case` statements, analogous to a [switch statement](https://en.wikipedia.org/wiki/Switch_statement "Switch statement") construct, which compares an expression against one or more cases as a control-flow measure
+* The `+`, `-`, and `*` operators for mathematical addition, subtraction, and multiplication are similar to other languages, but the behavior of division differs. There are two types of division in Python: [floor division](https://en.wikipedia.org/wiki/Floor_division "Floor division") (or integer division) `//`, and floating-point division `/`.[[95]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-98) Python uses the `**` operator for exponentiation.
+* Python uses the `+` operator for string concatenation. The language uses the `*` operator for duplicating a string a specified number of times.
+* The `@` infix operator is intended to be used by libraries such as [NumPy](https://en.wikipedia.org/wiki/NumPy "NumPy") for [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication "Matrix multiplication").[[96]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-PEP465-99)[[97]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-Python3.5Changelog-100)
+* The syntax `:=`, called the "walrus operator", was introduced in Python 3.8. This operator assigns values to variables as part of a larger expression.[[98]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-Python3.8Changelog-101)
+* In Python, `==` compares two objects by value. Python's `is` operator may be used to compare object identities (i.e., comparison by reference), and comparisons may be chained—for example, `a <= b <= c`.
+* Python uses `and`, `or`, and `not` as Boolean operators.
+* Python has a type of expression called a _[list comprehension](https://en.wikipedia.org/wiki/List_comprehension#Python "List comprehension")_ , and a more general expression called a _generator expression_.[[69]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-59-71)
+* [Anonymous functions](https://en.wikipedia.org/wiki/Anonymous_function "Anonymous function") are implemented using [lambda expressions](https://en.wikipedia.org/wiki/Lambda_\(programming\) "Lambda \(programming\)"); however, there may be only one expression in each body.
+* Conditional expressions are written as `x if c else y`.[[99]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-60-102) (This is different in operand order from the `c ? x : y[](https://en.wikipedia.org/wiki/%3F: "?:")` operator common to many other languages.)
+* Python makes a distinction between [lists](https://en.wikipedia.org/wiki/List_\(computer_science\) "List \(computer science\)") and [tuples](https://en.wikipedia.org/wiki/Tuple "Tuple"). Lists are written as `[1, 2, 3]`, are mutable, and cannot be used as the keys of dictionaries (since dictionary keys must be [immutable](https://en.wikipedia.org/wiki/Immutable "Immutable") in Python). Tuples, written as `(1, 2, 3)`, are immutable and thus can be used as the keys of dictionaries, provided that all of the tuple's elements are immutable. The `+` operator can be used to concatenate two tuples, which does not directly modify their contents, but produces a new tuple containing the elements of both. For example, given the variable `t` initially equal to `(1, 2, 3)`, executing `t = t + (4, 5)` first evaluates `t + (4, 5)`, which yields `(1, 2, 3, 4, 5)`; this result is then assigned back to `t`—thereby effectively "modifying the contents" of `t` while conforming to the immutable nature of tuple objects. Parentheses are optional for tuples in unambiguous contexts.[[100]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-103)
+* Python features _sequence unpacking_ where multiple expressions, each evaluating to something assignable (e.g., a variable or a writable property) are associated just as in forming tuple literal; as a whole, the results are then put on the left-hand side of the equal sign in an assignment statement. This statement expects an _iterable_ object on the right-hand side of the equal sign to produce the same number of values as the writable expressions on the left-hand side; while iterating, the statement assigns each of the values produced on the right to the corresponding expression on the left.[[101]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-104)
+* Python has a "string format" operator `%` that functions analogously to `printf[](https://en.wikipedia.org/wiki/Printf "Printf")` format strings in the C language—e.g. `"spam=%s eggs=%d" % ("blah", 2)` evaluates to `"spam=blah eggs=2"`. In Python 2.6+ and 3+, this operator was supplemented by the `format()` method of the `str` class, e.g., `"spam={0} eggs={1}".format("blah", 2)`. Python 3.6 added "f-strings": `spam = "blah"; eggs = 2; f'spam={spam} eggs={eggs}'`.[[102]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-pep-0498-105)
+* Strings in Python can be [concatenated](https://en.wikipedia.org/wiki/Concatenated "Concatenated") by "adding" them (using the same operator as for adding integers and floats); e.g., `"spam" + "eggs"` returns `"spameggs"`. If strings contain numbers, they are concatenated as strings rather than as integers, e.g. `"2" + "2"` returns `"22"`.
+* Python supports [string literals](https://en.wikipedia.org/wiki/String_literal "String literal") in several ways: 
+  * Delimited by single or double quotation marks; single and double quotation marks have equivalent functionality (unlike in [Unix shells](https://en.wikipedia.org/wiki/Unix_shell "Unix shell"), [Perl](https://en.wikipedia.org/wiki/Perl "Perl"), and Perl-influenced languages). Both marks use the backslash (`\`) as an [escape character](https://en.wikipedia.org/wiki/Escape_character "Escape character"). [String interpolation](https://en.wikipedia.org/wiki/String_interpolation "String interpolation") became available in Python 3.6 as "formatted string literals".[[102]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-pep-0498-105)
+  * Triple-quoted, i.e., starting and ending with three single or double quotation marks; this may span multiple lines and function like [here documents](https://en.wikipedia.org/wiki/Here_document "Here document") in shells, Perl, and [Ruby](https://en.wikipedia.org/wiki/Ruby_\(programming_language\) "Ruby \(programming language\)").
+  * [Raw string](https://en.wikipedia.org/wiki/Raw_string "Raw string") varieties, denoted by prefixing the string literal with `r`. Escape sequences are not interpreted; hence raw strings are useful where literal backslashes are common, such as in [regular expressions](https://en.wikipedia.org/wiki/Regular_expression "Regular expression") and [Windows](https://en.wikipedia.org/wiki/Windows "Windows")-style paths. (Compare "`@`-quoting" in [C#](https://en.wikipedia.org/wiki/C_Sharp_\(programming_language\) "C Sharp \(programming language\)").)
+
+
+* Delimited by single or double quotation marks; single and double quotation marks have equivalent functionality (unlike in [Unix shells](https://en.wikipedia.org/wiki/Unix_shell "Unix shell"), [Perl](https://en.wikipedia.org/wiki/Perl "Perl"), and Perl-influenced languages). Both marks use the backslash (`\`) as an [escape character](https://en.wikipedia.org/wiki/Escape_character "Escape character"). [String interpolation](https://en.wikipedia.org/wiki/String_interpolation "String interpolation") became available in Python 3.6 as "formatted string literals".[[102]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-pep-0498-105)
+* Triple-quoted, i.e., starting and ending with three single or double quotation marks; this may span multiple lines and function like [here documents](https://en.wikipedia.org/wiki/Here_document "Here document") in shells, Perl, and [Ruby](https://en.wikipedia.org/wiki/Ruby_\(programming_language\) "Ruby \(programming language\)").
+* [Raw string](https://en.wikipedia.org/wiki/Raw_string "Raw string") varieties, denoted by prefixing the string literal with `r`. Escape sequences are not interpreted; hence raw strings are useful where literal backslashes are common, such as in [regular expressions](https://en.wikipedia.org/wiki/Regular_expression "Regular expression") and [Windows](https://en.wikipedia.org/wiki/Windows "Windows")-style paths. (Compare "`@`-quoting" in [C#](https://en.wikipedia.org/wiki/C_Sharp_\(programming_language\) "C Sharp \(programming language\)").)
+* Python has [array index](https://en.wikipedia.org/wiki/Array_index "Array index") and [array slicing](https://en.wikipedia.org/wiki/Array_slicing "Array slicing") expressions in lists, which are written as `a[key]`, `a[start:stop]` or `a[start:stop:step]`. Indexes are [zero-based](https://en.wikipedia.org/wiki/Zero-based_numbering "Zero-based numbering"), and negative indexes are relative to the end. Slices take elements from the _start_ index up to, but not including, the _stop_ index. The (optional) third slice [parameter](https://en.wikipedia.org/wiki/Parameter_\(computer_programming\) "Parameter \(computer programming\)"), called _step_ or _stride_ , allows elements to be skipped or reversed. Slice indexes may be omitted—for example, `a[:]` returns a copy of the entire list. Each element of a slice is a [shallow copy](https://en.wikipedia.org/wiki/Shallow_copy "Shallow copy").
+* [List comprehensions](https://en.wikipedia.org/wiki/List_comprehensions "List comprehensions") vs. `for`-loops
+* [Conditional](https://en.wikipedia.org/wiki/Conditional_\(computer_programming\) "Conditional \(computer programming\)") expressions vs. `if` blocks
+* The `eval()` vs. `exec()` built-in functions (in Python 2, `exec` is a statement); the former function is for expressions, while the latter is for statements
+* The current version of Python (i.e., since 3.0) changed the `/` operator to always represent floating-point division, e.g., `5/2 == 2.5`.
+* The floor division `//` operator was introduced, meaning that `7//3 == 2`, `-7//3 == -3`, `7.5//3 == 2.0`, and `-7.5//3 == -3.0`. For Python 2.7, adding the `from __future__ import division` statement allows a module in Python 2.7 to use Python 3.x rules for division (see above).
+* [Jupyter Notebooks](https://en.wikipedia.org/wiki/Project_Jupyter "Project Jupyter"), an open-source interactive computing platform;[[129]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-132)
+* [PythonAnywhere](https://en.wikipedia.org/wiki/PythonAnywhere "PythonAnywhere"), a browser-based IDE and hosting environment; and
+* Canopy, a commercial IDE from [Enthought](https://en.wikipedia.org/wiki/Enthought "Enthought") that emphasizes [scientific computing](https://en.wikipedia.org/wiki/Scientific_computing "Scientific computing").[[130]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-133)[[131]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-134)
+* The energy usage of Python with CPython for typically written code is much worse than C by a factor of 75.88.[[141]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-:1-144)
+* The throughput of Python with CPython for typically written code is worse than C by a factor of 71.9.[[141]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-:1-144)
+* The average memory usage of CPython for typically written code is worse than C by a factor of 2.4.[[141]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-:1-144)
+* [PyPy](https://en.wikipedia.org/wiki/PyPy "PyPy") is a faster, compliant interpreter of Python 2.7 and 3.11.[[143]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-70-146)[[144]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-147) PyPy's [just-in-time compiler](https://en.wikipedia.org/wiki/Just-in-time_compiler "Just-in-time compiler") often improves speed significantly relative to CPython, but PyPy does not support some libraries written in C.[[145]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-71-148) PyPy offers support for the [RISC-V](https://en.wikipedia.org/wiki/RISC-V "RISC-V") instruction-set architecture.
+* Codon is an implementation with an [ahead-of-time (AOT) compiler](https://en.wikipedia.org/wiki/Ahead-of-time_compilation "Ahead-of-time compilation"), which compiles a statically-typed Python-like language whose "syntax and semantics are nearly identical to Python's, there are some notable differences"[[146]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-149) For example, Codon uses 64-bit machine integers for speed, not arbitrarily as with Python; Codon developers claim that speedups over CPython are usually on the order of ten to a hundred times. Codon compiles to machine code (via [LLVM](https://en.wikipedia.org/wiki/LLVM "LLVM")) and supports native multithreading.[[147]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-150) Codon can also compile to Python extension modules that can be imported and used from Python.
+* [MicroPython](https://en.wikipedia.org/wiki/MicroPython "MicroPython") and [CircuitPython](https://en.wikipedia.org/wiki/CircuitPython "CircuitPython") are Python 3 variants that are optimized for [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller "Microcontroller"), including the [Lego Mindstorms EV3](https://en.wikipedia.org/wiki/Lego_Mindstorms_EV3 "Lego Mindstorms EV3").[[148]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-151)
+* Pyston is a variant of the Python runtime that uses just-in-time compilation to speed up execution of Python programs.[[149]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-152)
+* Cinder is a performance-oriented fork of CPython 3.8 that features a number of optimizations, including bytecode inline caching, eager evaluation of coroutines, a method-at-a-time [JIT](https://en.wikipedia.org/wiki/Just-in-time_compilation "Just-in-time compilation"), and an experimental bytecode compiler.[[150]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-153)
+* The Snek[[151]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-154)[[152]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-155)[[153]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-156) embedded computing language "is Python-inspired, but it is not Python. It is possible to write Snek programs that run under a full Python system, but most Python programs will not run under Snek."[[154]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-157) Snek is compatible with 8-bit [AVR microcontrollers](https://en.wikipedia.org/wiki/AVR_microcontrollers "AVR microcontrollers") such as [ATmega 328P](https://en.wikipedia.org/wiki/ATmega "ATmega")-based Arduino, as well as larger microcontrollers that are compatible with [MicroPython](https://en.wikipedia.org/wiki/MicroPython "MicroPython"). Snek is an imperative language that (unlike Python) omits [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming "Object-oriented programming"). Snek supports only one numeric data type, which features 32-bit [single precision](https://en.wikipedia.org/wiki/Single-precision "Single-precision") (resembling [JavaScript](https://en.wikipedia.org/wiki/JavaScript "JavaScript") numbers, though smaller).
+* Google began a project named [Unladen Swallow](https://en.wikipedia.org/wiki/Unladen_Swallow "Unladen Swallow") in 2009: this project aimed to speed up the Python interpreter five-fold by using [LLVM](https://en.wikipedia.org/wiki/LLVM "LLVM"), and improve [multithreading](https://en.wikipedia.org/wiki/Multithreading_\(computer_architecture\) "Multithreading \(computer architecture\)") capability for scaling to thousands of cores,[[156]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-74-159) while typical implementations are limited by the [global interpreter lock](https://en.wikipedia.org/wiki/Global_interpreter_lock "Global interpreter lock").
+* [Psyco](https://en.wikipedia.org/wiki/Psyco "Psyco") is a discontinued [just-in-time](https://en.wikipedia.org/wiki/Just-in-time_compilation "Just-in-time compilation") [specializing](https://en.wikipedia.org/wiki/Run-time_algorithm_specialization "Run-time algorithm specialization") compiler, which integrates with CPython and transforms bytecode to machine code at runtime. The emitted code is specialized for certain [data types](https://en.wikipedia.org/wiki/Data_type "Data type") and is faster than standard Python code. Psyco does not support Python 2.7 or later.
+* [PyS60](https://en.wikipedia.org/wiki/PyS60 "PyS60") was a Python 2 interpreter for [Series 60](https://en.wikipedia.org/wiki/Series_60 "Series 60") mobile phones, which was released by [Nokia](https://en.wikipedia.org/wiki/Nokia "Nokia") in 2005. The interpreter implemented many modules from Python's standard library, as well as additional modules for integration with the [Symbian](https://en.wikipedia.org/wiki/Symbian "Symbian") operating system. The Nokia [N900](https://en.wikipedia.org/wiki/N900 "N900") also supports Python through the [GTK](https://en.wikipedia.org/wiki/GTK "GTK") widget library, allowing programs to be written and run on the target device.[[157]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-160)
+* Brython[[158]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-161) and Transcrypt[[159]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-162)[[160]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-163) compile Python to [JavaScript](https://en.wikipedia.org/wiki/JavaScript "JavaScript").
+* [Cython](https://en.wikipedia.org/wiki/Cython "Cython") compiles a superset of Python to C. The resulting code can be used with Python via direct C-level API calls into the Python interpreter.
+* PyJL compiles/transpiles a subset of Python to "human-readable, maintainable, and high-performance Julia source code".[[80]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-PyJL-82) Despite the developers' performance claims, this is not possible for _arbitrary_ Python code; that is, compiling to a faster language or machine code is known to be impossible in the general case. The semantics of Python might potentially be changed, but in many cases speedup is possible with few or no changes in the Python code. The faster Julia source code can then be used from Python or compiled to machine code.
+* [Nuitka](https://en.wikipedia.org/wiki/Nuitka "Nuitka") compiles Python into C.[[161]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-164) This compiler works with Python 3.4 to 3.13 (and 2.6 and 2.7) for Python's main supported platforms (and Windows 7 or even Windows XP) and for Android. The compiler developers claim full support for Python 3.10, partial support for Python 3.11 and 3.12, and experimental support for Python 3.13. Nuitka supports macOS including Apple Silicon-based versions. The compiler is free of cost, though it has commercial add-ons (e.g., for hiding source code).
+* [Numba](https://en.wikipedia.org/wiki/Numba "Numba") is a JIT compiler that is used from Python; the compiler translates a subset of Python and NumPy code into fast machine code. This tool is enabled by adding a decorator to the relevant Python code.
+* Pythran compiles a subset of Python 3 to C++ ([C++11](https://en.wikipedia.org/wiki/C%2B%2B11 "C++11")).[[162]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-Guelton_Brunet_Amini_Merlini_2015_p=014001-165)
+* [RPython](https://en.wikipedia.org/wiki/RPython "RPython") can be compiled to C, and it is used to build the PyPy interpreter for Python.
+* The Python → 11l → C++ transpiler[[163]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-166) compiles a subset of Python 3 to C++ ([C++17](https://en.wikipedia.org/wiki/C%2B%2B17 "C++17")).
+* [MyHDL](https://en.wikipedia.org/wiki/MyHDL "MyHDL") is a Python-based [hardware description language](https://en.wikipedia.org/wiki/Hardware_description_language "Hardware description language") (HDL) that converts MyHDL code to [Verilog](https://en.wikipedia.org/wiki/Verilog "Verilog") or [VHDL](https://en.wikipedia.org/wiki/VHDL "VHDL") code.
+* Google's Grumpy [transpiles](https://en.wikipedia.org/wiki/Transpile "Transpile") Python 2 to [Go](https://en.wikipedia.org/wiki/Go_\(programming_language\) "Go \(programming language\)").[[164]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-167)[[165]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-168)[[166]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-169) The latest release was in 2017.
+* [IronPython](https://en.wikipedia.org/wiki/IronPython "IronPython") allows running Python 2.7 programs with the .NET [Common Language Runtime](https://en.wikipedia.org/wiki/Common_Language_Runtime "Common Language Runtime").[[167]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-170) An [alpha](https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha "Software release life cycle") version (released in 2021), is available for "Python 3.4, although features and behaviors from later versions may be included."[[168]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-171)
+* [Jython](https://en.wikipedia.org/wiki/Jython "Jython") compiles Python 2.7 to Java bytecode, allowing the use of Java libraries from a Python program.[[169]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-172)
+* [Pyrex](https://en.wikipedia.org/wiki/Pyrex_\(programming_language\) "Pyrex \(programming language\)") (last released in 2010) and [Shed Skin](https://en.wikipedia.org/wiki/Shed_Skin "Shed Skin") (last released in 2013) compile to C and C++ respectively.
+* [Just-in-time compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation "Just-in-time compilation"): Dynamically compiling parts of a Python program during the execution of the program. This technique is used in libraries such as [Numba](https://en.wikipedia.org/wiki/Numba "Numba") and [PyPy](https://en.wikipedia.org/wiki/PyPy "PyPy").
+* [Static compilation](https://en.wikipedia.org/wiki/Compiler "Compiler"): Sometimes, Python code can be compiled into machine code sometime before execution. An example of this approach is [Cython](https://en.wikipedia.org/wiki/Cython "Cython"), which compiles Python into C.
+* [Concurrency](https://en.wikipedia.org/wiki/Concurrent_computing "Concurrent computing") and [parallelism](https://en.wikipedia.org/wiki/Parallel_computing "Parallel computing"): Multiple tasks can be run simultaneously. Python contains modules such as `multiprocessing` to support this form of parallelism. Moreover, this approach helps to overcome limitations of the [Global Interpreter Lock](https://en.wikipedia.org/wiki/Global_interpreter_lock "Global interpreter lock") (GIL) in CPU tasks.
+* Efficient [data structures](https://en.wikipedia.org/wiki/Data_structures "Data structures"): Performance can also be improved by using data types such as `Set` for membership tests, or `deque` from `collections` for [queue](https://en.wikipedia.org/wiki/Queueing_theory "Queueing theory") operations.
+* Performance gains can be observed by utilizing libraries such as [NumPy](https://en.wikipedia.org/wiki/NumPy "NumPy"). Most high performance Python libraries use [C](https://en.wikipedia.org/wiki/C_\(programming_language\) "C \(programming language\)") or [Fortran](https://en.wikipedia.org/wiki/Fortran "Fortran") under the hood instead of the Python interpreter.[[172]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-175)
+* _Backward-incompatible versions_ , where code is expected to break and must be manually [ported](https://en.wikipedia.org/wiki/Ported "Ported"). The first part of the version number is incremented. These releases happen infrequently—version 3.0 was released 8 years after 2.0. According to Guido van Rossum, a version 4.0 will probably never exist.[[177]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-180)
+* _Major or "feature" releases_ are largely compatible with the previous version but introduce new features. The second part of the version number is incremented. Starting with Python 3.9, these releases are expected to occur annually.[[178]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-181)[[179]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-182) Each major version is supported by bug fixes for several years after its release.[[180]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-release-schedule-183)
+* _Bug fix releases_ ,[[181]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-22-184) which introduce no new features, occur approximately every three months; these releases are made when a sufficient number of bugs have been fixed [upstream](https://en.wikipedia.org/wiki/Upstream_\(software_development\) "Upstream \(software development\)") since the last release. Security vulnerabilities are also patched in these releases. The third and final part of the version number is incremented.[[181]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-AutoNT-22-184)
+* [Cobra](https://en.wikipedia.org/wiki/Cobra_\(programming_language\) "Cobra \(programming language\)") has an _Acknowledgements_ document that lists Python first among influencing languages.[[188]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-191)
+* [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript "ECMAScript") and [JavaScript](https://en.wikipedia.org/wiki/JavaScript "JavaScript") borrowed iterators and [generators](https://en.wikipedia.org/wiki/Generator_\(computer_science\) "Generator \(computer science\)") from Python.[[189]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-192)
+* [Go](https://en.wikipedia.org/wiki/Go_\(programming_language\) "Go \(programming language\)") is designed for "speed of working in a dynamic language like Python".[[190]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-193)
+* [Julia](https://en.wikipedia.org/wiki/Julia_\(programming_language\) "Julia \(programming language\)") was designed to be "as usable for general programming as Python".[[191]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-194)
+* [Mojo](https://en.wikipedia.org/wiki/Mojo_\(programming_language\) "Mojo \(programming language\)") is almost[[34]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-Mojo-36)[[192]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-195) a superset of Python.[[193]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-196)
+* [GDScript](https://en.wikipedia.org/wiki/GDScript "GDScript") is strongly influenced by Python.[[194]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-197)
+* [ Groovy](https://en.wikipedia.org/wiki/Apache_Groovy "Apache Groovy"), [Boo](https://en.wikipedia.org/wiki/Boo_\(programming_language\) "Boo \(programming language\)"), [CoffeeScript](https://en.wikipedia.org/wiki/CoffeeScript "CoffeeScript"), [F#](https://en.wikipedia.org/wiki/F_Sharp_\(programming_language\) "F Sharp \(programming language\)"), [Nim](https://en.wikipedia.org/wiki/Nim_\(programming_language\) "Nim \(programming language\)"), [Ruby](https://en.wikipedia.org/wiki/Ruby_\(programming_language\) "Ruby \(programming language\)"),[[35]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-bini-37) [Swift](https://en.wikipedia.org/wiki/Swift_\(programming_language\) "Swift \(programming language\)"),[[36]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-lattner2014-38) and [V](https://en.wikipedia.org/wiki/V_\(programming_language\) "V \(programming language\)")[[37]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-vpeople-39) have been influenced, as well.
+* [](https://en.wikipedia.org/wiki/File:Octicons-terminal.svg)[Computer programming portal](https://en.wikipedia.org/wiki/Portal:Computer_programming "Portal:Computer programming")
+* [Free and open-source software portal](https://en.wikipedia.org/wiki/Portal:Free_and_open-source_software "Portal:Free and open-source software")
+* [List of machine learning and deep learning software for Python](https://en.wikipedia.org/wiki/List_of_Python_software#Machine_learning_and_deep_learning "List of Python software")
+* [List of Python programming books](https://en.wikipedia.org/wiki/List_of_computer_books#Python "List of computer books")
+* [pip (package manager)](https://en.wikipedia.org/wiki/Pip_\(package_manager\) "Pip \(package manager\)") (see also uv[[195]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-198))
+* [Pydoc](https://en.wikipedia.org/wiki/Pydoc "Pydoc")
+* [NumPy](https://en.wikipedia.org/wiki/NumPy "NumPy")
+* [SciPy](https://en.wikipedia.org/wiki/SciPy "SciPy")
+* [Jupyter](https://en.wikipedia.org/wiki/Jupyter "Jupyter")
+* [PyTorch](https://en.wikipedia.org/wiki/PyTorch "PyTorch")
+* [Cython](https://en.wikipedia.org/wiki/Cython "Cython")
+* [CPython](https://en.wikipedia.org/wiki/CPython "CPython")
+* [Mojo](https://en.wikipedia.org/wiki/Mojo_\(programming_language\) "Mojo \(programming language\)")
+* [Pygame](https://en.wikipedia.org/wiki/Pygame "Pygame")
+* [PyQt](https://en.wikipedia.org/wiki/PyQt "PyQt")
+* [PyGTK](https://en.wikipedia.org/wiki/PyGTK "PyGTK")
+* [PyPy](https://en.wikipedia.org/wiki/PyPy "PyPy")
+* [PyCon](https://en.wikipedia.org/wiki/PyCon "PyCon")
+* [Google Colab](https://en.wikipedia.org/wiki/Google_Colab "Google Colab") – zero setup [online IDE](https://en.wikipedia.org/wiki/Online_integrated_development_environment "Online integrated development environment") that runs Python
+* [Ren'Py](https://en.wikipedia.org/wiki/Ren%27Py "Ren'Py")
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-6)** since 3.5, but those hints are ignored, except with unofficial tools[[5]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-type_hint-PEP-5)
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-12)** * **Tier 1** : 64-bit [Linux](https://en.wikipedia.org/wiki/Linux "Linux"), [macOS](https://en.wikipedia.org/wiki/MacOS "MacOS"); 64- and 32-bit [Windows](https://en.wikipedia.org/wiki/Windows "Windows")[[6]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-7)
+  * **Tier 2** : E.g. 32-bit [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly "WebAssembly") (WASI)
+  * **Tier 3** : 64-bit [Android](https://en.wikipedia.org/wiki/Android_\(operating_system\) "Android \(operating system\)"),[[7]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-8) [iOS](https://en.wikipedia.org/wiki/IOS "IOS"), [FreeBSD](https://en.wikipedia.org/wiki/FreeBSD "FreeBSD"), and (32-bit) [Raspberry Pi OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS "Raspberry Pi OS")  
+Unofficial (or has been known to work): Other [Unix-like](https://en.wikipedia.org/wiki/Unix-like "Unix-like")/[BSD](https://en.wikipedia.org/wiki/BSD "BSD") variants) and a few other platforms[[8]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-DownloadOther-9)[[9]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-10)[[10]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-11)
+
+
+* **Tier 2** : E.g. 32-bit [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly "WebAssembly") (WASI)
+* **Tier 3** : 64-bit [Android](https://en.wikipedia.org/wiki/Android_\(operating_system\) "Android \(operating system\)"),[[7]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-8) [iOS](https://en.wikipedia.org/wiki/IOS "IOS"), [FreeBSD](https://en.wikipedia.org/wiki/FreeBSD "FreeBSD"), and (32-bit) [Raspberry Pi OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS "Raspberry Pi OS")  
+Unofficial (or has been known to work): Other [Unix-like](https://en.wikipedia.org/wiki/Unix-like "Unix-like")/[BSD](https://en.wikipedia.org/wiki/BSD "BSD") variants) and a few other platforms[[8]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-DownloadOther-9)[[9]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-10)[[10]](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_note-11)
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-93)** `del` in Python does not behave the same way `delete` in languages such as [C++](https://en.wikipedia.org/wiki/C%2B%2B "C++") does, where such a word is used to call the [destructor](https://en.wikipedia.org/wiki/Destructor_\(computer_programming\) "Destructor \(computer programming\)") and deallocate heap memory.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-1)** ["General Python FAQ – Python 3 documentation"](https://docs.python.org/3/faq/general.html#what-is-python). _docs.python.org_. Retrieved 7 July 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-alt-sources-history_2-0)** ["Python 0.9.1 part 01/21"](https://www.tuhs.org/Usenet/alt.sources/1991-February/001749.html). alt.sources archives. [Archived](https://web.archive.org/web/20210811171015/https://www.tuhs.org/Usenet/alt.sources/1991-February/001749.html) from the original on 11 August 2021. Retrieved 11 August 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-wikidata-28b561855674a6311e36660ffdecaac300ddffc8-v20_3-0)** ["Python 3.15.0a8, 3.14.4 and 3.13.13 are out!"](https://blog.python.org/2026/04/python-3150a8-3144-31313/). 7 April 2026. Retrieved 8 April 2026.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-4)** ["Why is Python a dynamic language and also a strongly typed language"](https://wiki.python.org/moin/Why%20is%20Python%20a%20dynamic%20language%20and%20also%20a%20strongly%20typed%20language). _Python Wiki_. [Archived](https://web.archive.org/web/20210314173706/https://wiki.python.org/moin/Why%20is%20Python%20a%20dynamic%20language%20and%20also%20a%20strongly%20typed%20language) from the original on 14 March 2021. Retrieved 27 January 2021.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-type_hint-PEP_5-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-type_hint-PEP_5-1) van Rossum, Guido; Levkivskyi, Ivan. ["PEP 483 – The Theory of Type Hints"](https://www.python.org/dev/peps/pep-0483/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20200614153558/https://www.python.org/dev/peps/pep-0483/) from the original on 14 June 2020. Retrieved 14 June 2018.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-7)** von Löwis, Martin; Cannon, Brett. ["PEP 11 – CPython platform support"](https://peps.python.org/pep-0011/). _Python Enhancement Proposals (PEPs)_. Retrieved 22 April 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-8)** ["PEP 738 – Adding Android as a supported platform | peps.python.org"](https://peps.python.org/pep-0738/). _Python Enhancement Proposals (PEPs)_. Retrieved 19 May 2024.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-DownloadOther_9-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-DownloadOther_9-1) ["Download Python for Other Platforms"](https://www.python.org/download/other/). _Python.org_. [Archived](https://web.archive.org/web/20201127015815/https://www.python.org/download/other/) from the original on 27 November 2020. Retrieved 18 August 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-10)** ["test – Regression tests package for Python"](https://docs.python.org/3.7/library/test.html?highlight=android#test.support.is_android). _Python 3.7.17 documentation_. [Archived](https://web.archive.org/web/20220517151240/https://docs.python.org/3.7/library/test.html?highlight=android#test.support.is_android) from the original on 17 May 2022. Retrieved 17 May 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-11)** ["platform – Access to underlying platform's identifying data"](https://docs.python.org/3.10/library/platform.html?highlight=android). _Python 3.10.4 documentation_. [Archived](https://web.archive.org/web/20220517150826/https://docs.python.org/3/library/platform.html?highlight=android) from the original on 17 May 2022. Retrieved 17 May 2022.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-venners-interview-pt-1_13-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-venners-interview-pt-1_13-1) [_**c**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-venners-interview-pt-1_13-2) Venners, Bill (13 January 2003). ["The Making of Python"](http://www.artima.com/intv/pythonP.html). _Artima Developer_. Artima. [Archived](https://web.archive.org/web/20160901183332/http://www.artima.com/intv/pythonP.html) from the original on 1 September 2016. Retrieved 22 March 2007.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep488_14-0)** Cannon, Brett (20 February 2015). ["PEP 488 – Elimination of PYO files"](https://peps.python.org/pep-0488/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20260116004856/https://peps.python.org/pep-0488/) from the original on 16 January 2026. Retrieved 28 February 2026. "A PYC file is the bytecode file generated and read from when no optimization level is specified at interpreter startup [...] `.pyc`"
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep273_15-0)** Ahlstrom, James C. (11 October 2001). ["PEP 273 – Import Modules from Zip Archives"](https://peps.python.org/pep-0273/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20260225044635/https://peps.python.org/pep-0273/) from the original on 25 February 2026. Retrieved 28 February 2026. "Dynamic modules have extensions like `.dll`, `.pyd`, and `.so`."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep561_16-0)** Harper Smith, Emma (9 September 2017). ["PEP 561 – Distributing and Packaging Type Information"](https://peps.python.org/pep-0561/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20251207013328/https://peps.python.org/pep-0561/) from the original on 7 December 2025. Retrieved 28 February 2026. "'stubs' - files containing only type information, empty of runtime code (the filename ends in `.pyi`)."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep397_17-0)** Hammond, Mark; von Löwis, Martin (15 March 2011). ["PEP 397 – Python launcher for Windows"](https://peps.python.org/pep-0397/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20260204012409/https://peps.python.org/pep-0397/) from the original on 4 February 2026. Retrieved 28 February 2026. "[...] the 'console' version of the launcher is associated with .py files and the 'windows' version associated with .pyw files."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep0441_18-0)** Holth, Daniel; Moore, Paul (30 March 2013). ["PEP 0441 – Improving Python ZIP Application Support"](https://www.python.org/dev/peps/pep-0441/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20151116044812/https://www.python.org/dev/peps/pep-0441/) from the original on 16 November 2015. Retrieved 12 November 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-19)** ["Starlark Language"](https://docs.bazel.build/versions/master/skylark/language.html). _bazel.build_. [Archived](https://web.archive.org/web/20200615140534/https://docs.bazel.build/versions/master/skylark/language.html) from the original on 15 June 2020. Retrieved 25 May 2019.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-faq-created_20-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-faq-created_20-1) ["Why was Python created in the first place?"](https://docs.python.org/faq/general.html#why-was-python-created-in-the-first-place). _General Python FAQ_. Python Software Foundation. [Archived](https://web.archive.org/web/20121024164224/http://docs.python.org/faq/general.html#why-was-python-created-in-the-first-place) from the original on 24 October 2012. Retrieved 22 March 2007. "I had extensive experience with implementing an interpreted language in the ABC group at CWI, and from working with this group I had learned a lot about language design. This is the origin of many Python features, including the use of indentation for statement grouping and the inclusion of very high-level data types (although the details are all different in Python)."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-21)** ["Ada 83 Reference Manual (raise statement)"](https://archive.adaic.com/standards/83lrm/html/lrm-11-03.html#11.3). _archive.adaic.com_. [Archived](https://web.archive.org/web/20191022155758/http://archive.adaic.com/standards/83lrm/html/lrm-11-03.html#11.3) from the original on 22 October 2019. Retrieved 7 January 2020.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-98-interview_22-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-98-interview_22-1) Kuchling, Andrew M. (22 December 2006). ["Interview with Guido van Rossum (July 1998)"](https://web.archive.org/web/20070501105422/http://www.amk.ca/python/writing/gvr-interview). _amk.ca_. Archived from [the original](http://www.amk.ca/python/writing/gvr-interview) on 1 May 2007. Retrieved 12 March 2012. "I'd spent a summer at DEC's Systems Research Center, which introduced me to Modula-2+; the Modula-3 final report was being written there at about the same time. What I learned there later showed up in Python's exception handling, modules, and the fact that methods explicitly contain 'self' in their parameter list. String slicing came from Algol-68 and Icon."
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-python.org_23-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-python.org_23-1) [_**c**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-python.org_23-2) ["itertools – Functions creating iterators for efficient looping"](https://docs.python.org/3.7/library/itertools.html). _Python 3.7.17 documentation_. [Archived](https://web.archive.org/web/20200614153629/https://docs.python.org/3/library/itertools.html) from the original on 14 June 2020. Retrieved 22 November 2016. "This module implements a number of iterator building blocks inspired by constructs from APL, Haskell, and SML."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-1_24-0)** van Rossum, Guido (1993). "An Introduction to Python for UNIX/C Programmers". _Proceedings of the NLUUG Najaarsconferentie (Dutch UNIX Users Group)_. [CiteSeerX](https://en.wikipedia.org/wiki/CiteSeerX_\(identifier\) "CiteSeerX \(identifier\)") [10.1.1.38.2023](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.2023). "even though the design of C is far from ideal, its influence on Python is considerable."
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-classmix_25-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-classmix_25-1) ["Classes"](https://docs.python.org/tutorial/classes.html). _The Python Tutorial_. Python Software Foundation. [Archived](https://web.archive.org/web/20121023030209/http://docs.python.org/tutorial/classes.html) from the original on 23 October 2012. Retrieved 20 February 2012. "It is a mixture of the class mechanisms found in C++ and Modula-3"
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-effbot-call-by-object_26-0)** Lundh, Fredrik. ["Call By Object"](http://effbot.org/zone/call-by-object.htm). _effbot.org_. [Archived](https://web.archive.org/web/20191123043655/http://effbot.org/zone/call-by-object.htm) from the original on 23 November 2019. Retrieved 21 November 2017. "replace "CLU" with "Python", "record" with "instance", and "procedure" with "function or method", and you get a pretty accurate description of Python's object model."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-2_27-0)** Simionato, Michele. ["The Python 2.3 Method Resolution Order"](https://www.python.org/download/releases/2.3/mro/). Python Software Foundation. [Archived](https://web.archive.org/web/20200820231854/https://www.python.org/download/releases/2.3/mro/) from the original on 20 August 2020. Retrieved 29 July 2014. "The C3 method itself has nothing to do with Python, since it was invented by people working on Dylan and it is described in a paper intended for lispers"
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-3_28-0)** Kuchling, A. M. ["Functional Programming HOWTO"](https://docs.python.org/howto/functional.html). _Python v2.7.2 documentation_. Python Software Foundation. [Archived](https://web.archive.org/web/20121024163217/http://docs.python.org/howto/functional.html) from the original on 24 October 2012. Retrieved 9 February 2012. "List comprehensions and generator expressions [...] are a concise notation for such operations, borrowed from the functional programming language Haskell."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-4_29-0)** Schemenauer, Neil; Peters, Tim; Hetland, Magnus Lie (18 May 2001). ["PEP 255 – Simple Generators"](https://www.python.org/dev/peps/pep-0255/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200605012926/https://www.python.org/dev/peps/pep-0255/) from the original on 5 June 2020. Retrieved 9 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-6_30-0)** ["More Control Flow Tools"](https://docs.python.org/3.2/tutorial/controlflow.html). _Python 3 documentation_. Python Software Foundation. [Archived](https://web.archive.org/web/20160604080843/https://docs.python.org/3.2/tutorial/controlflow.html) from the original on 4 June 2016. Retrieved 24 July 2015. "By popular demand, a few features commonly found in functional programming languages like Lisp have been added to Python. With the lambda keyword, small anonymous functions can be created."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-31)** ["re – Regular expression operations"](https://docs.python.org/3.10/library/re.html). _Python 3.10.6 documentation_. [Archived](https://web.archive.org/web/20180718132241/https://docs.python.org/3/library/re.html) from the original on 18 July 2018. Retrieved 6 September 2022. "This module provides regular expression matching operations similar to those found in Perl."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-32)** ["CoffeeScript"](https://coffeescript.org/). _coffeescript.org_. [Archived](https://web.archive.org/web/20200612100004/http://coffeescript.org/) from the original on 12 June 2020. Retrieved 3 July 2018.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-33)** Rauschmayer, Axel (24 February 2013). ["Perl and Python influences in JavaScript"](https://www.2ality.com/2013/02/javascript-influences.html). _2ality.com_. [Archived](https://web.archive.org/web/20181226141121/http://2ality.com/2013/02/javascript-influences.html%0A) from the original on 26 December 2018. Retrieved 15 May 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-34)** Rauschmayer, Axel. ["Chapter 3: The Nature of JavaScript; Influences"](https://speakingjs.com/es5/ch03.html). _Speaking JavaScript_. O'Reilly. [Archived](https://web.archive.org/web/20181226141123/http://speakingjs.com/es5/ch03.html%0A) from the original on 26 December 2018. Retrieved 15 May 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Julia_35-0)** Bezanson, Jeff; Karpinski, Stefan; Shah, Viral B.; Edelman, Alan (February 2012). ["Why We Created Julia"](https://julialang.org/blog/2012/02/why-we-created-julia). _Julia website_. [Archived](https://web.archive.org/web/20200502144010/https://julialang.org/blog/2012/02/why-we-created-julia/) from the original on 2 May 2020. Retrieved 5 June 2014. "We want something as usable for general programming as Python [...]"
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Mojo_36-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Mojo_36-1) Krill, Paul (4 May 2023). ["Mojo language marries Python and MLIR for AI development"](https://www.infoworld.com/article/3695588/mojo-language-marries-python-and-mlir-for-ai-development.html). _InfoWorld_. [Archived](https://web.archive.org/web/20230505064554/https://www.infoworld.com/article/3695588/mojo-language-marries-python-and-mlir-for-ai-development.html) from the original on 5 May 2023. Retrieved 5 May 2023.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-bini_37-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-bini_37-1) Bini, Ola (2007). [_Practical JRuby on Rails Web 2.0 Projects: bringing Ruby on Rails to the Java platform_](https://archive.org/details/practicaljrubyon0000bini/page/3). Berkeley: APress. p. [3](https://archive.org/details/practicaljrubyon0000bini/page/3). [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-59059-881-8](https://en.wikipedia.org/wiki/Special:BookSources/978-1-59059-881-8 "Special:BookSources/978-1-59059-881-8").
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-lattner2014_38-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-lattner2014_38-1) Lattner, Chris (3 June 2014). ["Chris Lattner's Homepage"](http://nondot.org/sabre/). Chris Lattner. [Archived](https://web.archive.org/web/20181225175312/http://nondot.org/sabre/) from the original on 25 December 2018. Retrieved 3 June 2014. "The Swift language is the product of tireless effort from a team of language experts, documentation gurus, compiler optimization ninjas, and an incredibly important internal dogfooding group who provided feedback to help refine and battle-test ideas. Of course, it also greatly benefited from the experiences hard-won by many other languages in the field, drawing ideas from Objective-C, Rust, Haskell, Ruby, Python, C#, CLU, and far too many others to list."
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-vpeople_39-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-vpeople_39-1) ["V documentation (Introduction)"](https://github.com/vlang/v/blob/master/doc/docs.md#introduction). _GitHub_. Retrieved 24 December 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-7_40-0)** Kuhlman, Dave. ["A Python Book: Beginning Python, Advanced Python, and Python Exercises"](https://web.archive.org/web/20120623165941/http://cutter.rexx.com/~dkuhlman/python_book_01.html). Section 1.1. Archived from [the original](https://www.davekuhlman.org/python_book_01.pdf) (PDF) on 23 June 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-41)** ["PEP 484 – Type Hints"](https://peps.python.org/pep-0484/). _Python Enhancement Proposals_. Retrieved 27 October 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-42)** ["mypy – Optional Static Typing for Python"](https://mypy-lang.org/). _mypy-lang.org_. Retrieved 17 August 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-43)** ["What's new in Python 3.15"](https://docs.python.org/3.15/whatsnew/3.15.html). Retrieved 26 January 2026.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-44)** ["Stack Overflow Developer Survey 2022"](https://survey.stackoverflow.co/2022/). _Stack Overflow_. [Archived](https://web.archive.org/web/20220627175307/https://survey.stackoverflow.co/2022/) from the original on 27 June 2022. Retrieved 12 August 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-45)** ["The State of Developer Ecosystem in 2020 Infographic"](https://www.jetbrains.com/lp/devecosystem-2020/). _JetBrains_. [Archived](https://web.archive.org/web/20210301062411/https://www.jetbrains.com/lp/devecosystem-2020/) from the original on 1 March 2021. Retrieved 5 March 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-tiobecurrent_46-0)** ["TIOBE Index"](https://www.tiobe.com/tiobe-index/). TIOBE. [Archived](https://web.archive.org/web/20180225101948/https://www.tiobe.com/tiobe-index/) from the original on 25 February 2018. Retrieved 3 January 2023. "The TIOBE Programming Community index is an indicator of the popularity of programming languages" Updated as required.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-47)** Healy, John; McInnes, Leland; Weir, Colin (2017). "Bridging the Cyber-Analysis Gap: The Democratization of Data Science". _The Cyber Defense Review_. **2** (1): 109–118. [ISSN](https://en.wikipedia.org/wiki/ISSN_\(identifier\) "ISSN \(identifier\)") [2474-2120](https://search.worldcat.org/issn/2474-2120). [JSTOR](https://en.wikipedia.org/wiki/JSTOR_\(identifier\) "JSTOR \(identifier\)") [26267404](https://www.jstor.org/stable/26267404). "Python is the lingua franca of data science and machine learning."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-48)** Sultana, Simon G.; Reed, Philip A. (2017). "Curriculum for an Introductory Computer Science Course: Identifying Recommendations from Academia and Industry". _The Journal of Technology Studies_. **43** (2): 80–92. [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.21061/jots.v43i2.a.3](https://doi.org/10.21061%2Fjots.v43i2.a.3). [ISSN](https://en.wikipedia.org/wiki/ISSN_\(identifier\) "ISSN \(identifier\)") [1071-6084](https://search.worldcat.org/issn/1071-6084). [JSTOR](https://en.wikipedia.org/wiki/JSTOR_\(identifier\) "JSTOR \(identifier\)") [90023144](https://www.jstor.org/stable/90023144).
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-49)** ["TIOBE Index"](https://www.tiobe.com/tiobe-index/). TIOBE. [Archived](https://web.archive.org/web/20180225101948/https://www.tiobe.com/tiobe-index/) from the original on 25 February 2018. Retrieved 3 January 2023. "The TIOBE Programming Community index is an indicator of the popularity of programming languages"
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-timeline-of-python_50-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-timeline-of-python_50-1) [_**c**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-timeline-of-python_50-2) van Rossum, Guido (20 January 2009). ["A Brief Timeline of Python"](https://python-history.blogspot.com/2009/01/brief-timeline-of-python.html). _The History of Python_. [Archived](https://web.archive.org/web/20200605032200/https://python-history.blogspot.com/2009/01/brief-timeline-of-python.html) from the original on 5 June 2020. Retrieved 20 January 2009.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-12_51-0)** [van Rossum, Guido](https://en.wikipedia.org/wiki/Guido_van_Rossum "Guido van Rossum") (29 August 2000). ["SETL (was: Lukewarm about range literals)"](https://mail.python.org/pipermail/python-dev/2000-August/008881.html). _Python-Dev_ (Mailing list). [Archived](https://web.archive.org/web/20180714064019/https://mail.python.org/pipermail/python-dev/2000-August/008881.html) from the original on 14 July 2018. Retrieved 13 March 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-lj-bdfl-resignation_52-0)** Fairchild, Carlie (12 July 2018). ["Guido van Rossum Stepping Down from Role as Python's Benevolent Dictator For Life"](https://www.linuxjournal.com/content/guido-van-rossum-stepping-down-role-pythons-benevolent-dictator-life). _Linux Journal_. [Archived](https://web.archive.org/web/20180713192427/https://www.linuxjournal.com/content/guido-van-rossum-stepping-down-role-pythons-benevolent-dictator-life) from the original on 13 July 2018. Retrieved 13 July 2018.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-53)** Smith, Nathaniel J.; Durbin, Ee. ["PEP 8100 – January 2019 Steering Council election"](https://peps.python.org/pep-8100/). _Python Enhancement Proposals (PEPs)_. Python Software Foundation. [Archived](https://web.archive.org/web/20200604235027/https://www.python.org/dev/peps/pep-8100/) from the original on 4 June 2020. Retrieved 4 May 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-54)** The Python core team and community. ["PEP 13 – Python Language Governance"](https://peps.python.org/pep-0013/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20210527000035/https://www.python.org/dev/peps/pep-0013/) from the original on 27 May 2021. Retrieved 25 August 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-:0_55-0)** Briggs, Jason R.; Lipovača, Miran (2013). [_Python for kids: a playful introduction to programming_](https://archive.org/details/pythonforkidspla0000brig). San Francisco, California, USA: No Starch Press. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-59327-407-8](https://en.wikipedia.org/wiki/Special:BookSources/978-1-59327-407-8 "Special:BookSources/978-1-59327-407-8"). [LCCN](https://en.wikipedia.org/wiki/LCCN_\(identifier\) "LCCN \(identifier\)") [2012044047](https://lccn.loc.gov/2012044047). [OCLC](https://en.wikipedia.org/wiki/OCLC_\(identifier\) "OCLC \(identifier\)") [825076499](https://search.worldcat.org/oclc/825076499). [OL](https://en.wikipedia.org/wiki/OL_\(identifier\) "OL \(identifier\)") [26119645M](https://openlibrary.org/books/OL26119645M).
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-newin-2.0_56-0)** Kuchling, A. M.; Zadka, Moshe (16 October 2000). ["What's New in Python 2.0"](https://docs.python.org/whatsnew/2.0.html). Python Software Foundation. [Archived](https://web.archive.org/web/20121023112045/http://docs.python.org/whatsnew/2.0.html) from the original on 23 October 2012. Retrieved 11 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-57)** Peterson, Benjamin. ["PEP 373 – Python 2.7 Release Schedule"](https://legacy.python.org/dev/peps/pep-0373/). _python.org_. [Archived](https://web.archive.org/web/20200519075520/https://legacy.python.org/dev/peps/pep-0373/) from the original on 19 May 2020. Retrieved 9 January 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-58)** Coghlan, Alyssa. ["PEP 466 – Network Security Enhancements for Python 2.7.x"](https://peps.python.org/pep-0466/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20200604232833/https://www.python.org/dev/peps/pep-0466/) from the original on 4 June 2020. Retrieved 9 January 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-59)** ["Sunsetting Python 2"](https://www.python.org/doc/sunset-python-2/). _Python.org_. [Archived](https://web.archive.org/web/20200112080903/https://www.python.org/doc/sunset-python-2/) from the original on 12 January 2020. Retrieved 22 September 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-60)** Peterson, Benjamin. ["PEP 373 – Python 2.7 Release Schedule"](https://peps.python.org/pep-0373/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20200113033257/https://www.python.org/dev/peps/pep-0373/) from the original on 13 January 2020. Retrieved 22 September 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-61)** mattip (25 December 2023). ["PyPy v7.3.14 release"](https://www.pypy.org/posts/2023/12/pypy-v7314-release.html). _PyPy_. [Archived](https://web.archive.org/web/20240105132820/https://www.pypy.org/posts/2023/12/pypy-v7314-release.html) from the original on 5 January 2024. Retrieved 5 January 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-62)** Peterson, Benjamin (20 April 2020). ["Python 2.7.18, the last release of Python 2"](https://pythoninsider.blogspot.com/2020/04/python-2718-last-release-of-python-2.html). _Python Insider_. [Archived](https://web.archive.org/web/20200426204118/https://pythoninsider.blogspot.com/2020/04/python-2718-last-release-of-python-2.html) from the original on 26 April 2020. Retrieved 27 April 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-63)** ["Status of Python versions"](https://devguide.python.org/versions/). _Python Developer's Guide_. Retrieved 12 November 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-13_64-0)** The Cain Gang Ltd. ["Python Metaclasses: Who? Why? When?"](https://web.archive.org/web/20090530030205/http://www.python.org/community/pycon/dc2004/papers/24/metaclasses-pycon.pdf) (PDF). Archived from [the original](https://www.python.org/community/pycon/dc2004/papers/24/metaclasses-pycon.pdf) (PDF) on 30 May 2009. Retrieved 27 June 2009.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-14_65-0)** ["3.3. Special method names"](https://docs.python.org/3.0/reference/datamodel.html#special-method-names). _The Python Language Reference_. Python Software Foundation. [Archived](https://web.archive.org/web/20181215123146/https://docs.python.org/3.0/reference/datamodel.html#special-method-names) from the original on 15 December 2018. Retrieved 27 June 2009.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-15_66-0)** ["PyDBC: method preconditions, method postconditions and class invariants for Python"](http://www.nongnu.org/pydbc/). [Archived](https://web.archive.org/web/20191123231931/http://www.nongnu.org/pydbc/) from the original on 23 November 2019. Retrieved 24 September 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-16_67-0)** ["Contracts for Python"](http://www.wayforward.net/pycontract/). [Archived](https://web.archive.org/web/20200615173404/http://www.wayforward.net/pycontract/) from the original on 15 June 2020. Retrieved 24 September 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-17_68-0)** ["PyDatalog"](https://sites.google.com/site/pydatalog/). [Archived](https://web.archive.org/web/20200613160231/https://sites.google.com/site/pydatalog/) from the original on 13 June 2020. Retrieved 22 July 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-69)** ["Glue it all together with Python"](https://www.python.org/doc/essays/omg-darpa-mcc-position/). _Python.org_. Retrieved 30 September 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Reference_counting_70-0)** ["Reference counts"](https://docs.python.org/extending/extending.html#reference-counts). Extending and embedding the Python interpreter. _Docs.python.org_. [Archived](https://web.archive.org/web/20121018063230/http://docs.python.org/extending/extending.html#reference-counts) from the original on 18 October 2012. Retrieved 5 June 2020. "Since Python makes heavy use of `malloc()` and `free()}`, it needs a strategy to avoid memory leaks as well as the re‑use of freed memory. The method chosen is called _reference counting_."
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-59_71-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-59_71-1) Hettinger, Raymond (30 January 2002). ["PEP 289 – Generator Expressions"](https://www.python.org/dev/peps/pep-0289/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200614153717/https://www.python.org/dev/peps/pep-0289/) from the original on 14 June 2020. Retrieved 19 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-18_72-0)** ["6.5 itertools – Functions creating iterators for efficient looping"](https://docs.python.org/3/library/itertools.html). Docs.python.org. [Archived](https://web.archive.org/web/20200614153629/https://docs.python.org/3/library/itertools.html) from the original on 14 June 2020. Retrieved 22 November 2016.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PEP20_73-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PEP20_73-1) Peters, Tim (19 August 2004). ["PEP 20 – The Zen of Python"](https://www.python.org/dev/peps/pep-0020/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20181226141127/https://www.python.org/dev/peps/pep-0020/) from the original on 26 December 2018. Retrieved 24 November 2008.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Python-Changes-2014_74-0)** Lutz, Mark (January 2022). ["Python changes 2014+"](https://learning-python.com/python-changes-2014-plus.html). _Learning Python_. [Archived](https://web.archive.org/web/20240315075935/https://learning-python.com/python-changes-2014-plus.html) from the original on 15 March 2024. Retrieved 25 February 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Confusion-regarding-a-rule-in-the-Zen-of-Python_75-0)** ["Confusion regarding a rule in 'the Zen of Python'"](https://discuss.python.org/t/confusion-regarding-a-rule-in-the-zen-of-python/15927). Discussions. _Python.org_. Python help. 3 May 2022. [Archived](https://web.archive.org/web/20240225221142/https://discuss.python.org/t/confusion-regarding-a-rule-in-the-zen-of-python/15927) from the original on 25 February 2024. Retrieved 25 February 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-The-Most-Controversial-Python-Walrus-Operator_76-0)** Ambi, Chetan (4 July 2021). ["The most controversial Python 'walrus operator'"](https://pythonsimplified.com/the-most-controversial-python-walrus-operator/). _Python simplified (pythonsimplified.com)_. [Archived](https://web.archive.org/web/20230827154931/https://pythonsimplified.com/the-most-controversial-python-walrus-operator/) from the original on 27 August 2023. Retrieved 5 February 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-The-Controversy-Behind-The-Walrus-Operator-in-Python_77-0)** Grifski, Jeremy (24 May 2020). ["The controversy behind the 'walrus operator' in Python"](https://therenegadecoder.com/code/the-controversy-behind-the-walrus-operator-in-python/). _The Renegade Coder (therenegadecoder.com)_. [Archived](https://web.archive.org/web/20231228135749/https://therenegadecoder.com/code/the-controversy-behind-the-walrus-operator-in-python/) from the original on 28 December 2023. Retrieved 25 February 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-78)** ["[Python-ideas] PEP 315: do-while"](https://mail.python.org/pipermail/python-ideas/2013-June/021610.html). 26 June 2013.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Python-String-Formatting-Best-Practices_79-0)** Bader, Dan. ["Python string formatting best practices"](https://realpython.com/python-string-formatting/). _Real Python (realpython.com)_. [Archived](https://web.archive.org/web/20240218083506/https://realpython.com/python-string-formatting/) from the original on 18 February 2024. Retrieved 25 February 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-19_80-0)** Martelli, Alex; Ravenscroft, Anna; Ascher, David (2005). [_Python Cookbook, 2nd Edition_](http://shop.oreilly.com/product/9780596007973.do). [O'Reilly Media](https://en.wikipedia.org/wiki/O%27Reilly_Media "O'Reilly Media"). p. 230. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-596-00797-3](https://en.wikipedia.org/wiki/Special:BookSources/978-0-596-00797-3 "Special:BookSources/978-0-596-00797-3"). [Archived](https://web.archive.org/web/20200223171254/http://shop.oreilly.com/product/9780596007973.do) from the original on 23 February 2020. Retrieved 14 November 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-20_81-0)** ["Python Culture"](https://web.archive.org/web/20140130021902/http://ebeab.com/2014/01/21/python-culture/). _ebeab_. 21 January 2014. Archived from [the original](http://ebeab.com/2014/01/21/python-culture/) on 30 January 2014.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PyJL_82-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PyJL_82-1) ["Transpiling Python to Julia using PyJL"](https://web.ist.utl.pt/antonio.menezes.leitao/ADA/documents/publications_docs/2022_TranspilingPythonToJuliaUsingPyJL.pdf) (PDF). [Archived](https://web.archive.org/web/20231119071525/https://web.ist.utl.pt/antonio.menezes.leitao/ADA/documents/publications_docs/2022_TranspilingPythonToJuliaUsingPyJL.pdf) (PDF) from the original on 19 November 2023. Retrieved 20 September 2023. "After manually modifying one line of code by specifying the necessary type information, we obtained a speedup of 52.6×, making the translated Julia code 19.5× faster than the original Python code."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-whyname_83-0)** ["Why is it called Python?"](https://docs.python.org/3/faq/general.html#why-is-it-called-python). _General Python FAQ_. Docs.python.org. [Archived](https://web.archive.org/web/20121024164224/http://docs.python.org/faq/general.html#why-is-it-called-python) from the original on 24 October 2012. Retrieved 3 January 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-84)** ["15 ways Python is a powerful force on the web"](https://web.archive.org/web/20190511065650/http://insidetech.monster.com/training/articles/8114-15-ways-python-is-a-powerful-force-on-the-web). Archived from [the original](https://insidetech.monster.com/training/articles/8114-15-ways-python-is-a-powerful-force-on-the-web) on 11 May 2019. Retrieved 3 July 2018.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pprint-doc_85-0)** ["`pprint` – data pretty printer – Python 3.11.0 documentation"](https://docs.python.org/3/library/pprint.html). _docs.python.org_. [Archived](https://web.archive.org/web/20210122224848/https://docs.python.org/3/library/pprint.html) from the original on 22 January 2021. Retrieved 5 November 2022. "`stuff = ['spam', 'eggs', 'lumberjack', 'knights', 'ni']`"
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-86)** ["Code style"](https://docs.python-guide.org/writing/style). The hitchhiker's guide to Python. _docs.python-guide.org_. [Archived](https://web.archive.org/web/20210127154341/https://docs.python-guide.org/writing/style/) from the original on 27 January 2021. Retrieved 20 January 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-52_87-0)** ["Is Python a good language for beginning programmers?"](https://docs.python.org/faq/general.html#is-python-a-good-language-for-beginning-programmers). _General Python FAQ_. Python Software Foundation. [Archived](https://web.archive.org/web/20121024164224/http://docs.python.org/faq/general.html#is-python-a-good-language-for-beginning-programmers) from the original on 24 October 2012. Retrieved 21 March 2007.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-53_88-0)** ["Myths about indentation in Python"](https://web.archive.org/web/20180218162410/http://www.secnetix.de/~olli/Python/block_indentation.hawk). Secnetix.de. Archived from [the original](http://www.secnetix.de/~olli/Python/block_indentation.hawk) on 18 February 2018. Retrieved 19 April 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-guttag_89-0)** Guttag, John V. (12 August 2016). _Introduction to Computation and Programming Using Python: With Application to Understanding Data_. MIT Press. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-262-52962-4](https://en.wikipedia.org/wiki/Special:BookSources/978-0-262-52962-4 "Special:BookSources/978-0-262-52962-4").
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep8_90-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep8_90-1) van Rossum, Guido; Warsaw, Barry. ["PEP 8 – Style Guide for Python Code"](https://www.python.org/dev/peps/pep-0008/). _Python Enhancement Proposals (PEPs)_. [Archived](https://web.archive.org/web/20190417223549/https://www.python.org/dev/peps/pep-0008/) from the original on 17 April 2019. Retrieved 26 March 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-91)** ["8. Errors and Exceptions – Python 3.12.0a0 documentation"](https://docs.python.org/3.11/tutorial/errors.html). _docs.python.org_. [Archived](https://web.archive.org/web/20220509145745/https://docs.python.org/3.11/tutorial/errors.html) from the original on 9 May 2022. Retrieved 9 May 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-92)** ["Highlights: Python 2.5"](https://www.python.org/download/releases/2.5/highlights/). _Python.org_. [Archived](https://web.archive.org/web/20190804120408/https://www.python.org/download/releases/2.5/highlights/) from the original on 4 August 2019. Retrieved 20 March 2018.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-55_94-0)** van Rossum, Guido (22 April 2009). ["Tail Recursion Elimination"](http://neopythonic.blogspot.be/2009/04/tail-recursion-elimination.html). Neopythonic.blogspot.be. [Archived](https://web.archive.org/web/20180519225253/http://neopythonic.blogspot.be/2009/04/tail-recursion-elimination.html) from the original on 19 May 2018. Retrieved 3 December 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-56_95-0)** van Rossum, Guido (9 February 2006). ["Language Design Is Not Just Solving Puzzles"](http://www.artima.com/weblogs/viewpost.jsp?thread=147358). _Artima forums_. Artima. [Archived](https://web.archive.org/web/20200117182525/https://www.artima.com/weblogs/viewpost.jsp?thread=147358) from the original on 17 January 2020. Retrieved 21 March 2007.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-57_96-0)** van Rossum, Guido; Eby, Phillip J. (10 May 2005). ["PEP 342 – Coroutines via Enhanced Generators"](https://www.python.org/dev/peps/pep-0342/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200529003739/https://www.python.org/dev/peps/pep-0342/) from the original on 29 May 2020. Retrieved 19 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-58_97-0)** ["PEP 380"](https://www.python.org/dev/peps/pep-0380/). Python.org. [Archived](https://web.archive.org/web/20200604233821/https://www.python.org/dev/peps/pep-0380/) from the original on 4 June 2020. Retrieved 3 December 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-98)** ["division"](https://docs.python.org). _python.org_. [Archived](https://web.archive.org/web/20060720033244/http://docs.python.org/) from the original on 20 July 2006. Retrieved 30 July 2014.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PEP465_99-0)** ["PEP 0465 – A dedicated infix operator for matrix multiplication"](https://www.python.org/dev/peps/pep-0465/). _python.org_. [Archived](https://web.archive.org/web/20200604224255/https://www.python.org/dev/peps/pep-0465/) from the original on 4 June 2020. Retrieved 1 January 2016.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Python3.5Changelog_100-0)** ["Python 3.5.1 Release and Changelog"](https://www.python.org/downloads/release/python-351/). _python.org_. [Archived](https://web.archive.org/web/20200514034938/https://www.python.org/downloads/release/python-351/) from the original on 14 May 2020. Retrieved 1 January 2016.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Python3.8Changelog_101-0)** ["What's New in Python 3.8"](https://docs.python.org/3.8/whatsnew/3.8.html). [Archived](https://web.archive.org/web/20200608124345/https://docs.python.org/3.8/whatsnew/3.8.html) from the original on 8 June 2020. Retrieved 14 October 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-60_102-0)** van Rossum, Guido; Hettinger, Raymond (7 February 2003). ["PEP 308 – Conditional Expressions"](https://www.python.org/dev/peps/pep-0308/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20160313113147/https://www.python.org/dev/peps/pep-0308/) from the original on 13 March 2016. Retrieved 13 July 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-103)** ["4. Built-in Types – Python 3.6.3rc1 documentation"](https://docs.python.org/3/library/stdtypes.html#tuple). _python.org_. [Archived](https://web.archive.org/web/20200614194325/https://docs.python.org/3/library/stdtypes.html#tuple) from the original on 14 June 2020. Retrieved 1 October 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-104)** ["5.3. Tuples and Sequences – Python 3.7.1rc2 documentation"](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences). _python.org_. [Archived](https://web.archive.org/web/20200610050047/https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences) from the original on 10 June 2020. Retrieved 17 October 2018.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep-0498_105-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep-0498_105-1) ["PEP 498 – Literal String Interpolation"](https://www.python.org/dev/peps/pep-0498/). _python.org_. [Archived](https://web.archive.org/web/20200615184141/https://www.python.org/dev/peps/pep-0498/) from the original on 15 June 2020. Retrieved 8 March 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-classy_106-0)** ["The Python Language Reference, section 3.3. New-style and classic classes, for release 2.7.1"](https://web.archive.org/web/20121026063834/http://docs.python.org/reference/datamodel.html#new-style-and-classic-classes). Archived from [the original](https://docs.python.org/reference/datamodel.html#new-style-and-classic-classes) on 26 October 2012. Retrieved 12 January 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-107)** ["PEP 484 – Type Hints | peps.python.org"](https://peps.python.org/pep-0484/). _peps.python.org_. [Archived](https://web.archive.org/web/20231127205023/https://peps.python.org/pep-0484/) from the original on 27 November 2023. Retrieved 29 November 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-108)** ["typing — Support for type hints"](https://docs.python.org/3/library/typing.html). _Python documentation_. Python Software Foundation. [Archived](https://web.archive.org/web/20200221184042/https://docs.python.org/3/library/typing.html) from the original on 21 February 2020. Retrieved 22 December 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-109)** ["mypy – Optional Static Typing for Python"](http://mypy-lang.org/). [Archived](https://web.archive.org/web/20200606192012/http://mypy-lang.org/) from the original on 6 June 2020. Retrieved 28 January 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-110)** ["Introduction"](https://mypyc.readthedocs.io/en/latest/introduction.html). _mypyc.readthedocs.io_. [Archived](https://web.archive.org/web/20231222000457/https://mypyc.readthedocs.io/en/latest/introduction.html) from the original on 22 December 2023. Retrieved 22 December 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-111)** ["15. Floating Point Arithmetic: Issues and Limitations – Python 3.8.3 documentation"](https://docs.python.org/3.8/tutorial/floatingpoint.html#representation-error). _docs.python.org_. [Archived](https://web.archive.org/web/20200606113842/https://docs.python.org/3.8/tutorial/floatingpoint.html#representation-error) from the original on 6 June 2020. Retrieved 6 June 2020. "Almost all machines today (November 2000) use IEEE-754 floating point arithmetic, and almost all platforms map Python floats to IEEE-754 "double precision"."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep0237_112-0)** Zadka, Moshe; van Rossum, Guido (11 March 2001). ["PEP 237 – Unifying Long Integers and Integers"](https://www.python.org/dev/peps/pep-0237/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200528063237/https://www.python.org/dev/peps/pep-0237/) from the original on 28 May 2020. Retrieved 24 September 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-113)** ["Built-in Types"](https://docs.python.org/3/library/stdtypes.html#typesseq-range). [Archived](https://web.archive.org/web/20200614194325/https://docs.python.org/3/library/stdtypes.html#typesseq-range) from the original on 14 June 2020. Retrieved 3 October 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-114)** ["PEP 465 – A dedicated infix operator for matrix multiplication"](https://legacy.python.org/dev/peps/pep-0465/). _python.org_. [Archived](https://web.archive.org/web/20200529200310/https://legacy.python.org/dev/peps/pep-0465/) from the original on 29 May 2020. Retrieved 3 July 2018.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep0238_115-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-pep0238_115-1) Zadka, Moshe; van Rossum, Guido (11 March 2001). ["PEP 238 – Changing the Division Operator"](https://www.python.org/dev/peps/pep-0238/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200528115550/https://www.python.org/dev/peps/pep-0238/) from the original on 28 May 2020. Retrieved 23 October 2013.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-62_116-0)** ["Why Python's Integer Division Floors"](https://python-history.blogspot.com/2010/08/why-pythons-integer-division-floors.html). 24 August 2010. [Archived](https://web.archive.org/web/20200605151500/https://python-history.blogspot.com/2010/08/why-pythons-integer-division-floors.html) from the original on 5 June 2020. Retrieved 25 August 2010.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-64_117-0)** ["round"](https://docs.python.org/py3k/library/functions.html#round), _The Python standard library, release 3.2, §2: Built-in functions_ , [archived](https://web.archive.org/web/20121025141808/http://docs.python.org/py3k/library/functions.html#round) from the original on 25 October 2012, retrieved 14 August 2011
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-63_118-0)** ["round"](https://docs.python.org/library/functions.html#round), _The Python standard library, release 2.7, §2: Built-in functions_ , [archived](https://web.archive.org/web/20121027081602/http://docs.python.org/library/functions.html#round) from the original on 27 October 2012, retrieved 14 August 2011
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-65_119-0)** Beazley, David M. (2009). [_Python Essential Reference_](https://archive.org/details/pythonessentialr00beaz_036) (4th ed.). Addison-Wesley Professional. p. [66](https://archive.org/details/pythonessentialr00beaz_036/page/n90). [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-672-32978-4](https://en.wikipedia.org/wiki/Special:BookSources/978-0-672-32978-4 "Special:BookSources/978-0-672-32978-4").
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-CPL_120-0)** Kernighan, Brian W.; Ritchie, Dennis M. (1988). [_The C Programming Language_](https://en.wikipedia.org/wiki/The_C_Programming_Language "The C Programming Language") (2nd ed.). p. [206](https://archive.org/details/cprogramminglang00bria/page/206).
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-88_121-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-88_121-1) Batista, Facundo (17 October 2003). ["PEP 327 – Decimal Data Type"](https://www.python.org/dev/peps/pep-0327/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200604234830/https://www.python.org/dev/peps/pep-0327/) from the original on 4 June 2020. Retrieved 24 November 2008.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-122)** ["What's New in Python 2.6"](https://docs.python.org/2.6/whatsnew/2.6.html). _Python v2.6.9 documentation_. 29 October 2013. [Archived](https://web.archive.org/web/20191223213856/https://docs.python.org/2.6/whatsnew/2.6.html) from the original on 23 December 2019. Retrieved 26 September 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-123)** ["10 Reasons Python Rocks for Research (And a Few Reasons it Doesn't) – Hoyt Koepke"](https://web.archive.org/web/20200531211840/https://www.stat.washington.edu/~hoytak/blog/whypython.html). _University of Washington Department of Statistics_. Archived from [the original](https://www.stat.washington.edu/~hoytak/blog/whypython.html) on 31 May 2020. Retrieved 3 February 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-124)** Shell, Scott (17 June 2014). ["An introduction to Python for scientific computing"](https://engineering.ucsb.edu/~shell/che210d/python.pdf) (PDF). [Archived](https://web.archive.org/web/20190204014642/https://engineering.ucsb.edu/~shell/che210d/python.pdf) (PDF) from the original on 4 February 2019. Retrieved 3 February 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-86_125-0)** Piotrowski, Przemyslaw (July 2006). ["Build a Rapid Web Development Environment for Python Server Pages and Oracle"](http://www.oracle.com/technetwork/articles/piotrowski-pythoncore-084049.html). _Oracle Technology Network_. Oracle. [Archived](https://web.archive.org/web/20190402124435/https://www.oracle.com/technetwork/articles/piotrowski-pythoncore-084049.html) from the original on 2 April 2019. Retrieved 12 March 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-89_126-0)** Eby, Phillip J. (7 December 2003). ["PEP 333 – Python Web Server Gateway Interface v1.0"](https://www.python.org/dev/peps/pep-0333/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200614170344/https://www.python.org/dev/peps/pep-0333/) from the original on 14 June 2020. Retrieved 19 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PyPI_127-0)** ["PyPI"](https://pypi.org/). _PyPI_. 13 March 2025. [Archived](https://web.archive.org/web/20250222013445/https://pypi.org/) from the original on 22 February 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-128)** ["Glossary: interactive"](https://docs.python.org/3/glossary.html#term-interactive). _Python documentation_. v3.13.7. Retrieved 31 August 2025.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-idle_129-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-idle_129-1) ["IDLE — Python editor and shell"](https://docs.python.org/3/library/idle.html). _Python documentation_. v3.13.7. Retrieved 31 August 2025. "IDLE is Python's Integrated Development and Learning Environment."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-130)** ["IPython Documentation"](https://ipython.readthedocs.io/en/stable/). v9.5.0. 29 August 2025. [Archived](https://web.archive.org/web/20250831204721/https://ipython.readthedocs.io/en/stable/) from the original on 31 August 2025. Retrieved 31 August 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-131)** ["Python in Visual Studio Code"](https://code.visualstudio.com/docs/languages/python). _code.visualstudio.com_. Retrieved 1 December 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-132)** ["Project Jupyter"](https://jupyter.org). _Jupyter.org_. [Archived](https://web.archive.org/web/20231012055917/https://jupyter.org/) from the original on 12 October 2023. Retrieved 2 April 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-133)** Harper, Doug (Spring 2024). ["Enthought Canopy"](http://physics.wku.edu/phys316/software/canopy/). _WKU Physics 316_. [Western Kentucky University](https://en.wikipedia.org/wiki/Western_Kentucky_University "Western Kentucky University"). [Archived](https://web.archive.org/web/20240818041226/http://physics.wku.edu/phys316/software/canopy/) from the original on 18 August 2024. Retrieved 31 August 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-134)** ["Enthought Canopy"](https://web.archive.org/web/20170715151703/https://www.enthought.com/products/canopy/). _[Enthought](https://en.wikipedia.org/wiki/Enthought "Enthought")_. Archived from [the original](https://www.enthought.com/products/canopy/) on 15 July 2017. Retrieved 20 August 2016.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-135)** ["PEP 7 – Style Guide for C Code | peps.python.org"](https://peps.python.org/pep-0007/). _peps.python.org_. [Archived](https://web.archive.org/web/20220424202827/https://peps.python.org/pep-0007/) from the original on 24 April 2022. Retrieved 28 April 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-136)** ["4. Building C and C++ Extensions – Python 3.9.2 documentation"](https://docs.python.org/3/extending/building.html). _docs.python.org_. [Archived](https://web.archive.org/web/20210303002519/https://docs.python.org/3/extending/building.html) from the original on 3 March 2021. Retrieved 1 March 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-66_137-0)** van Rossum, Guido (5 June 2001). ["PEP 7 – Style Guide for C Code"](https://www.python.org/dev/peps/pep-0007/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200601203908/https://www.python.org/dev/peps/pep-0007/) from the original on 1 June 2020. Retrieved 24 November 2008.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-67_138-0)** ["CPython byte code"](https://docs.python.org/3/library/dis.html#python-bytecode-instructions). Docs.python.org. [Archived](https://web.archive.org/web/20200605151542/https://docs.python.org/3/library/dis.html#python-bytecode-instructions) from the original on 5 June 2020. Retrieved 16 February 2016.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-68_139-0)** ["Python 2.5 internals"](http://www.troeger.eu/teaching/pythonvm08.pdf) (PDF). [Archived](https://web.archive.org/web/20120806094951/http://www.troeger.eu/teaching/pythonvm08.pdf) (PDF) from the original on 6 August 2012. Retrieved 19 April 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-140)** ["Changelog – Python 3.9.0 documentation"](https://docs.python.org/release/3.9.0/whatsnew/changelog.html#changelog). _docs.python.org_. [Archived](https://web.archive.org/web/20210207001142/https://docs.python.org/release/3.9.0/whatsnew/changelog.html#changelog) from the original on 7 February 2021. Retrieved 8 February 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-141)** ["Download Python"](https://www.python.org/downloads/release/python-391). _Python.org_. [Archived](https://web.archive.org/web/20201208045225/https://www.python.org/downloads/release/python-391/) from the original on 8 December 2020. Retrieved 13 December 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-142)** ["history [vmspython]"](https://www.vmspython.org/doku.php?id=history). _www.vmspython.org_. [Archived](https://web.archive.org/web/20201202194743/https://www.vmspython.org/doku.php?id=history) from the original on 2 December 2020. Retrieved 4 December 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-69_143-0)** ["An Interview with Guido van Rossum"](http://www.oreilly.com/pub/a/oreilly/frank/rossum_1099.html). Oreilly.com. [Archived](https://web.archive.org/web/20140716222652/http://oreilly.com/pub/a/oreilly/frank/rossum_1099.html) from the original on 16 July 2014. Retrieved 24 November 2008.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-:1_144-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-:1_144-1) [_**c**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-:1_144-2) Pereira, Rui; Couto, Marco; Ribeiro, Francisco; Rua, Rui; Cunha, Jácome; Fernandes, João Paulo; Saraiva, João (23 October 2017). ["Energy efficiency across programming languages: How do energy, time, and memory relate?"](https://doi.org/10.1145/3136014.3136031). [_Proceedings of the 10th ACM SIGPLAN International Conference on Software Language Engineering_](http://repositorio.inesctec.pt/handle/123456789/5492). SLE 2017. New York, NY, USA: Association for Computing Machinery. pp. 256–267. [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.1145/3136014.3136031](https://doi.org/10.1145%2F3136014.3136031). [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-4503-5525-4](https://en.wikipedia.org/wiki/Special:BookSources/978-1-4503-5525-4 "Special:BookSources/978-1-4503-5525-4").
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-145)** ["What PyInstaller Does and How It Does It"](https://pyinstaller.org/en/stable/operating-mode.html).
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-70_146-0)** ["PyPy compatibility"](https://pypy.org/compat.html). Pypy.org. [Archived](https://web.archive.org/web/20200606041845/https://www.pypy.org/compat.html) from the original on 6 June 2020. Retrieved 3 December 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-147)** Team, The PyPy (28 December 2019). ["Download and Install"](https://www.pypy.org/download.html). _PyPy_. [Archived](https://web.archive.org/web/20220108212951/https://www.pypy.org/download.html) from the original on 8 January 2022. Retrieved 8 January 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-71_148-0)** ["speed comparison between CPython and Pypy"](https://speed.pypy.org/). Speed.pypy.org. [Archived](https://web.archive.org/web/20210510014902/https://speed.pypy.org/) from the original on 10 May 2021. Retrieved 3 December 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-149)** ["Codon: Differences with Python"](https://docs.exaloop.io/codon/general/differences). [Archived](https://web.archive.org/web/20230525002540/https://docs.exaloop.io/codon/general/differences) from the original on 25 May 2023. Retrieved 28 August 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-150)** Lawson, Loraine (14 March 2023). ["MIT-Created Compiler Speeds up Python Code"](https://thenewstack.io/mit-created-compiler-speeds-up-python-code/). _The New Stack_. [Archived](https://web.archive.org/web/20230406054200/https://thenewstack.io/mit-created-compiler-speeds-up-python-code/) from the original on 6 April 2023. Retrieved 28 August 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-151)** ["Python-for-EV3"](https://education.lego.com/en-us/support/mindstorms-ev3/python-for-ev3). _LEGO Education_. [Archived](https://web.archive.org/web/20200607234814/https://education.lego.com/en-us/support/mindstorms-ev3/python-for-ev3) from the original on 7 June 2020. Retrieved 17 April 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-152)** Yegulalp, Serdar (29 October 2020). ["Pyston returns from the dead to speed Python"](https://www.infoworld.com/article/3587591/pyston-returns-from-the-dead-to-speed-python.html). _[InfoWorld](https://en.wikipedia.org/wiki/InfoWorld "InfoWorld")_. [Archived](https://web.archive.org/web/20210127113233/https://www.infoworld.com/article/3587591/pyston-returns-from-the-dead-to-speed-python.html) from the original on 27 January 2021. Retrieved 26 January 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-153)** ["cinder: Instagram's performance-oriented fork of CPython"](https://github.com/facebookincubator/cinder). _[GitHub](https://en.wikipedia.org/wiki/GitHub "GitHub")_. [Archived](https://web.archive.org/web/20210504112500/https://github.com/facebookincubator/cinder) from the original on 4 May 2021. Retrieved 4 May 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-154)** Aroca, Rafael (7 August 2021). ["Snek Lang: feels like Python on Arduinos"](https://rafaelaroca.wordpress.com/2021/08/07/snek-lang-feels-like-python-on-arduinos/). _Yet Another Technology Blog_. [Archived](https://web.archive.org/web/20240105001031/https://rafaelaroca.wordpress.com/2021/08/07/snek-lang-feels-like-python-on-arduinos/) from the original on 5 January 2024. Retrieved 4 January 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-155)** Aufranc (CNXSoft), Jean-Luc (16 January 2020). ["Snekboard Controls LEGO Power Functions with CircuitPython or Snek Programming Languages (Crowdfunding) – CNX Software"](https://www.cnx-software.com/2020/01/16/snekboard-controls-lego-power-functions-with-circuitpython-or-snek-programming-languages/). _CNX Software – Embedded Systems News_. [Archived](https://web.archive.org/web/20240105001031/https://www.cnx-software.com/2020/01/16/snekboard-controls-lego-power-functions-with-circuitpython-or-snek-programming-languages/) from the original on 5 January 2024. Retrieved 4 January 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-156)** Kennedy (@mkennedy), Michael. ["Ready to find out if you're git famous?"](https://pythonbytes.fm/episodes/show/187/ready-to-find-out-if-youre-git-famous). _pythonbytes.fm_. [Archived](https://web.archive.org/web/20240105001031/https://pythonbytes.fm/episodes/show/187/ready-to-find-out-if-youre-git-famous) from the original on 5 January 2024. Retrieved 4 January 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-157)** Packard, Keith (20 December 2022). ["The Snek Programming Language: A Python-inspired Embedded Computing Language"](https://sneklang.org/doc/snek.pdf) (PDF). [Archived](https://web.archive.org/web/20240104162458/https://sneklang.org/doc/snek.pdf) (PDF) from the original on 4 January 2024. Retrieved 4 January 2024.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-73_158-0)** ["Application-level Stackless features – PyPy 2.0.2 documentation"](http://doc.pypy.org/en/latest/stackless.html). Doc.pypy.org. [Archived](https://web.archive.org/web/20200604231513/https://doc.pypy.org/en/latest/stackless.html) from the original on 4 June 2020. Retrieved 17 July 2013.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-74_159-0)** ["Plans for optimizing Python"](https://code.google.com/p/unladen-swallow/wiki/ProjectPlan). _Google Project Hosting_. 15 December 2009. [Archived](https://web.archive.org/web/20160411181848/https://code.google.com/p/unladen-swallow/wiki/ProjectPlan) from the original on 11 April 2016. Retrieved 24 September 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-160)** ["Python on the Nokia N900"](http://www.stochasticgeometry.ie/2010/04/29/python-on-the-nokia-n900/). _Stochastic Geometry_. 29 April 2010. [Archived](https://web.archive.org/web/20190620000053/http://www.stochasticgeometry.ie/2010/04/29/python-on-the-nokia-n900/) from the original on 20 June 2019. Retrieved 9 July 2015.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-161)** ["Brython"](https://brython.info/). _brython.info_. [Archived](https://web.archive.org/web/20180803065954/http://brython.info/) from the original on 3 August 2018. Retrieved 21 January 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-162)** ["Transcrypt – Python in the browser"](https://www.transcrypt.org). _transcrypt.org_. [Archived](https://web.archive.org/web/20180819133303/http://www.transcrypt.org/) from the original on 19 August 2018. Retrieved 22 December 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-163)** ["Transcrypt: Anatomy of a Python to JavaScript Compiler"](https://www.infoq.com/articles/transcrypt-python-javascript-compiler/). _InfoQ_. [Archived](https://web.archive.org/web/20201205193339/https://www.infoq.com/articles/transcrypt-python-javascript-compiler/) from the original on 5 December 2020. Retrieved 20 January 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-164)** ["Nuitka Home | Nuitka Home"](http://nuitka.net/). _nuitka.net_. [Archived](https://web.archive.org/web/20200530211233/https://nuitka.net/) from the original on 30 May 2020. Retrieved 18 August 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-Guelton_Brunet_Amini_Merlini_2015_p=014001_165-0)** Guelton, Serge; Brunet, Pierrick; Amini, Mehdi; Merlini, Adrien; Corbillon, Xavier; Raynaud, Alan (16 March 2015). ["Pythran: enabling static optimization of scientific Python programs"](https://doi.org/10.1088%2F1749-4680%2F8%2F1%2F014001). _Computational Science & Discovery_. **8** (1) 014001. IOP Publishing. [Bibcode](https://en.wikipedia.org/wiki/Bibcode_\(identifier\) "Bibcode \(identifier\)"):[2015CS&D....8a4001G](https://ui.adsabs.harvard.edu/abs/2015CS&D....8a4001G). [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.1088/1749-4680/8/1/014001](https://doi.org/10.1088%2F1749-4680%2F8%2F1%2F014001). [ISSN](https://en.wikipedia.org/wiki/ISSN_\(identifier\) "ISSN \(identifier\)") [1749-4699](https://search.worldcat.org/issn/1749-4699).
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-166)** ["The Python → 11l → C++ transpiler"](https://11l-lang.org/transpiler). [Archived](https://web.archive.org/web/20220924233728/https://11l-lang.org/transpiler/) from the original on 24 September 2022. Retrieved 17 July 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-167)** ["google/grumpy"](https://github.com/google/grumpy). 10 April 2020. [Archived](https://web.archive.org/web/20200415054919/https://github.com/google/grumpy) from the original on 15 April 2020. Retrieved 25 March 2020 – via GitHub.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-168)** ["Projects"](https://opensource.google/projects/). _opensource.google_. [Archived](https://web.archive.org/web/20200424191248/https://opensource.google/projects/) from the original on 24 April 2020. Retrieved 25 March 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-169)** Francisco, Thomas Claburn in San. ["Google's Grumpy code makes Python Go"](https://www.theregister.com/2017/01/05/googles_grumpy_makes_python_go/). _www.theregister.com_. [Archived](https://web.archive.org/web/20210307165521/https://www.theregister.com/2017/01/05/googles_grumpy_makes_python_go/) from the original on 7 March 2021. Retrieved 20 January 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-170)** ["IronPython.net /"](https://ironpython.net/). _ironpython.net_. [Archived](https://web.archive.org/web/20210417064418/https://ironpython.net/) from the original on 17 April 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-171)** ["GitHub – IronLanguages/ironpython3: Implementation of Python 3.x for .NET Framework that is built on top of the Dynamic Language Runtime"](https://github.com/IronLanguages/ironpython3). _[GitHub](https://en.wikipedia.org/wiki/GitHub "GitHub")_. [Archived](https://web.archive.org/web/20210928101250/https://github.com/IronLanguages/ironpython3) from the original on 28 September 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-172)** ["Jython FAQ"](https://www.jython.org/jython-old-sites/archive/22/userfaq.html). _www.jython.org_. [Archived](https://web.archive.org/web/20210422055726/https://www.jython.org/jython-old-sites/archive/22/userfaq.html) from the original on 22 April 2021. Retrieved 22 April 2021.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-173)** Murri, Riccardo (2013). _Performance of Python runtimes on a non-numeric scientific code_. European Conference on Python in Science (EuroSciPy). [arXiv](https://en.wikipedia.org/wiki/ArXiv_\(identifier\) "ArXiv \(identifier\)"):[1404.6388](https://arxiv.org/abs/1404.6388). [Bibcode](https://en.wikipedia.org/wiki/Bibcode_\(identifier\) "Bibcode \(identifier\)"):[2014arXiv1404.6388M](https://ui.adsabs.harvard.edu/abs/2014arXiv1404.6388M).
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-174)** ["The Computer Language Benchmarks Game"](https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/python.html). [Archived](https://web.archive.org/web/20200614210246/https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/python.html) from the original on 14 June 2020. Retrieved 30 April 2020.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-175)** Python, Real. ["Look Ma, No for Loops: Array Programming With NumPy – Real Python"](https://realpython.com/numpy-array-programming/). _realpython.com_. Retrieved 15 October 2025.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PepCite000_176-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-PepCite000_176-1) Warsaw, Barry; Hylton, Jeremy; Goodger, David (13 June 2000). ["PEP 1 – PEP Purpose and Guidelines"](https://www.python.org/dev/peps/pep-0001/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200606042011/https://www.python.org/dev/peps/pep-0001/) from the original on 6 June 2020. Retrieved 19 April 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-21_177-0)** Cannon, Brett. ["Guido, Some Guys, and a Mailing List: How Python is Developed"](https://web.archive.org/web/20090601134342/http://www.python.org/dev/intro/). _python.org_. Python Software Foundation. Archived from [the original](https://www.python.org/dev/intro/) on 1 June 2009. Retrieved 27 June 2009.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-178)** Edge, Jake (23 February 2022). ["Moving Python's bugs to GitHub [LWN.net]"](https://lwn.net/Articles/885854/). [Archived](https://web.archive.org/web/20221002183818/https://lwn.net/Articles/885854/) from the original on 2 October 2022. Retrieved 2 October 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-py_dev_guide_179-0)** ["Python Developer's Guide – Python Developer's Guide"](https://devguide.python.org/). _devguide.python.org_. [Archived](https://web.archive.org/web/20201109032501/https://devguide.python.org/) from the original on 9 November 2020. Retrieved 17 December 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-180)** Hughes, Owen (24 May 2021). ["Programming languages: Why Python 4.0 might never arrive, according to its creator"](https://www.techrepublic.com/article/programming-languages-why-python-4-0-will-probably-never-arrive-according-to-its-creator/). _TechRepublic_. [Archived](https://web.archive.org/web/20220714201302/https://www.techrepublic.com/article/programming-languages-why-python-4-0-will-probably-never-arrive-according-to-its-creator/) from the original on 14 July 2022. Retrieved 16 May 2022.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-181)** ["PEP 602 – Annual Release Cycle for Python"](https://www.python.org/dev/peps/pep-0602/). _Python.org_. [Archived](https://web.archive.org/web/20200614202755/https://www.python.org/dev/peps/pep-0602/) from the original on 14 June 2020. Retrieved 6 November 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-182)** Edge, Jake (23 October 2019). ["Changing the Python release cadence [LWN.net]"](https://lwn.net/Articles/802777/). _lwn.net_. [Archived](https://web.archive.org/web/20191106170153/https://lwn.net/Articles/802777/) from the original on 6 November 2019. Retrieved 6 November 2019.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-release-schedule_183-0)** Norwitz, Neal (8 April 2002). ["[Python-Dev] Release Schedules (was Stability & change)"](https://mail.python.org/pipermail/python-dev/2002-April/022739.html). [Archived](https://web.archive.org/web/20181215122750/https://mail.python.org/pipermail/python-dev/2002-April/022739.html) from the original on 15 December 2018. Retrieved 27 June 2009.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-22_184-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-22_184-1) Aahz; Baxter, Anthony (15 March 2001). ["PEP 6 – Bug Fix Releases"](https://www.python.org/dev/peps/pep-0006/). _Python Enhancement Proposals_. Python Software Foundation. [Archived](https://web.archive.org/web/20200605001318/https://www.python.org/dev/peps/pep-0006/) from the original on 5 June 2020. Retrieved 27 June 2009.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-23_185-0)** ["Python Buildbot"](https://www.python.org/dev/buildbot/). _Python Developer's Guide_. Python Software Foundation. [Archived](https://web.archive.org/web/20200605001322/https://www.python.org/dev/buildbot/) from the original on 5 June 2020. Retrieved 24 September 2011.
+* ^ [_**a**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-tutorial-chapter1_186-0) [_**b**_](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-tutorial-chapter1_186-1) ["Whetting Your Appetite"](https://docs.python.org/tutorial/appetite.html). _The Python Tutorial_. Python Software Foundation. [Archived](https://web.archive.org/web/20121026063559/http://docs.python.org/tutorial/appetite.html) from the original on 26 October 2012. Retrieved 20 February 2012.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-AutoNT-26_187-0)** ["In Python, should I use else after a return in an if block?"](https://stackoverflow.com/questions/5033906/in-python-should-i-use-else-after-a-return-in-an-if-block). _[Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow "Stack Overflow")_. Stack Exchange. 17 February 2011. [Archived](https://web.archive.org/web/20190620000050/https://stackoverflow.com/questions/5033906/in-python-should-i-use-else-after-a-return-in-an-if-block) from the original on 20 June 2019. Retrieved 6 May 2011.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-FOOTNOTELutz201317_188-0)** [Lutz 2013](https://en.wikipedia.org/wiki/Python_\(programming_language\)#CITEREFLutz2013), p. 17.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-189)** Fehily, Chris (2002). [_Python_](https://books.google.com/books?id=carqdIdfVlYC&pg=PR15). Peachpit Press. p. xv. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-201-74884-0](https://en.wikipedia.org/wiki/Special:BookSources/978-0-201-74884-0 "Special:BookSources/978-0-201-74884-0"). [Archived](https://web.archive.org/web/20170717044040/https://books.google.com/books?id=carqdIdfVlYC&pg=PR15) from the original on 17 July 2017. Retrieved 9 May 2017.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-introducing_python_190-0)** Lubanovic, Bill (2014). [_Introducing Python_](http://archive.org/details/introducingpytho0000luba). Sebastopol, CA : O'Reilly Media. p. 305. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-4493-5936-2](https://en.wikipedia.org/wiki/Special:BookSources/978-1-4493-5936-2 "Special:BookSources/978-1-4493-5936-2"). Retrieved 31 July 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-191)** Esterbrook, Charles. ["Acknowledgements"](https://web.archive.org/web/20080208141002/http://cobra-language.com/docs/acknowledgements/). _cobra-language.com_. Cobra Language. Archived from [the original](http://cobra-language.com/docs/acknowledgements/) on 8 February 2008. Retrieved 7 April 2010.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-192)** ["Proposals: iterators and generators [ES4 Wiki]"](https://web.archive.org/web/20071020082650/http://wiki.ecmascript.org/doku.php?id=proposals:iterators_and_generators). wiki.ecmascript.org. Archived from [the original](http://wiki.ecmascript.org/doku.php?id=proposals:iterators_and_generators) on 20 October 2007. Retrieved 24 November 2008.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-193)** Kincaid, Jason (10 November 2009). ["Google's Go: A New Programming Language That's Python Meets C++"](https://techcrunch.com/2009/11/10/google-go-language/). _TechCrunch_. [Archived](https://web.archive.org/web/20100118014358/http://www.techcrunch.com/2009/11/10/google-go-language/) from the original on 18 January 2010. Retrieved 29 January 2010.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-194)** ["Why We Created Julia"](https://julialang.org/blog/2012/02/why-we-created-julia). _Julia website_. February 2012. [Archived](https://web.archive.org/web/20200502144010/https://julialang.org/blog/2012/02/why-we-created-julia/) from the original on 2 May 2020. Retrieved 5 June 2014. "We want something as usable for general programming as Python [...]"
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-195)** ["Modular Docs – Why Mojo"](https://docs.modular.com/mojo/why-mojo.html). _docs.modular.com_. [Archived](https://web.archive.org/web/20230505083518/https://docs.modular.com/mojo/why-mojo.html) from the original on 5 May 2023. Retrieved 5 May 2023. "Mojo as a member of the Python family [..] Embracing Python massively simplifies our design efforts, because most of the syntax is already specified. [..] we decided that the right long-term goal for Mojo is to provide a superset of Python (i.e. be compatible with existing programs) and to embrace the CPython immediately for long-tail ecosystem enablement. To a Python programmer, we expect and hope that Mojo will be immediately familiar, while also providing new tools for developing systems-level code that enable you to do things that Python falls back to C and C++ for."
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-196)** Spencer, Michael (4 May 2023). ["What is Mojo Programming Language?"](https://datasciencelearningcenter.substack.com/p/what-is-mojo-programming-language). _datasciencelearningcenter.substack.com_. [Archived](https://web.archive.org/web/20230505090408/https://datasciencelearningcenter.substack.com/p/what-is-mojo-programming-language) from the original on 5 May 2023. Retrieved 5 May 2023.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-197)** ["GDScript"](https://gdscript.com/). _gdscript.com_. Retrieved 24 November 2025.
+* **[^](https://en.wikipedia.org/wiki/Python_\(programming_language\)#cite_ref-198)** ["uv"](https://docs.astral.sh/uv/). _docs.astral.sh_. Retrieved 25 January 2026.
+* ["Python for Artificial Intelligence"](https://web.archive.org/web/20121101045354/http://wiki.python.org/moin/PythonForArtificialIntelligence). Python Wiki. 19 July 2012. Archived from [the original](https://wiki.python.org/moin/PythonForArtificialIntelligence) on 1 November 2012. Retrieved 3 December 2012.
+* Paine, Jocelyn, ed. (August 2005). ["AI in Python"](https://web.archive.org/web/20120326105810/http://www.ainewsletter.com/newsletters/aix_0508.htm#python_ai_ai). _AI Expert Newsletter_. Amzi!. Archived from [the original](http://www.ainewsletter.com/newsletters/aix_0508.htm#python_ai_ai) on 26 March 2012. Retrieved 11 February 2012.
+* ["PyAIML 0.8.5: Python Package Index"](https://pypi.python.org/pypi/PyAIML). Pypi.python.org. Retrieved 17 July 2013.
+* [Russell, Stuart J.](https://en.wikipedia.org/wiki/Stuart_J._Russell "Stuart J. Russell") & [Norvig, Peter](https://en.wikipedia.org/wiki/Peter_Norvig "Peter Norvig") (2009). _Artificial Intelligence: A Modern Approach_ (3rd ed.). Upper Saddle River, NJ: Prentice Hall. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-13-604259-4](https://en.wikipedia.org/wiki/Special:BookSources/978-0-13-604259-4 "Special:BookSources/978-0-13-604259-4").
+* Downey, Allen (July 2024). [_Think Python: How to Think Like a Computer Scientist_](https://allendowney.github.io/ThinkPython/) (3rd ed.). O'Reilly Media. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-0981-5543-8](https://en.wikipedia.org/wiki/Special:BookSources/978-1-0981-5543-8 "Special:BookSources/978-1-0981-5543-8").
+* Lutz, Mark (2013). _Learning Python_ (5th ed.). O'Reilly Media. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-596-15806-4](https://en.wikipedia.org/wiki/Special:BookSources/978-0-596-15806-4 "Special:BookSources/978-0-596-15806-4").
+* Summerfield, Mark (2009). _Programming in Python 3_ (2nd ed.). Addison-Wesley Professional. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-0-321-68056-3](https://en.wikipedia.org/wiki/Special:BookSources/978-0-321-68056-3 "Special:BookSources/978-0-321-68056-3").
+* Ramalho, Luciano (May 2022). [_Fluent Python_](https://www.thoughtworks.com/insights/books/fluent-python-2nd-edition). O'Reilly Media. [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [978-1-4920-5632-4](https://en.wikipedia.org/wiki/Special:BookSources/978-1-4920-5632-4 "Special:BookSources/978-1-4920-5632-4").
+* [](https://en.wikipedia.org/wiki/File:Commons-logo.svg)[Media](https://commons.wikimedia.org/wiki/Category:Python_\(programming_language\) "c:Category:Python \(programming language\)") from Commons
+* [Quotations](https://en.wikiquote.org/wiki/Python "q:Python") from Wikiquote
+* [](https://en.wikipedia.org/wiki/File:Wikibooks-logo.svg)[Textbooks](https://en.wikibooks.org/wiki/Python_Programming "b:Python Programming") from Wikibooks
+* [](https://en.wikipedia.org/wiki/File:Wikiversity_logo_2017.svg)[Resources](https://en.wikiversity.org/wiki/Python "v:Python") from Wikiversity
+* [Data](https://www.wikidata.org/wiki/Q28865 "d:Q28865") from Wikidata
+* [Official website](https://www.python.org/) [](https://www.wikidata.org/wiki/Q28865#P856 "Edit this at Wikidata")
+* [Python documentation](https://docs.python.org/3/)
+* [The Python Tutorial](https://docs.python.org/3/tutorial/)
+* [v](https://en.wikipedia.org/wiki/Template:Python_\(programming_language\) "Template:Python \(programming language\)")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Python_\(programming_language\) "Template talk:Python \(programming language\)")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Python_\(programming_language\) "Special:EditPage/Template:Python \(programming language\)")
+* [CircuitPython](https://en.wikipedia.org/wiki/CircuitPython "CircuitPython")
+* [CLPython](https://en.wikipedia.org/wiki/CLPython "CLPython")
+* [CPython](https://en.wikipedia.org/wiki/CPython "CPython")
+* [Cython](https://en.wikipedia.org/wiki/Cython "Cython")
+* [MicroPython](https://en.wikipedia.org/wiki/MicroPython "MicroPython")
+* [Numba](https://en.wikipedia.org/wiki/Numba "Numba")
+* [IronPython](https://en.wikipedia.org/wiki/IronPython "IronPython")
+* [Jython](https://en.wikipedia.org/wiki/Jython "Jython")
+* [Psyco](https://en.wikipedia.org/wiki/Psyco "Psyco")
+* [PyPy](https://en.wikipedia.org/wiki/PyPy "PyPy")
+* [Python for S60](https://en.wikipedia.org/wiki/Python_for_S60 "Python for S60")
+* [Shed Skin](https://en.wikipedia.org/wiki/Shed_Skin "Shed Skin")
+* [Stackless Python](https://en.wikipedia.org/wiki/Stackless_Python "Stackless Python")
+* [Unladen Swallow](https://en.wikipedia.org/wiki/Unladen_Swallow "Unladen Swallow")
+* _[more](https://en.wikipedia.org/wiki/List_of_Python_software#Python_implementations "List of Python software")..._
+* [eric](https://en.wikipedia.org/wiki/Eric_\(software\) "Eric \(software\)")
+* [IDLE](https://en.wikipedia.org/wiki/IDLE "IDLE")
+* [PyCharm](https://en.wikipedia.org/wiki/PyCharm "PyCharm")
+* [PyDev](https://en.wikipedia.org/wiki/PyDev "PyDev")
+* [Spyder](https://en.wikipedia.org/wiki/Spyder_\(software\) "Spyder \(software\)")
+* _[more](https://en.wikipedia.org/wiki/List_of_integrated_development_environments_for_Python#Python "List of integrated development environments for Python")..._
+* [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface "Web Server Gateway Interface")
+* [ASGI](https://en.wikipedia.org/wiki/Asynchronous_Server_Gateway_Interface "Asynchronous Server Gateway Interface")
+* [History of Python](https://en.wikipedia.org/wiki/History_of_Python "History of Python")
+* [Zen of Python](https://en.wikipedia.org/wiki/Zen_of_Python "Zen of Python")
+* [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum "Guido van Rossum")
+* [Software](https://en.wikipedia.org/wiki/List_of_Python_software "List of Python software") (list)
+* [Python Software Foundation](https://en.wikipedia.org/wiki/Python_Software_Foundation "Python Software Foundation")
+* [Python Conference](https://en.wikipedia.org/wiki/Python_Conference "Python Conference") (PyCon)
+* [v](https://en.wikipedia.org/wiki/Template:Programming_languages "Template:Programming languages")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Programming_languages "Template talk:Programming languages")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Programming_languages "Special:EditPage/Template:Programming languages")
+* [Comparison](https://en.wikipedia.org/wiki/Comparison_of_programming_languages "Comparison of programming languages")
+* [Timeline](https://en.wikipedia.org/wiki/Timeline_of_programming_languages "Timeline of programming languages")
+* [History](https://en.wikipedia.org/wiki/History_of_programming_languages "History of programming languages")
+* [Ada](https://en.wikipedia.org/wiki/Ada_\(programming_language\) "Ada \(programming language\)")
+* [ALGOL](https://en.wikipedia.org/wiki/ALGOL "ALGOL")
+  * [Simula](https://en.wikipedia.org/wiki/Simula "Simula")
+
+
+* [Simula](https://en.wikipedia.org/wiki/Simula "Simula")
+* [APL](https://en.wikipedia.org/wiki/APL_\(programming_language\) "APL \(programming language\)")
+* [Assembly](https://en.wikipedia.org/wiki/Assembly_language "Assembly language")
+* [BASIC](https://en.wikipedia.org/wiki/BASIC "BASIC")
+  * [Visual Basic](https://en.wikipedia.org/wiki/Visual_Basic "Visual Basic")
+    * [classic](https://en.wikipedia.org/wiki/Visual_Basic_\(classic\) "Visual Basic \(classic\)")
+    * [.NET](https://en.wikipedia.org/wiki/Visual_Basic_\(.NET\) "Visual Basic \(.NET\)")
+
+
+* [Visual Basic](https://en.wikipedia.org/wiki/Visual_Basic "Visual Basic")
+  * [classic](https://en.wikipedia.org/wiki/Visual_Basic_\(classic\) "Visual Basic \(classic\)")
+  * [.NET](https://en.wikipedia.org/wiki/Visual_Basic_\(.NET\) "Visual Basic \(.NET\)")
+
+
+* [classic](https://en.wikipedia.org/wiki/Visual_Basic_\(classic\) "Visual Basic \(classic\)")
+* [.NET](https://en.wikipedia.org/wiki/Visual_Basic_\(.NET\) "Visual Basic \(.NET\)")
+* [C](https://en.wikipedia.org/wiki/C_\(programming_language\) "C \(programming language\)")
+* [C++](https://en.wikipedia.org/wiki/C%2B%2B "C++")
+* [C#](https://en.wikipedia.org/wiki/C_Sharp_\(programming_language\) "C Sharp \(programming language\)")
+* [COBOL](https://en.wikipedia.org/wiki/COBOL "COBOL")
+* [Erlang](https://en.wikipedia.org/wiki/Erlang_\(programming_language\) "Erlang \(programming language\)")
+  * [Elixir](https://en.wikipedia.org/wiki/Elixir_\(programming_language\) "Elixir \(programming language\)")
+
+
+* [Elixir](https://en.wikipedia.org/wiki/Elixir_\(programming_language\) "Elixir \(programming language\)")
+* [Forth](https://en.wikipedia.org/wiki/Forth_\(programming_language\) "Forth \(programming language\)")
+* [Fortran](https://en.wikipedia.org/wiki/Fortran "Fortran")
+* [Go](https://en.wikipedia.org/wiki/Go_\(programming_language\) "Go \(programming language\)")
+* [Haskell](https://en.wikipedia.org/wiki/Haskell "Haskell")
+* [Java](https://en.wikipedia.org/wiki/Java_\(programming_language\) "Java \(programming language\)")
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript "JavaScript")
+* [Julia](https://en.wikipedia.org/wiki/Julia_\(programming_language\) "Julia \(programming language\)")
+* [Kotlin](https://en.wikipedia.org/wiki/Kotlin "Kotlin")
+* [Lisp](https://en.wikipedia.org/wiki/Lisp_\(programming_language\) "Lisp \(programming language\)")
+* [Lua](https://en.wikipedia.org/wiki/Lua "Lua")
+* [MATLAB](https://en.wikipedia.org/wiki/MATLAB "MATLAB")
+* [ML](https://en.wikipedia.org/wiki/ML_\(programming_language\) "ML \(programming language\)")
+  * [Caml](https://en.wikipedia.org/wiki/Caml "Caml")
+    * [OCaml](https://en.wikipedia.org/wiki/OCaml "OCaml")
+  * [Standard ML](https://en.wikipedia.org/wiki/Standard_ML "Standard ML")
+
+
+* [Caml](https://en.wikipedia.org/wiki/Caml "Caml")
+  * [OCaml](https://en.wikipedia.org/wiki/OCaml "OCaml")
+
+
+* [OCaml](https://en.wikipedia.org/wiki/OCaml "OCaml")
+* [Standard ML](https://en.wikipedia.org/wiki/Standard_ML "Standard ML")
+* [Pascal](https://en.wikipedia.org/wiki/Pascal_\(programming_language\) "Pascal \(programming language\)")
+  * [Object Pascal](https://en.wikipedia.org/wiki/Object_Pascal "Object Pascal")
+
+
+* [Object Pascal](https://en.wikipedia.org/wiki/Object_Pascal "Object Pascal")
+* [Perl ](https://en.wikipedia.org/wiki/Perl "Perl")
+  * [Raku](https://en.wikipedia.org/wiki/Raku_\(programming_language\) "Raku \(programming language\)")
+
+
+* [Raku](https://en.wikipedia.org/wiki/Raku_\(programming_language\) "Raku \(programming language\)")
+* [PHP](https://en.wikipedia.org/wiki/PHP "PHP")
+* [Prolog](https://en.wikipedia.org/wiki/Prolog "Prolog")
+* Python
+* [R](https://en.wikipedia.org/wiki/R_\(programming_language\) "R \(programming language\)")
+* [Ruby](https://en.wikipedia.org/wiki/Ruby_\(programming_language\) "Ruby \(programming language\)")
+* [Rust](https://en.wikipedia.org/wiki/Rust_\(programming_language\) "Rust \(programming language\)")
+* [SAS](https://en.wikipedia.org/wiki/SAS_language "SAS language")
+* [SQL](https://en.wikipedia.org/wiki/SQL "SQL")
+* [Scratch](https://en.wikipedia.org/wiki/Scratch_\(programming_language\) "Scratch \(programming language\)")
+* [Shell](https://en.wikipedia.org/wiki/Shell_script "Shell script")
+* [Smalltalk](https://en.wikipedia.org/wiki/Smalltalk "Smalltalk")
+* [Swift](https://en.wikipedia.org/wiki/Swift_\(programming_language\) "Swift \(programming language\)")
+* _[more...](https://en.wikipedia.org/wiki/List_of_programming_languages "List of programming languages")_
+* **Lists:** [Alphabetical](https://en.wikipedia.org/wiki/List_of_programming_languages "List of programming languages")
+* [Categorical](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type "List of programming languages by type")
+* [Generational](https://en.wikipedia.org/wiki/Generational_list_of_programming_languages "Generational list of programming languages")
+* [Non-English-based](https://en.wikipedia.org/wiki/Non-English-based_programming_languages "Non-English-based programming languages")
+* [Category](https://en.wikipedia.org/wiki/Category:Programming_languages "Category:Programming languages")
+* [v](https://en.wikipedia.org/wiki/Template:Python_web_frameworks "Template:Python web frameworks")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Python_web_frameworks "Template talk:Python web frameworks")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Python_web_frameworks "Special:EditPage/Template:Python web frameworks")
+* [CherryPy](https://en.wikipedia.org/wiki/CherryPy "CherryPy")
+* [CubicWeb](https://en.wikipedia.org/wiki/CubicWeb "CubicWeb")
+* [Django](https://en.wikipedia.org/wiki/Django_\(web_framework\) "Django \(web framework\)")
+* [FastAPI](https://en.wikipedia.org/wiki/FastAPI "FastAPI")
+* [Flask](https://en.wikipedia.org/wiki/Flask_\(web_framework\) "Flask \(web framework\)")
+* [Grok](https://en.wikipedia.org/wiki/Grok_\(web_framework\) "Grok \(web framework\)")
+* [Nevow](https://en.wikipedia.org/wiki/Nevow "Nevow")
+* [Pylons](https://en.wikipedia.org/wiki/Pylons_project#Pylons_Framework "Pylons project")
+* [Pyramid](https://en.wikipedia.org/wiki/Pylons_project#Pyramid "Pylons project")
+* [Quixote](https://en.wikipedia.org/wiki/Quixote_\(web_framework\) "Quixote \(web framework\)")
+* [Tornado](https://en.wikipedia.org/wiki/Tornado_\(web_server\) "Tornado \(web server\)")
+* [TurboGears](https://en.wikipedia.org/wiki/TurboGears "TurboGears")
+* [TwistedWeb](https://en.wikipedia.org/wiki/Twisted_\(software\) "Twisted \(software\)")
+* [web2py](https://en.wikipedia.org/wiki/Web2py "Web2py")
+* [Zope 2](https://en.wikipedia.org/wiki/Zope#Zope_2 "Zope")
+* _[more](https://en.wikipedia.org/wiki/Category:Python_\(programming_language\)_web_frameworks "Category:Python \(programming language\) web frameworks")_...
+* [Comparison](https://en.wikipedia.org/wiki/Comparison_of_server-side_web_frameworks#Python "Comparison of server-side web frameworks")
+* [v](https://en.wikipedia.org/wiki/Template:Differentiable_computing "Template:Differentiable computing")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Differentiable_computing "Template talk:Differentiable computing")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Differentiable_computing "Special:EditPage/Template:Differentiable computing")
+* **[Differentiable programming](https://en.wikipedia.org/wiki/Differentiable_programming "Differentiable programming")**
+* [Information geometry](https://en.wikipedia.org/wiki/Information_geometry "Information geometry")
+* [Statistical manifold](https://en.wikipedia.org/wiki/Statistical_manifold "Statistical manifold")
+* [Automatic differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation "Automatic differentiation")
+* [Neuromorphic computing](https://en.wikipedia.org/wiki/Neuromorphic_computing "Neuromorphic computing")
+* [Pattern recognition](https://en.wikipedia.org/wiki/Pattern_recognition "Pattern recognition")
+* [Ricci calculus](https://en.wikipedia.org/wiki/Ricci_calculus "Ricci calculus")
+* [Computational learning theory](https://en.wikipedia.org/wiki/Computational_learning_theory "Computational learning theory")
+* [Inductive bias](https://en.wikipedia.org/wiki/Inductive_bias "Inductive bias")
+* [IPU](https://en.wikipedia.org/wiki/Graphcore "Graphcore")
+* [TPU](https://en.wikipedia.org/wiki/Tensor_Processing_Unit "Tensor Processing Unit")
+* [VPU](https://en.wikipedia.org/wiki/Vision_processing_unit "Vision processing unit")
+* [Memristor](https://en.wikipedia.org/wiki/Memristor "Memristor")
+* [SpiNNaker](https://en.wikipedia.org/wiki/SpiNNaker "SpiNNaker")
+* [TensorFlow](https://en.wikipedia.org/wiki/TensorFlow "TensorFlow")
+* [PyTorch](https://en.wikipedia.org/wiki/PyTorch "PyTorch")
+* [Keras](https://en.wikipedia.org/wiki/Keras "Keras")
+* [scikit-learn](https://en.wikipedia.org/wiki/Scikit-learn "Scikit-learn")
+* [Theano](https://en.wikipedia.org/wiki/Theano_\(software\) "Theano \(software\)")
+* [JAX](https://en.wikipedia.org/wiki/JAX_\(software\) "JAX \(software\)")
+* [Flux.jl](https://en.wikipedia.org/wiki/Flux_\(machine-learning_framework\) "Flux \(machine-learning framework\)")
+* [MindSpore](https://en.wikipedia.org/wiki/MindSpore "MindSpore")
+* [](https://en.wikipedia.org/wiki/File:Symbol_portal_class.svg "Portal") Portals 
+  * [Computer programming](https://en.wikipedia.org/wiki/Portal:Computer_programming "Portal:Computer programming")
+  * [Technology](https://en.wikipedia.org/wiki/Portal:Technology "Portal:Technology")
+
+
+* [Computer programming](https://en.wikipedia.org/wiki/Portal:Computer_programming "Portal:Computer programming")
+* [Technology](https://en.wikipedia.org/wiki/Portal:Technology "Portal:Technology")
+* [v](https://en.wikipedia.org/wiki/Template:FOSS "Template:FOSS")
+* [t](https://en.wikipedia.org/wiki/Template_talk:FOSS "Template talk:FOSS")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:FOSS "Special:EditPage/Template:FOSS")
+* [Alternative terms for free software](https://en.wikipedia.org/wiki/Alternative_terms_for_free_software "Alternative terms for free software")
+* [Comparison of open-source and closed-source software](https://en.wikipedia.org/wiki/Comparison_of_open-source_and_closed-source_software "Comparison of open-source and closed-source software")
+* [Comparison of source-code-hosting facilities](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities "Comparison of source-code-hosting facilities")
+* [Free software](https://en.wikipedia.org/wiki/Free_software "Free software")
+* [Free software project directories](https://en.wikipedia.org/wiki/List_of_free_software_project_directories "List of free software project directories")
+* [Gratis versus libre](https://en.wikipedia.org/wiki/Gratis_versus_libre "Gratis versus libre")
+* [Long-term support](https://en.wikipedia.org/wiki/Long-term_support "Long-term support")
+* [Open-source software](https://en.wikipedia.org/wiki/Open-source_software "Open-source software")
+* [Open-source software development](https://en.wikipedia.org/wiki/Open-source_software_development "Open-source software development")
+* [Outline](https://en.wikipedia.org/wiki/Outline_of_free_software "Outline of free software")
+* [Timeline](https://en.wikipedia.org/wiki/Timeline_of_free_and_open-source_software "Timeline of free and open-source software")
+* [Audio](https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio "Comparison of free software for audio")
+* [Bioinformatics](https://en.wikipedia.org/wiki/List_of_open-source_bioinformatics_software "List of open-source bioinformatics software")
+* [Codecs](https://en.wikipedia.org/wiki/List_of_open-source_codecs "List of open-source codecs")
+* [Configuration management](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software "Comparison of open-source configuration management software")
+* [Drivers](https://en.wikipedia.org/wiki/Device_driver "Device driver")
+  * [Graphics](https://en.wikipedia.org/wiki/Free_and_open-source_graphics_device_driver "Free and open-source graphics device driver")
+  * [Wireless](https://en.wikipedia.org/wiki/Comparison_of_open-source_wireless_drivers "Comparison of open-source wireless drivers")
+
+
+* [Graphics](https://en.wikipedia.org/wiki/Free_and_open-source_graphics_device_driver "Free and open-source graphics device driver")
+* [Wireless](https://en.wikipedia.org/wiki/Comparison_of_open-source_wireless_drivers "Comparison of open-source wireless drivers")
+* [Health](https://en.wikipedia.org/wiki/List_of_open-source_health_software "List of open-source health software")
+* [Mathematics](https://en.wikipedia.org/wiki/List_of_open-source_software_for_mathematics "List of open-source software for mathematics")
+* [Office suites](https://en.wikipedia.org/wiki/List_of_office_suites "List of office suites")
+* [Operating systems](https://en.wikipedia.org/wiki/Comparison_of_open-source_operating_systems "Comparison of open-source operating systems")
+* [Routing](https://en.wikipedia.org/wiki/List_of_open-source_routing_platforms "List of open-source routing platforms")
+* [Television](https://en.wikipedia.org/wiki/List_of_free_television_software "List of free television software")
+* [Video games](https://en.wikipedia.org/wiki/List_of_open-source_video_games "List of open-source video games")
+* [Web applications](https://en.wikipedia.org/wiki/List_of_free_and_open-source_web_applications "List of free and open-source web applications")
+  * [E-commerce](https://en.wikipedia.org/wiki/Comparison_of_shopping_cart_software "Comparison of shopping cart software")
+
+
+* [E-commerce](https://en.wikipedia.org/wiki/Comparison_of_shopping_cart_software "Comparison of shopping cart software")
+* [Android apps](https://en.wikipedia.org/wiki/List_of_free_and_open-source_Android_applications "List of free and open-source Android applications")
+* [iOS apps](https://en.wikipedia.org/wiki/List_of_free_and_open-source_iOS_applications "List of free and open-source iOS applications")
+* [Commercial](https://en.wikipedia.org/wiki/List_of_commercial_open-source_applications_and_services "List of commercial open-source applications and services")
+* [Formerly proprietary](https://en.wikipedia.org/wiki/List_of_formerly_proprietary_software "List of formerly proprietary software")
+* [Formerly open-source](https://en.wikipedia.org/wiki/List_of_formerly_open-source_or_free_software "List of formerly open-source or free software")
+* [Free software movement](https://en.wikipedia.org/wiki/Free_software_movement "Free software movement")
+* [History](https://en.wikipedia.org/wiki/History_of_free_and_open-source_software "History of free and open-source software")
+* [Open-source-software movement](https://en.wikipedia.org/wiki/Open-source_software_movement "Open-source software movement")
+* [Events](https://en.wikipedia.org/wiki/List_of_free-software_events "List of free-software events")
+* [Advocacy](https://en.wikipedia.org/wiki/Open-source_software_advocacy "Open-source software advocacy")
+* [Free Software Movement of India](https://en.wikipedia.org/wiki/Free_Software_Movement_of_India "Free Software Movement of India")
+* [Free Software Foundation](https://en.wikipedia.org/wiki/Free_Software_Foundation "Free Software Foundation")
+* [AFL](https://en.wikipedia.org/wiki/Academic_Free_License "Academic Free License")
+* [Apache](https://en.wikipedia.org/wiki/Apache_License "Apache License")
+* [APSL](https://en.wikipedia.org/wiki/Apple_Public_Source_License "Apple Public Source License")
+* [Artistic](https://en.wikipedia.org/wiki/Artistic_License "Artistic License")
+* [Beerware](https://en.wikipedia.org/wiki/Poul-Henning_Kamp#Beerware "Poul-Henning Kamp")
+* [BSD](https://en.wikipedia.org/wiki/BSD_licenses "BSD licenses")
+* [Creative Commons](https://en.wikipedia.org/wiki/Creative_Commons_license "Creative Commons license")
+* [CDDL](https://en.wikipedia.org/wiki/Common_Development_and_Distribution_License "Common Development and Distribution License")
+* [EPL](https://en.wikipedia.org/wiki/Eclipse_Public_License "Eclipse Public License")
+* [Free Software Foundation](https://en.wikipedia.org/wiki/Free_Software_Foundation "Free Software Foundation")
+  * [GNU GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License "GNU General Public License")
+  * [GNU AGPL](https://en.wikipedia.org/wiki/GNU_Affero_General_Public_License "GNU Affero General Public License")
+  * [GNU LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License "GNU Lesser General Public License")
+
+
+* [GNU GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License "GNU General Public License")
+* [GNU AGPL](https://en.wikipedia.org/wiki/GNU_Affero_General_Public_License "GNU Affero General Public License")
+* [GNU LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License "GNU Lesser General Public License")
+* [ISC](https://en.wikipedia.org/wiki/ISC_license "ISC license")
+* [MIT](https://en.wikipedia.org/wiki/MIT_License "MIT License")
+* [MPL](https://en.wikipedia.org/wiki/Mozilla_Public_License "Mozilla Public License")
+* [Python](https://en.wikipedia.org/wiki/Python_License "Python License")
+* [Python Software Foundation License](https://en.wikipedia.org/wiki/Python_Software_Foundation_License "Python Software Foundation License")
+* [Shared Source Initiative](https://en.wikipedia.org/wiki/Shared_Source_Initiative "Shared Source Initiative")
+* [Sleepycat](https://en.wikipedia.org/wiki/Sleepycat_Software "Sleepycat Software")
+* [Unlicense](https://en.wikipedia.org/wiki/Unlicense "Unlicense")
+* [WTFPL](https://en.wikipedia.org/wiki/WTFPL "WTFPL")
+* [zlib](https://en.wikipedia.org/wiki/Zlib_License "Zlib License")
+* [Comparison of licenses](https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses "Comparison of free and open-source software licenses")
+* [Contributor License Agreement](https://en.wikipedia.org/wiki/Contributor_license_agreement "Contributor license agreement")
+* [Copyleft](https://en.wikipedia.org/wiki/Copyleft "Copyleft")
+* [Debian Free Software Guidelines](https://en.wikipedia.org/wiki/The_Open_Source_Definition#Debian_Free_Software_Guidelines "The Open Source Definition")
+* [Definition of Free Cultural Works](https://en.wikipedia.org/wiki/Definition_of_Free_Cultural_Works "Definition of Free Cultural Works")
+* [Free license](https://en.wikipedia.org/wiki/Free_license "Free license")
+* [The Free Software Definition](https://en.wikipedia.org/wiki/The_Free_Software_Definition "The Free Software Definition")
+* [The Open Source Definition](https://en.wikipedia.org/wiki/The_Open_Source_Definition "The Open Source Definition")
+* [Open-source license](https://en.wikipedia.org/wiki/Open-source_license "Open-source license")
+* [Permissive software license](https://en.wikipedia.org/wiki/Permissive_software_license "Permissive software license")
+* [Public domain](https://en.wikipedia.org/wiki/Public_domain "Public domain")
+* [Digital rights management](https://en.wikipedia.org/wiki/Digital_rights_management "Digital rights management")
+* [License proliferation](https://en.wikipedia.org/wiki/License_proliferation "License proliferation")
+* [Mozilla software rebranding](https://en.wikipedia.org/wiki/The_Open_Source_Definition "The Open Source Definition")
+* [Proprietary device drivers](https://en.wikipedia.org/wiki/Binary_blob "Binary blob")
+* [Proprietary firmware](https://en.wikipedia.org/wiki/Proprietary_firmware "Proprietary firmware")
+* [Proprietary software](https://en.wikipedia.org/wiki/Proprietary_software "Proprietary software")
+* [SCO/Linux controversies](https://en.wikipedia.org/wiki/SCO%E2%80%93Linux_disputes "SCO–Linux disputes")
+* [Software patents](https://en.wikipedia.org/wiki/Software_patents_and_free_software "Software patents and free software")
+* [Software security](https://en.wikipedia.org/wiki/Open-source_software_security "Open-source software security")
+* [Tivoization](https://en.wikipedia.org/wiki/Tivoization "Tivoization")
+* [Trusted Computing](https://en.wikipedia.org/wiki/Trusted_Computing "Trusted Computing")
+* [Forking](https://en.wikipedia.org/wiki/Fork_\(software_development\) "Fork \(software development\)")
+* _[GNU Manifesto](https://en.wikipedia.org/wiki/GNU_Manifesto "GNU Manifesto")_
+* [Microsoft Open Specification Promise](https://en.wikipedia.org/wiki/Microsoft_Open_Specification_Promise "Microsoft Open Specification Promise")
+* [Open-core model](https://en.wikipedia.org/wiki/Open-core_model "Open-core model")
+* [Open-source hardware](https://en.wikipedia.org/wiki/Open-source_hardware "Open-source hardware")
+* [Shared Source Initiative](https://en.wikipedia.org/wiki/Shared_Source_Initiative "Shared Source Initiative")
+* [Source-available software](https://en.wikipedia.org/wiki/Source-available_software "Source-available software")
+* _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar "The Cathedral and the Bazaar")_
+* _[Revolution OS](https://en.wikipedia.org/wiki/Revolution_OS "Revolution OS")_
+* [](https://en.wikipedia.org/wiki/File:Symbol_portal_class.svg "Portal") [Portal](https://en.wikipedia.org/wiki/Portal:Free_and_open-source_software "Portal:Free and open-source software")
+* [Category](https://en.wikipedia.org/wiki/Category:Free_software "Category:Free software")
+* [v](https://en.wikipedia.org/wiki/Template:Statistical_software "Template:Statistical software")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Statistical_software "Template talk:Statistical software")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Statistical_software "Special:EditPage/Template:Statistical software")
+* [Dataplot](https://en.wikipedia.org/wiki/Dataplot "Dataplot")
+* [Epi Info](https://en.wikipedia.org/wiki/Epi_Info "Epi Info")
+* [CSPro](https://en.wikipedia.org/wiki/CSPro "CSPro")
+* [X-12-ARIMA](https://en.wikipedia.org/wiki/X-12-ARIMA "X-12-ARIMA")
+* [ADMB](https://en.wikipedia.org/wiki/ADMB "ADMB")
+* [DAP](https://en.wikipedia.org/wiki/DAP_\(software\) "DAP \(software\)")
+* [gretl](https://en.wikipedia.org/wiki/Gretl "Gretl")
+* [jamovi](https://en.wikipedia.org/wiki/Jamovi "Jamovi")
+* [JASP](https://en.wikipedia.org/wiki/JASP "JASP")
+* [JAGS](https://en.wikipedia.org/wiki/Just_another_Gibbs_sampler "Just another Gibbs sampler")
+* [JMulTi](https://en.wikipedia.org/wiki/JMulTi "JMulTi")
+* [Julia](https://en.wikipedia.org/wiki/Julia_\(programming_language\) "Julia \(programming language\)")
+* [Jupyter](https://en.wikipedia.org/wiki/Project_Jupyter "Project Jupyter") (_Ju_ lia, _Py_ thon, _R_)
+* [GNU Octave](https://en.wikipedia.org/wiki/GNU_Octave "GNU Octave")
+* [OpenBUGS](https://en.wikipedia.org/wiki/OpenBUGS "OpenBUGS")
+* [Orange](https://en.wikipedia.org/wiki/Orange_\(software\) "Orange \(software\)")
+* [PSPP](https://en.wikipedia.org/wiki/PSPP "PSPP")
+* Python (statsmodels, [PyMC](https://en.wikipedia.org/wiki/PyMC "PyMC"), [IPython](https://en.wikipedia.org/wiki/IPython "IPython"), [IDLE](https://en.wikipedia.org/wiki/IDLE "IDLE"))
+* [R](https://en.wikipedia.org/wiki/R_\(programming_language\) "R \(programming language\)") ([RStudio](https://en.wikipedia.org/wiki/RStudio "RStudio"))
+* [SageMath](https://en.wikipedia.org/wiki/SageMath "SageMath")
+* [SimFiT](https://en.wikipedia.org/wiki/SimFiT "SimFiT")
+* [SOFA Statistics](https://en.wikipedia.org/wiki/SOFA_Statistics "SOFA Statistics")
+* [Stan](https://en.wikipedia.org/wiki/Stan_\(software\) "Stan \(software\)")
+* [XLispStat](https://en.wikipedia.org/wiki/XLispStat "XLispStat")
+* [BV4.1](https://en.wikipedia.org/wiki/BV4.1_\(software\) "BV4.1 \(software\)")
+* [XploRe](https://en.wikipedia.org/wiki/XploRe "XploRe")
+* [WinBUGS](https://en.wikipedia.org/wiki/WinBUGS "WinBUGS")
+* [Data Desk](https://en.wikipedia.org/wiki/Data_Desk "Data Desk")
+* [GAUSS](https://en.wikipedia.org/wiki/GAUSS_\(software\) "GAUSS \(software\)")
+* [GraphPad InStat](https://en.wikipedia.org/wiki/GraphPad_InStat "GraphPad InStat")
+* [GraphPad Prism](https://en.wikipedia.org/wiki/GraphPad_Prism "GraphPad Prism")
+* IBM [SPSS](https://en.wikipedia.org/wiki/SPSS "SPSS") Statistics
+* IBM [SPSS Modeler](https://en.wikipedia.org/wiki/SPSS_Modeler "SPSS Modeler")
+* [JMP](https://en.wikipedia.org/wiki/JMP_\(statistical_software\) "JMP \(statistical software\)")
+* [Maple](https://en.wikipedia.org/wiki/Maple_\(software\) "Maple \(software\)")
+* [Mathcad](https://en.wikipedia.org/wiki/Mathcad "Mathcad")
+* [Mathematica](https://en.wikipedia.org/wiki/Wolfram_Mathematica "Wolfram Mathematica")
+* [MATLAB](https://en.wikipedia.org/wiki/MATLAB "MATLAB")
+* [OxMetrics](https://en.wikipedia.org/wiki/OxMetrics "OxMetrics")
+* [RATS](https://en.wikipedia.org/wiki/RATS_\(software\) "RATS \(software\)")
+* [Revolution Analytics](https://en.wikipedia.org/wiki/Revolution_Analytics "Revolution Analytics")
+* [SAS](https://en.wikipedia.org/wiki/SAS_\(software\) "SAS \(software\)") ([SAS Viya](https://en.wikipedia.org/wiki/SAS_Viya "SAS Viya"))
+* [SmartPLS](https://en.wikipedia.org/wiki/SmartPLS "SmartPLS")
+* [Stata](https://en.wikipedia.org/wiki/Stata "Stata")
+* [StatView](https://en.wikipedia.org/wiki/StatView "StatView")
+* [SUDAAN](https://en.wikipedia.org/wiki/SUDAAN "SUDAAN")
+* [S-PLUS](https://en.wikipedia.org/wiki/S-PLUS "S-PLUS")
+* [TSP](https://en.wikipedia.org/wiki/TSP_\(econometrics_software\) "TSP \(econometrics software\)")
+* [World Programming System](https://en.wikipedia.org/wiki/World_Programming_System "World Programming System") (WPS)
+* [BMDP](https://en.wikipedia.org/wiki/BMDP "BMDP")
+* [EViews](https://en.wikipedia.org/wiki/EViews "EViews")
+* [GenStat](https://en.wikipedia.org/wiki/Genstat "Genstat")
+* [LIMDEP](https://en.wikipedia.org/wiki/LIMDEP "LIMDEP")
+* [LISREL](https://en.wikipedia.org/wiki/LISREL "LISREL")
+* [MedCalc](https://en.wikipedia.org/wiki/MedCalc "MedCalc")
+* [Microfit](https://en.wikipedia.org/wiki/Microfit "Microfit")
+* [Minitab](https://en.wikipedia.org/wiki/Minitab "Minitab")
+* [MLwiN](https://en.wikipedia.org/wiki/MLwiN "MLwiN")
+* [NCSS](https://en.wikipedia.org/wiki/NCSS_\(statistical_software\) "NCSS \(statistical software\)")
+* [Shazam](https://en.wikipedia.org/wiki/Shazam_\(econometrics_software\) "Shazam \(econometrics software\)")
+* [SigmaStat](https://en.wikipedia.org/wiki/SigmaStat "SigmaStat")
+* [Statistica](https://en.wikipedia.org/wiki/Statistica "Statistica")
+* [StatsDirect](https://en.wikipedia.org/wiki/StatsDirect "StatsDirect")
+* [StatXact](https://en.wikipedia.org/wiki/StatXact "StatXact")
+* [SYSTAT](https://en.wikipedia.org/wiki/SYSTAT_\(statistics_package\) "SYSTAT \(statistics package\)")
+* [The Unscrambler](https://en.wikipedia.org/wiki/The_Unscrambler "The Unscrambler")
+* Unistat
+* [Analyse-it](https://en.wikipedia.org/wiki/Analyse-it "Analyse-it")
+* Unistat for Excel
+* [XLfit](https://en.wikipedia.org/wiki/XLfit "XLfit")
+* [RExcel](https://en.wikipedia.org/wiki/RExcel "RExcel")
+* [v](https://en.wikipedia.org/wiki/Template:Numerical_analysis_software "Template:Numerical analysis software")
+* [t](https://en.wikipedia.org/wiki/Template_talk:Numerical_analysis_software "Template talk:Numerical analysis software")
+* [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Numerical_analysis_software "Special:EditPage/Template:Numerical analysis software")
+* [Advanced Simulation Library](https://en.wikipedia.org/wiki/Advanced_Simulation_Library "Advanced Simulation Library")
+* [ADMB](https://en.wikipedia.org/wiki/ADMB "ADMB")
+* [Chapel](https://en.wikipedia.org/wiki/Chapel_\(programming_language\) "Chapel \(programming language\)")
+* [Euler Mathematical Toolbox](https://en.wikipedia.org/wiki/Euler_Mathematical_Toolbox "Euler Mathematical Toolbox")
+* [FreeFem++](https://en.wikipedia.org/wiki/FreeFem%2B%2B "FreeFem++")
+* [FreeMat](https://en.wikipedia.org/wiki/FreeMat "FreeMat")
+* [Genius](https://en.wikipedia.org/wiki/Genius_\(mathematics_software\) "Genius \(mathematics software\)")
+* [Gmsh](https://en.wikipedia.org/wiki/Gmsh "Gmsh")
+* [GNU Octave](https://en.wikipedia.org/wiki/GNU_Octave "GNU Octave")
+* [gretl](https://en.wikipedia.org/wiki/Gretl "Gretl")
+* [Julia](https://en.wikipedia.org/wiki/Julia_\(programming_language\) "Julia \(programming language\)")
+* [Jupyter](https://en.wikipedia.org/wiki/Project_Jupyter "Project Jupyter") (_Ju_ lia, _Pyt_ hon, _R_ ; [IPython](https://en.wikipedia.org/wiki/IPython "IPython"))
+* [MFEM](https://en.wikipedia.org/wiki/MFEM "MFEM")
+* [OpenFOAM](https://en.wikipedia.org/wiki/OpenFOAM "OpenFOAM")
+* Python
+* [R](https://en.wikipedia.org/wiki/R_\(programming_language\) "R \(programming language\)")
+* [SageMath](https://en.wikipedia.org/wiki/SageMath "SageMath")
+* [Salome](https://en.wikipedia.org/wiki/Salome_\(software\) "Salome \(software\)")
+* [ScicosLab](https://en.wikipedia.org/wiki/ScicosLab "ScicosLab")
+* [Scilab](https://en.wikipedia.org/wiki/Scilab "Scilab")
+* [X10](https://en.wikipedia.org/wiki/X10_\(programming_language\) "X10 \(programming language\)")
+* [Weka](https://en.wikipedia.org/wiki/Weka_\(software\) "Weka \(software\)")
+* [Fortress](https://en.wikipedia.org/wiki/Fortress_\(programming_language\) "Fortress \(programming language\)")
+* [DADiSP](https://en.wikipedia.org/wiki/DADiSP "DADiSP")
+* [FEATool Multiphysics](https://en.wikipedia.org/wiki/FEATool_Multiphysics "FEATool Multiphysics")
+* [GAUSS](https://en.wikipedia.org/wiki/GAUSS_\(software\) "GAUSS \(software\)")
+* [LabVIEW](https://en.wikipedia.org/wiki/LabVIEW "LabVIEW")
+* [Maple](https://en.wikipedia.org/wiki/Maple_\(software\) "Maple \(software\)")
+* [Mathcad](https://en.wikipedia.org/wiki/Mathcad "Mathcad")
+* [Mathematica](https://en.wikipedia.org/wiki/Wolfram_Mathematica "Wolfram Mathematica")
+* [MATLAB](https://en.wikipedia.org/wiki/MATLAB "MATLAB")
+* [MWorks](https://en.wikipedia.org/wiki/MWorks "MWorks")
+* [SAS](https://en.wikipedia.org/wiki/SAS_\(software\) "SAS \(software\)") ([SAS Viya](https://en.wikipedia.org/wiki/SAS_Viya "SAS Viya"))
+* [Speakeasy](https://en.wikipedia.org/wiki/Speakeasy_\(computational_environment\) "Speakeasy \(computational environment\)")
+* [VisSim](https://en.wikipedia.org/wiki/VisSim "VisSim")
+* **[Comparison](https://en.wikipedia.org/wiki/Comparison_of_numerical-analysis_software "Comparison of numerical-analysis software")**
+* [GND](https://d-nb.info/gnd/4434275-5)
+* [FAST](https://id.worldcat.org/fast/1084736)
+* [United States](https://id.loc.gov/authorities/sh96008834)
+* [France](https://catalogue.bnf.fr/ark:/12148/cb13560465c)
+* [BnF data](https://data.bnf.fr/ark:/12148/cb13560465c)
+* [Czech Republic](https://aleph.nkp.cz/F/?func=find-c&local_base=aut&ccl_term=ica=ph170668&CON_LNG=ENG)
+* [Israel](https://www.nli.org.il/en/authorities/987007563637105171)
+* [IdRef](https://www.idref.fr/051626225)
+* [Yale LUX](https://lux.collections.yale.edu/view/concept/c274a087-484b-4995-8a3c-dde45cfdd7e1)
+* [Python (programming language)](https://en.wikipedia.org/wiki/Category:Python_\(programming_language\) "Category:Python \(programming language\)")
+* [Programming tools](https://en.wikipedia.org/wiki/Category:Programming_tools "Category:Programming tools")
+* [Web frameworks](https://en.wikipedia.org/wiki/Category:Web_frameworks "Category:Web frameworks")
+* [Free software programmed in Python](https://en.wikipedia.org/wiki/Category:Free_software_programmed_in_Python "Category:Free software programmed in Python")
+* [Class-based programming languages](https://en.wikipedia.org/wiki/Category:Class-based_programming_languages "Category:Class-based programming languages")
+* [Notebook interface](https://en.wikipedia.org/wiki/Category:Notebook_interface "Category:Notebook interface")
+* [Computer science in the Netherlands](https://en.wikipedia.org/wiki/Category:Computer_science_in_the_Netherlands "Category:Computer science in the Netherlands")
+* [Concurrent programming languages](https://en.wikipedia.org/wiki/Category:Concurrent_programming_languages "Category:Concurrent programming languages")
+* [Cross-platform free software](https://en.wikipedia.org/wiki/Category:Cross-platform_free_software "Category:Cross-platform free software")
+* [Cross-platform software](https://en.wikipedia.org/wiki/Category:Cross-platform_software "Category:Cross-platform software")
+* [Dutch inventions](https://en.wikipedia.org/wiki/Category:Dutch_inventions "Category:Dutch inventions")
+* [Dynamically typed programming languages](https://en.wikipedia.org/wiki/Category:Dynamically_typed_programming_languages "Category:Dynamically typed programming languages")
+* [Educational programming languages](https://en.wikipedia.org/wiki/Category:Educational_programming_languages "Category:Educational programming languages")
+* [High-level programming languages](https://en.wikipedia.org/wiki/Category:High-level_programming_languages "Category:High-level programming languages")
+* [Information technology in the Netherlands](https://en.wikipedia.org/wiki/Category:Information_technology_in_the_Netherlands "Category:Information technology in the Netherlands")
+* [Multi-paradigm programming languages](https://en.wikipedia.org/wiki/Category:Multi-paradigm_programming_languages "Category:Multi-paradigm programming languages")
+* [Object-oriented programming languages](https://en.wikipedia.org/wiki/Category:Object-oriented_programming_languages "Category:Object-oriented programming languages")
+* [Pattern matching programming languages](https://en.wikipedia.org/wiki/Category:Pattern_matching_programming_languages "Category:Pattern matching programming languages")
+* [Programming languages](https://en.wikipedia.org/wiki/Category:Programming_languages "Category:Programming languages")
+* [Programming languages created in 1991](https://en.wikipedia.org/wiki/Category:Programming_languages_created_in_1991 "Category:Programming languages created in 1991")
+* [Scripting languages](https://en.wikipedia.org/wiki/Category:Scripting_languages "Category:Scripting languages")
+* [Text-oriented programming languages](https://en.wikipedia.org/wiki/Category:Text-oriented_programming_languages "Category:Text-oriented programming languages")
+* [Monty Python references](https://en.wikipedia.org/wiki/Category:Monty_Python_references "Category:Monty Python references")
+* [Articles with short description](https://en.wikipedia.org/wiki/Category:Articles_with_short_description "Category:Articles with short description")
+* [Short description matches Wikidata](https://en.wikipedia.org/wiki/Category:Short_description_matches_Wikidata "Category:Short description matches Wikidata")
+* [Use dmy dates from November 2021](https://en.wikipedia.org/wiki/Category:Use_dmy_dates_from_November_2021 "Category:Use dmy dates from November 2021")
+* [Use American English from December 2024](https://en.wikipedia.org/wiki/Category:Use_American_English_from_December_2024 "Category:Use American English from December 2024")
+* [All Wikipedia articles written in American English](https://en.wikipedia.org/wiki/Category:All_Wikipedia_articles_written_in_American_English "Category:All Wikipedia articles written in American English")
+* [All articles with failed verification](https://en.wikipedia.org/wiki/Category:All_articles_with_failed_verification "Category:All articles with failed verification")
+* [Articles with failed verification from August 2025](https://en.wikipedia.org/wiki/Category:Articles_with_failed_verification_from_August_2025 "Category:Articles with failed verification from August 2025")
+* [Articles containing potentially dated statements from 2026](https://en.wikipedia.org/wiki/Category:Articles_containing_potentially_dated_statements_from_2026 "Category:Articles containing potentially dated statements from 2026")
+* [All articles containing potentially dated statements](https://en.wikipedia.org/wiki/Category:All_articles_containing_potentially_dated_statements "Category:All articles containing potentially dated statements")
+* [Articles containing potentially dated statements from January 2026](https://en.wikipedia.org/wiki/Category:Articles_containing_potentially_dated_statements_from_January_2026 "Category:Articles containing potentially dated statements from January 2026")
+* [Articles containing potentially dated statements from March 2025](https://en.wikipedia.org/wiki/Category:Articles_containing_potentially_dated_statements_from_March_2025 "Category:Articles containing potentially dated statements from March 2025")
+* [All articles with specifically marked weasel-worded phrases](https://en.wikipedia.org/wiki/Category:All_articles_with_specifically_marked_weasel-worded_phrases "Category:All articles with specifically marked weasel-worded phrases")
+* [Articles with specifically marked weasel-worded phrases from August 2025](https://en.wikipedia.org/wiki/Category:Articles_with_specifically_marked_weasel-worded_phrases_from_August_2025 "Category:Articles with specifically marked weasel-worded phrases from August 2025")
+* [All articles with unsourced statements](https://en.wikipedia.org/wiki/Category:All_articles_with_unsourced_statements "Category:All articles with unsourced statements")
+* [Articles with unsourced statements from August 2025](https://en.wikipedia.org/wiki/Category:Articles_with_unsourced_statements_from_August_2025 "Category:Articles with unsourced statements from August 2025")
+* [Pages using Sister project links with wikidata namespace mismatch](https://en.wikipedia.org/wiki/Category:Pages_using_Sister_project_links_with_wikidata_namespace_mismatch "Category:Pages using Sister project links with wikidata namespace mismatch")
+* [Pages using Sister project links with hidden wikidata](https://en.wikipedia.org/wiki/Category:Pages_using_Sister_project_links_with_hidden_wikidata "Category:Pages using Sister project links with hidden wikidata")
+* [Articles with example Python (programming language) code](https://en.wikipedia.org/wiki/Category:Articles_with_example_Python_\(programming_language\)_code "Category:Articles with example Python \(programming language\) code")
+  *[v]: View this template
+  *[t]: Discuss this template
+  *[e]: Edit this template
