@@ -11,7 +11,7 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-backend_url = "http://127.0.0.1:8003"
+backend_url = "http://127.0.0.1:8003"   # url del backend server.py da lanciare su porta 8003
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
@@ -37,7 +37,9 @@ def web_ui(request:Request, domain:str=None, url:str=None):
     # GET /domains
     try:
         url_domini = f"{backend_url}/domains"
-        with urllib.request.urlopen(url_domini) as response:   # si collega al backend su url, con with la connessione viene automaticamente chiusa alla fine del blocco
+
+        # esegue la richiesta POST e ne apre la risposta
+        with urllib.request.urlopen(url_domini) as response:
             if response.status == 200:
                 data = response.read().decode('utf-8')  # legge il body della risposta HTTP del server (testo grezzo) e la legge con codifica utf-8
                 data_json = json.loads(data)    # trasforma la stringa di testo in un dizionario python
@@ -132,7 +134,7 @@ def web_ui(request:Request, domain:str=None, url:str=None):
 
                     stats = risposta_json.get("token_level_eval", {})
 
-                    precision = round(stats.get("precision", 0), 4)
+                    precision = round(stats.get("precision", 0), 4)   # arrotonda a 4 cifre decimali
                     recall = round(stats.get("recall", 0), 4)
                     f1 = round(stats.get("f1", 0), 4)
 
