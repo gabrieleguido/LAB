@@ -16,6 +16,13 @@ app = FastAPI()
 # Lista dei domini assegnati
 domains_list = TokenCompare.get_domain_list()
 
+domain_to_name_dict = {
+    "www.nbcnews.com":"nbcnews",
+    "en.wikipedia.org":"wikipedia",
+    "it.uefa.com":"uefa",
+    "weather.com":"weather"
+}
+
 
 # Modello di risposta per GET /domains
 class DomainsListModel(BaseModel):
@@ -94,7 +101,7 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
     
-    file_name = domain.split('.')[1]
+    file_name = domain_to_name_dict[domain]
     file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
@@ -207,6 +214,9 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
 
     if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
         result_dict = asyncio.run(parser_wikipedia.extract(url))
+    else:
+        raise HTTPException(status_code=404, detail="Parser non implementato")
+
 
     return ParseOutputModel(
             url=unquote(input.url),
@@ -215,3 +225,41 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
             html_text = result_dict["html"],
             parsed_text = result_dict["parsed"]
          )
+
+@app.get("/full_gs_eval/{url_in}")
+def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
+    url = unquote(url_in)
+    domain = Cleaner.get_domain_from_url(url)
+    if(domain not in domains_list):
+        raise HTTPException(status_code=404, detail="Dominio non supportato")
+
+    file_name = domain_to_name_dict[domain]
+    count = 0
+    precision = float()
+    recall = float()
+    f1 = float()
+    with open(f"./gs_data/{file_name}_gs.json","r",encoding = 'UTF-8') as gs_json:
+        gs_list = json.load(gs_json)
+    for gs_elem_dict in gs_list:
+        if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
+            #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
+            parser_result = asyncio.run(parser_wikipedia.extract(f"raw:{gs_elem_dict['html_text']}"))
+            parsed_text = parser_result["parsed"]
+            gs_text = gs_elem_dict["gold_text"]
+            stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text,gs_text)
+            precision += stats["precision"]
+            recall += stats["recall"]
+            f1 += stats["f1"]
+            count += 1
+        else:
+            raise HTTPException(status_code=404, detail="Parser non implementato")
+        
+        final_stats = {
+            "precision":float(precision/count),
+            "recall":float(recall/count),
+            "f1":float(recall/count)
+           }
+        return EvaluateOutputModel(token_level_eval=final_stats)
+        
+    
+
