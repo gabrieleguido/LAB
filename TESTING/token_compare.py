@@ -143,6 +143,8 @@ class TokenCompare:
 
         return stats
     
+    @staticmethod
+    
     
 
 
