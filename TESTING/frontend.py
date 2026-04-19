@@ -20,11 +20,19 @@ def web_ui(request:Request, domain:str=None, url:str=None):
     Gestisce la web ui
     """
     
+    # liste domini e url
     domains_list = []
     url_list = []
+
+    # testi
     html_grezzo = ""
     testo_parsato = ""
     testo_gs = ""
+
+    # metriche
+    precision = ""
+    recall = ""
+    f1 = ""
 
     # GET /domains
     try:
@@ -96,6 +104,46 @@ def web_ui(request:Request, domain:str=None, url:str=None):
             print(f"Errore generico parser {e}")
 
 
+    # POST /evaluate --> riempie tabella con metriche
+    if testo_parsato and testo_gs and not "Errore" in testo_gs and not "Nessun" in testo_gs:
+        try:
+            url_eval = f"{backend_url}/evaluate"
+
+            # dizionario con dati per POST
+            payload = {
+                "parsed_text": testo_parsato,
+                "gold_text": testo_gs
+            }
+
+            # converto i dati in JSON (da stringa) e codifico in byte utf-8
+            data_post_ev = json.dumps(payload).encode('utf-8')
+
+            # passo i dati come richiesta POST (urllib capisce da solo che si tratta di post)
+            req = urllib.request.Request(
+                url_eval,
+                data = data_post_ev,
+                headers={'Content-Type': 'application/json'}
+            )
+
+            with urllib.request.urlopen(req) as response:
+                if response.status == 200:
+                    risposta = response.read().decode('utf-8')
+                    risposta_json = json.loads(risposta)
+
+                    stats = risposta_json.get("token_level_eval", {})
+
+                    precision = round(stats.get("precision", 0), 4)
+                    recall = round(stats.get("recall", 0), 4)
+                    f1 = round(stats.get("f1", 0), 4)
+
+
+        except Exception as e:
+            print(f"Errore generico in POST/evaluate: {e}")
+            precision = "ERRORE"
+            recall = "ERRORE"
+            f1 = "ERRORE"
+
+
 
     ui_data = {
         "request": request,
@@ -104,7 +152,10 @@ def web_ui(request:Request, domain:str=None, url:str=None):
         "lista_url": url_list,
         "testo_html": html_grezzo,
         "testo_parsato": testo_parsato,
-        "testo_gs": testo_gs
+        "testo_gs": testo_gs,
+        "precision": precision,
+        "recall": recall,
+        "f1": f1
     }
 
     return templates.TemplateResponse(request=request, name="index.html", context=ui_data)

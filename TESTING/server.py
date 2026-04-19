@@ -182,5 +182,5 @@ def parse_url(url_in: str)->ParserOutputModel:
 def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
     #prendo il dizionario con le statistiche di token evaluation, 
     #vedere TokenCompare per i dettagli
-    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_flag=True)
+    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_stats_flag=True)
     return EvaluateOutputModel(token_level_eval=stats)
