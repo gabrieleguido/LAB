@@ -8,7 +8,8 @@
         <H1>Web UI</H1>
         <FORM action="/" method="get">
             <LABEL>Dominio: </LABEL>
-            <SELECT name="domain" onchange="this.form.submit()" required>
+            <SELECT name="domain" onchange="this.form.url.value=''; this.form.submit()" required>
+                <OPTION value="" selected disabled hidden></OPTION>
                 {% for d in lista_domini %}
                     <OPTION value="{{d}}" {% if d == dominio_scelto %}selected{% endif %}>{{d}}</OPTION>
                 {% endfor %}
@@ -16,7 +17,7 @@
             <br><br>
 
             <LABEL>URL: </LABEL>
-            <INPUT type="text" list="urls" name="url" size="80">
+            <INPUT type="text" list="urls" name="url" size="80" value="{{ request.query_params.get('url', '') }}" autocomplete="off">
             <DATALIST id="urls">
                 {% for u in lista_url %}
                     <OPTION value="{{u}}"></OPTION>
