@@ -85,7 +85,7 @@ class TokenCompare:
     
     @staticmethod
     def get_domain_list(domain_json_file:str="domains.json",enc:str='UTF-8')->List[str]:
-        "restituisce la lista di domini presa dal file json"
+        "Restituisce la lista di domini presa dal file json. Se non è specificato il file cerca domains.json"
         file = open(domain_json_file,"r",encoding=enc)
         domains_dict = json.load(file) 
         domains_list = domains_dict.get("domains")
