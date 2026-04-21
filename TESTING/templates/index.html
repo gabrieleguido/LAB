@@ -29,6 +29,33 @@
         </FORM>
         <br><br>
 
+
+        {% if dominio_scelto %}
+
+            <FORM action="/" method="get">
+                <INPUT type="hidden" name="domain" value="{{dominio_scelto}}">
+                <INPUT type="hidden" name="action" value="global_eval" readonly>
+                <BUTTON type="submit">Calcola metriche globali per <b>{{dominio_scelto}}</b></BUTTON>
+            </FORM>
+            <br><br>
+
+            {% if global_precision is defined %}
+                <H3>Valutazione globale: {{dominio_scelto}}</H3>
+                <TABLE border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+                    <TR>
+                        <TH>Global precision</TH>
+                        <TH>Global recall</TH>
+                        <TH>Global f1</TH>
+                    </TR>
+                    <TR>
+                        <TD readonly>{{global_precision}}</TD>
+                        <TD>{{global_recall}}</TD>
+                        <TD>{{global_f1}}</TD>
+                    </TR>
+                </TABLE>
+            {% endif %}
+        {% endif %}
+
         <H2>Risultati</H2>
         <br>
 
@@ -61,8 +88,8 @@
             </TR>
             <TR>
                 <TD>{% if precision is none or precision=='' %}N/D{% else %}{{precision}}{% endif %}</TD>
-                <TD>{% if precision is none or precision=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
-                <TD>{% if precision is none or precision=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
+                <TD>{% if recall is none or recall=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
+                <TD>{% if f1 is none or f1=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
             </TR>
         </TABLE>
     </BODY>

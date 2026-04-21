@@ -15,7 +15,7 @@ backend_url = "http://127.0.0.1:8003"   # url del backend server.py da lanciare 
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
-def web_ui(request:Request, domain:str=None, url:str=None):
+def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
     """
     Gestisce la web ui
     """
@@ -33,6 +33,10 @@ def web_ui(request:Request, domain:str=None, url:str=None):
     precision = ""
     recall = ""
     f1 = ""
+
+    global_precision = None
+    global_recall = None
+    global_f1 = None
 
     # GET /domains
     try:
@@ -67,6 +71,24 @@ def web_ui(request:Request, domain:str=None, url:str=None):
         except Exception as e:
             print(f"Errore nel server, code: {e.code}")
 
+
+        if action == "global_eval":
+            try:
+                url_globale = f"{backend_url}/full_gs_eval/{url_cod}"
+
+                with urllib.request.urlopen(url_globale) as response:
+                    if response.status == 200:
+                        met_glob_data = response.read().decode('utf-8')
+                        met_glob_json = json.loads(met_glob_data)
+                        stats = met_glob_json.get("token_level_eval", {})
+
+                        global_precision = round(stats.get("precision", 0), 4)
+                        global_recall = round(stats.get("recall", 0), 4)
+                        global_f1 = round(stats.get("f1", 0), 4)
+            except Exception as e:
+                global_precision = "Errore"
+                global_recall = "Errore"
+                global_f1 = "Errore"
 
     
     # GET /gold_standard e GET /parse
@@ -159,5 +181,10 @@ def web_ui(request:Request, domain:str=None, url:str=None):
         "recall": recall,
         "f1": f1
     }
+
+    if action == "global_eval" and global_precision is not None:
+        ui_data["global_precision"] = global_precision
+        ui_data["global_recall"] = global_recall
+        ui_data["global_f1"] = global_f1
 
     return templates.TemplateResponse(request=request, name="index.html", context=ui_data)

@@ -259,7 +259,7 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
             parsed_text = result_dict["parsed"]
          )
 
-@app.get("/full_gs_eval/{url_in}")
+@app.get("/full_gs_eval/{url_in:path}")
 def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
     """"
         Restituisce l'intero gold standard del dominio dell'url in input
