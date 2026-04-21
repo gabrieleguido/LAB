@@ -1,8 +1,8 @@
 FROM python:3.10-slim
 WORKDIR /app
 COPY domains.json .
-COPY gs_data/ ./gs_data/
-COPY backend/ ./backend/
+COPY gs_data/ ./gs_data
+COPY backend/ ./backend
 WORKDIR /app/backend/
 RUN pip install --no-cache-dir -r requirements.txt 
 RUN crawl4ai-setup

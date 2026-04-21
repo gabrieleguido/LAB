@@ -1,15 +1,19 @@
 version: '3.8'
 services:
   backend:
-    build: ./backend 
+    build:
+      context: .  
+      dockerfile: backend/Dockerfile
     ports:
-      -"8003:8003"
+      - "8003:8003"
     container_name: backend 
   
   frontend:
-    build: ./frontend 
+    build:
+      context: ./frontend  
+      dockerfile: Dockerfile  
     ports:
-      -"8004:8004"
-    container_name: backend 
+      - "8004:8004"
+    container_name: frontend 
     depends_on:
     - backend 
