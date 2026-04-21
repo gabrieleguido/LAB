@@ -92,5 +92,37 @@
                 <TD>{% if f1 is none or f1=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
             </TR>
         </TABLE>
+        <br><br><br>
+
+
+        <H2>Valutazione manuale</H2>
+        <P>Incolla qui i testi per valutare URL non appartenenti ai Gold Standard</P>
+        <FORM action="/" method="post">
+            <TABLE>
+                <TR>
+                    <TH>Testo parsato</TH>
+                    <TH>Testo gold standard</TH>
+                </TR>
+                <TR>
+                    <TD><TEXTAREA name="manual_parsed" cols="60" rows="20" style="resize: none;" required>{% if manual_parsed %}{{manual_parsed}}{% endif %}</TEXTAREA></TD>
+                    <TD><TEXTAREA name="manual_gs" cols="60" rows="20" style="resize: none;" required>{% if manual_gs %}{{manual_gs}}{% endif %}</TEXTAREA></TD>
+                </TR>
+            </TABLE>
+            <BUTTON type="submit">Evaluate</BUTTON>
+        </FORM>
+        <br>
+
+        <TABLE border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+            <TR>
+                <TH>Precision</TH>
+                <TH>Recall</TH>
+                <TH>F1</TH>
+            </TR>
+            <TR>
+                <TD>{{ manual_precision | default('N/D') if manual_precision != '' else 'N/D' }}</TD>
+                <TD>{{ manual_recall | default('N/D') if manual_recall != '' else 'N/D' }}</TD>
+                <TD>{{ manual_f1 | default('N/D') if manual_f1 != '' else 'N/D' }}</TD>
+            </TR>
+        </TABLE>
     </BODY>
 </HTML>

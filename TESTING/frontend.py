@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import urllib.request
@@ -188,3 +188,87 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
         ui_data["global_f1"] = global_f1
 
     return templates.TemplateResponse(request=request, name="index.html", context=ui_data)
+
+
+@app.post("/", response_class=HTMLResponse)
+async def manual_eval(request: Request):
+    """
+    Gestisce la valutazione di testo parsato e testo gold standard inseriti manualmente
+    """
+
+    body_bytes = await request.body()
+    body_str = body_bytes.decode('utf-8')
+
+    form = urllib.parse.parse_qs(body_str)
+
+    manual_parsed = urllib.parse.unquote_plus(form.get("manual_parsed", [""])[0])
+    manual_gs = urllib.parse.unquote_plus(form.get("manual_gs", [""])[0])
+
+    domains_list = []
+    # GET /domains per non far svuotare la tendina in alto
+    try:
+        url_domini = f"{backend_url}/domains"
+
+        # esegue la richiesta POST e ne apre la risposta
+        with urllib.request.urlopen(url_domini) as response:
+            if response.status == 200:
+                data = response.read().decode('utf-8')  # legge il body della risposta HTTP del server (testo grezzo) e la legge con codifica utf-8
+                data_json = json.loads(data)    # trasforma la stringa di testo in un dizionario python
+
+                domains_list = data_json.get("domains", []) # restituisce la chiave "domains", se non la trova restituisce lista vuota senza crashare
+    except Exception as e:
+        print(f"Errore di connessione al backend {e}")
+
+    manual_precision = ""
+    manual_recall = ""
+    manual_f1 = ""
+
+    if manual_parsed.strip() and manual_gs.strip():
+        try:
+            url_eval = f"{backend_url}/evaluate"
+            payload = {
+                "parsed_text": manual_parsed,
+                "gold_text": manual_gs
+            }
+            data_post_eval = json.dumps(payload).encode('utf-8')
+
+            req = urllib.request.Request(
+                url_eval,
+                data = data_post_eval,
+                headers={'Content-Type': 'application/json'}
+            )
+
+            with urllib.request.urlopen(req) as response:
+                if response.status == 200:
+                    risposta = response.read().decode('utf-8')
+                    risposta_json = json.loads(risposta)
+                    stats = risposta_json.get("token_level_eval", {})
+
+                    manual_precision = round(stats.get("precision", 0), 4)
+                    manual_recall = round(stats.get("recall", 0), 4)
+                    manual_f1 = round(stats.get("f1", 0), 4)
+        except Exception as e:
+            print(f"Errore valutazione manuale, {e}")
+
+    ui_data = {
+        #variabili precedenti
+        "request": request,
+        "lista_domini": domains_list,
+        "dominio_scelto": None,
+        "lista_url": [],
+        "testo_html": "",
+        "testo_parsato": "",
+        "testo_gs": "",
+        "precision": "",
+        "recall": "",
+        "f1": "",
+
+        #variabili sezione manuale
+        "manual_parsed": manual_parsed,
+        "manual_gs": manual_gs,
+        "manual_precision": manual_precision,
+        "manual_recall": manual_recall,
+        "manual_f1": manual_f1
+    }
+
+    return templates.TemplateResponse(request=request, name="index.html", context=ui_data)   
