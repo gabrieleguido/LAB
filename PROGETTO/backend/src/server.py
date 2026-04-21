@@ -14,7 +14,7 @@ import asyncio
 app = FastAPI()
 
 # Lista dei domini assegnati
-domains_list = TokenCompare.get_domain_list()
+domains_list = TokenCompare.get_domain_list("../../domains.json")
 
 #questo dizionario facilita la ricerca dei nomi dei file dato un dominio
 domain_to_name_dict = {
@@ -123,7 +123,7 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
     
     
     file_name = domain_to_name_dict[domain]
-    file_path = f"gs_data/{file_name}_gs.json"
+    file_path = f"../../gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
         raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
@@ -154,7 +154,7 @@ def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
     file_name = domain.split('.')[1]    
-    file_path = f"gs_data/{file_name}_gs.json"
+    file_path = f"../../gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
         raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
@@ -275,7 +275,7 @@ def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
     precision = float()
     recall = float()
     f1 = float()
-    with open(f"./gs_data/{file_name}_gs.json","r",encoding = 'UTF-8') as gs_json:
+    with open(f"../../gs_data/{file_name}_gs.json","r",encoding = 'UTF-8') as gs_json:
         gs_list = json.load(gs_json)
     for gs_elem_dict in gs_list:
         if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
