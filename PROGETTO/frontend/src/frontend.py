@@ -11,7 +11,7 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
+backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003 (cerca in docker backend alla porta 8003)
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)

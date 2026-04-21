@@ -4,7 +4,7 @@ from cleaner import Cleaner
 
 
 async def extract(url: str):
-    browser_cfg = BrowserConfig(headless=False) 
+    browser_cfg = BrowserConfig(headless=True) 
     crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         word_count_threshold=20,

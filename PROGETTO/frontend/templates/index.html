@@ -60,9 +60,9 @@
                 <TH>F1</TH>
             </TR>
             <TR>
-                <TD>{{precision}}</TD>
-                <TD>{{recall}}</TD>
-                <TD>{{f1}}</TD>
+                <TD>{% if precision is none or precision=='' %}N/D{% else %}{{precision}}{% endif %}</TD>
+                <TD>{% if recall is none or precision=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
+                <TD>{% if f1 is none or precision=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
             </TR>
         </TABLE>
     </BODY>
