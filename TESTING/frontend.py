@@ -203,6 +203,7 @@ async def manual_eval(request: Request):
 
     manual_parsed = urllib.parse.unquote_plus(form.get("manual_parsed", [""])[0])
     manual_gs = urllib.parse.unquote_plus(form.get("manual_gs", [""])[0])
+    azione = form.get("action", [""])[0]
 
     domains_list = []
     # GET /domains per non far svuotare la tendina in alto
@@ -223,32 +224,57 @@ async def manual_eval(request: Request):
     manual_recall = ""
     manual_f1 = ""
 
-    if manual_parsed.strip() and manual_gs.strip():
-        try:
-            url_eval = f"{backend_url}/evaluate"
-            payload = {
-                "parsed_text": manual_parsed,
-                "gold_text": manual_gs
-            }
-            data_post_eval = json.dumps(payload).encode('utf-8')
+    if azione == "run_eval" and manual_parsed and manual_gs:
+        if manual_parsed.strip() and manual_gs.strip():
+            try:
+                url_eval = f"{backend_url}/evaluate"
+                payload = {
+                    "parsed_text": manual_parsed,
+                    "gold_text": manual_gs
+                }
+                data_post_eval = json.dumps(payload).encode('utf-8')
 
-            req = urllib.request.Request(
-                url_eval,
-                data = data_post_eval,
+                req = urllib.request.Request(
+                    url_eval,
+                    data = data_post_eval,
+                    headers={'Content-Type': 'application/json'}
+                )
+
+                with urllib.request.urlopen(req) as response:
+                    if response.status == 200:
+                        risposta = response.read().decode('utf-8')
+                        risposta_json = json.loads(risposta)
+                        stats = risposta_json.get("token_level_eval", {})
+
+                        manual_precision = round(stats.get("precision", 0), 4)
+                        manual_recall = round(stats.get("recall", 0), 4)
+                        manual_f1 = round(stats.get("f1", 0), 4)
+            except Exception as e:
+                print(f"Errore valutazione manuale, {e}")
+
+    elif azione == "run_parser" and manual_parsed:
+        try:
+            url_p = f"{backend_url}/parse"
+
+            url_finto = "https://en.wikipedia.org/"
+
+            payload_p = {
+                "url": url_finto,
+                "html_text": manual_parsed
+            }
+            data_p = json.dumps(payload_p).encode('utf-8')
+            req_p = urllib.request.Request(
+                url_p,
+                data = data_p,
                 headers={'Content-Type': 'application/json'}
             )
 
-            with urllib.request.urlopen(req) as response:
-                if response.status == 200:
-                    risposta = response.read().decode('utf-8')
-                    risposta_json = json.loads(risposta)
-                    stats = risposta_json.get("token_level_eval", {})
-
-                    manual_precision = round(stats.get("precision", 0), 4)
-                    manual_recall = round(stats.get("recall", 0), 4)
-                    manual_f1 = round(stats.get("f1", 0), 4)
+            with urllib.request.urlopen(req_p) as response:
+                if response.status==200:
+                    res = json.loads(response.read().decode('utf-8'))
+                    manual_parsed = res.get("parsed_text", "Errore nel parsing")
         except Exception as e:
-            print(f"Errore valutazione manuale, {e}")
+            manual_parsed = "Errore di connessione al parser"
 
     ui_data = {
         #variabili precedenti
