@@ -105,10 +105,11 @@
                 </TR>
                 <TR>
                     <TD><TEXTAREA name="manual_parsed" cols="60" rows="20" style="resize: none;" required>{% if manual_parsed %}{{manual_parsed}}{% endif %}</TEXTAREA></TD>
-                    <TD><TEXTAREA name="manual_gs" cols="60" rows="20" style="resize: none;" required>{% if manual_gs %}{{manual_gs}}{% endif %}</TEXTAREA></TD>
+                    <TD><TEXTAREA name="manual_gs" cols="60" rows="20" style="resize: none;">{% if manual_gs %}{{manual_gs}}{% endif %}</TEXTAREA></TD>
                 </TR>
             </TABLE>
-            <BUTTON type="submit">Evaluate</BUTTON>
+            <BUTTON type="submit" name="action" value="run_parser"><b>Estrai testo da HTML</b> (POST /parse)</BUTTON>
+            <BUTTON type="submit" name="action" value="run_eval"><b>Valuta</b> (POST /evaluate)</BUTTON>
         </FORM>
         <br>
 
