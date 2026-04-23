@@ -57,9 +57,9 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
     if domain:
         try:
             # per passare un dominio senza bug creo un url finto, lo codifico e ne estraggo il dominio in backend dopo averlo decodificato
-            url_fake = f"https://{domain}/"
-            url_cod = urllib.parse.quote(url_fake, safe='')
-            url_full_gs = f"{backend_url}/full_gold_standard/{url_cod}"
+            # url_fake = f"https://{domain}/"
+            # url_cod = urllib.parse.quote(url_fake, safe='')
+            url_full_gs = f"{backend_url}/full_gold_standard?domain={urllib.parse.quote(domain)}"
 
             with urllib.request.urlopen(url_full_gs) as response:
                 if response.status == 200:
