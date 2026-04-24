@@ -72,5 +72,41 @@ class Cleaner(BaseModel):
         return text.strip()
 
 
+class WeatherCleaner(Cleaner):
+    @staticmethod
+    def clean_weather_data(cleaned_html: str) -> str:
+        """
+        Trasforma l'HTML pulito in testo semplice seguendo la struttura del Gold Standard.
+        """
+        if not cleaned_html:
+            return ""
+
+        # 1. Estrazione testo con BeautifulSoup
+        soup = BeautifulSoup(cleaned_html, 'html.parser')
+        # L'uso del separatore \n è fondamentale per l'F1-score verticale
+        text = soup.get_text(separator='\n')
+
+        # 2. GHIGLIOTTINA: Tronca il testo ai marcatori di fine sezione
+        stops = ["Monitoraggio allergie", "Indice di qualità", "Previsioni per la tua zona", "Mappa meteorologica"]
+        for stop in stops:
+            if stop in text:
+                text = text.split(stop)[0]
+
+        # 3. RIMOZIONE STRINGHE UI: Pulizia parole singole non informative
+        junk = [
+            "Oggi", "Orarie", "10 giorni", "15 giorni", "Weekend", "Mensile", "Radar", 
+            "Video", "Altro", "Altre previsioni", "Dettagli", "Nascondi dettagli",
+            "C/millimetri/km/km/h/millibar", "Ibrido", "Recenti", "Advertisement", "Pubblicità"
+        ]
+        for j in junk:
+            # \b assicura di colpire la parola esatta, non sottostringhe
+            text = re.sub(rf'\b{j}\b', '', text, flags=re.IGNORECASE)
+
+        # 4. PULIZIA CARATTERI: Manteniamo accenti (\u00c0-\u00ff), gradi, percentuali e newline
+        text = re.sub(r'[^a-zA-Z0-9\u00c0-\u00ff°%:\n]', ' ', text)
+        
+        # 5. NORMALIZZAZIONE: Pulizia spazi bianchi e rimozione righe vuote
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        return "\n".join(lines)
     
         
