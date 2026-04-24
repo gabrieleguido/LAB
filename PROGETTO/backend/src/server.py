@@ -258,44 +258,61 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Errore: {str(e)}")
 
-@app.get("/full_gs_eval/{url_in:path}")
-def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
+@app.get("/full_gs_eval")
+def get_full_gs_eval(domain:str)->EvaluateOutputModel:
     """"
         Restituisce l'intero gold standard del dominio dell'url in input
     """
 
-    url = unquote(url_in)
-    domain = Cleaner.get_domain_from_url(url)
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
-    file_name = domain_to_name_dict[domain]
-    count = 0
-    precision = float()
-    recall = float()
-    f1 = float()
-    with open(f"../../gs_data/{file_name}_gs.json","r",encoding = 'UTF-8') as gs_json:
+    file_name = domain_to_name_dict.get(domain)
+    file_path = f"../../gs_data/{file_name}_gs.json"
+
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=500, detail="GS non trovato")
+    
+    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
         gs_list = json.load(gs_json)
+
+
+    count = 0
+    precision = 0.0
+    recall = 0.0
+    f1 = 0.0
+
+
     for gs_elem_dict in gs_list:
-        if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
-            #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-            parser_result = asyncio.run(parser_wikipedia.extract(f"raw:{gs_elem_dict['html_text']}"))
-            parsed_text = parser_result["parsed"]
-            gs_text = gs_elem_dict["gold_text"]
-            stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text,gs_text)
-            precision += stats["precision"]
-            recall += stats["recall"]
-            f1 += stats["f1"]
-            count += 1
-        else:
-            raise HTTPException(status_code=404, detail="Parser non implementato")
+        html = gs_elem_dict["html_text"]
+        gs_text = gs_elem_dict["gold_text"]
+
+        #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
+        parser_result = asyncio.run(parser_wikipedia.extract(f"raw:{gs_elem_dict['html_text']}"))
+        title = Cleaner.get_title_from_html(html)
+        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
         
+        stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
+
+        precision += stats.get("precision", 0.0)
+        recall += stats.get("recall", 0.0)
+        f1 += stats.get("f1", 0.0)
+        count += 1
+        
+    if count==0:
+        final_stats = {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+        }
+    else:
         final_stats = {
             "precision":float(precision/count),
             "recall":float(recall/count),
-            "f1":float(recall/count)
-           }
-        return EvaluateOutputModel(token_level_eval=final_stats)
+            "f1":float(f1/count)
+        }
+        
+    return EvaluateOutputModel(token_level_eval=final_stats)
         
     
 
