@@ -6,6 +6,7 @@ from token_compare import TokenCompare
 import os
 from typing import List,Dict 
 import parser_wikipedia as parser_wikipedia
+import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
 
@@ -168,7 +169,8 @@ def get_full_gold_standard(domain:str)->FullGoldStandardModel:
 CUSTOM_PARSERS = {
     "www.nbcnews.com": parser_wikipedia,
     "it.uefa.com": parser_wikipedia,
-    "en.wikipedia.it":parser_wikipedia
+    "en.wikipedia.it":parser_wikipedia,
+    "weather.com": parser_weather
 }
 @app.get("/parse")
 def parse_url(url: str)->ParseOutputModel:
@@ -188,9 +190,9 @@ def parse_url(url: str)->ParseOutputModel:
     try:
         #chiamata alla funzione di parsing specifica per il dominio
 
-        #parser_module = CUSTOM_PARSERS[domain]
+        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
 
-        result_dict = asyncio.run(parser_wikipedia.extract(url_dec))
+        result_dict = asyncio.run(parser_module.extract(url_dec))
 
         # Estrazione titolo della pagina
         title = Cleaner.get_title_from_html(result_dict["html"])
@@ -243,7 +245,8 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
     url_pars = f'raw:{html}'
 
     try:
-        result_dict = asyncio.run(parser_wikipedia.extract(url_pars))
+        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
+        result_dict = asyncio.run(parser_module.extract(url_pars))
         title = Cleaner.get_title_from_html(html)
 
         markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
@@ -267,6 +270,7 @@ def get_full_gs_eval(domain:str)->EvaluateOutputModel:
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
+    parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
     file_name = domain_to_name_dict.get(domain)
     file_path = f"../../gs_data/{file_name}_gs.json"
 
@@ -288,7 +292,7 @@ def get_full_gs_eval(domain:str)->EvaluateOutputModel:
         gs_text = gs_elem_dict["gold_text"]
 
         #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-        parser_result = asyncio.run(parser_wikipedia.extract(f"raw:{gs_elem_dict['html_text']}"))
+        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
         title = Cleaner.get_title_from_html(html)
         parsed_text = f"# {title}\n\n{parser_result['parsed']}"
         
