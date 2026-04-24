@@ -6,6 +6,8 @@ from token_compare import TokenCompare
 import os
 from typing import List,Dict 
 import parser_wikipedia as parser_wikipedia
+import parser_nbcnews as parser_nbcnews
+import parser_uefa as parser_uefa
 import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
@@ -167,8 +169,8 @@ def get_full_gold_standard(domain:str)->FullGoldStandardModel:
         
 # Mapping dominio -> funzione parser
 CUSTOM_PARSERS = {
-    "www.nbcnews.com": parser_wikipedia,
-    "it.uefa.com": parser_wikipedia,
+    "www.nbcnews.com": parser_nbcnews,
+    "it.uefa.com": parser_uefa,
     "en.wikipedia.it":parser_wikipedia,
     "weather.com": parser_weather
 }
