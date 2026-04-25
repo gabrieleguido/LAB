@@ -135,19 +135,8 @@ def get_gold_standard(url: str)->GoldStandardModel:
         try:
             gs_list = json.load(f)
             for gs in gs_list:
-<<<<<<< HEAD
-                if gs.get("url") in url:
-                    return GoldStandardModel(
-                        url=gs.get("url"),
-                        domain=gs.get("domain"),
-                        title = gs.get("title"),
-                        html_text=gs.get("html_text"),
-                        gold_text=gs.get("gold_text")
-                        )
-=======
                 if url_pulito.strip() == gs.get("url", "").strip():
                     return GoldStandardModel(**gs)
->>>>>>> 022602799c6b3e51b43cca3537bb15455ae15ef0
             raise HTTPException(status_code=404, detail="Url non trovato")
             
         except json.JSONDecodeError:
@@ -156,19 +145,6 @@ def get_gold_standard(url: str)->GoldStandardModel:
 
 
 @app.get("/full_gold_standard")
-<<<<<<< HEAD
-def get_full_gold_standard(url:str)->FullGoldStandardModel:
-    """
-    Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
-    """
-    # url = unquote(url)
-    domain = Cleaner.get_domain_from_url(url)
-
-    if domain not in domains_list:
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-
-    file_name = domain_to_name_dict.get(domain) 
-=======
 def get_full_gold_standard(domain:str)->FullGoldStandardModel:
     """
     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
@@ -177,7 +153,6 @@ def get_full_gold_standard(domain:str)->FullGoldStandardModel:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
     file_name = domain_to_name_dict.get(domain)
->>>>>>> 022602799c6b3e51b43cca3537bb15455ae15ef0
     file_path = f"../../gs_data/{file_name}_gs.json"
 
     # if not os.path.exists(file_path):
