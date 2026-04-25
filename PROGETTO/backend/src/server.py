@@ -125,16 +125,21 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
     file_name = domain_to_name_dict[domain]
     file_path = f"../../gs_data/{file_name}_gs.json"
 
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
+    # if not os.path.exists(file_path):
+    #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
 
     with open(file_path, "r", encoding="utf-8") as f:
         try:
             gs_list = json.load(f)
-
             for gs in gs_list:
                 if gs.get("url") in url:
-                    return GoldStandardModel(**gs)
+                    return GoldStandardModel(
+                        url=gs.get("url"),
+                        domain=gs.get("domain"),
+                        title = gs.get("title"),
+                        html_text=gs.get("html_text"),
+                        gold_text=gs.get("gold_text")
+                        )
             raise HTTPException(status_code=404, detail="Url non trovato")
             
         except json.JSONDecodeError:
@@ -142,30 +147,26 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
         
 
 
-@app.get("/full_gold_standard/{url_in:path}")
-def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
+@app.get("/full_gold_standard")
+def get_full_gold_standard(url:str)->FullGoldStandardModel:
     """
     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
     """
-    url = unquote(url_in)
+    # url = unquote(url)
     domain = Cleaner.get_domain_from_url(url)
 
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
-    file_name = domain.split('.')[1]    
+    file_name = domain_to_name_dict.get(domain) 
     file_path = f"../../gs_data/{file_name}_gs.json"
 
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
+    # if not os.path.exists(file_path):
+    #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
 
     with open(file_path, "r", encoding="utf-8") as f:
-        try:
-            gs_list = json.load(f)
-            return FullGoldStandardModel(gold_standard=gs_list)
-
-        except json.JSONDecodeError:
-            raise HTTPException(status_code=500, detail="File json corrrotto")
+        gs_list = json.load(f)
+        return FullGoldStandardModel(gold_standard=gs_list)
         
 # Mapping dominio -> funzione parser
 CUSTOM_PARSERS = {
