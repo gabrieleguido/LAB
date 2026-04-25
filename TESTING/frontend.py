@@ -57,9 +57,9 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
     if domain:
         try:
             # per passare un dominio senza bug creo un url finto, lo codifico e ne estraggo il dominio in backend dopo averlo decodificato
-            url_fake = f"https://{domain}/"
-            url_cod = urllib.parse.quote(url_fake, safe='')
-            url_full_gs = f"{backend_url}/full_gold_standard/{url_cod}"
+            # url_fake = f"https://{domain}/"
+            domains_cod = urllib.parse.quote(domain)
+            url_full_gs = f"{backend_url}/full_gold_standard?domain={domains_cod}"
 
             with urllib.request.urlopen(url_full_gs) as response:
                 if response.status == 200:
@@ -74,7 +74,7 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
 
         if action == "global_eval":
             try:
-                url_globale = f"{backend_url}/full_gs_eval/{url_cod}"
+                url_globale = f"{backend_url}/full_gs_eval?domain={domains_cod}"
 
                 with urllib.request.urlopen(url_globale) as response:
                     if response.status == 200:
@@ -96,7 +96,8 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
         # blocco per GET /gold_standard e riempe textarea "Testo GS"
         try:
             url_cod = urllib.parse.quote(url, safe='')  # codifica l'url
-            url_gs = f"{backend_url}/gold_standard/{url_cod}"
+            url_gs = f"{backend_url}/gold_standard?url={url_cod}"
+
             with urllib.request.urlopen(url_gs) as response:
                 if response.status == 200:
                     data = response.read().decode('utf-8')
@@ -112,7 +113,7 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
 
         # blocco per GET /parse e riempe textarea "Testo pulito" e "HTML grezzo"
         try:
-            url_parse = f"{backend_url}/parse/{url_cod}"    # riutilizzo lo stesso url codificato di get/gold_standard
+            url_parse = f"{backend_url}/parse?url={url_cod}"    # riutilizzo lo stesso url codificato di get/gold_standard
             
             with urllib.request.urlopen(url_parse) as response:
                 if response.status == 200:

@@ -6,6 +6,7 @@ from token_compare import TokenCompare
 import os
 from typing import List,Dict 
 import parser_wikipedia as parser_wikipedia
+import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
 
@@ -14,7 +15,7 @@ import asyncio
 app = FastAPI()
 
 # Lista dei domini assegnati
-domains_list = TokenCompare.get_domain_list()
+domains_list = TokenCompare.get_domain_list("domains.json")
 
 #questo dizionario facilita la ricerca dei nomi dei file dato un dominio
 domain_to_name_dict = {
@@ -110,19 +111,19 @@ def get_domains()->DomainsListModel:
 
 
 
-@app.get("/gold_standard/{url_in:path}")
-def get_gold_standard(url_in: str)->GoldStandardModel:
+@app.get("/gold_standard")
+def get_gold_standard(url: str)->GoldStandardModel:
     """
     Restituisce oggetto JSON contenente il gold standard del dominio in input
     """
-    url = unquote(url_in)
-    domain = Cleaner.get_domain_from_url(url)
+    url_pulito = unquote(url).strip()
+    domain = Cleaner.get_domain_from_url(url_pulito)
     
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
     
-    file_name = domain_to_name_dict[domain]
+    file_name = domain_to_name_dict.get(domain)
     file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
@@ -133,27 +134,24 @@ def get_gold_standard(url_in: str)->GoldStandardModel:
             gs_list = json.load(f)
 
             for gs in gs_list:
-                if gs.get("url") in url:
+                if url_pulito.strip() == gs.get("url", "").strip():
                     return GoldStandardModel(**gs)
             raise HTTPException(status_code=404, detail="Url non trovato")
             
         except json.JSONDecodeError:
-            raise HTTPException(status_code=500, detail="File json corrrotto")
+            raise HTTPException(status_code=500, detail="File json corrotto")
         
 
 
-@app.get("/full_gold_standard/{url_in:path}")
-def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
+@app.get("/full_gold_standard")
+def get_full_gold_standard(domain:str)->FullGoldStandardModel:
     """
     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
     """
-    url = unquote(url_in)
-    domain = Cleaner.get_domain_from_url(url)
-
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
-    file_name = domain.split('.')[1]    
+    file_name = domain_to_name_dict.get(domain)
     file_path = f"gs_data/{file_name}_gs.json"
 
     if not os.path.exists(file_path):
@@ -171,16 +169,17 @@ def get_full_gold_standard(url_in:str)->FullGoldStandardModel:
 CUSTOM_PARSERS = {
     "www.nbcnews.com": parser_wikipedia,
     "it.uefa.com": parser_wikipedia,
-    "en.wikipedia.it":parser_wikipedia
+    "en.wikipedia.it":parser_wikipedia,
+    "weather.com": parser_weather
 }
-@app.get("/parse/{url_in:path}")
-def parse_url(url_in: str)->ParseOutputModel:
+@app.get("/parse")
+def parse_url(url: str)->ParseOutputModel:
     """
     Restituisce oggetto JSON contenente il risultato del parsing del testo di una pagina web
     """
-    url = unquote(url_in)
+    url_dec = unquote(url).strip()
     try:
-        domain = Cleaner.get_domain_from_url(url)
+        domain = Cleaner.get_domain_from_url(url_dec)
     except Exception:
         raise HTTPException(status_code=400, detail="Formato url non valido")
     
@@ -191,25 +190,23 @@ def parse_url(url_in: str)->ParseOutputModel:
     try:
         #chiamata alla funzione di parsing specifica per il dominio
 
-        #parser_module = CUSTOM_PARSERS[domain]
-        
-        domain=Cleaner.get_domain_from_url(url)
+        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
 
-        if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
-            result_dict = asyncio.run(parser_wikipedia.extract(url))
-        else:
-            raise HTTPException(status_code=404, detail="Dominio non supportato")
+        result_dict = asyncio.run(parser_module.extract(url_dec))
+
         # Estrazione titolo della pagina
         title = Cleaner.get_title_from_html(result_dict["html"])
 
+        #testo markdown
+        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
         
         return ParseOutputModel(
-            url=url,
+            url=url_dec,
             domain = domain,
             title = title,
             html_text = result_dict["html"],
-            parsed_text = result_dict["parsed"]
-            )
+            parsed_text = markdown_txt
+        )
     except Exception as e:
         # Errore nel parser 
         raise HTTPException(status_code=500, detail=f"Errore interno del parser: {str(e)}")
@@ -236,67 +233,90 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
         testo risultato del parser
     """
 
-    url = unquote(input.url)
-    domain = Cleaner.get_domain_from_url(url)
+    url_orig = unquote(input.url).strip()
+    domain = Cleaner.get_domain_from_url(url_orig)
+    
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
+    
     html = input.html_text 
 
     #impongo al crawler di parsare l'html che gli passo in url
-    url = f'raw:{html}'
+    url_pars = f'raw:{html}'
 
-    if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
-        result_dict = asyncio.run(parser_wikipedia.extract(url))
-    else:
-        raise HTTPException(status_code=404, detail="Parser non implementato")
+    try:
+        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
+        result_dict = asyncio.run(parser_module.extract(url_pars))
+        title = Cleaner.get_title_from_html(html)
 
+        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
 
-    return ParseOutputModel(
-            url=unquote(input.url),
-            domain = domain,
-            title = Cleaner.get_title_from_html(html),
-            html_text = result_dict["html"],
-            parsed_text = result_dict["parsed"]
-         )
+        return ParseOutputModel(
+                url=unquote(input.url),
+                domain = domain,
+                title = Cleaner.get_title_from_html(html),
+                html_text = result_dict["html"],
+                parsed_text = markdown_txt
+            )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Errore: {str(e)}")
 
-@app.get("/full_gs_eval/{url_in:path}")
-def get_full_gs_eval(url_in:str)->EvaluateOutputModel:
+@app.get("/full_gs_eval")
+def get_full_gs_eval(domain:str)->EvaluateOutputModel:
     """"
         Restituisce l'intero gold standard del dominio dell'url in input
     """
-
-    url = unquote(url_in)
-    domain = Cleaner.get_domain_from_url(url)
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
 
-    file_name = domain_to_name_dict[domain]
-    count = 0
-    precision = float()
-    recall = float()
-    f1 = float()
-    with open(f"./gs_data/{file_name}_gs.json","r",encoding = 'UTF-8') as gs_json:
+    parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
+
+    file_name = domain_to_name_dict.get(domain)
+    file_path = f"gs_data/{file_name}_gs.json"
+
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=500, detail="GS non trovato")
+    
+    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
         gs_list = json.load(gs_json)
+
+
+    count = 0
+    precision = 0.0
+    recall = 0.0
+    f1 = 0.0
+
+
     for gs_elem_dict in gs_list:
-        if(domain in ["en.wikipedia.org","www.nbcnews.com","it.uefa.com"]):
-            #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-            parser_result = asyncio.run(parser_wikipedia.extract(f"raw:{gs_elem_dict['html_text']}"))
-            parsed_text = parser_result["parsed"]
-            gs_text = gs_elem_dict["gold_text"]
-            stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text,gs_text)
-            precision += stats["precision"]
-            recall += stats["recall"]
-            f1 += stats["f1"]
-            count += 1
-        else:
-            raise HTTPException(status_code=404, detail="Parser non implementato")
+        html = gs_elem_dict["html_text"]
+        gs_text = gs_elem_dict["gold_text"]
+
+        #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
+        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
+        title = Cleaner.get_title_from_html(html)
+        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
         
+        stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
+
+        precision += stats.get("precision", 0.0)
+        recall += stats.get("recall", 0.0)
+        f1 += stats.get("f1", 0.0)
+        count += 1
+        
+    if count==0:
+        final_stats = {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+        }
+    else:
         final_stats = {
             "precision":float(precision/count),
             "recall":float(recall/count),
-            "f1":float(recall/count)
-           }
-        return EvaluateOutputModel(token_level_eval=final_stats)
+            "f1":float(f1/count)
+        }
+        
+    return EvaluateOutputModel(token_level_eval=final_stats)
         
     
 

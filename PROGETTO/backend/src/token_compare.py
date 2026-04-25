@@ -97,12 +97,41 @@ class TokenCompare:
             markdown_tokens_set(set):risultato di Markdown_tokenizer
             gs_tokens_set(set):risultato di GS_tokenizer
         """
-        stats = {} 
-        stats["precision"] = float(len(gs_tokens_set&markdown_tokens_set)/len(markdown_tokens_set))
-        stats["recall"] = float(len(gs_tokens_set&markdown_tokens_set)/len(gs_tokens_set))
-        stats["f1"] = float(2*stats["precision"]*stats["recall"]/(stats["precision"]+stats["recall"]))
-        return stats
+        # stats = {} 
+        # stats["precision"] = float(len(gs_tokens_set&markdown_tokens_set)/len(markdown_tokens_set))
+        # stats["recall"] = float(len(gs_tokens_set&markdown_tokens_set)/len(gs_tokens_set))
+        # stats["f1"] = float(2*stats["precision"]*stats["recall"]/(stats["precision"]+stats["recall"]))
+        # return stats
     
+        stats = {}
+
+        len_md = len(markdown_tokens_set)
+        len_gs = len(gs_tokens_set)
+        intersezione = len(markdown_tokens_set & gs_tokens_set)
+
+        # calcolo precisone
+        if len_md > 0:
+            stats["precision"] = float(intersezione/len_md)
+        else:
+            stats["precision"] = 0.0
+
+
+        # calcolo recall
+        if len_gs > 0:
+            stats["recall"] = float(intersezione/len_gs)
+        else:
+            stats["recall"] = 0.0
+
+
+        # calcolo f1
+        somma_prec_rec = stats["precision"] + stats["recall"]
+        if somma_prec_rec > 0:
+            stats["f1"] = float(2*stats["precision"]*stats["recall"]/somma_prec_rec)
+        else:
+            stats["f1"] = 0.0
+
+        return stats
+
     @staticmethod
     def build_eval_from_parsed_gs_string(md_string:str,gs_string:str,tokens_file:str="",print_stats_flag:bool=False,print_diff:bool=False)->Dict[str,float]:
         """
