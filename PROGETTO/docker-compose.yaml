@@ -17,3 +17,4 @@ services:
     container_name: frontend 
     depends_on:
     - backend 
+ 
