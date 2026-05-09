@@ -4,7 +4,7 @@ import json
 from urllib.parse import urlparse,unquote
 from token_compare import TokenCompare
 import os
-from typing import List,Dict 
+from typing import List,Dict,Tuple 
 import parser_wikipedia as parser_wikipedia
 import parser_nbcnews as parser_nbcnews
 import parser_uefa as parser_uefa
@@ -12,6 +12,7 @@ import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
 import mariadb
+
 
 #connessione al db 
 conn = mariadb.connect(
@@ -23,10 +24,11 @@ conn = mariadb.connect(
 )
 
 #funzione per le query
-def execute_query(conn:mariadb.Connection,query:str):
-    """funzione per eseguire le query che ritorna una lista di tuple"""
+def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None):
+    """funzione per eseguire le query che ritorna una lista di tuple.
+    Ha un parametro opzionale con la tupla della query parametrizzata"""
     with conn.cursor() as cursor:
-        cursor.execute(query)
+        cursor.execute(query,param)
         result = cursor.fetchall()
 
     conn.commit()
@@ -347,19 +349,21 @@ def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
 
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
-    file_name = domain_to_name_dict.get(domain)
-    file_path = f"../../gs_data/{file_name}_gs.json"
 
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=500, detail="GS non trovato")
-    
-    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
-        gs_list = json.load(gs_json)
+    query = "SELECT g.url " \
+    " FROM web_resources AS w JOIN gold_standard AS g ON w.url = g.url " \
+    "WHERE domain = ?"
+
+    result = execute_query(
+            conn,
+            query,
+            (domain,)
+        )
 
     url_list = []
 
-    for entry in gs_list:
-        url_list.append(entry.get("url"))
+    for elem in result:
+        url_list.append(elem[0])
 
     return GoldStandardUrlsOutputModel(gold_standard_urls=url_list)
 
