@@ -2,5 +2,5 @@
 mariadb_data/*
 
 # Ma non ignorare questi file specifici
-!mariadb_data/script.sql
-!mariadb_data/config.cnf
+!mariadb_data/init.sql
+!mariadb_data/populate_db.py
