@@ -11,6 +11,27 @@ import parser_uefa as parser_uefa
 import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
+import mariadb
+
+#connessione al db 
+conn = mariadb.connect(
+    host = "127.0.0.1",
+    port = 3306,
+    user = "backend_user",
+    password = "backend_password",
+    database = "lab_db"
+)
+
+#funzione per le query
+def execute_query(conn:mariadb.Connection,query:str):
+    """funzione per eseguire le query che ritorna una lista di tuple"""
+    with conn.cursor() as cursor:
+        cursor.execute(query)
+        result = cursor.fetchall()
+
+    conn.commit()
+    return result
+
 
 ##   esegui con comando --->  uvicorn server:app --reload --port 8003    ##
 
@@ -99,6 +120,11 @@ class PostParseInputModel(BaseModel):
     """
     url:str
     html_text:str
+
+#modello di risposta della GET /gold_standard_urls
+class GoldStandardUrlsOutputModel(BaseModel):
+    """gold_standard_urls:List[str]"""
+    gold_standard_urls:List[str]
 
 
 
@@ -315,5 +341,28 @@ def get_full_gs_eval(domain:str)->EvaluateOutputModel:
         
     return EvaluateOutputModel(token_level_eval=final_stats)
         
+@app.get("/gold_standard_urls")
+def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
+    "Ritorna la lista degli url di un dominio in input"
+
+    if(domain not in domains_list):
+        raise HTTPException(status_code=404, detail="Dominio non supportato")
+    file_name = domain_to_name_dict.get(domain)
+    file_path = f"../../gs_data/{file_name}_gs.json"
+
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=500, detail="GS non trovato")
     
+    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
+        gs_list = json.load(gs_json)
+
+    url_list = []
+
+    for entry in gs_list:
+        url_list.append(entry.get("url"))
+
+    return GoldStandardUrlsOutputModel(gold_standard_urls=url_list)
+
+    
+
 

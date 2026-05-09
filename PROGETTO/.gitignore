@@ -1,0 +1,6 @@
+# Ignora tutto il contenuto della cartella
+mariadb_data/*
+
+# Ma non ignorare questi file specifici
+!mariadb_data/script.sql
+!mariadb_data/config.cnf
