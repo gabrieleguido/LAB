@@ -29,10 +29,15 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None):
     Ha un parametro opzionale con la tupla della query parametrizzata"""
     with conn.cursor() as cursor:
         cursor.execute(query,param)
+        conn.commit()
+        #Se la query non seleziona, ritorno una lista vuota
+        if cursor.description is None:
+            return []
         result = cursor.fetchall()
+        # Se è una SELECT, prendiamo i dati e chiudiamo
+        return result
 
-    conn.commit()
-    return result
+        
 
 
 ##   esegui con comando --->  uvicorn server:app --reload --port 8003    ##
@@ -128,9 +133,25 @@ class GoldStandardUrlsOutputModel(BaseModel):
     """gold_standard_urls:List[str]"""
     gold_standard_urls:List[str]
 
-
-
-
+#modelli di input di POST/add_web_resource e /add_gold_standard
+class AddWebResourceInputModel(BaseModel):
+    """ 
+        url:str\n
+        html_text:str\n
+    """ 
+    url:str
+    html_text:str
+class AddGoldStandardInputModel(BaseModel):
+    """ 
+        url:str\n
+        gold_text:str\n
+    """ 
+    url:str
+    gold_text:str
+#modello di risposta delle POST di inserimento dati (qui sopra)
+class AddOutputModel(BaseModel):
+    """status:str"""
+    status:str
 
 @app.get("/domains")
 def get_domains()->DomainsListModel:
@@ -367,6 +388,26 @@ def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
 
     return GoldStandardUrlsOutputModel(gold_standard_urls=url_list)
 
-    
+@app.post("/add_web_resource")
+def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
+    """Aggiunge in web resources i dati del body """   
+    url = input.url
+    html = input.html_text
+    try:
+        #ESTRAZIONE DOMINIO:
+        domain = Cleaner.get_domain_from_url(url)
+
+        #ESTRAZIONE TITOLO:
+        #se non trova il titolo, il titolo sarà "Titolo sconosciuto"
+        title = Cleaner.get_title_from_html(html) 
+
+        execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"{e}")
+
+
+    return AddOutputModel(status='ok')
+
 
 
