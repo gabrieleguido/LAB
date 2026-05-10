@@ -24,8 +24,8 @@ conn = mariadb.connect(
 )
 
 #funzione per le query
-def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None):
-    """funzione per eseguire le query che ritorna una lista di tuple.
+def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
+    """funzione per eseguire le query che ritorna una lista di tuple (di stringhe).
     Ha un parametro opzionale con la tupla della query parametrizzata"""
     with conn.cursor() as cursor:
         cursor.execute(query,param)
@@ -34,7 +34,6 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None):
         if cursor.description is None:
             return []
         result = cursor.fetchall()
-        # Se è una SELECT, prendiamo i dati e chiudiamo
         return result
 
         
@@ -390,7 +389,7 @@ def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
 
 @app.post("/add_web_resource")
 def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
-    """Aggiunge in web resources i dati del body """   
+    """Aggiunge in web_resources i dati del body """   
     url = input.url
     html = input.html_text
     try:
@@ -405,6 +404,28 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"{e}")
+
+
+    return AddOutputModel(status='ok')
+
+@app.post("/add_gold_standard")
+def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
+    """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
+    url = input.url
+    gold_text = input.gold_text
+    try:
+        execute_query(
+            conn,
+            "INSERT INTO gold_standard (url, gold_text) VALUES (?,?)",
+            (url,gold_text)
+        )
+    except mariadb.IntegrityError as e:
+        if e.errno == 1452:
+            raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
+        else:
+            raise HTTPException(status_code=400, detail="Errore query")
+    except Exception:
+            raise HTTPException(status_code=400, detail = f"{e}")
 
 
     return AddOutputModel(status='ok')
