@@ -152,6 +152,38 @@ class AddOutputModel(BaseModel):
     """status:str"""
     status:str
 
+#modello per il web_resources
+class WebResourcesModel(BaseModel):
+    """
+    url:str\n
+    domain:str\n
+    title:str\n
+    html_text:str\n 
+    created_at:str \n
+    """
+    url:str
+    domain:str
+    title:str
+    html_text:str 
+    created_at:str 
+
+#modello per il gold_standard
+class GoldStandardModel(BaseModel):
+    """url:str\n
+    gold_text:str\n
+    created_at:str"""
+    url:str
+    gold_text:str
+    created_at:str
+
+
+#modello di risposta della GET/db_schema
+class DBSchemaModel(BaseModel):
+    """web_resources:WebResourcesModel\n
+    gold_standard:GoldStandardModel"""
+    web_resources:WebResourcesModel
+    gold_standard:GoldStandardModel
+
 @app.get("/domains")
 def get_domains()->DomainsListModel:
     """
@@ -430,5 +462,24 @@ def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
 
     return AddOutputModel(status='ok')
 
+@app.get("/db_schema")
+def database_schema()->DBSchemaModel:
+    """Ritorna lo schema del db"""
+    web_schema = WebResourcesModel(
+        url="varchar(768),PK",
+        domain="varchar(255)",
+        title = "varchar(500)",
+        html_text = "longtext",
+        created_at="datetime"
+    )
+    gold_schema = GoldStandardModel(
+        url = "varchar(768),PK,FK(web_resources.url)",
+        gold_text = "longtext",
+        created_at="datetime"
+    )
+    return DBSchemaModel(
+        web_resources=web_schema,
+        gold_standard=gold_schema
+        )
 
 
