@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Standard Builder</title>
+    <link rel="stylesheet" href="gs_style.css">
+</head>
+<body>
+    <div class="gold-standard-builder">
+        
+        <!-- Pannello di Controllo -->
+        <div class="control-panel">
+            <div class="input-group">
+                <label for="dominio-supportato">Dominio Supportato:</label>
+                <select id="dominio-supportato" name="dominio-supportato">
+                    <option value="wikipedia">en.wikipedia.org</option>
+                    <option value="uefa">uefa.com</option>
+                    <option value="weather">weather.com</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="url-input">URL:</label>
+                <input type="text" id="url-input" name="url-input" placeholder="Inserisci l'URL qui">
+            </div>
+            <div class="input-group">
+                <button type="submit" class="btn-primary">CARICA HTML</button>
+            </div>
+        </div>
+
+        <!-- Area di Lavoro (Textareas) -->
+        <div class="workspace">
+            <div class="editor-section">
+                <label for="html-scaricato">HTML Scaricato:</label>
+                <textarea id="html-scaricato" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..."></textarea>
+                <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA HTML</button>
+            </div>
+            
+            <div class="editor-section">
+                <label for="gold-textarea">Gold Standard:</label>
+                <textarea id="gold-textarea" class="code-area gold-code" rows="15" placeholder="Il Gold Standard apparirà qui..."></textarea>
+                <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA GOLD STANDARD</button>
+            </div>
+        </div>
+
+        <!-- Tabella URL -->
+        <div class="url-presenti-nel-GS">
+            <table>
+                <thead>
+                    <tr>
+                        <th>URL Presenti nel GS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nessun URL estratto al momento.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

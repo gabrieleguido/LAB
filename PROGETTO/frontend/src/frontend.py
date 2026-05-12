@@ -188,7 +188,7 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
         ui_data["global_recall"] = global_recall
         ui_data["global_f1"] = global_f1
 
-    return templates.TemplateResponse(request=request, name="index.html", context=ui_data)
+    return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
 @app.post("/", response_class=HTMLResponse)
@@ -298,4 +298,4 @@ async def manual_eval(request: Request):
         "manual_f1": manual_f1
     }
 
-    return templates.TemplateResponse(request=request, name="index.html", context=ui_data)   
+    return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)   

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <TITLE>Home page</TITLE>
+        <LINK rel="stylesheet" href="home_style.css">
+    </HEAD>
+    
+    <BODY>
+        <H1>Home page</H1>
+        <TABLE>
+            <TR>
+                <TD>
+                    <DIV><b>Studente 1</b>: 2144286</DIV>
+                </TD>
+                <TD>
+                    <DIV><b>Studente 2</b>: 2139688</DIV>
+                </TD>
+                <TD>
+                    <DIV><b>Studente 3</b>: 2147973</DIV>
+                </TD>
+            </TR>
+        </TABLE>
+
+        <HR> <BR>
+        <TABLE class="btn-box">
+            <TR class="btn-row">
+                <TD class="btn-item">
+                    <DIV>
+                        <A class="btn-link" href="./parser_evaluation.html">
+                            Parser & evaluation
+                        </A>
+                    </DIV>
+                </TD>
+                <TD class="btn-item">
+                    <DIV>
+                        <A class="btn-link" href="./gold_standard_builder.html">
+                            Gold standard
+                        </A>
+                    </DIV>
+                </TD>
+                <TD class="btn-item">
+                    <DIV>
+                        <A class="btn-link" href="./stats.html">
+                            Stats
+                        </A>
+                    </DIV>
+                </TD>
+            </TR>
+        </TABLE>
+        
+        <H2>System status</H2>
+        <DIV class="status-box">
+            <DIV>
+                <SPAN class="status active"></SPAN>
+                Backend
+            </DIV>
+            <DIV>
+                <SPAN class="status active"></SPAN>
+                MariaDB
+            </DIV>
+            <DIV>
+                <SPAN class="status active"></SPAN>
+                Ollama
+            </DIV>
+        </DIV>
+
+        <br>
+
+        <TABLE class="domains-table" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+            <TR class="domains-row">
+                <TH class="domains-head">Domini supportati</TH>
+            </TR>
+           
+            <!--da ciclare con jinja-->
+            <TR class="domains-row">
+                <TD class="domains-item">en.wikipedia.org</TD>
+            </TR>
+            <!---->
+            
+            <TR class="domains-row">
+                <TD class="domains-item">www.nbcnews.com</TD>
+            </TR class="domains-row">
+            <TR class="domains-row">
+                <TD class="domains-item">it.uefa.com</TD>
+            </TR>
+            <TR class="domains-row">
+                <TD class="domains-item">weather.com</TD>
+            </TR>
+        </TABLE>
+
+    </BODY>
+</HTML>
