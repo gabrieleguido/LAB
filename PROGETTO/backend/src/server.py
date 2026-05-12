@@ -479,6 +479,32 @@ def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
 
     return AddOutputModel(status='ok')
 
+@app.delete("/web_resource")
+def add_web_rsrc_in_db(input:str)->AddOutputModel:
+    """Cancella in web_resources le tuple con url in input """   
+    url = input
+    try:
+        execute_query(conn,"DELETE FROM web_resources WHERE url = ?",(url,))
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"{e}")
+
+    return AddOutputModel(status='ok')
+
+@app.delete("/gold_standard")
+def add_web_rsrc_in_db(input:str)->AddOutputModel:
+    """Cancella da gold_standard la entry con url in input"""   
+    url = input
+    try:
+        execute_query(
+            conn,
+            "DELETE FROM gold_standard WHERE url = ?",
+            (url,)
+        )
+    except Exception as e:
+            raise HTTPException(status_code=400, detail = f"{e}")
+    return AddOutputModel(status='ok')
+
 @app.get("/db_schema")
 def database_schema()->DBSchemaModel:
     """Ritorna lo schema del db"""
