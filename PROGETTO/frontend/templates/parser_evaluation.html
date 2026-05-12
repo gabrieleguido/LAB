@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <TITLE>Parser & Evaluation Page</TITLE>
+        <STYLE>
+            /* =========================================
+            GLOBAL STYLES & TYPOGRAPHY
+            ========================================= */
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                background-color: #0f172a; /* Sfondo scuro elegante (Slate 900) */
+                color: #e2e8f0;
+                max-width: 1400px; /* Più largo per accogliere comodamente le 3 textarea */
+                margin: 40px auto;
+                padding: 20px;
+                line-height: 1.6;
+            }
+
+            br { 
+                display: none; /* Disabilitiamo i <br> per gestire gli spazi in modo più pulito col CSS */
+            }
+
+            h1, h2, h3 {
+                color: #f8fafc;
+                border-bottom: 1px solid #334155;
+                padding-bottom: 10px;
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+            
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; border-bottom: none; color: #38bdf8; }
+
+            p { color: #94a3b8; margin-bottom: 20px; }
+
+            /* =========================================
+            FORMS & INPUTS (Layout a pannello)
+            ========================================= */
+            form {
+                background-color: #1e293b; /* Pannello in evidenza */
+                padding: 20px 25px;
+                border-radius: 10px;
+                border: 1px solid #334155;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                margin-bottom: 30px;
+                display: flex;
+                flex-wrap: wrap; /* Permette agli elementi di andare a capo se lo schermo è stretto */
+                align-items: center;
+                gap: 15px;
+            }
+
+            label {
+                font-weight: 600;
+                color: #94a3b8;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            select, input[type="text"] {
+                background-color: #0f172a;
+                border: 1px solid #334155;
+                color: #e2e8f0;
+                border-radius: 6px;
+                padding: 10px 15px;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            select:focus, input[type="text"]:focus, textarea:focus {
+                outline: none;
+                border-color: #38bdf8;
+                box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            }
+
+            /* =========================================
+            BUTTONS (Stile "Esecuzione")
+            ========================================= */
+            button {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                border: none;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-size: 14px;
+                font-weight: 600;
+                color: #ffffff;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+                margin-right: 10px;
+            }
+
+            button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+                background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            }
+
+            /* =========================================
+            TEXTAREAS & DATA TABLES (Console Style)
+            ========================================= */
+            table {
+                width: 100%;
+                border-spacing: 15px; /* Crea spazio tra le colonne delle textarea */
+                border-collapse: separate;
+            }
+
+            th {
+                color: #94a3b8;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 13px;
+                padding-bottom: 5px;
+                text-align: left;
+            }
+
+            textarea {
+                width: 100% !important; /* Forza l'occupazione di tutta la larghezza della colonna */
+                background-color: #0a0f1d; /* Sfondo extra scuro per il terminale */
+                border: 1px solid #334155;
+                border-radius: 8px;
+                color: #e2e8f0; 
+                padding: 15px;
+                font-family: "Courier New", Courier, monospace; /* Font da programmatore */
+                font-size: 13px;
+                line-height: 1.5;
+                box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+                transition: border-color 0.3s ease;
+            }
+
+            /* Coloriamo il testo parsato di azzurro e il GS di verde neon per distinguerli a colpo d'occhio */
+            tr td:nth-child(2) textarea { color: #38bdf8; }
+            tr td:nth-child(3) textarea { color: #10b981; }
+
+            /* =========================================
+            STATS BOXES
+            ========================================= */
+            .stats-box {
+                width: 100% !important;
+                max-width: 650px;
+                background-color: #1e293b !important;
+                border: 1px solid #334155 !important;
+                border-radius: 10px;
+                border-collapse: collapse; /* Unisce i bordi interni */
+                margin: 20px auto 40px auto !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .stats-box th, .stats-box td {
+                border: 1px solid #334155;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .stats-head {
+                background-color: #0f172a;
+                color: #94a3b8;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+
+            .stats-item, .stats-box td {
+                font-family: "Courier New", Courier, monospace;
+                font-size: 18px;
+                font-weight: bold;
+                color: #f8fafc;
+            }
+        </STYLE>
+    </HEAD>
+
+    <BODY>
+        <H1>Parser & evaluation</H1>
+        <FORM action="/" method="get">
+            <LABEL>Dominio: </LABEL>
+            <SELECT name="domain" onchange="this.form.url.value=''; this.form.submit()" required>
+                <OPTION value="" selected disabled hidden></OPTION>
+                {% for d in lista_domini %}
+                    <OPTION value="{{d}}" {% if d == dominio_scelto %}selected{% endif %}>{{d}}</OPTION>
+                {% endfor %}
+            </SELECT>
+            <br><br>
+
+            <LABEL>URL: </LABEL>
+            <INPUT type="text" list="urls" name="url" size="80" value="{{ request.query_params.get('url', '') }}" autocomplete="off">
+            <DATALIST id="urls">
+                {% for u in lista_url %}
+                    <OPTION value="{{u}}"></OPTION>
+                {% endfor %}
+            </DATALIST>
+            <br><br>
+            
+            <BUTTON type="submit">Invia</BUTTON>
+        </FORM>
+        <br><br>
+
+
+        {% if dominio_scelto %}
+
+            <FORM action="/" method="get">
+                <INPUT type="hidden" name="domain" value="{{dominio_scelto}}">
+                <INPUT type="hidden" name="action" value="global_eval" readonly>
+                <BUTTON type="submit">Calcola metriche globali per <b>{{dominio_scelto}}</b></BUTTON>
+            </FORM>
+            <br><br>
+
+            {% if global_precision is defined %}
+                <H3>Valutazione globale: {{dominio_scelto}}</H3>
+                <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+                    <TR class="stats-row">
+                        <TH class="stats-head">Global precision</TH>
+                        <TH class="stats-head">Global recall</TH>
+                        <TH class="stats-head">Global f1</TH>
+                    </TR>
+                    <TR class="stats-row">
+                        <TD class="stats-item">{{global_precision}}</TD>
+                        <TD class="stats-row">{{global_recall}}</TD>
+                        <TD class="stats-row">{{global_f1}}</TD>
+                    </TR>
+                </TABLE>
+            {% endif %}
+        {% endif %}
+
+        <H2>Risultati</H2>
+        <br>
+
+        <TABLE>
+            <TR>
+                <TH>Html grezzo</TH>
+                <TH>Testo parsato</TH>
+                <TH>Testo GS</TH>
+            </TR>
+            <TR>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly>{{testo_html}}</TEXTAREA>
+                </TD>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly>{{testo_parsato}}</TEXTAREA>
+                </TD>
+                <TD>
+                    <TEXTAREA cols="60" rows="20" style="resize: none;" readonly>{{testo_gs}}</TEXTAREA>
+                </TD>
+            </TR>
+        </TABLE>
+        
+        <br><br>
+
+        <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+            <TR class="stats-row">
+                <TH class="stats-head">Precision</TH>
+                <TH class="stats-head">Recall</TH>
+                <TH class="stats-head">F1</TH>
+            </TR>
+            <TR class="stats-row">
+                <TD class="stats-item">{% if precision is none or precision=='' %}N/D{% else %}{{precision}}{% endif %}</TD>
+                <TD class="stats-item">{% if recall is none or recall=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
+                <TD class="stats-item">{% if f1 is none or f1=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
+            </TR>
+        </TABLE>
+        <br><br><br>
+
+
+        <H2>Valutazione manuale</H2>
+        <P>Incolla qui i testi per valutare URL non appartenenti ai Gold Standard</P>
+        <FORM action="/" method="post">
+            <TABLE>
+                <TR>
+                    <TH>Testo parsato</TH>
+                    <TH>Testo gold standard</TH>
+                </TR>
+                <TR>
+                    <TD><TEXTAREA name="manual_parsed" cols="60" rows="20" style="resize: none;" required>{% if manual_parsed %}{{manual_parsed}}{% endif %}</TEXTAREA></TD>
+                    <TD><TEXTAREA name="manual_gs" cols="60" rows="20" style="resize: none;">{% if manual_gs %}{{manual_gs}}{% endif %}</TEXTAREA></TD>
+                </TR>
+            </TABLE>
+            <BUTTON type="submit" name="action" value="run_parser"><b>Estrai testo da HTML</b> (POST /parse)</BUTTON>
+            <BUTTON type="submit" name="action" value="run_eval"><b>Valuta</b> (POST /evaluate)</BUTTON>
+        </FORM>
+        <br>
+
+        <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+            <TR class="stats-row">
+                <TH class="stats-head">Precision</TH>
+                <TH class="stats-head">Recall</TH>
+                <TH class="stats-head">F1</TH>
+            </TR>
+            <TR class="stats-row">
+                <TD class="stats-item">{{ manual_precision | default('N/D') if manual_precision != '' else 'N/D' }}</TD>
+                <TD class="stats-item">{{ manual_recall | default('N/D') if manual_recall != '' else 'N/D' }}</TD>
+                <TD class="stats-item">{{ manual_f1 | default('N/D') if manual_f1 != '' else 'N/D' }}</TD>
+            </TR>
+        </TABLE>
+    </BODY>
+</HTML>
