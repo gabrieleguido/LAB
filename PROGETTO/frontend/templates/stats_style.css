@@ -1,0 +1,84 @@
+/* =========================================
+    GLOBAL STYLES & TYPOGRAPHY
+    ========================================= */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f172a; /* Sfondo scuro (Slate 900) */
+    color: #e2e8f0;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+hr {
+    display: none; /* Nascondiamo la riga standard dell'HTML */
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #38bdf8; /* Azzurro neon per il titolo principale */
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+/* =========================================
+    DATA TABLES (Stile Dashboard Statistiche)
+    ========================================= */
+/* Applichiamo lo stile base a tutte le tabelle */
+.entry-table, .stats-table, .judge-table {
+    width: 100%;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+    overflow: hidden; /* Mantiene i bordi arrotondati della tabella */
+}
+
+/* Intestazioni delle colonne (TH) */
+.entry-head, .stats-head, .judge-head {
+    background-color: #0f172a;
+    text-align: left;
+    padding: 16px 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    border-bottom: 1px solid #334155;
+}
+
+/* Celle dati (TD) */
+.entry-item, .stats-item, .judge-item {
+    text-align: left;
+    padding: 16px 25px;
+    border-bottom: 1px solid #334155;
+    font-family: "Courier New", Courier, monospace; /* Font tecnico per i dati */
+    font-size: 16px;
+    color: #f8fafc; /* Bianco acceso per i numeri */
+    transition: background-color 0.2s ease;
+}
+
+/* Rimuove il bordo inferiore dall'ultima riga per non sdoppiarlo con quello della tabella */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Effetto Hover sulle righe per facilitare la lettura */
+tr:hover td {
+    background-color: rgba(255, 255, 255, 0.03);
+}

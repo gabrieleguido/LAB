@@ -2,9 +2,70 @@
 <HTML>
     <HEAD>
         <TITLE>Stats page</TITLE>
+        <LINK rel="stylesheet" href="./stats_style.css">
     </HEAD>
 
     <BODY>
         <H1>Stats</H1>
+
+        <H2>Numero di entry per dominio</H2>
+        <TABLE class="entry-table">
+            <TR class="entry-row">
+                <TH class="entry-head">Dominio</TH>
+                <TH class="entry-head">Numero di entry</TH>
+            </TR>
+            <TR class="entry-row">
+                <TD class="entry-item">
+                    en.wikipedia.org
+                </TD>
+                <TD class="entry-item">
+                    10
+                </TD>
+            </TR>
+        </TABLE>
+
+        <HR>
+
+        <H2>Metriche medie per dominio</H2>
+        <TABLE class="stats-table">
+            <TR class="stats-row">
+                <TH class="stats-head">Dominio</TH>
+                <TH class="stats-head">Precision</TH>
+                <TH class="stats-head">Recall</TH>
+                <TH class="stats-head">F1</TH>
+            </TR>
+            <TR class="stats-row">
+                <TD class="stats-item">
+                    en.wikipedia.org
+                </TD>
+                <TD class="stats-item">
+                    0.75
+                </TD>
+                <TD class="stats-item">
+                    0.75
+                </TD>
+                <TD class="stats-item">
+                    0.75
+                </TD>
+            </TR>
+        </TABLE>
+
+        <HR>
+
+        <H2>Judge medio per dominio</H2>
+        <TABLE class="judge-table">
+            <TR class="stats-row">
+                <TH class="judge-head">Dominio</TH>
+                <TH class="judge-head">Precision</TH>
+            </TR>
+            <TR class="judge-row">
+                <TD class="judge-item">
+                    en.wikipedia.org
+                </TD>
+                <TD class="judge-item">
+                    buono
+                </TD>
+            </TR>
+        </TABLE>
     </BODY>
 </HTML>
