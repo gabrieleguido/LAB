@@ -4,7 +4,7 @@ import json
 from urllib.parse import urlparse,unquote
 from token_compare import TokenCompare
 import os
-from typing import List,Dict,Tuple 
+from typing import List,Dict,Tuple, Optional 
 import parser_wikipedia as parser_wikipedia
 import parser_nbcnews as parser_nbcnews
 import parser_uefa as parser_uefa
@@ -12,16 +12,8 @@ import parser_weather as parser_weather
 from cleaner import Cleaner
 import asyncio
 import mariadb
+from populate_db import Populator
 
-
-#connessione al db 
-conn = mariadb.connect(
-    host = "127.0.0.1",
-    port = 3306,
-    user = "backend_user",
-    password = "backend_password",
-    database = "lab_db"
-)
 
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
@@ -36,7 +28,20 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tupl
         result = cursor.fetchall()
         return result
 
-        
+
+
+#connessione al db 
+conn = mariadb.connect(
+    host = "127.0.0.1",
+    port = 3306,
+    user = "backend_user",
+    password = "backend_password",
+    database = "lab_db"
+)
+
+#POPOLAZIONE DB (solo se db vuoto)
+if(len(execute_query(conn,"SELECT * FROM web_resources AS w JOIN gold_standard g ON w.url = g.url"))>0):
+    Populator.populate(conn)
 
 
 ##   esegui con comando --->  uvicorn server:app --reload --port 8003    ##
@@ -122,10 +127,10 @@ class EvaluateOutputModel(BaseModel):
 class PostParseInputModel(BaseModel):
     """
         url:str\n
-        html_text:str
+        local:bool
     """
     url:str
-    html_text:str
+    local:Optional[bool]
 
 #modello di risposta della GET /gold_standard_urls
 class GoldStandardUrlsOutputModel(BaseModel):
@@ -302,12 +307,14 @@ def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
 @app.post("/parse")
 def parse_html(input:PostParseInputModel)->ParseOutputModel:
     """
-        Riceve in input un url e un html e restituisce :\n
+        Riceve in input un url e un bool e restituisce :\n
         url\n
         dominio\n
         titolo (estratto dall'html)\n
         testo html\n
         testo risultato del parser
+
+        Se local = true usa la pagina nel DB senza crawl
     """
 
     url_orig = unquote(input.url).strip()
@@ -316,14 +323,24 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
     if(domain not in domains_list):
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
-    html = input.html_text 
-
-    #impongo al crawler di parsare l'html che gli passo in url
-    url_pars = f'raw:{html}'
+    url_to_parse = ""
+    html = ""
+    if(input.local):
+        #CERCO URL NEL DB E PRENDO L'HTML
+        try:
+            html = execute_query(conn,"SELECT html_text FROM web_resources WHERE url = ?",(url_orig,))[0][0]
+        except Exception as e:
+            raise HTTPException(status_code=404, detail=f"{e}")
+        
+        url_to_parse = f'raw:{html}'            
+    else:
+        #RICERCA LIVE DEL URL
+        url_to_parse = url_orig
 
     try:
         parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
-        result_dict = asyncio.run(parser_module.extract(url_pars))
+        result_dict = asyncio.run(parser_module.extract(url_to_parse))
+        html = result_dict.get("html")
         title = Cleaner.get_title_from_html(html)
 
         markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
@@ -332,7 +349,7 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
                 url=unquote(input.url),
                 domain = domain,
                 title = Cleaner.get_title_from_html(html),
-                html_text = result_dict["html"],
+                html_text = html,
                 parsed_text = markdown_txt
             )
     except Exception as e:
