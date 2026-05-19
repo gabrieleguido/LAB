@@ -2,10 +2,10 @@ import json
 
 # Usa il context manager 'with' per gestire l'apertura/chiusura
 try:
-    with open("Referee_html.html", "r", encoding="utf-8") as html_file:
+    with open("gs5_html.html", "r", encoding="utf-8") as html_file:
         html_text = html_file.read()
     
-    with open("Referee_GS.txt", "r", encoding="utf-8") as golden_file:
+    with open("gs5.txt", "r", encoding="utf-8") as golden_file:
         golden_text = golden_file.read() 
 
     json_entry = {
@@ -16,7 +16,7 @@ try:
         "gold_text": golden_text
     }
 
-    with open("Referee.json", "w", encoding="utf-8") as result:
+    with open("gs5.json", "w", encoding="utf-8") as result:
         # Usa indent per rendere il JSON leggibile, altrimenti è un muro di testo inutile
         json.dump(json_entry, result, indent=4, ensure_ascii=False)
         
