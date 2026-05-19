@@ -143,7 +143,7 @@ class TokenCompare:
             tokens_file(str) se inserito stampa i token sul file 
             di nome tokenfile\n
             print_stats_flag(bool) se impostato a true stampa le stats\n
-            print_diff(bool): se impostato a true stampa il set differenza di token
+            print_diff(bool): se impostato a true stampa i set differenza di token\n
         """
         md_set = TokenCompare.markdown_string_tokenizer(md_string)
         gs_set = TokenCompare.gs_string_tokenizer(gs_string)
