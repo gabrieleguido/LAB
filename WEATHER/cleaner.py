@@ -28,7 +28,7 @@ class Cleaner(BaseModel):
     @staticmethod
     def parsed_clean_to_string(markdown:str,is_weather:bool=False)->str:
         """Data la stringa markdown in input restituisce la stringa
-            markdown pulita, se imposti is_weather a true fa le magie su weather che è biricchino
+            markdown pulita, se imposti is_weather a true fa le magie su weather
         """
         
         #regex per i link
@@ -60,7 +60,7 @@ class Cleaner(BaseModel):
             cleaned = re.sub(r'([a-z])([A-Z]{1,3}\b)', r'\1 \2', cleaned)        
         
 
-        
+
         #regex per caratteri non alfanumerici
         cleaned = re.sub(r'[^a-zA-Z0-9]',' ',cleaned)
         return cleaned
