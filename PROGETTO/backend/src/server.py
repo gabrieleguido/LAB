@@ -14,6 +14,7 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
+#region MARIADB_SETUP
 #stato delle componenti: db e ollama
 status = {"mariadb":False,
           "ollama":False}
@@ -33,22 +34,20 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tupl
 
 
 #connessione al db 
-try: 
-    conn = mariadb.connect(
-        host = "127.0.0.1",
-        port = 3306,
-        user = "backend_user",
-        password = "backend_password",
-        database = "lab_db"
-    )
-    status["mariadb"] = True 
-except mariadb.OperationalError:
-    status["mariadb"] = False 
+conn = mariadb.connect(
+    host = "127.0.0.1",
+    port = 3306,
+    user = "backend_user",
+    password = "backend_password",
+    database = "lab_db"
+)
+
 
 #POPOLAZIONE DB (solo se db vuoto)
 if(len(execute_query(conn,"SELECT * FROM web_resources AS w JOIN gold_standard g ON w.url = g.url"))==0):
     Populator.populate(conn)
 
+#endregion
 
 ##   esegui con comando --->  uvicorn server:app --reload --port 8003    ##
 
@@ -65,7 +64,7 @@ domain_to_name_dict = {
     "weather.com":"weather"
 }
 
-
+#region MODELLI I/O FASTAPI
 # Modello di risposta per GET /domains
 class DomainsListModel(BaseModel):
     """    
@@ -195,6 +194,21 @@ class DBSchemaModel(BaseModel):
     web_resources:WebResourcesModel
     gold_standard:GoldStandardModel
 
+#modello di risposta GET/status
+class StatusResponse(BaseModel):
+    """
+    backend:str\n
+    database:str \n
+    ollama:str 
+    """
+    backend:str
+    database:str 
+    ollama:str 
+
+
+#endregion
+
+#region FASTAPI
 @app.get("/domains")
 def get_domains()->DomainsListModel:
     """
@@ -535,4 +549,18 @@ def database_schema()->DBSchemaModel:
         gold_standard=gold_schema
         )
 
+
+@app.get("/status")
+def status_service()->StatusResponse: 
+    try:
+        conn.ping() 
+        status["mariadb"] = True
+    except mariadb.Error:
+        status["mariadb"] = False 
+    backend_status = "ok"
+    db_status = "ok" if status.get("mariadb") else "error"
+    ollama_status = "error" #da completare 
+    return StatusResponse(backend=backend_status,database=db_status,ollama=ollama_status)
+
+#endregion 
 
