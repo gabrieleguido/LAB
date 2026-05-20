@@ -18,6 +18,8 @@ from populate_db import Populator
 status = {"mariadb":False,
           "ollama":False}
 
+#aaaa
+
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
     """funzione per eseguire le query che ritorna una lista di tuple (di stringhe).
