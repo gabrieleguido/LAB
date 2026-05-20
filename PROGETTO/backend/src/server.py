@@ -14,6 +14,9 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
+#stato delle componenti: db e ollama
+status = {"mariadb":False,
+          "ollama":False}
 
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
@@ -29,15 +32,18 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tupl
         return result
 
 
-
 #connessione al db 
-conn = mariadb.connect(
-    host = "127.0.0.1",
-    port = 3306,
-    user = "backend_user",
-    password = "backend_password",
-    database = "lab_db"
-)
+try: 
+    conn = mariadb.connect(
+        host = "127.0.0.1",
+        port = 3306,
+        user = "backend_user",
+        password = "backend_password",
+        database = "lab_db"
+    )
+    status["mariadb"] = True 
+except mariadb.OperationalError:
+    status["mariadb"] = False 
 
 #POPOLAZIONE DB (solo se db vuoto)
 if(len(execute_query(conn,"SELECT * FROM web_resources AS w JOIN gold_standard g ON w.url = g.url"))==0):
@@ -484,6 +490,8 @@ def remove_web_rsrc_in_db(input:str)->AddOutputModel:
     """Cancella in web_resources le tuple con url in input """   
     url = input
     try:
+        if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
+            raise HTTPException(status_code=404, detail=f"url assente")
         execute_query(conn,"DELETE FROM web_resources WHERE url = ?",(url,))
 
     except Exception as e:
@@ -496,6 +504,8 @@ def remove_web_rsrc_in_db(input:str)->AddOutputModel:
     """Cancella da gold_standard la entry con url in input"""   
     url = input
     try:
+        if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
+            raise HTTPException(status_code=404, detail=f"url assente")
         execute_query(
             conn,
             "DELETE FROM gold_standard WHERE url = ?",

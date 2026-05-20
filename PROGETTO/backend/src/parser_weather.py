@@ -3,7 +3,6 @@ from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
 
 
 from cleaner import Cleaner
-import json 
 from token_compare import TokenCompare
 
 async def extract(url: str):
