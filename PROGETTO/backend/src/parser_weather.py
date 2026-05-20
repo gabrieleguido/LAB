@@ -6,12 +6,9 @@ from cleaner import Cleaner
 import json 
 from token_compare import TokenCompare
 
-async def extract(url: str,is_mensile = False):
+async def extract(url: str):
     """return {"html": result.html, "parsed": final_result}"""
     browser_cfg = BrowserConfig(headless=True) 
-
-    # selettore_target = "body" if is_mensile else "main#MainContent"
-
     
 
     md_strategy = DefaultMarkdownGenerator(
@@ -21,7 +18,6 @@ async def extract(url: str,is_mensile = False):
             "body_width": 0,          
             "escape_html":False,
         },
-        # content_source="raw_html"
     )
 
     crawler_cfg = CrawlerRunConfig(
@@ -49,25 +45,6 @@ async def extract(url: str,is_mensile = False):
     final_result = Cleaner.parsed_clean_to_string(result.markdown)
     return {"html": result.html, "parsed": final_result}
 
-with open("weather_gs.json","r") as gs_json:
-    gs_list = json.load(gs_json)
-    sums = [0.0,0.0,0.0]
-    for elem in gs_list:
-        html = elem.get("html_text")
-        url = elem.get("url")
-        extracted_dict = asyncio.run(extract(f"raw:{html}","/tempo/mensile" in url))
-        print(f"{url}------")
-        stats = TokenCompare.build_eval_from_parsed_gs_string(extracted_dict["parsed"],
-                                                        elem.get("gold_text"),
-                                                        print_stats_flag=True,
-                                                        print_diff=True)
-        sums[0] += stats["precision"]
-        sums[1] += stats["recall"]
-        sums[2] += stats["f1"]
-    
-    print(sums[0]/len(gs_list))
-    print(sums[1]/len(gs_list))
-    print(sums[2]/len(gs_list))
 
 
 
