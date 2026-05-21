@@ -605,7 +605,10 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
         
         ESEMPIO DA SEGUIRE:
         se testo estratto = "ciao come stai" e gold text = "La NASA ha lanciato il razzo."
-        risposta corretta: {{"score": 1, "feedback": "Il testo estratto è una frase casuale e non ha alcuna attinenza con il Gold Standard."}}
+        risposta corretta: {{"score": 1, "feedback": "Il testo estratto è una frase casuale e non ha alcuna attinenza con il Gold Standard."}}.
+        se stai analizzando dati meteo fai attenzione al luogo geografico e alla finestra temporale. se le zone sono diverse oppure sono finestre temporali diverse (es. "giornaliera",
+        "mensile", "10 giorni")
+        risposta corretta: {{"score": 1 o 2, "feedback": "Il testo estratto è riferito ad un'area geografica differente" o "le finestre temporali sono differenti"}}.
 
         ORA VALUTA I SEGUENTI TESTI
         testo estratto: {clean_parsed_text[:2000]}
