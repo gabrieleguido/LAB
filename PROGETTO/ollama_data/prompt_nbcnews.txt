@@ -1,0 +1,24 @@
+prompt funzionante per le pagine di "www.nbcnews.com".
+potrebbe funzionare anche per "en.wikipedia.org" e "it.uefa.com"
+
+prompt = f"""
+        Sei un valutatore algoritmico severo. Il tuo compito è confrontare il seguente testo estratto da una pagina web "parsed text" con un testo "gold text".
+        REGOLE DI VALUTAZIONE:
+        - score 1: il testo estratto è completamente slegato dal gold text, parla di un argomento compleatamente diverso, contiene frasi casuali (es. "ciao", "hello"), è vuoto, oppure non ha senso semantico.
+        - score 2-3: il testo estratto contiene alcune informazioni giuste, ma la formattazione è rotta o le frasi sono tagliate.
+        - score 4-5: il testo estratto contiene tutte le informazioni del gold text ed è fluido.
+        
+        ESEMPIO DA SEGUIRE:
+        se testo estratto = "ciao come stai" e gold text = "La NASA ha lanciato il razzo."
+        risposta corretta: {{"score": 1, "feedback": "Il testo estratto è una frase casuale e non ha alcuna attinenza con il Gold Standard."}}
+
+        ORA VALUTA I SEGUENTI TESTI
+        testo estratto: {clean_parsed_text}
+        gold text: {clean_gold_text}
+
+        Rispondi solo con formato JSON con la seguente struttura:
+        {{
+            "score": numero intero tra 1 e 5
+            "feedback": breve descrizione della qualità del testo
+        }} 
+    """ 
