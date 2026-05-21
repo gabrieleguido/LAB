@@ -26,3 +26,14 @@ CREATE TABLE IF NOT EXISTS gold_standard (
         REFERENCES web_resources(url) 
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
+--stats table
+CREATE TABLE IF NOT EXISTS stats(
+    url VARCHAR(768) PRIMARY KEY,
+    precision FLOAT NOT NULL,
+    recall FLOAT NOT NULL,
+    f1_score FLOAT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_stats_url FOREIGN KEY (url) 
+        REFERENCES web_resources(url) 
+        ON DELETE CASCADE   
+) ENGINE=InnoDB;  
