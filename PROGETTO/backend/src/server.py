@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
 from urllib.parse import urlparse,unquote
+import urllib.request
 from token_compare import TokenCompare
 import os
 from typing import List,Dict,Tuple, Optional 
@@ -204,6 +205,17 @@ class StatusResponse(BaseModel):
     backend:str
     database:str 
     ollama:str 
+
+#modello di risposta di POST/evaluate_judge
+class EvaluateJudgeOutputModel(BaseModel):
+    """
+    model_name:str,\n
+    judge_score:int,\n
+    judge_feedback:str
+    """
+    model_name:str
+    judge_score:int
+    judge_feedback:str
 
 
 #endregion
@@ -564,3 +576,90 @@ def status_service()->StatusResponse:
 
 #endregion 
 
+
+@app.post("/evaluate_judge")
+def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
+    # pulisco parsed e gold text
+    clean_parsed_text = Cleaner.remove_markdown(req.parsed_text)
+    clean_gold_text = Cleaner.remove_markdown(req.gold_text)
+
+    # gestisco il caso in cui i testi sono vuoti
+    if not clean_parsed_text and not clean_gold_text:
+        return EvaluateJudgeOutputModel(
+            model_name="gemma4:e2b",
+            judge_score=1,
+            judge_feedback="Impossibile valutare, i testi sono vuoti"
+        )
+
+    # configurazione di ollama
+    OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
+    model_used = "gemma4:e2b"
+
+    prompt = f"""
+        Sei un valutatore algoritmico severo. Il tuo compito è confrontare il seguente testo estratto da una pagina web "parsed text" con un testo "gold text".
+        REGOLE DI VALUTAZIONE:
+        - score 1: il testo estratto è completamente slegato dal gold text, parla di un argomento compleatamente diverso, contiene frasi casuali (es. "ciao", "hello"), è vuoto, oppure non ha senso semantico.
+        - score 2-3: il testo estratto contiene alcune informazioni giuste, ma la formattazione è rotta o le frasi sono tagliate.
+        - score 4-5: il testo estratto contiene tutte le informazioni del gold text ed è fluido.
+        
+        ESEMPIO DA SEGUIRE:
+        se testo estratto = "ciao come stai" e gold text = "La NASA ha lanciato il razzo."
+        risposta corretta: {{"score": 1, "feedback": "Il testo estratto è una frase casuale e non ha alcuna attinenza con il Gold Standard."}}
+
+        ORA VALUTA I SEGUENTI TESTI
+        testo estratto: {clean_parsed_text}
+        gold text: {clean_gold_text}
+
+        Rispondi solo con formato JSON con la seguente struttura:
+        {{
+            "score": numero intero tra 1 e 5
+            "feedback": breve descrizione della qualità del testo
+        }} 
+    """ 
+
+    # payload della richiesta ad ollama
+    payload = {
+        "model": model_used,
+        "prompt": prompt,
+        "format":"json",
+        "stream":False,
+        "options":{"temperature":0.1}
+    }
+
+    # valori di default da restituire se la richiesta non va a buon fine
+    final_score = 1
+    final_feedback = "Impossibile valutare a causa di errori"
+
+    try:
+        req_api = urllib.request.Request(
+            OLLAMA_URL,
+            data=json.dumps(payload).encode('utf-8'),
+            headers={'Content-Type': 'application/json'}    
+        )
+
+        with urllib.request.urlopen(req_api) as response:
+            if response.status==200:
+                result = json.loads(response.read().decode('utf-8'))
+                
+                # ollama restituisce il json nella chiave response
+                llm_response = json.loads(result.get("response", "{}"))
+
+                # estrazione dei dati
+                score = llm_response.get("score")
+                feedback = llm_response.get("feedback", "Nessun feedback generato")
+
+                # controllo se il formato dello score è corretto, cioè se è un intero compreso tra 1 e 5
+                if isinstance(score, int) and 1<=score<=5:
+                    final_score = score
+                    final_feedback = feedback
+                else:
+                    final_feedback = f"Ollama ha restituito un voto non valido: {score}. Feedback: {feedback}"
+
+    except Exception as e:
+        final_feedback = f"Errore di connessione a Ollama: {str(e)}"
+
+    return EvaluateJudgeOutputModel(
+        model_name=model_used,
+        judge_score=final_score,
+        judge_feedback=final_feedback
+    )
