@@ -1,3 +1,5 @@
+TECNICA FEW-SHOT
+
 prompt funzionante per le pagine di "www.nbcnews.com".
 potrebbe funzionare anche per "en.wikipedia.org" e "it.uefa.com"
 

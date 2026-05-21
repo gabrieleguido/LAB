@@ -595,6 +595,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
     model_used = "gemma4:e2b"
 
+    # utilizzo la tecnica "few-shot prompting" per aggirare il più possibile i limiti tecnici del modello
     prompt = f"""
         Sei un valutatore algoritmico severo. Il tuo compito è confrontare il seguente testo estratto da una pagina web "parsed text" con un testo "gold text".
         REGOLE DI VALUTAZIONE:
