@@ -1,0 +1,22 @@
+docker run --name lab -e MYSQL_ROOT_PASSWORD=rootpassword -p 3306:3306 --volume ./mariadb_data/:/var/lib/mysql:Z -d mariadb:11.7.2-ubi9
+
+mariadb -h 127.0.0.1 -P 3306 -u root -p < init.sql
+
+mariadb -h 127.0.0.1 -P 3306 -u backend_user -p 
+
+rootpassword 
+
+backend_user backend_password
+
+select domain,count(*) from web_resources group by domain;
+
+
+select url from gold_standard where domain = 'en.wikipedia.org';
+
+web_resources(url,domain,title,html_text)
+gold_standard(url,gold_text)
+PROBLEMI: 
+1 in wiki tocca parsa le liste (anche gs)
+2 il weather seleziona dei video
+
+sto costruendo un parser in python con crawl4ai e devo estrarre dalle pagine web di weather.com le info principali. nel json cè il gold standard di 10 pagine, per ogni pagina ce url,titolo,dominio, html e gold_text estratto a mano. devo fare in modo che l'estrazione sia il piu simile possibile al gold standard. mi sto stampando le differenze degli insiemi di token tra MD, ovvero token ottenuti dal parser, e GS, token ottenuti da gold_text. Le valutazioni finali sono precision, recall e f1, e vorrei arrivassero sopra il 0.8, come posso continuare la configurazione  in modo da evitare l'uso di regex?
