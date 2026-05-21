@@ -608,8 +608,8 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
         risposta corretta: {{"score": 1, "feedback": "Il testo estratto è una frase casuale e non ha alcuna attinenza con il Gold Standard."}}
 
         ORA VALUTA I SEGUENTI TESTI
-        testo estratto: {clean_parsed_text}
-        gold text: {clean_gold_text}
+        testo estratto: {clean_parsed_text[:2000]}
+        gold text: {clean_gold_text[:2000]}
 
         Rispondi solo con formato JSON con la seguente struttura:
         {{
