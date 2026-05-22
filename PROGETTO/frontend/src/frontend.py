@@ -19,7 +19,13 @@ backend_url = "http://backend:8003"   # url del backend server.py da lanciare su
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
-def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
+def home(request:Request):
+    return templates.TemplateResponse(request=request, name="home.html")
+
+
+
+@app.get("/parser_evaluation", response_class=HTMLResponse)
+def parser_eval(request:Request, domain:str=None, url:str=None, action:str=None):
     """
     Gestisce la web ui
     """
@@ -195,7 +201,7 @@ def web_ui(request:Request, domain:str=None, url:str=None, action:str=None):
     return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
-@app.post("/", response_class=HTMLResponse)
+@app.post("/parser_evaluation", response_class=HTMLResponse)
 async def manual_eval(request: Request):
     """
     Gestisce la valutazione di testo parsato e testo gold standard inseriti manualmente

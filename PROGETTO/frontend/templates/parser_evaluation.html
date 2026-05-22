@@ -7,7 +7,7 @@
 
     <BODY>
         <H1>Parser & evaluation</H1>
-        <FORM action="/" method="get">
+        <FORM action="/parser_evaluation" method="get">
             <LABEL>Dominio: </LABEL>
             <SELECT name="domain" onchange="this.form.url.value=''; this.form.submit()" required>
                 <OPTION value="" selected disabled hidden></OPTION>
@@ -33,7 +33,7 @@
 
         {% if dominio_scelto %}
 
-            <FORM action="/" method="get">
+            <FORM action="/parser_evaluation" method="get">
                 <INPUT type="hidden" name="domain" value="{{dominio_scelto}}">
                 <INPUT type="hidden" name="action" value="global_eval" readonly>
                 <BUTTON type="submit">Calcola metriche globali per <b>{{dominio_scelto}}</b></BUTTON>
@@ -98,7 +98,7 @@
 
         <H2>Valutazione manuale</H2>
         <P>Incolla qui i testi per valutare URL non appartenenti ai Gold Standard</P>
-        <FORM action="/" method="post">
+        <FORM action="/parser_evaluation" method="post">
             <TABLE>
                 <TR>
                     <TH>Testo parsato</TH>
