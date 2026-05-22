@@ -571,7 +571,18 @@ def status_service()->StatusResponse:
         status["mariadb"] = False 
     backend_status = "ok"
     db_status = "ok" if status.get("mariadb") else "error"
-    ollama_status = "error" #da completare 
+    
+    OLLAMA_URL = "http://127.0.0.1:11434/"
+    try:
+        req = urllib.request.Request(OLLAMA_URL, method="HEAD") # chiede solo intestazione, quindi è più veloce di GET
+
+        with urllib.request.urlopen(req, timeout=1) as response:    # se dopo 2 secondi non ha risposto allora è "error"
+            if response.status==200:
+                ollama_status = "ok"
+
+    except Exception as e:
+        ollama_status = "error"
+
     return StatusResponse(backend=backend_status,database=db_status,ollama=ollama_status)
 
 #endregion 
