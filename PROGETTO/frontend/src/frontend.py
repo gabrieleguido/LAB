@@ -1,17 +1,21 @@
 from fastapi import FastAPI, HTTPException, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 import urllib.request
 import urllib.parse
 import json
 
-##   esegui con comando --->  uvicorn frontend:app --reload --port 8004    ##
+##   esegui con comando --->  uvicorn src.frontend:app --reload --port 8004    ##
 
 app = FastAPI()
 
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")    # aggancia i css per le pagine html
+templates = Jinja2Templates(directory="templates")  # pagine html
 
-backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
+
+backend_url = "http://127.0.0.1:8003" # url backend per test senza docker --- DA ELIMINARE!!!
+# backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
