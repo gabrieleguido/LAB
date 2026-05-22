@@ -185,7 +185,7 @@ class GoldStandardModel(BaseModel):
     created_at:str"""
     url:str
     gold_text:str
-    created_at:str
+    created_at:Optional[str] = None
 
 
 #modello di risposta della GET/db_schema
