@@ -1,5 +1,5 @@
 import asyncio 
-from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode, DefaultMarkdownGenerator
 from cleaner import Cleaner
 
 
@@ -8,7 +8,7 @@ async def extract(url: str):
     crawler_cfg = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         word_count_threshold=20,
-        target_elements=["h1","h2","h3","title","p","ol","ul"]
+        target_elements=["h1","h2","h3","title","p"]
     ) 
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
