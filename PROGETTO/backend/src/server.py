@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+import requests
 from pydantic import BaseModel
 import json
 from urllib.parse import urlparse,unquote
@@ -226,6 +227,12 @@ class EvaluateJudgeOutputModel(BaseModel):
     judge_score:int
     judge_feedback:str
 
+#modello di risposta di GET/full_gs_eval 
+class FullEvaluateModel(BaseModel):
+    """token_level_eval:Dict[str:float]\n
+    judge_score:float"""
+    token_level_eval:Dict[str:float]
+    judge_score:float
 
 #endregion
 
@@ -465,7 +472,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
 
 #GET/full_gs_eval
 @app.get("/full_gs_eval")
-def get_full_gs_eval(domain:str)->EvaluateOutputModel:
+def get_full_gs_eval(domain:str)->FullEvaluateModel:
     """"
         Restituisce l'intero gold standard del dominio dell'url in input
     """
@@ -519,7 +526,7 @@ def get_full_gs_eval(domain:str)->EvaluateOutputModel:
             "f1":float(f1/count)
         }
         
-    return EvaluateOutputModel(token_level_eval=final_stats)
+    return FullEvaluateModel(token_level_eval=final_stats)
 
 
 #POST/add_web_resource 
@@ -671,15 +678,5 @@ def status_service()->StatusResponse:
 #         gs_list = json.load(f)
 #         return FullGoldStandardModel(gold_standard=gs_list)
 #NON PIU USATA        
-
-
-
-
-        
-
-
-
-
-
 
 #endregion

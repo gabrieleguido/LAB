@@ -15,8 +15,10 @@ select url from gold_standard where domain = 'en.wikipedia.org';
 
 web_resources(url,domain,title,html_text)
 gold_standard(url,gold_text)
-PROBLEMI: 
-1 in wiki tocca parsa le liste (anche gs)
-2 il weather seleziona dei video
+stats(url,prec,rec,f1,score)
 
-sto costruendo un parser in python con crawl4ai e devo estrarre dalle pagine web di weather.com le info principali. nel json cè il gold standard di 10 pagine, per ogni pagina ce url,titolo,dominio, html e gold_text estratto a mano. devo fare in modo che l'estrazione sia il piu simile possibile al gold standard. mi sto stampando le differenze degli insiemi di token tra MD, ovvero token ottenuti dal parser, e GS, token ottenuti da gold_text. Le valutazioni finali sono precision, recall e f1, e vorrei arrivassero sopra il 0.8, come posso continuare la configurazione  in modo da evitare l'uso di regex?
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+
+docker exec -it ollama ollama pull gemma4:e2b
+
+
