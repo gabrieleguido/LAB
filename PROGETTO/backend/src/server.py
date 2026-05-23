@@ -1,12 +1,12 @@
 from fastapi import FastAPI, HTTPException
 import requests
-from pydantic import BaseModel
 import json
 from urllib.parse import urlparse,unquote
 import urllib.request
+from modelli_pydantic import AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
 from token_compare import TokenCompare
 import os
-from typing import List,Dict,Tuple, Optional 
+from typing import List,Tuple, Optional 
 import parser_wikipedia as parser_wikipedia
 import parser_nbcnews as parser_nbcnews
 import parser_uefa as parser_uefa
@@ -16,10 +16,13 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
-#region MARIADB_SETUP
+#region MARIADB & OLLAMA SETUP
 #stato delle componenti: db e ollama
 status = {"mariadb":False,
           "ollama":False}
+
+#url ollama
+OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
 
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
@@ -75,166 +78,6 @@ CUSTOM_PARSERS = {
 }
 
 
-#region MODELLI I/O FASTAPI
-# Modello di risposta per GET /domains
-class DomainsListModel(BaseModel):
-    """    
-        domains: List[str]
-    """
-    domains: List[str]
-
-
-# Modello di risposta per GET /gold_standard
-class GoldStandardModel(BaseModel):
-    """
-        url: str\n
-        domain: str\n
-        title: str\n
-        html_text: str\n
-        gold_text: str
-    """
-    url: str
-    domain: str
-    title: str
-    html_text: str
-    gold_text: str
-
-
-# Modello di risposta per GET /full_gold_standard
-class FullGoldStandardModel(BaseModel):
-    """
-            gold_standard: List[GoldStandardModel]
-    """
-    gold_standard: List[GoldStandardModel]
-
-
-# Modello di risposta per GET /parse
-class ParseOutputModel(BaseModel):
-    """
-        url:str\n
-        domain:str\n
-        title:str\n
-        html_text:str\n
-        parsed_text:str
-    """
-    url:str
-    domain:str
-    title:str
-    html_text:str
-    parsed_text:str
-
-#modello del body nella POST /evaluate
-class EvaluateInputModel(BaseModel):
-    """
-        parsed_text:str\n
-        gold_text:str
-    """
-    parsed_text:str
-    gold_text:str 
-
-#modello di risposta nella POST /evaluate
-class EvaluateOutputModel(BaseModel):
-    """
-        token_level_eval:Dict[str,float]
-
-    """
-    token_level_eval:Dict[str,float]
-
-class PostParseInputModel(BaseModel):
-    """
-        url:str\n
-        local:bool
-    """
-    url:str
-    local:Optional[bool]
-
-#modello di risposta della GET /gold_standard_urls
-class GoldStandardUrlsOutputModel(BaseModel):
-    """gold_standard_urls:List[str]"""
-    gold_standard_urls:List[str]
-
-#modelli di input di POST/add_web_resource e /add_gold_standard
-class AddWebResourceInputModel(BaseModel):
-    """ 
-        url:str\n
-        html_text:str\n
-    """ 
-    url:str
-    html_text:str
-class AddGoldStandardInputModel(BaseModel):
-    """ 
-        url:str\n
-        gold_text:str\n
-    """ 
-    url:str
-    gold_text:str
-#modello di risposta delle POST di inserimento dati (qui sopra)
-class AddOutputModel(BaseModel):
-    """status:str"""
-    status:str
-
-#modello per il web_resources
-class WebResourcesModel(BaseModel):
-    """
-    url:str\n
-    domain:str\n
-    title:str\n
-    html_text:str\n 
-    created_at:str \n
-    """
-    url:str
-    domain:str
-    title:str
-    html_text:str 
-    created_at:str 
-
-#modello per il gold_standard
-class GoldStandardModelDB(BaseModel):
-    """url:str\n
-    gold_text:str\n
-    created_at:str"""
-    url:str
-    gold_text:str
-    created_at:Optional[str] = None
-
-
-#modello di risposta della GET/db_schema
-class DBSchemaModel(BaseModel):
-    """web_resources:WebResourcesModel\n
-    gold_standard:GoldStandardModelDB"""
-    web_resources:WebResourcesModel
-    gold_standard:GoldStandardModelDB
-
-#modello di risposta GET/status
-class StatusResponse(BaseModel):
-    """
-    backend:str\n
-    database:str \n
-    ollama:str 
-    """
-    backend:str
-    database:str 
-    ollama:str 
-
-#modello di risposta di POST/evaluate_judge
-class EvaluateJudgeOutputModel(BaseModel):
-    """
-    model_name:str,\n
-    judge_score:int,\n
-    judge_feedback:str
-    """
-    model_name:str
-    judge_score:int
-    judge_feedback:str
-
-#modello di risposta di GET/full_gs_eval 
-class FullEvaluateModel(BaseModel):
-    """token_level_eval:Dict[str:float]\n
-    judge_score:float"""
-    token_level_eval:Dict[str, float]
-    judge_score:float
-
-#endregion
 
 #region FASTAPI
 
@@ -281,13 +124,12 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
         result_dict = asyncio.run(parser_module.extract(url_to_parse))
         html = result_dict.get("html")
         title = Cleaner.get_title_from_html(html)
-
-        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
+        markdown_txt = result_dict.get("parsed")
 
         return ParseOutputModel(
                 url=unquote(input.url),
                 domain = domain,
-                title = Cleaner.get_title_from_html(html),
+                title = title,
                 html_text = html,
                 parsed_text = markdown_txt
             )
@@ -392,8 +234,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
             judge_feedback="Impossibile valutare, i testi sono vuoti"
         )
 
-    # configurazione di ollama
-    OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+    
     model_used = "gemma4:e2b"
 
     # tecnica "few-shot prompting" per aggirare il più possibile i limiti tecnici del modello
@@ -488,7 +329,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
 @app.get("/full_gs_eval")
 def get_full_gs_eval(domain:str)->FullEvaluateModel:
     """"
-        Restituisce l'intero gold standard del dominio dell'url in input
+        Restituisce le valutazioni token_level e llm_score del gold standar relativo al dominio in input
     """
 
     if(domain not in domains_list):
@@ -509,6 +350,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
     precision = 0.0
     recall = 0.0
     f1 = 0.0
+    score = 0
 
 
     for gs_elem_dict in gs_list:
@@ -516,10 +358,15 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         gs_text = gs_elem_dict["gold_text"]
 
         #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
-        title = Cleaner.get_title_from_html(html)
-        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
-        
+        parser_result = asyncio.run(parser_module.extract(f"raw:{html}"))
+        parsed_text = parser_result.get("parsed")
+
+        try:
+            judge_res = judge(EvaluateInputModel(parsed_text=parsed_text,gold_text=gs_text))
+            score += judge_res.judge_score 
+        except:
+            raise HTTPException(status_code=404, detail="Errore nella richiesta al modello llm")
+                    
         stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
 
         precision += stats.get("precision", 0.0)
@@ -533,14 +380,16 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
             "recall": 0.0,
             "f1": 0.0
         }
+        score = 0
     else:
         final_stats = {
             "precision":float(precision/count),
             "recall":float(recall/count),
             "f1":float(f1/count)
         }
+        score = float(score/count)
         
-    return FullEvaluateModel(token_level_eval=final_stats)
+    return FullEvaluateModel(token_level_eval=final_stats,judge_score=score)
 
 
 #POST/add_web_resource 

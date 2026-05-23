@@ -1,6 +1,7 @@
 import json 
 from typing import List,Dict,Set
 import re 
+from cleaner import Cleaner
 
 class TokenCompare:
     @staticmethod
@@ -59,7 +60,7 @@ class TokenCompare:
             Data una stringa di testo parsato in markdown restituisce
             l'insieme di token da usare per la funzione di valutazione
         """
-        parsed_text = re.sub(r'[^a-zA-Z0-9]',',',md_string)
+        parsed_text = Cleaner.parsed_clean_to_string(md_string)
         parsed_text = parsed_text.split(",")
         token_set = set()
         for w in parsed_text:
@@ -145,6 +146,7 @@ class TokenCompare:
             print_stats_flag(bool) se impostato a true stampa le stats\n
             print_diff(bool): se impostato a true stampa i set differenza di token\n
         """
+
         md_set = TokenCompare.markdown_string_tokenizer(md_string)
         gs_set = TokenCompare.gs_string_tokenizer(gs_string)
         stats = TokenCompare.get_stats(md_set,gs_set)
@@ -171,30 +173,5 @@ class TokenCompare:
 
         return stats
     
-    
-    
 
-
-
-    
-
-# url = "https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league"
-# gs_tokens = TokenCompare.GS_tokenizer("../GS/uefa/GS.json",url)
-# parsed_tokens = TokenCompare.Markdown_tokenizer("crawler_result_test.md")
-# ordered_gs = sorted(gs_tokens)
-# ordered_parsed = sorted(parsed_tokens)
-# stats = TokenCompare.get_stats(gs_tokens,parsed_tokens)
-# for k in stats.keys():
-#     print(stats[k])
-
-# print(ordered_gs)
-# print("\n\n\n")
-# print(ordered_parsed)
-# print("STATS:\n")
-# precision = len(gs_tokens&parsed_tokens)/len(parsed_tokens)
-# recall = len(gs_tokens&parsed_tokens)/len(gs_tokens)
-# f1 = 2*precision*recall/(precision+recall)
-# print(f"Precision = {precision},\nRecall = {recall},\nF1 = {f1}")
-
-# print(TokenCompare.get_domain_list())
 

@@ -18,6 +18,6 @@ async def extract(url: str):
             config=crawler_cfg
         )
 
-        final_result = Cleaner.parsed_clean_to_string(result.markdown)
+        final_result = result.markdown
         
     return {"html":result.html,"parsed":final_result}
