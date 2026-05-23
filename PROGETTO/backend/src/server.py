@@ -16,10 +16,13 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
-#region MARIADB_SETUP
+#region MARIADB & OLLAMA SETUP
 #stato delle componenti: db e ollama
 status = {"mariadb":False,
           "ollama":False}
+
+#url ollama
+OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
 
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
@@ -281,13 +284,12 @@ def parse_html(input:PostParseInputModel)->ParseOutputModel:
         result_dict = asyncio.run(parser_module.extract(url_to_parse))
         html = result_dict.get("html")
         title = Cleaner.get_title_from_html(html)
-
-        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
+        markdown_txt = result_dict.get("parsed")
 
         return ParseOutputModel(
                 url=unquote(input.url),
                 domain = domain,
-                title = Cleaner.get_title_from_html(html),
+                title = title,
                 html_text = html,
                 parsed_text = markdown_txt
             )
@@ -392,8 +394,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
             judge_feedback="Impossibile valutare, i testi sono vuoti"
         )
 
-    # configurazione di ollama
-    OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+    
     model_used = "gemma4:e2b"
 
     # tecnica "few-shot prompting" per aggirare il più possibile i limiti tecnici del modello
@@ -488,7 +489,7 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
 @app.get("/full_gs_eval")
 def get_full_gs_eval(domain:str)->FullEvaluateModel:
     """"
-        Restituisce l'intero gold standard del dominio dell'url in input
+        Restituisce le valutazioni token_level e llm_score del gold standar relativo al dominio in input
     """
 
     if(domain not in domains_list):
@@ -509,6 +510,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
     precision = 0.0
     recall = 0.0
     f1 = 0.0
+    score = 0
 
 
     for gs_elem_dict in gs_list:
@@ -516,10 +518,15 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         gs_text = gs_elem_dict["gold_text"]
 
         #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
-        title = Cleaner.get_title_from_html(html)
-        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
-        
+        parser_result = asyncio.run(parser_module.extract(f"raw:{html}"))
+        parsed_text = parser_result.get("parsed")
+
+        try:
+            judge_res = judge(EvaluateInputModel(parsed_text=parsed_text,gold_text=gs_text))
+            score += judge_res.judge_score 
+        except:
+            raise HTTPException(status_code=404, detail="Errore nella richiesta al modello llm")
+                    
         stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
 
         precision += stats.get("precision", 0.0)
@@ -533,14 +540,16 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
             "recall": 0.0,
             "f1": 0.0
         }
+        score = 0
     else:
         final_stats = {
             "precision":float(precision/count),
             "recall":float(recall/count),
             "f1":float(f1/count)
         }
+        score = float(score/count)
         
-    return FullEvaluateModel(token_level_eval=final_stats)
+    return FullEvaluateModel(token_level_eval=final_stats,judge_score=score)
 
 
 #POST/add_web_resource 
