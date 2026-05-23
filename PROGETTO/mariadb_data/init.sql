@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS gold_standard (
 --stats table
 CREATE TABLE IF NOT EXISTS stats(
     url VARCHAR(768) PRIMARY KEY,
-    precision FLOAT NOT NULL,
-    recall FLOAT NOT NULL,
+    prec FLOAT NOT NULL,
+    rec FLOAT NOT NULL,
     f1 FLOAT NOT NULL,
     score FLOAT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

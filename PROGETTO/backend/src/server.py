@@ -65,6 +65,15 @@ domain_to_name_dict = {
     "weather.com":"weather"
 }
 
+# Mapping dominio -> funzione parser
+CUSTOM_PARSERS = {
+    "www.nbcnews.com": parser_nbcnews,
+    "it.uefa.com": parser_uefa,
+    "en.wikipedia.it":parser_wikipedia,
+    "weather.com": parser_weather
+}
+
+
 #region MODELLI I/O FASTAPI
 # Modello di risposta per GET /domains
 class DomainsListModel(BaseModel):
@@ -179,7 +188,7 @@ class WebResourcesModel(BaseModel):
     created_at:str 
 
 #modello per il gold_standard
-class GoldStandardModel(BaseModel):
+class GoldStandardModelDB(BaseModel):
     """url:str\n
     gold_text:str\n
     created_at:str"""
@@ -191,9 +200,9 @@ class GoldStandardModel(BaseModel):
 #modello di risposta della GET/db_schema
 class DBSchemaModel(BaseModel):
     """web_resources:WebResourcesModel\n
-    gold_standard:GoldStandardModel"""
+    gold_standard:GoldStandardModelDB"""
     web_resources:WebResourcesModel
-    gold_standard:GoldStandardModel
+    gold_standard:GoldStandardModelDB
 
 #modello di risposta GET/status
 class StatusResponse(BaseModel):
@@ -221,6 +230,65 @@ class EvaluateJudgeOutputModel(BaseModel):
 #endregion
 
 #region FASTAPI
+
+#POST/parse
+@app.post("/parse")
+def parse_html(input:PostParseInputModel)->ParseOutputModel:
+    """
+        Riceve in input un url e un bool e restituisce :\n
+        url\n
+        dominio\n
+        titolo (estratto dall'html)\n
+        testo html\n
+        testo risultato del parser
+
+        Se local = true usa la pagina nel DB senza crawl
+    """
+
+    url_orig = unquote(input.url).strip()
+    domain = Cleaner.get_domain_from_url(url_orig)
+    
+    if(domain not in domains_list):
+        raise HTTPException(status_code=404, detail="Dominio non supportato")
+    
+    url_to_parse = ""
+    html = ""
+    if(input.local):
+        #CERCO URL NEL DB E PRENDO L'HTML
+        try:
+            res = execute_query(conn,"SELECT html_text FROM web_resources WHERE url = ?",(url_orig,))
+            if(len(res)==0):
+                raise HTTPException(status_code=404, detail="url assente nel db")
+            else:
+                html = res[0][0]
+        except Exception as e:
+            raise HTTPException(status_code=404, detail=f"{e}")
+        
+        url_to_parse = f'raw:{html}'            
+    else:
+        #RICERCA LIVE DEL URL
+        url_to_parse = url_orig
+
+    try:
+        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
+        result_dict = asyncio.run(parser_module.extract(url_to_parse))
+        html = result_dict.get("html")
+        title = Cleaner.get_title_from_html(html)
+
+        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
+
+        return ParseOutputModel(
+                url=unquote(input.url),
+                domain = domain,
+                title = Cleaner.get_title_from_html(html),
+                html_text = html,
+                parsed_text = markdown_txt
+            )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Errore: {str(e)}")
+
+
+#GET/domains
 @app.get("/domains")
 def get_domains()->DomainsListModel:
     """
@@ -229,7 +297,7 @@ def get_domains()->DomainsListModel:
     return DomainsListModel(domains=domains_list)
 
 
-
+#GET/gold_standard
 @app.get("/gold_standard")
 def get_gold_standard(url: str)->GoldStandardModel:
     """
@@ -258,192 +326,9 @@ def get_gold_standard(url: str)->GoldStandardModel:
             
         except json.JSONDecodeError:
             raise HTTPException(status_code=500, detail="File json corrotto")
-        
 
 
-@app.get("/full_gold_standard")
-def get_full_gold_standard(domain:str)->FullGoldStandardModel:
-    """
-    Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
-    """
-    if domain not in domains_list:
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-
-    file_name = domain_to_name_dict.get(domain)
-    file_path = f"../../gs_data/{file_name}_gs.json"
-
-    # if not os.path.exists(file_path):
-    #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
-
-    with open(file_path, "r", encoding="utf-8") as f:
-        gs_list = json.load(f)
-        return FullGoldStandardModel(gold_standard=gs_list)
-        
-# Mapping dominio -> funzione parser
-CUSTOM_PARSERS = {
-    "www.nbcnews.com": parser_nbcnews,
-    "it.uefa.com": parser_uefa,
-    "en.wikipedia.it":parser_wikipedia,
-    "weather.com": parser_weather
-}
-@app.get("/parse")
-def parse_url(url: str)->ParseOutputModel:
-    """
-    Restituisce oggetto JSON contenente il risultato del parsing del testo di una pagina web
-    """
-    url_dec = unquote(url).strip()
-    try:
-        domain = Cleaner.get_domain_from_url(url_dec)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Formato url non valido")
-    
-    if domain not in domains_list:
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-    
-
-    try:
-        #chiamata alla funzione di parsing specifica per il dominio
-
-        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
-
-        result_dict = asyncio.run(parser_module.extract(url_dec))
-
-        # Estrazione titolo della pagina
-        title = Cleaner.get_title_from_html(result_dict["html"])
-
-        #testo markdown
-        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
-        
-        return ParseOutputModel(
-            url=url_dec,
-            domain = domain,
-            title = title,
-            html_text = result_dict["html"],
-            parsed_text = markdown_txt
-        )
-    except Exception as e:
-        # Errore nel parser 
-        raise HTTPException(status_code=500, detail=f"Errore interno del parser: {str(e)}")
-
-@app.post("/evaluate")
-def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
-    """
-        Restituisce le valutazioni per un testo parsato e il suo gs passati nel body
-    """
-    #prendo il dizionario con le statistiche di token evaluation, 
-    #vedere TokenCompare per i dettagli
-    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_stats_flag=True)
-    return EvaluateOutputModel(token_level_eval=stats)
-
-
-@app.post("/parse")
-def parse_html(input:PostParseInputModel)->ParseOutputModel:
-    """
-        Riceve in input un url e un bool e restituisce :\n
-        url\n
-        dominio\n
-        titolo (estratto dall'html)\n
-        testo html\n
-        testo risultato del parser
-
-        Se local = true usa la pagina nel DB senza crawl
-    """
-
-    url_orig = unquote(input.url).strip()
-    domain = Cleaner.get_domain_from_url(url_orig)
-    
-    if(domain not in domains_list):
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-    
-    url_to_parse = ""
-    html = ""
-    if(input.local):
-        #CERCO URL NEL DB E PRENDO L'HTML
-        try:
-            html = execute_query(conn,"SELECT html_text FROM web_resources WHERE url = ?",(url_orig,))[0][0]
-        except Exception as e:
-            raise HTTPException(status_code=404, detail=f"{e}")
-        
-        url_to_parse = f'raw:{html}'            
-    else:
-        #RICERCA LIVE DEL URL
-        url_to_parse = url_orig
-
-    try:
-        parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
-        result_dict = asyncio.run(parser_module.extract(url_to_parse))
-        html = result_dict.get("html")
-        title = Cleaner.get_title_from_html(html)
-
-        markdown_txt = f"# {title}\n\n{result_dict['parsed']}"
-
-        return ParseOutputModel(
-                url=unquote(input.url),
-                domain = domain,
-                title = Cleaner.get_title_from_html(html),
-                html_text = html,
-                parsed_text = markdown_txt
-            )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Errore: {str(e)}")
-
-@app.get("/full_gs_eval")
-def get_full_gs_eval(domain:str)->EvaluateOutputModel:
-    """"
-        Restituisce l'intero gold standard del dominio dell'url in input
-    """
-
-    if(domain not in domains_list):
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-
-    parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
-    file_name = domain_to_name_dict.get(domain)
-    file_path = f"../../gs_data/{file_name}_gs.json"
-
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=500, detail="GS non trovato")
-    
-    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
-        gs_list = json.load(gs_json)
-
-
-    count = 0
-    precision = 0.0
-    recall = 0.0
-    f1 = 0.0
-
-
-    for gs_elem_dict in gs_list:
-        html = gs_elem_dict["html_text"]
-        gs_text = gs_elem_dict["gold_text"]
-
-        #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
-        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
-        title = Cleaner.get_title_from_html(html)
-        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
-        
-        stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
-
-        precision += stats.get("precision", 0.0)
-        recall += stats.get("recall", 0.0)
-        f1 += stats.get("f1", 0.0)
-        count += 1
-        
-    if count==0:
-        final_stats = {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0
-        }
-    else:
-        final_stats = {
-            "precision":float(precision/count),
-            "recall":float(recall/count),
-            "f1":float(f1/count)
-        }
-        
-    return EvaluateOutputModel(token_level_eval=final_stats)
-        
+#GET/gold_standard_urls
 @app.get("/gold_standard_urls")
 def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
     "Ritorna la lista degli url di un dominio in input"
@@ -468,126 +353,20 @@ def get_gs_urls(domain:str)->GoldStandardUrlsOutputModel:
 
     return GoldStandardUrlsOutputModel(gold_standard_urls=url_list)
 
-@app.post("/add_web_resource")
-def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
-    """Aggiunge in web_resources i dati del body """   
-    url = input.url
-    html = input.html_text
-    try:
-        #ESTRAZIONE DOMINIO:
-        domain = Cleaner.get_domain_from_url(url)
 
-        #ESTRAZIONE TITOLO:
-        #se non trova il titolo, il titolo sarà "Titolo sconosciuto"
-        title = Cleaner.get_title_from_html(html) 
-
-        execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
-
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"{e}")
+#POST/evaluate
+@app.post("/evaluate")
+def evaluate(input_item:EvaluateInputModel)->EvaluateOutputModel:
+    """
+        Restituisce le valutazioni per un testo parsato e il suo gs passati nel body
+    """
+    #prendo il dizionario con le statistiche di token evaluation, 
+    #vedere TokenCompare per i dettagli
+    stats = TokenCompare.build_eval_from_parsed_gs_string(input_item.parsed_text,input_item.gold_text,print_stats_flag=True)
+    return EvaluateOutputModel(token_level_eval=stats)
 
 
-    return AddOutputModel(status='ok')
-
-@app.post("/add_gold_standard")
-def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
-    """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
-    url = input.url
-    gold_text = input.gold_text
-    try:
-        execute_query(
-            conn,
-            "INSERT INTO gold_standard (url, gold_text) VALUES (?,?)",
-            (url,gold_text)
-        )
-    except mariadb.IntegrityError as e:
-        if e.errno == 1452:
-            raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
-        else:
-            raise HTTPException(status_code=400, detail="Errore query")
-    except Exception:
-            raise HTTPException(status_code=400, detail = f"{e}")
-
-
-    return AddOutputModel(status='ok')
-
-@app.delete("/web_resource")
-def remove_web_rsrc_in_db(input:str)->AddOutputModel:
-    """Cancella in web_resources le tuple con url in input """   
-    url = input
-    try:
-        if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
-            raise HTTPException(status_code=404, detail=f"url assente")
-        execute_query(conn,"DELETE FROM web_resources WHERE url = ?",(url,))
-
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"{e}")
-
-    return AddOutputModel(status='ok')
-
-@app.delete("/gold_standard")
-def remove_web_rsrc_in_db(input:str)->AddOutputModel:
-    """Cancella da gold_standard la entry con url in input"""   
-    url = input
-    try:
-        if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
-            raise HTTPException(status_code=404, detail=f"url assente")
-        execute_query(
-            conn,
-            "DELETE FROM gold_standard WHERE url = ?",
-            (url,)
-        )
-    except Exception as e:
-            raise HTTPException(status_code=400, detail = f"{e}")
-    return AddOutputModel(status='ok')
-
-@app.get("/db_schema")
-def database_schema()->DBSchemaModel:
-    """Ritorna lo schema del db"""
-    web_schema = WebResourcesModel(
-        url="varchar(768),PK",
-        domain="varchar(255)",
-        title = "varchar(500)",
-        html_text = "longtext",
-        created_at="datetime"
-    )
-    gold_schema = GoldStandardModel(
-        url = "varchar(768),PK,FK(web_resources.url)",
-        gold_text = "longtext",
-        created_at="datetime"
-    )
-    return DBSchemaModel(
-        web_resources=web_schema,
-        gold_standard=gold_schema
-        )
-
-
-@app.get("/status")
-def status_service()->StatusResponse: 
-    try:
-        conn.ping() 
-        status["mariadb"] = True
-    except mariadb.Error:
-        status["mariadb"] = False 
-    backend_status = "ok"
-    db_status = "ok" if status.get("mariadb") else "error"
-    
-    OLLAMA_URL = "http://127.0.0.1:11434/"
-    try:
-        req = urllib.request.Request(OLLAMA_URL, method="HEAD") # chiede solo intestazione, quindi è più veloce di GET
-
-        with urllib.request.urlopen(req, timeout=1) as response:    # se dopo 2 secondi non ha risposto allora è "error"
-            if response.status==200:
-                ollama_status = "ok"
-
-    except Exception as e:
-        ollama_status = "error"
-
-    return StatusResponse(backend=backend_status,database=db_status,ollama=ollama_status)
-
-#endregion 
-
-
+#POST/evaluate_judge
 @app.post("/evaluate_judge")
 def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     # pulisco parsed e gold text
@@ -678,3 +457,225 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
         judge_score=final_score,
         judge_feedback=final_feedback
     )
+
+
+#GET/full_gs_eval
+@app.get("/full_gs_eval")
+def get_full_gs_eval(domain:str)->EvaluateOutputModel:
+    """"
+        Restituisce l'intero gold standard del dominio dell'url in input
+    """
+
+    if(domain not in domains_list):
+        raise HTTPException(status_code=404, detail="Dominio non supportato")
+
+    parser_module = CUSTOM_PARSERS.get(domain, parser_wikipedia)
+    file_name = domain_to_name_dict.get(domain)
+    file_path = f"../../gs_data/{file_name}_gs.json"
+
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=500, detail="GS non trovato")
+    
+    with open(file_path,"r",encoding = 'UTF-8') as gs_json:
+        gs_list = json.load(gs_json)
+
+
+    count = 0
+    precision = 0.0
+    recall = 0.0
+    f1 = 0.0
+
+
+    for gs_elem_dict in gs_list:
+        html = gs_elem_dict["html_text"]
+        gs_text = gs_elem_dict["gold_text"]
+
+        #in questo caso passiamo al parser sempre l'html che abbiamo associato al gs
+        parser_result = asyncio.run(parser_module.extract(f"raw:{gs_elem_dict['html_text']}"))
+        title = Cleaner.get_title_from_html(html)
+        parsed_text = f"# {title}\n\n{parser_result['parsed']}"
+        
+        stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
+
+        precision += stats.get("precision", 0.0)
+        recall += stats.get("recall", 0.0)
+        f1 += stats.get("f1", 0.0)
+        count += 1
+        
+    if count==0:
+        final_stats = {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+        }
+    else:
+        final_stats = {
+            "precision":float(precision/count),
+            "recall":float(recall/count),
+            "f1":float(f1/count)
+        }
+        
+    return EvaluateOutputModel(token_level_eval=final_stats)
+
+
+#POST/add_web_resource 
+@app.post("/add_web_resource")
+def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
+    """Aggiunge in web_resources i dati del body """   
+    url = input.url
+    html = input.html_text
+    try:
+        #ESTRAZIONE DOMINIO:
+        domain = Cleaner.get_domain_from_url(url)
+
+        #ESTRAZIONE TITOLO:
+        #se non trova il titolo, il titolo sarà "Titolo sconosciuto"
+        title = Cleaner.get_title_from_html(html) 
+
+        execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"{e}")
+
+
+    return AddOutputModel(status='ok')
+
+
+#POST/add_gold_standard
+@app.post("/add_gold_standard")
+def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
+    """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
+    url = input.url
+    gold_text = input.gold_text
+    try:
+        execute_query(
+            conn,
+            "INSERT INTO gold_standard (url, gold_text) VALUES (?,?)",
+            (url,gold_text)
+        )
+    except mariadb.IntegrityError as e:
+        if e.errno == 1452:
+            raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
+        else:
+            raise HTTPException(status_code=400, detail="Errore query")
+    except Exception:
+            raise HTTPException(status_code=400, detail = f"{e}")
+
+
+    return AddOutputModel(status='ok')
+
+
+#DELETE/web_resource
+@app.delete("/web_resource")
+def remove_web_rsrc_in_db(input:str)->AddOutputModel:
+    """Cancella in web_resources le tuple con url in input """   
+    url = input
+    try:
+        if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
+            raise HTTPException(status_code=404, detail=f"url assente")
+        execute_query(conn,"DELETE FROM web_resources WHERE url = ?",(url,))
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"{e}")
+
+    return AddOutputModel(status='ok')
+
+
+#DELETE/gold_standard
+@app.delete("/gold_standard")
+def remove_web_rsrc_in_db(input:str)->AddOutputModel:
+    """Cancella da gold_standard la entry con url in input"""   
+    url = input
+    try:
+        if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
+            raise HTTPException(status_code=404, detail=f"url assente")
+        execute_query(
+            conn,
+            "DELETE FROM gold_standard WHERE url = ?",
+            (url,)
+        )
+    except Exception as e:
+            raise HTTPException(status_code=400, detail = f"{e}")
+    return AddOutputModel(status='ok')
+
+
+#GET/db_schema
+@app.get("/db_schema")
+def database_schema()->DBSchemaModel:
+    """Ritorna lo schema del db"""
+    web_schema = WebResourcesModel(
+        url="varchar(768),PK",
+        domain="varchar(255)",
+        title = "varchar(500)",
+        html_text = "longtext",
+        created_at="datetime"
+    )
+    gold_schema = GoldStandardModelDB(
+        url = "varchar(768),PK,FK(web_resources.url)",
+        gold_text = "longtext",
+        created_at="datetime"
+    )
+    return DBSchemaModel(
+        web_resources=web_schema,
+        gold_standard=gold_schema
+        )
+
+
+#GET/status
+@app.get("/status")
+def status_service()->StatusResponse: 
+    try:
+        conn.ping() 
+        status["mariadb"] = True
+    except mariadb.Error:
+        status["mariadb"] = False 
+    backend_status = "ok"
+    db_status = "ok" if status.get("mariadb") else "error"
+    
+    OLLAMA_URL = "http://127.0.0.1:11434/"
+    try:
+        req = urllib.request.Request(OLLAMA_URL, method="HEAD") # chiede solo intestazione, quindi è più veloce di GET
+
+        with urllib.request.urlopen(req, timeout=1) as response:    # se dopo 2 secondi non ha risposto allora è "error"
+            if response.status==200:
+                ollama_status = "ok"
+
+    except Exception as e:
+        ollama_status = "error"
+
+    return StatusResponse(backend=backend_status,database=db_status,ollama=ollama_status)
+
+
+
+
+#NON PIU USATA
+# @app.get("/full_gold_standard")
+# def get_full_gold_standard(domain:str)->FullGoldStandardModel:
+#     """
+#     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
+#     """
+#     if domain not in domains_list:
+#         raise HTTPException(status_code=404, detail="Dominio non supportato")
+
+#     file_name = domain_to_name_dict.get(domain)
+#     file_path = f"../../gs_data/{file_name}_gs.json"
+
+#     # if not os.path.exists(file_path):
+#     #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
+
+#     with open(file_path, "r", encoding="utf-8") as f:
+#         gs_list = json.load(f)
+#         return FullGoldStandardModel(gold_standard=gs_list)
+#NON PIU USATA        
+
+
+
+
+        
+
+
+
+
+
+
+#endregion
