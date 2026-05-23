@@ -137,12 +137,10 @@ SYSTEM STATUS
 .active { 
     background-color: #10b981; 
     box-shadow: 0 0 8px #10b981;
-    animation: pulse-green 2s infinite; /* Effetto respiro per indicare che è "vivo" */
 }
-.disactive { 
+.inactive { 
     background-color: #ef4444; 
     box-shadow: 0 0 8px #ef4444;
-    animation: pulse-red 2s infinite;
 }
 
 /*@keyframes pulse-green {
