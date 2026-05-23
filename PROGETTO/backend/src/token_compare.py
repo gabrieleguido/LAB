@@ -61,7 +61,7 @@ class TokenCompare:
             l'insieme di token da usare per la funzione di valutazione
         """
         parsed_text = Cleaner.parsed_clean_to_string(md_string)
-        parsed_text = parsed_text.split(",")
+        parsed_text = parsed_text.split(" ")
         token_set = set()
         for w in parsed_text:
             if(w):

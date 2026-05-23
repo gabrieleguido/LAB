@@ -16,13 +16,17 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
+debug = 1
+
 #region MARIADB & OLLAMA SETUP
 #stato delle componenti: db e ollama
 status = {"mariadb":False,
           "ollama":False}
 
-#url ollama
+#url ollama e modello 
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+OLLAMA_MODEL = "llama3.2:3b"
+OLLAMA_MAX_CHARS = 2000
 
 #funzione per le query
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
@@ -229,13 +233,13 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     # gestisco il caso in cui i testi sono vuoti
     if not clean_parsed_text and not clean_gold_text:
         return EvaluateJudgeOutputModel(
-            model_name="gemma4:e2b",
+            model_name=f"{OLLAMA_MODEL}",
             judge_score=1,
             judge_feedback="Impossibile valutare, i testi sono vuoti"
         )
 
     
-    model_used = "gemma4:e2b"
+    model_used = f"{OLLAMA_MODEL}"
 
     # tecnica "few-shot prompting" per aggirare il più possibile i limiti tecnici del modello
     sys_msg = f"""
@@ -262,8 +266,8 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     # invio i testi da analizzare
     user_msg = f"""
         ORA VALUTA I SEGUENTI TESTI
-        testo estratto: {clean_parsed_text[:2000]}
-        gold text: {clean_gold_text[:2000]}
+        testo estratto: {clean_parsed_text[:OLLAMA_MAX_CHARS]}
+        gold text: {clean_gold_text[:OLLAMA_MAX_CHARS]}
     """
 
     msg_list = [
@@ -350,7 +354,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
     precision = 0.0
     recall = 0.0
     f1 = 0.0
-    score = 0
+    score = 0.0
 
 
     for gs_elem_dict in gs_list:
@@ -364,8 +368,8 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         try:
             judge_res = judge(EvaluateInputModel(parsed_text=parsed_text,gold_text=gs_text))
             score += judge_res.judge_score 
-        except:
-            raise HTTPException(status_code=404, detail="Errore nella richiesta al modello llm")
+        except Exception as e:
+            raise HTTPException(status_code=404, detail=f"Errore nella richiesta al modello llm: {e}")
                     
         stats = TokenCompare.build_eval_from_parsed_gs_string(parsed_text, gs_text)
 
@@ -373,6 +377,8 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         recall += stats.get("recall", 0.0)
         f1 += stats.get("f1", 0.0)
         count += 1
+        if debug and count >= 4:
+            break 
         
     if count==0:
         final_stats = {
@@ -519,6 +525,45 @@ def status_service()->StatusResponse:
 
     return StatusResponse(backend=backend_status,database=db_status,ollama=ollama_status)
 
+#GET/extract_stats
+@app.get("/extract_stats")
+def extract_stats_for_gs(name:str)->AddOutputModel:
+    """Funzione per estrarre le stats in un file 
+    """
+    file_name = f"{name}_stats.txt"
+    with open(file_name,"w",encoding="UTF-8") as out_text:
+        count = 0
+        file_path = f"../../gs_data/{name}_gs.json"
+        with open(file_path,"r",encoding="UTF-8") as gs_json:
+            gs_list = json.load(gs_json)
+            for gs_entry in gs_list:
+
+                parser_res = parse_html(PostParseInputModel(url=gs_entry.get("url"),local=True))
+                parsed_text = parser_res.parsed_text 
+                gold_text = gs_entry.get("gold_text")
+
+                eval_res = evaluate(EvaluateInputModel(parsed_text=parsed_text,gold_text=gold_text))
+                stats_dict = eval_res.token_level_eval 
+                url = gs_entry.get("url")
+                precision = stats_dict.get("precision")
+                recall = stats_dict.get("recall")
+                f1 = stats_dict.get("f1")
+                
+                score = 0.0
+
+                try:
+                    judge_res = judge(EvaluateInputModel(parsed_text=parsed_text,gold_text=gold_text))
+                    score = judge_res.judge_score 
+                except Exception as e:
+                    raise HTTPException(status_code=404, detail=f"Errore nella richiesta al modello llm: {e}")
+                            
+                print(f"score{score}\nCOUNT:{count}")
+                out_text.write(f"{url},{precision},{recall},{f1},{score}\n")
+                count += 1
+
+    return AddOutputModel(status="ok")
+
+        
 
 
 
