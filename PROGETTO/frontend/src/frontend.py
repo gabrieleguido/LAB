@@ -20,7 +20,52 @@ backend_url = "http://backend:8003"   # url del backend server.py da lanciare su
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
 def home(request:Request):
-    return templates.TemplateResponse(request=request, name="home.html")
+    # valori di default per lo status
+    status = {
+        "backend":"error",
+        "mariadb":"error",
+        "ollama":"error"
+    }
+
+    try:
+        url_status = f"{backend_url}/status"
+        with urllib.request.urlopen(url_status) as response:
+            if response.status==200:
+                data = response.read().decode('utf-8')
+                data_json = json.loads(data)
+                status["backend"] = data_json.get("backend", "error")
+                status["mariadb"] = data_json.get("database", "error")
+                status["ollama"] = data_json.get("ollama", "error")
+    
+    except Exception as e:
+        print(f"Errore in GET/status: {str(e)}")
+
+
+    domains_list = []
+
+    try:
+        url_domini = f"{backend_url}/domains"
+
+        # esegue la richiesta POST e ne apre la risposta
+        with urllib.request.urlopen(url_domini) as response:
+            if response.status == 200:
+                data = response.read().decode('utf-8')  # legge il body della risposta HTTP del server (testo grezzo) e la legge con codifica utf-8
+                data_json = json.loads(data)    # trasforma la stringa di testo in un dizionario python
+
+                domains_list = data_json.get("domains", []) # restituisce la chiave "domains", se non la trova restituisce lista vuota senza crashare
+    except Exception as e:
+        print(f"Errore di connessione al backend {e}") 
+
+
+    ui_data = {
+        "request":request,
+        "status_backend":status["backend"],
+        "status_mariadb":status["mariadb"],
+        "status_ollama":status["ollama"],
+        "domains":domains_list
+    }
+
+    return templates.TemplateResponse(request=request, name="home.html", context=ui_data)
 
 
 

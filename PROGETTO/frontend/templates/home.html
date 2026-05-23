@@ -2,7 +2,7 @@
 <HTML>
     <HEAD>
         <TITLE>Home page</TITLE>
-        <LINK rel="stylesheet" href="../static/home_style.css">
+        <LINK rel="stylesheet" href="../static/home_style.css?v=1">
     </HEAD>
     
     <BODY>
@@ -51,15 +51,15 @@
         <H2>System status</H2>
         <DIV class="status-box">
             <DIV>
-                <SPAN class="status active"></SPAN>
+                <SPAN class="status {% if status_backend == 'ok' %}active{% else %}inactive{% endif %}"></SPAN>
                 Backend
             </DIV>
             <DIV>
-                <SPAN class="status active"></SPAN>
+                <SPAN class="status {% if status_mariadb == 'ok' %}active{% else %}inactive{% endif %}"></SPAN>
                 MariaDB
             </DIV>
             <DIV>
-                <SPAN class="status active"></SPAN>
+                <SPAN class="status {{'active' if status_ollama == 'ok' else 'inactive'}}"></SPAN>
                 Ollama
             </DIV>
         </DIV>
@@ -71,21 +71,11 @@
                 <TH class="domains-head">Domini supportati</TH>
             </TR>
            
-            <!--da ciclare con jinja-->
-            <TR class="domains-row">
-                <TD class="domains-item">en.wikipedia.org</TD>
-            </TR>
-            <!---->
-            
-            <TR class="domains-row">
-                <TD class="domains-item">www.nbcnews.com</TD>
-            </TR class="domains-row">
-            <TR class="domains-row">
-                <TD class="domains-item">it.uefa.com</TD>
-            </TR>
-            <TR class="domains-row">
-                <TD class="domains-item">weather.com</TD>
-            </TR>
+            {% for d in domains %}
+                <TR class="domains-row">
+                    <TD class="domains-item">{{d}}</TD>
+                </TR>
+            {% endfor %}      
         </TABLE>
 
     </BODY>
