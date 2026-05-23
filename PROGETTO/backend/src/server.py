@@ -590,6 +590,10 @@ def status_service()->StatusResponse:
 
 @app.post("/evaluate_judge")
 def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
+    """
+    Utilizza ollama per valutare la qualità del testo parsato rispetto al gold standard
+    """
+
     # pulisco parsed e gold text
     clean_parsed_text = Cleaner.remove_markdown(req.parsed_text)
     clean_gold_text = Cleaner.remove_markdown(req.gold_text)
