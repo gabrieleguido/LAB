@@ -1,0 +1,10 @@
+https://it.uefa.com/uefachampionsleague/news/02a4-2060af553568-cd2fcc38c28e-1000--anteprima-liverpool-paris-saint-germain-champions-league,0.8508771929824561,0.9864406779661017,0.9136577708006279,5
+https://it.uefa.com/news-media/news/02a4-2055ce941e1b-ef117e3ca3d2-1000--il-calcio-europeo-piange-mircea-lucescu/,0.8295081967213115,1.0,0.9068100358422939,5
+https://it.uefa.com/euro2028/news/0286-19260662e95a-594c1920ca13-1000--confermati-i-paesi-che-ospiteranno-uefa-euro-2028-e-2032/,0.8007518796992481,1.0,0.8893528183716075,5
+https://it.uefa.com/news-media/news/02a1-1fb7c7f00ff2-a70c366a7484-1000--il-calcio-italiano-piange-rocco-commisso/,0.7992125984251969,1.0,0.888402625820569,5
+https://it.uefa.com/news-media/news/025b-0ee5446e6b25-2d76abebda6d-1000--federcalcio-isole-faroe/,0.8260869565217391,0.5480769230769231,0.6589595375722545,5
+https://it.uefa.com/uefachampionsleague/news/02a4-208008113c8e-de9836ee7c01-1000--paris-bayern-5-4-statistiche-di-una-semifinale-da-record/,0.8015564202334631,1.0,0.8898488120950324,5
+https://it.uefa.com/uefachampionsleague/news/02a4-208008113c8e-de9836ee7c01-1000--san-marino-annuncia-la-nazionale-femminile-senior/,0.8083623693379791,1.0,0.8940269749518305,5
+https://it.uefa.com/uefachampionsleague/news/02a4-208008113c8e-de9836ee7c01-1000--i-temi-delle-semifinali-di-ritorno-di-uefa-conference-league/,0.7613293051359517,1.0,0.8644939965694683,5
+https://it.uefa.com/uefachampionsleague/news/02a4-208008113c8e-de9836ee7c01-1000--in-the-zone-le-magie-di-antoine-griezmann/,0.7685459940652819,1.0,0.8691275167785235,5
+https://it.uefa.com/uefachampionsleague/news/02a4-208008113c8e-de9836ee7c01-1000--sfide-classiche-in-semifinale-di-champions-league/,0.9299754299754299,0.9960526315789474,0.9618805590851335,5
