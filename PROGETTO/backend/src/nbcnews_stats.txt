@@ -1,0 +1,10 @@
+https://www.nbcnews.com/science/space/artemis-ii-astronauts-return-nasa-moon-mission-rcna273651,0.9298245614035088,0.9976470588235294,0.9625425652667423,5
+https://www.nbcnews.com/world/europe/europe-celebrates-orban-defeat-hungary-election-putin-trump-maga-rcna331478,0.9342359767891683,1.0,0.966,5
+https://www.nbcnews.com/sports/golf/masters-2026-rory-mcilroy-holds-win-second-straight-masters-rcna330988,0.8666666666666667,0.9866071428571429,0.9227557411273487,5
+https://www.nbcnews.com/pop-culture/pop-culture-news/britney-spears-voluntarily-checks-into-treatment-facility-rcna331449,0.8009259259259259,0.9829545454545454,0.8826530612244897,5
+https://www.nbcnews.com/business/markets/oil-prices-surge-trump-says-us-will-blockade-strait-hormuz-rcna330824,0.9101382488479263,0.9875,0.9472422062350119,5
+https://www.nbcnews.com/sports/soccer/philadelphia-world-cup-fan-experience-fifa-rcna342497,0.9109195402298851,0.9937304075235109,0.9505247376311844,5
+https://www.nbcnews.com/politics/white-house/secret-service-says-shot-man-white-house-allegedly-fired-officers-rcna343557,0.8765060240963856,0.9965753424657534,0.9326923076923077,5
+https://www.nbcnews.com/health/health-news/hantavirus-cruise-ship-docking-cape-verde-hondius-who-rcna343415,0.916083916083916,1.0,0.9562043795620437,5
+https://www.nbcnews.com/tech/tech-news/musk-lawyer-hammers-openai-co-founder-30-billion-stake-rcna343518,0.9284009546539379,0.9848101265822785,0.9557739557739557,4
+https://www.nbcnews.com/news/us-news/cornell-president-accused-backing-car-protester-says-was-victim-harass-rcna343507,0.8362068965517241,0.9748743718592965,0.9002320185614848,5
