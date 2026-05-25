@@ -53,7 +53,7 @@ conn = mariadb.connect(
 
 
 #POPOLAZIONE DB (solo se db vuoto)
-if(len(execute_query(conn,"SELECT * FROM web_resources AS w JOIN gold_standard g ON w.url = g.url"))==0):
+if(len(execute_query(conn,"SELECT url FROM web_resources"))==0):
     Populator.populate(conn)
 
 #endregion

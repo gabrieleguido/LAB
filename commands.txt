@@ -1,6 +1,6 @@
-docker run --name lab -e MYSQL_ROOT_PASSWORD=rootpassword -p 3306:3306 --volume ./mariadb_data/:/var/lib/mysql:Z -d mariadb:11.7.2-ubi9
+docker run --name lab -e MYSQL_ROOT_PASSWORD=rootpassword -p 3306:3306 --volume ./:/var/lib/mysql:Z -d mariadb:11.7.2-ubi9
 
-mariadb -h 127.0.0.1 -P 3306 -u root -p < init.sql
+sudo mariadb -h 127.0.0.1 -P 3306 -u root -p < init.sql
 
 mariadb -h 127.0.0.1 -P 3306 -u backend_user -p 
 
