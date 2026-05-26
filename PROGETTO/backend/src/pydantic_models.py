@@ -203,7 +203,7 @@ class DBStatsModel(BaseModel):
     web_resources:Dict[str,int] 
     gold_standard:Dict[str,int]
     avg_eval:Dict[str,Dict[str,Dict[str,float]]]
-    avg_judge_score:Dict[str,Dict[str,float]]
+    avg_eval_judge:Dict[str,Dict[str,float]]
     
     
     
