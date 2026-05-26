@@ -190,3 +190,20 @@ class FullEvaluateModel(BaseModel):
     judge_score:float"""
     token_level_eval:Dict[str, float]
     judge_score:float
+
+#modello di risposta di GET/db_stats
+class DBStatsModel(BaseModel):
+    """ 
+     web_resources:Dict[str,int]\n
+    gold_standard:Dict[str,int]\n
+    avg_eval:Dict[str,Dict[str,Dict[str,float]]]\n
+    avg_judge_score:Dict[str,Dict[str,float]]
+    
+    """
+    web_resources:Dict[str,int] 
+    gold_standard:Dict[str,int]
+    avg_eval:Dict[str,Dict[str,Dict[str,float]]]
+    avg_judge_score:Dict[str,Dict[str,float]]
+    
+    
+    
