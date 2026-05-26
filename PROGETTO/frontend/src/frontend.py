@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 import urllib.parse
@@ -379,7 +379,7 @@ def salva_in_db(
     title: str = Form(...), 
     html_content: str = Form(...), 
     gold_text: str = Form(...)
-    
+
 ):
     try:
         #invio html
