@@ -328,6 +328,7 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
     urls_list = []
     html_grezzo = ""
     domains_list = []
+    titolo_estratto = ""
     
     #RECUPERO DOMINI
     try:
@@ -341,13 +342,13 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
     if domain:
         try:
             url_urls = f"{backend_url}/gold_standard_urls?domain={domain}"
-            response = request.get(url_urls,timeout=2) 
+            response = requests.get(url_urls,timeout=2) 
             response.raise_for_status()
             urls_list = response.json().get("gold_standard_urls", [])
         except Exception as e:
             print(f"Avviso: Impossibile recuperare URL per {domain}: {e}")
     
-    #AZIONE CARICA HTML
+    #AZIONE CARICA HTML E TITOLO
     if action == "carica" and url:
         try:
             parse_url = f"{backend_url}/parse"
@@ -355,8 +356,10 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
             response = requests.post(parse_url, json=payload, timeout=5)
             response.raise_for_status()
             html_grezzo = response.json().get("html_text", "ERRORE: Testo HTML non trovato")
+            titolo_estratto = response.json().get("title", "")
         except Exception as e:
             html_grezzo = f"Errore critico durante il download dell'HTML: {e}"
+            titolo_estratto = ""
             
     #COSTRUZIONE PAYLOAD PER JINJA
     ui_data = {
@@ -365,10 +368,50 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
         "dominio_scelto": domain,
         "url_scelto": url,
         "urls": urls_list,
-        "testo_html": html_grezzo
+        "testo_html": html_grezzo,
+        "titolo_estratto": titolo_estratto
     }
     return templates.TemplateResponse(request=request, name="gold_standard_builder.html", context=ui_data)
+#SALVATAGGIO NEL DB
+@app.post("/salva_in_db")
+def salva_in_db(
+    domain: str = Form(...),
+    url: str = Form(...), 
+    title: str = Form(...), 
+    html_content: str = Form(...), 
+    gold_text: str = Form(...)
+    
+):
+    try:
+        #invio html
+        payload_web = {"url": url, "domain": domain, "title": title, "html_text": html_content}
+        res_web = requests.post(f"{backend_url}/add_web_resource", json=payload_web, timeout=5)
+        res_web.raise_for_status()
+        #invio gs
+        payload_gold = {"url": url, "gold_text": gold_text}
+        res_gold = requests.post(f"{backend_url}/add_gold_standard", json=payload_gold, timeout=5)
+        res_gold.raise_for_status()
+        
+        redirect_url = f"/gold_standard_builder?domain={domain}&url={urllib.parse.quote(url)}"
+        return RedirectResponse(url=redirect_url, status_code=303)
 
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Errore nel salvataggio: {e}")
+#ELIMINAZIONE NEL DB
+@app.post("/elimina_dal_db")
+def elimina_dal_db(url_da_eliminare:str = Form(...),domain: str = Form(...)):
+    try: 
+        #conversione stringa->url
+        encoded_url = urllib.parse.quote(url_da_eliminare)
+        requests.delete(f"{backend_url}/gold_standard?url={encoded_url}", timeout=5)
+        res_web = requests.delete(f"{backend_url}/web_resource?url={encoded_url}", timeout=5)
+        res_web.raise_for_status()
+        
+        return RedirectResponse(url=f"/gold_standard_builder?domain={domain}", status_code=303)
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Errore nell'eliminazione: {e}")
+        
+        
 
 # @app.get("/parser_evaluation", response_class=HTMLResponse)
 # def parse(request, url, action):

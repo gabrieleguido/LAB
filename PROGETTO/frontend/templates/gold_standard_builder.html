@@ -36,6 +36,7 @@
             <form action="/salva_in_db" method="POST" style="display: contents;">
                 <input type="hidden" name="domain" value="{{ dominio_scelto }}">
                 <input type="hidden" name="url" value="{{ url_scelto }}">
+                <input type="hidden" name="title" value="{{ titolo_estratto if titolo_estratto else '' }}">
             <div class="editor-section">
                 <label for="html-scaricato">HTML Scaricato:</label>
                 <textarea id="html-scaricato" name="html_content" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..." required>{{ testo_html }}</textarea> 
