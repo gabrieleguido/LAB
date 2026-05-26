@@ -3,7 +3,7 @@ import requests
 import json
 from urllib.parse import urlparse,unquote
 import urllib.request
-from modelli_pydantic import AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
+from pydantic_models import AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
 from token_compare import TokenCompare
 import os
 from typing import List,Tuple, Optional 
@@ -16,7 +16,7 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
-debug = 1
+DEBUG = 1
 
 #region MARIADB & OLLAMA SETUP
 #stato delle componenti: db e ollama
@@ -377,7 +377,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         recall += stats.get("recall", 0.0)
         f1 += stats.get("f1", 0.0)
         count += 1
-        if debug and count >= 4:
+        if DEBUG and count >= 4:
             break 
         
     if count==0:
@@ -479,6 +479,8 @@ def remove_web_rsrc_in_db(input:str)->AddOutputModel:
     return AddOutputModel(status='ok')
 
 
+
+
 #GET/db_schema
 @app.get("/db_schema")
 def database_schema()->DBSchemaModel:
@@ -563,28 +565,6 @@ def extract_stats_for_gs(name:str)->AddOutputModel:
 
     return AddOutputModel(status="ok")
 
-        
-
-
-
-#NON PIU USATA
-# @app.get("/full_gold_standard")
-# def get_full_gold_standard(domain:str)->FullGoldStandardModel:
-#     """
-#     Restituisce oggetto JSON contenente la lista degli elementi di un GS per un dominio specifico
-#     """
-#     if domain not in domains_list:
-#         raise HTTPException(status_code=404, detail="Dominio non supportato")
-
-#     file_name = domain_to_name_dict.get(domain)
-#     file_path = f"../../gs_data/{file_name}_gs.json"
-
-#     # if not os.path.exists(file_path):
-#     #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
-
-#     with open(file_path, "r", encoding="utf-8") as f:
-#         gs_list = json.load(f)
-#         return FullGoldStandardModel(gold_standard=gs_list)
-#NON PIU USATA        
+              
 
 #endregion

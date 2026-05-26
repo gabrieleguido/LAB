@@ -135,6 +135,18 @@ class GoldStandardModelDB(BaseModel):
     gold_text:str
     created_at:Optional[str] = None
 
+#modello per stats
+class StatsModelDB(BaseModel):
+    """url:str\n
+    prec:str\n
+    rec:str\n
+    f1:str \n
+    score:str """
+    url:str
+    prec:str
+    rec:str
+    f1:str 
+    score:str 
 
 #modello di risposta della GET/db_schema
 class DBSchemaModel(BaseModel):
@@ -142,6 +154,7 @@ class DBSchemaModel(BaseModel):
     gold_standard:GoldStandardModelDB"""
     web_resources:WebResourcesModel
     gold_standard:GoldStandardModelDB
+    stats:StatsModelDB
 
 
 #modello di risposta GET/status
