@@ -141,12 +141,15 @@ class StatsModelDB(BaseModel):
     prec:str\n
     rec:str\n
     f1:str \n
-    score:str """
+    score:str\n
+    created_at:str
+ """
     url:str
     prec:str
     rec:str
     f1:str 
     score:str 
+    created_at:str
 
 #modello di risposta della GET/db_schema
 class DBSchemaModel(BaseModel):
