@@ -26,36 +26,10 @@
             </DATALIST>
             <br><br>
             
-            <BUTTON type="submit">Invia</BUTTON>
+            <BUTTON type="submit">Live</BUTTON>
+            <BUTTON type="submit">Local</BUTTON>
         </FORM>
         <br><br>
-
-
-        {% if dominio_scelto %}
-
-            <FORM action="/parser_evaluation" method="get">
-                <INPUT type="hidden" name="domain" value="{{dominio_scelto}}">
-                <INPUT type="hidden" name="action" value="global_eval" readonly>
-                <BUTTON type="submit">Calcola metriche globali per <b>{{dominio_scelto}}</b></BUTTON>
-            </FORM>
-            <br><br>
-
-            {% if global_precision is defined %}
-                <H3>Valutazione globale: {{dominio_scelto}}</H3>
-                <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
-                    <TR class="stats-row">
-                        <TH class="stats-head">Global precision</TH>
-                        <TH class="stats-head">Global recall</TH>
-                        <TH class="stats-head">Global f1</TH>
-                    </TR>
-                    <TR class="stats-row">
-                        <TD class="stats-item">{{global_precision}}</TD>
-                        <TD class="stats-row">{{global_recall}}</TD>
-                        <TD class="stats-row">{{global_f1}}</TD>
-                    </TR>
-                </TABLE>
-            {% endif %}
-        {% endif %}
 
         <H2>Risultati</H2>
         <br>
@@ -86,45 +60,23 @@
                 <TH class="stats-head">Precision</TH>
                 <TH class="stats-head">Recall</TH>
                 <TH class="stats-head">F1</TH>
+                <TH class="stats-head">LLM Judge</TH>
+                <TH class="stats-head">Giudizio complessivo</TH>
             </TR>
             <TR class="stats-row">
                 <TD class="stats-item">{% if precision is none or precision=='' %}N/D{% else %}{{precision}}{% endif %}</TD>
                 <TD class="stats-item">{% if recall is none or recall=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
                 <TD class="stats-item">{% if f1 is none or f1=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
-            </TR>
-        </TABLE>
-        <br><br><br>
-
-
-        <H2>Valutazione manuale</H2>
-        <P>Incolla qui i testi per valutare URL non appartenenti ai Gold Standard</P>
-        <FORM action="/parser_evaluation" method="post">
-            <TABLE>
-                <TR>
-                    <TH>Testo parsato</TH>
-                    <TH>Testo gold standard</TH>
-                </TR>
-                <TR>
-                    <TD><TEXTAREA name="manual_parsed" cols="60" rows="20" style="resize: none;" required>{% if manual_parsed %}{{manual_parsed}}{% endif %}</TEXTAREA></TD>
-                    <TD><TEXTAREA name="manual_gs" cols="60" rows="20" style="resize: none;">{% if manual_gs %}{{manual_gs}}{% endif %}</TEXTAREA></TD>
-                </TR>
-            </TABLE>
-            <BUTTON type="submit" name="action" value="run_parser"><b>Estrai testo da HTML</b> (POST /parse)</BUTTON>
-            <BUTTON type="submit" name="action" value="run_eval"><b>Valuta</b> (POST /evaluate)</BUTTON>
-        </FORM>
-        <br>
-
-        <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
-            <TR class="stats-row">
-                <TH class="stats-head">Precision</TH>
-                <TH class="stats-head">Recall</TH>
-                <TH class="stats-head">F1</TH>
-            </TR>
-            <TR class="stats-row">
-                <TD class="stats-item">{{ manual_precision | default('N/D') if manual_precision != '' else 'N/D' }}</TD>
-                <TD class="stats-item">{{ manual_recall | default('N/D') if manual_recall != '' else 'N/D' }}</TD>
-                <TD class="stats-item">{{ manual_f1 | default('N/D') if manual_f1 != '' else 'N/D' }}</TD>
+                <TD class="stats-item">da completare con jinja</TD>
+                <TD class="stats-item">da completare con jinja</TD>
             </TR>
         </TABLE>
     </BODY>
 </HTML>
+
+
+
+<!--
+- Se è l'url presente nel gold standard posso creare le metriche con POST/evaluate (precision, recall, f1) e POST/evaluate_judge (score e giudizio)
+- Se l'url NON è presente nel gs non calcola metriche, mi dà solo i risultati del parser
+-->

@@ -3,7 +3,7 @@ import requests
 import json
 from urllib.parse import urlparse,unquote
 import urllib.request
-from pydantic_models import AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DBStatsModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
+from pydantic_models import StatsModelDB,AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DBStatsModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
 from token_compare import TokenCompare
 import os
 from typing import List,Tuple, Optional 
@@ -17,11 +17,10 @@ import mariadb
 from populate_db import Populator
 
 DEBUG = 1
+status_mariadb = {"mariadb":False}
 
 #region MARIADB & OLLAMA SETUP
-#stato delle componenti: db e ollama
-status = {"mariadb":False,
-          "ollama":False}
+
 
 #url ollama e modello 
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
@@ -32,6 +31,7 @@ OLLAMA_MAX_CHARS = 2000
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
     """funzione per eseguire le query che ritorna una lista di tuple (di stringhe).
     Ha un parametro opzionale con la tupla della query parametrizzata"""
+    conn = create_connection(conn)
     with conn.cursor() as cursor:
         cursor.execute(query,param)
         conn.commit()
@@ -40,16 +40,25 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tupl
             return []
         result = cursor.fetchall()
         return result
+    
+#funzione per la connessione
+def create_connection(conn:mariadb.Connection)->mariadb.Connection:
+    try:
+        conn.close() 
+    except:
+        pass
+    return mariadb.connect(
+        host = "127.0.0.1",
+        port = 3306,
+        user = "backend_user",
+        password = "backend_password",
+        database = "lab_db"
+    )   
 
 
 #connessione al db 
-conn = mariadb.connect(
-    host = "127.0.0.1",
-    port = 3306,
-    user = "backend_user",
-    password = "backend_password",
-    database = "lab_db"
-)
+conn = None
+conn = create_connection(conn)
 
 
 #POPOLAZIONE DB (solo se db vuoto)
@@ -546,22 +555,39 @@ def database_schema()->DBSchemaModel:
         gold_text = "longtext",
         created_at="datetime"
     )
+    stats_schema = StatsModelDB(
+        url = "varchar(768),PK,FK(web_resources.url)",
+        prec = "float",
+        rec = "float",
+        f1 = "float",
+        score="int",
+        created_at="datetime"
+    )
     return DBSchemaModel(
         web_resources=web_schema,
-        gold_standard=gold_schema
+        gold_standard=gold_schema,
+        stats=stats_schema
         )
 
 
 #GET/status
 @app.get("/status")
 def status_service()->StatusResponse: 
-    try:
-        conn.ping() 
-        status["mariadb"] = True
-    except mariadb.Error:
-        status["mariadb"] = False 
     backend_status = "ok"
-    db_status = "ok" if status.get("mariadb") else "error"
+
+    local_conn = None
+
+    try:
+        local_conn = create_connection(local_conn)
+        local_conn.ping()
+        db_status = "ok"
+    except mariadb.Error:
+        db_status = "error"
+    finally:
+        try:
+            local_conn.close()
+        except:
+            pass 
     
     OLLAMA_URL = "http://127.0.0.1:11434/"
     try:

@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS stats(
     prec FLOAT NOT NULL,
     rec FLOAT NOT NULL,
     f1 FLOAT NOT NULL,
-    score FLOAT NOT NULL,
+    score INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_stats_url FOREIGN KEY (url) 
         REFERENCES web_resources(url) 
