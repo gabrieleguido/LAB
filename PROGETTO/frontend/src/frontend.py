@@ -15,8 +15,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")    # agganc
 templates = Jinja2Templates(directory="templates")  # pagine html
 
 
-# backend_url = "http://127.0.0.1:8003" # url backend per test senza docker --- DA ELIMINARE!!!
-backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
+backend_url = "http://127.0.0.1:8003" # url backend per test senza docker --- DA ELIMINARE!!!
+# backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
@@ -78,8 +78,53 @@ def home(request:Request):
 
 
 
+@app.get("/parser_evaluation", response_class=HTMLResponse)
+def parser_eval(request:Request, domain:str =None, url:str=None):
+    domains_list = []
 
+    try:
+        url_domini = f"{backend_url}/domains"
 
+        response = requests.get(url_domini, timeout=2)
+        response.raise_for_status()
+        response_json = response.json()
+
+        domains_list = response_json.get("domains", [])
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Errore durante la connessione al server: {str(e)}")
+    except json.JSONDecodeError:
+        print(f"Errore nella decodifica del json")
+    except Exception as e:
+        print(f"Errore in GET/domains: {e}") 
+
+    
+    url_list = []
+    if domain:
+        try:
+            url_urls = f"{backend_url}/gold_standard_urls?domain={domain}"
+            response = requests.get(url_urls)
+            response.raise_for_status()
+            response_json = response.json()
+            
+            url_list = response_json.get("gold_standard_urls", [])
+
+        except requests.exceptions.RequestException as e:
+            print(f"Errore durante la connessione al server: {str(e)}")
+        except json.JSONDecodeError:
+            print(f"Errore nella decodifica del json")
+        except Exception as e:
+            print(f"Errore in GET/gold_standard_urls: {e}") 
+
+    ui_data = {
+        "request":request,
+        "domains":domains_list,
+        "urls": url_list,
+        "dominio_scelto": domain,
+        "url_scelto":url
+    }
+
+    return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
 
