@@ -79,7 +79,7 @@ def home(request:Request):
 
 
 @app.get("/parser_evaluation", response_class=HTMLResponse)
-def parser_eval(request:Request, domain:str =None, url:str=None):
+def parser_eval(request:Request, domain:str =None, url:str=None, action=None):
     domains_list = []
 
     try:
@@ -100,6 +100,9 @@ def parser_eval(request:Request, domain:str =None, url:str=None):
 
     
     url_list = []
+    html_grezzo = ""
+    testo_parsed = ""
+
     if domain:
         try:
             url_urls = f"{backend_url}/gold_standard_urls?domain={domain}"
@@ -116,17 +119,72 @@ def parser_eval(request:Request, domain:str =None, url:str=None):
         except Exception as e:
             print(f"Errore in GET/gold_standard_urls: {e}") 
 
+
+
+        if action=='live' and url:
+            parse_url = f"{backend_url}/parse"
+            payload = {
+                "url":url,
+                "local":False
+            }
+
+            try:
+                response = requests.post(parse_url, json=payload)
+                response.raise_for_status()
+                response_json = response.json()
+                
+                html_grezzo = response_json.get("html_text", "ERRORE: testo html non trovato")
+                testo_parsed = response_json.get("parsed_text", "ERRORE: testo parsato non trovato")
+
+            except requests.exceptions.RequestException as e:
+                print(f"Errore durante la connessione al server: {str(e)}")
+            except json.JSONDecodeError:
+                print(f"Errore nella decodifica del json")
+            except Exception as e:
+                print(f"Errore in GET/gold_standard_urls: {e}") 
+
     ui_data = {
         "request":request,
         "domains":domains_list,
         "urls": url_list,
         "dominio_scelto": domain,
-        "url_scelto":url
+        "url_scelto":url,
+        "testo_html":html_grezzo,
+        "testo_parsato":testo_parsed
     }
 
     return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
+# @app.get("/parser_evaluation", response_class=HTMLResponse)
+# def parse(request, url, action):
+#     html_grezzo = ""
+#     testo_parsed = ""
+
+#     if action=='live':
+#         parse_url = f"{backend_url}/parse?url={url}&local=false"
+#         try:
+#             response = requests.post(parse_url)
+#             response.raise_for_status()
+#             response_json = response.json()
+            
+#             html_grezzo = response_json.get("html_text", "ERRORE: testo html non trovato")
+#             testo_parsed = response_json.get("parsed_text", "ERRORE: testo parsato non trovato")
+
+#         except requests.exceptions.RequestException as e:
+#             print(f"Errore durante la connessione al server: {str(e)}")
+#         except json.JSONDecodeError:
+#             print(f"Errore nella decodifica del json")
+#         except Exception as e:
+#             print(f"Errore in GET/gold_standard_urls: {e}") 
+
+#     ui_data = {
+#         "request":request,
+#         "testo_html":html_grezzo,
+#         "testo_parsato":testo_parsed
+#     }
+
+#     return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
 # @app.get("/parser_evaluation", response_class=HTMLResponse)
