@@ -8,54 +8,78 @@
 </head>
 <body>
     <div class="gold-standard-builder">
-        
+        <form action="/gold_standard_builder" method="GET" class="control-panel">        
         <!-- Pannello di Controllo -->
         <div class="control-panel">
             <div class="input-group">
                 <label for="dominio-supportato">Dominio Supportato:</label>
-                <select id="dominio-supportato" name="dominio-supportato">
-                    <option value="wikipedia">en.wikipedia.org</option>
-                    <option value="uefa">uefa.com</option>
-                    <option value="weather">weather.com</option>
+                <select id="dominio-supportato" name="domain" required>
+                    <option value="" disabled {% if not dominio_scelto %}selected{% endif %}>Seleziona un dominio</option>
+                    {% for d in domains %}
+                        <option value="{{ d }}" {% if d == dominio_scelto %}selected{% endif %}>{{ d }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="input-group">
                 <label for="url-input">URL:</label>
-                <input type="text" id="url-input" name="url-input" placeholder="Inserisci l'URL qui">
+                <input type="text" id="url-input" name="url" placeholder="Inserisci l'URL qui" value="{{ url_scelto if url_scelto else '' }}" required>
+
             </div>
             <div class="input-group">
-                <button type="submit" class="btn-primary">CARICA HTML</button>
+                <button type="submit" name="action" value="carica" class="btn-primary">CARICA HTML</button>
             </div>
         </div>
+        </form>
 
         <!-- Area di Lavoro (Textareas) -->
         <div class="workspace">
+            <form action="/salva_in_db" method="POST" style="display: contents;">
+                <input type="hidden" name="domain" value="{{ dominio_scelto }}">
+                <input type="hidden" name="url" value="{{ url_scelto }}">
             <div class="editor-section">
                 <label for="html-scaricato">HTML Scaricato:</label>
-                <textarea id="html-scaricato" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..."></textarea>
+                <textarea id="html-scaricato" name="html_content" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..." required>{{ testo_html }}</textarea> 
                 <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA HTML</button>
-                <button type = "submit" class = "salva_db" >SALVA NEL DATABASE</button>
             </div>
             
             <div class="editor-section">
                 <label for="gold-textarea">Gold Standard:</label>
-                <textarea id="gold-textarea" class="code-area gold-code" rows="15" placeholder="Il Gold Standard apparirà qui..."></textarea>
+                <textarea id="gold-textarea" name="gold_text" class="code-area gold-code" rows="15" placeholder="Incolla il testo del Gold Standard qui..." required></textarea>
                 <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA GOLD STANDARD</button>
             </div>
+            <button type="submit" class="salva_db">SALVA NEL DATABASE</button>
         </div>
-
+    </form>
         <!-- Tabella URL -->
         <div class="url-presenti-nel-GS">
             <table>
                 <thead>
                     <tr>
                         <th>URL Presenti nel GS</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% if urls %}
+                       {%for item in urls%}
+                       <tr>
+                        <td>
+                            {{item}}
+                        </td>
+                        <td>
+                            <form action="/elimina_dal_db" method="POST" class="form-elimina">
+                                    <input type="hidden" name="url_da_eliminare" value="{{ item }}">
+                                    <input type="hidden" name="domain" value="{{ dominio_scelto }}">
+                                    <button type="submit" class="btn-danger">Elimina</button>
+                        </td>
+                       </tr>
+                       {%endfor%}
+                    {%else}
+
                     <tr>
-                        <td>Nessun URL estratto al momento.</td>
+                        <td colspan="2">Nessun URL estratto al momento.</td>
                     </tr>
+                    {%endif%}
                 </tbody>
             </table>
         </div>
@@ -65,7 +89,3 @@
 </html>
 
 
-<!--
-- Per l'aggiunta si fa prima POST/add_web_resource e poi POST/add_gold_standard
-- Per l'eliminazione basta fare DELETE/web_resource che fa eliminazione a cascata sul gs
--->

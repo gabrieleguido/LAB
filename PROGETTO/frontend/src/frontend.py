@@ -156,6 +156,54 @@ def parser_eval(request:Request, domain:str =None, url:str=None, action=None):
     return templates.TemplateResponse(request=request, name="parser_evaluation.html", context=ui_data)
 
 
+#GET RENDERIZZA LA UI 
+@app.get("/gold_standard_builder", response_class = HTMLResponse)
+def gold_standard_builder(request: Request, domain: str = None, url: str = None, action: str = None):
+    urls_list = []
+    html_grezzo = ""
+    domains_list = []
+    
+    #RECUPERO DOMINI
+    try:
+        url_domini = f"{backend_url}/domains"
+        response = requests.get(url_domini, timeout=2)
+        response.raise_for_status()
+        domains_list = response.json().get("domains", [])
+    except Exception as e:
+        print(f"Errore critico nel recupero dei domini dal backend: {e}")
+    #RECUPERO URL
+    if domain:
+        try:
+            url_urls = f"{backend_url}/gold_standard_urls?domain={domain}"
+            response = request.get(url_urls,timeout=2) 
+            response.raise_for_status()
+            urls_list = response.json().get("gold_standard_urls", [])
+        except Exception as e:
+            print(f"Avviso: Impossibile recuperare URL per {domain}: {e}")
+    
+    #AZIONE CARICA HTML
+    if action == "carica" and url:
+        try:
+            parse_url = f"{backend_url}/parse"
+            payload = {"url": url, "local": False}
+            response = requests.post(parse_url, json=payload, timeout=5)
+            response.raise_for_status()
+            html_grezzo = response.json().get("html_text", "ERRORE: Testo HTML non trovato")
+        except Exception as e:
+            html_grezzo = f"Errore critico durante il download dell'HTML: {e}"
+            
+    #COSTRUZIONE PAYLOAD PER JINJA
+    ui_data = {
+        "request": request,
+        "domains": domains_list,
+        "dominio_scelto": domain,
+        "url_scelto": url,
+        "urls": urls_list,
+        "testo_html": html_grezzo
+    }
+    return templates.TemplateResponse(request=request, name="gold_standard_builder.html", context=ui_data)
+
+
 # @app.get("/parser_evaluation", response_class=HTMLResponse)
 # def parse(request, url, action):
 #     html_grezzo = ""
