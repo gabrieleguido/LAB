@@ -491,18 +491,24 @@ def remove_web_rsrc_in_db(input:str)->AddOutputModel:
 #GET/db_stats
 @app.get("/db_stats")
 def database_stats()->DBStatsModel:
-    stats = DBStatsModel() 
+    web_res_dict = {}
+    gold_std_dict = {}
+    avg_eval_dict = {}
+    avg_eval_judge_dict = {} 
+    
     try:
         #conteggio web resources per dominio
         q_web = "SELECT domain, COUNT(*) FROM web_resources GROUP BY domain"
         web_stats = execute_query(conn, q_web)
         for row in web_stats:
-            stats["web_resources"][row[0]] = row[1]
+            web_res_dict[row[0]] = row[1]
+            
         #conteggio gold standard per dominio
         q_gold = "SELECT w.domain, COUNT(g.url) FROM gold_standard AS g JOIN web_resources AS w ON g.url = w.url GROUP BY w.domain"
         gold_stats = execute_query(conn, q_gold)
         for row in gold_stats:
-            stats["gold_standard"][row[0]] = row[1]
+            gold_std_dict[row[0]] = row[1]
+            
         #media valutazione token level per dominio
         q_eval = """
             SELECT 
@@ -511,31 +517,39 @@ def database_stats()->DBStatsModel:
                 AVG(s.prec),  -- index 2
                 AVG(s.rec),   -- index 3
                 AVG(s.score)  -- index 4
-            FROM stats s
-            JOIN web_resources w ON s.url = w.url
+            FROM web_resources w 
+            LEFT JOIN stats s ON s.url = w.url 
             GROUP BY w.domain;
+
             """
         eval_stats = execute_query(conn, q_eval)
         for row in eval_stats:
-            domain = row[0]
-            avg_f1 = row[1] 
-            avg_prec = row[2] 
-            avg_rec = row[3] 
-            avg_judge = row[4] 
-            stats.avg_eval[domain] = {
+            domain = row[0] if row[0] is not None else "unknown_domain"
+            avg_f1 = row[1] if row[1] is not None else 0.0
+            avg_prec = row[2] if row[2] is not None else 0.0
+            avg_rec = row[3] if row[3] is not None else 0.0
+            avg_judge = row[4] if row[4] is not None else 0.0
+            
+            avg_eval_dict[domain] = {
                 "token_level_eval": {
-                    "f1": round(avg_f1, 2) if avg_f1 is not None else 0.0,
-                    "precision": round(avg_prec, 2) if avg_prec is not None else 0.0,
-                    "recall": round(avg_rec, 2) if avg_rec is not None else 0.0
+                    "f1": round(avg_f1, 2),
+                    "precision": round(avg_prec, 2),
+                    "recall": round(avg_rec, 2) 
                 }
             }
             
-            stats.avg_eval_judge[domain] = {
-                "judge_score": round(avg_judge, 2) if avg_judge is not None else 0.0
+            avg_eval_judge_dict[domain] = {
+                "judge_score": round(avg_judge, 2)
             }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Errore nel recupero delle statistiche: {e}")
-    return stats 
+    return DBStatsModel(
+            web_resources=web_res_dict,
+            gold_standard=gold_std_dict,
+            avg_eval=avg_eval_dict,
+            avg_eval_judge=avg_eval_judge_dict
+        )    
+  
     
             
             
