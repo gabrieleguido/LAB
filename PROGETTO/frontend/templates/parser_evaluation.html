@@ -55,7 +55,7 @@
         
         <br><br>
 
-        <TABLE class="stats-box" border="1" cellpadding="5" style="margin: auto; text-align: center; width: 50%;">
+        <TABLE class="stats-box">
             <TR class="stats-row">
                 <TH class="stats-head">Precision</TH>
                 <TH class="stats-head">Recall</TH>
@@ -67,8 +67,8 @@
                 <TD class="stats-item">{% if precision is none or precision=='' %}N/D{% else %}{{precision}}{% endif %}</TD>
                 <TD class="stats-item">{% if recall is none or recall=='' %}N/D{% else %}{{recall}}{% endif %}</TD>
                 <TD class="stats-item">{% if f1 is none or f1=='' %}N/D{% else %}{{f1}}{% endif %}</TD>
-                <TD class="stats-item">da completare con jinja</TD>
-                <TD class="stats-item">da completare con jinja</TD>
+                <TD class="stats-item">{% if score is none or score=='' %}N/D{% else %}{{score}}{% endif %}</TD>
+                <TD class="stats-item">{% if feedback is none or feedback=='' %}N/D{% else %}{{feedback}}{% endif %}</TD>
             </TR>
         </TABLE>
     </BODY>
