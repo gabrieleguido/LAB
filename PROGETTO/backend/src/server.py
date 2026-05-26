@@ -516,12 +516,13 @@ def status_service()->StatusResponse:
     
     OLLAMA_URL = "http://127.0.0.1:11434/"
     try:
-        req = urllib.request.Request(OLLAMA_URL, method="HEAD") # chiede solo intestazione, quindi è più veloce di GET
+        # richiesta con metodo "head" per la sola intestazione. attende 1 secondo dopo l'invio della richiesta prima di proseguire
+        response = requests.head(OLLAMA_URL, timeout=1) 
+        response.raise_for_status()
+        ollama_status = "ok"
 
-        with urllib.request.urlopen(req, timeout=1) as response:    # se dopo 2 secondi non ha risposto allora è "error"
-            if response.status==200:
-                ollama_status = "ok"
-
+    except requests.exceptions.RequestException as e:
+        ollama_status = "error"
     except Exception as e:
         ollama_status = "error"
 
