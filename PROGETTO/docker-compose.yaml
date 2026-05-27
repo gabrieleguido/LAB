@@ -24,6 +24,11 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpassword
     ports:
       - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   
   backend:
@@ -34,7 +39,8 @@ services:
       - "8003:8003"
     container_name: backend 
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   
   frontend:
     build:
