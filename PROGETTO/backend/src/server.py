@@ -1,3 +1,5 @@
+import time
+
 from fastapi import FastAPI, HTTPException
 import requests
 import json
@@ -48,7 +50,7 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
     except:
         pass
     return mariadb.connect(
-        host = "127.0.0.1",
+        host = "db",
         port = 3306,
         user = "backend_user",
         password = "backend_password",
@@ -58,6 +60,7 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
 
 #connessione al db 
 conn = None
+time.sleep(5)
 conn = create_connection(conn)
 
 

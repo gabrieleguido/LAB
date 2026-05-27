@@ -5,11 +5,13 @@ WORKDIR /app
 
 # copia le librerie dell'ambiente e le installa se non sono installate
 COPY requirements.txt .
+RUN pip install python-multipart
 RUN pip install --no-cache-dir -r requirements.txt
 
 # copia cartelle "src" e "templates"
 COPY src/ ./src/
 COPY templates/ ./templates/
+COPY static/ ./static/
 
 EXPOSE 8004
 

@@ -1,11 +1,13 @@
 FROM python:3.10-slim
 WORKDIR /app
 COPY domains.json .
-COPY gs_data/ ./gs_data
+COPY gs_data/ ./gs_data/
+RUN apt-get update -y
+RUN apt-get install -y gcc libmariadb-dev
+COPY backend/requirements.txt ./backend/
+RUN pip install -r ./backend/requirements.txt 
 WORKDIR /app/backend/src
-COPY parser_wikipedia.py parser_weather.py cleaner.py token_compare.py . 
-RUN pip install -r requirements.txt 
 RUN crawl4ai-setup
-COPY server.py 
+COPY backend/src/ ./
 EXPOSE 8003
 CMD ["uvicorn","server:app","--host","0.0.0.0","--port","8003"]
