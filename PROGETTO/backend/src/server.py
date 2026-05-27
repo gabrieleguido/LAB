@@ -195,22 +195,20 @@ def get_gold_standard(url: str)->GoldStandardModel:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
     
     
-    file_name = domain_to_name_dict.get(domain)
-    file_path = f"../../gs_data/{file_name}_gs.json"
+    res = execute_query(conn,"select w.url,w.domain,w.title,w.html_text,g.gold_text from "
+        "web_resources as w join gold_standard as g on w.url = g.url "
+        "where w.url = ? ",(url,))
+    if res:
+        gs = res[0]
+        return GoldStandardModel(url = gs[0],
+                                domain=gs[1],
+                                title=gs[2],
+                                html_text=gs[3],
+                                gold_text=gs[4]
+                                )
+    else:
+        raise HTTPException(status_code=404, detail="GS non disponibile")
 
-    # if not os.path.exists(file_path):
-    #     raise HTTPException(status_code=500, detail=f"File {file_path} non trovato")
-
-    with open(file_path, "r", encoding="utf-8") as f:
-        try:
-            gs_list = json.load(f)
-            for gs in gs_list:
-                if url_pulito.strip() == gs.get("url", "").strip():
-                    return GoldStandardModel(**gs)
-            raise HTTPException(status_code=404, detail="Url non trovato")
-            
-        except json.JSONDecodeError:
-            raise HTTPException(status_code=500, detail="File json corrotto")
 
 
 #GET/gold_standard_urls
