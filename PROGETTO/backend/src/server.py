@@ -25,7 +25,7 @@ status_mariadb = {"mariadb":False}
 
 
 #url ollama e modello 
-OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+OLLAMA_URL = "http://ollama:11434/api/chat"
 OLLAMA_MODEL = "llama3.2:3b"
 OLLAMA_MAX_CHARS = 2000
 

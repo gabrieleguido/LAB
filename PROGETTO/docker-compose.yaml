@@ -1,4 +1,20 @@
 services:
+  ollama:
+    image: ollama/ollama
+    ports: 
+    - 11434:11434
+    volumes:
+      - ollama_volume:/root/.ollama
+
+  ollama-pull-model:
+    image: ollama/ollama
+    volumes:
+      - ollama_volume:/root/.ollama
+    entrypoint: /bin/sh
+    command: -c "ollama serve & sleep 5 && ollama pull llama3.2:3b"
+    depends_on:
+      - ollama
+
   db:
     image: mariadb:11.7.2-ubi9
     volumes:
@@ -30,4 +46,6 @@ services:
     depends_on:
     - backend 
 
+volumes:
+  ollama_volume:
  
