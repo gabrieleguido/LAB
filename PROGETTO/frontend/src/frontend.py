@@ -352,7 +352,7 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
         try:
             parse_url = f"{backend_url}/parse"
             payload = {"url": url, "local": False}
-            response = requests.post(parse_url, json=payload, timeout=5)
+            response = requests.post(parse_url, json=payload)
             response.raise_for_status()
             html_grezzo = response.json().get("html_text", "ERRORE: Testo HTML non trovato")
             titolo_estratto = response.json().get("title", "")
@@ -400,10 +400,8 @@ def salva_in_db(
 @app.post("/elimina_dal_db")
 def elimina_dal_db(url_da_eliminare:str = Form(...),domain: str = Form(...)):
     try: 
-        #conversione stringa->url
-        encoded_url = urllib.parse.quote(url_da_eliminare)
-        requests.delete(f"{backend_url}/gold_standard?url={encoded_url}", timeout=5)
-        res_web = requests.delete(f"{backend_url}/web_resource?url={encoded_url}", timeout=5)
+        delete_url = f"{backend_url}/web_resource?input={url_da_eliminare}"
+        res_web = requests.delete(delete_url, timeout=5)
         res_web.raise_for_status()
         
         return RedirectResponse(url=f"/gold_standard_builder?domain={domain}", status_code=303)
