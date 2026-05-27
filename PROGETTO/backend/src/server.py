@@ -33,7 +33,10 @@ OLLAMA_MAX_CHARS = 2000
 def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tuple[str]]:
     """funzione per eseguire le query che ritorna una lista di tuple (di stringhe).
     Ha un parametro opzionale con la tupla della query parametrizzata"""
-    conn = create_connection(conn)
+    try:
+        conn.ping()
+    except:
+        conn = create_connection(conn)    
     with conn.cursor() as cursor:
         cursor.execute(query,param)
         conn.commit()
@@ -45,10 +48,11 @@ def execute_query(conn:mariadb.Connection,query:str,param:Tuple=None)->List[Tupl
     
 #funzione per la connessione
 def create_connection(conn:mariadb.Connection)->mariadb.Connection:
-    try:
-        conn.close() 
-    except:
-        pass
+    if conn is not None:
+        try:
+            conn.close() 
+        except:
+            pass
     return mariadb.connect(
         host = "db",
         port = 3306,
@@ -61,6 +65,19 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
 #connessione al db 
 conn = None
 conn = create_connection(conn)
+
+cnt = 10
+while cnt:
+    try:
+        conn.ping() 
+        cnt = 0
+    except:
+        conn = create_connection(conn)
+        cnt-=1 
+        time.sleep(5)
+    
+        
+
 
 
 #POPOLAZIONE DB (solo se db vuoto)
@@ -168,7 +185,11 @@ def get_gold_standard(url: str)->GoldStandardModel:
     Restituisce oggetto JSON contenente il gold standard del dominio in input
     """
     url_pulito = unquote(url).strip()
-    domain = Cleaner.get_domain_from_url(url_pulito)
+    try:
+        domain = Cleaner.get_domain_from_url(url_pulito)
+    except:
+        raise HTTPException(status_code=404, detail="Url non valido")
+
     
     if domain not in domains_list:
         raise HTTPException(status_code=404, detail="Dominio non supportato")
