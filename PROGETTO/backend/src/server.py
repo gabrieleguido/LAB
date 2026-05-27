@@ -60,7 +60,6 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
 
 #connessione al db 
 conn = None
-time.sleep(5)
 conn = create_connection(conn)
 
 
@@ -606,10 +605,10 @@ def status_service()->StatusResponse:
         except:
             pass 
     
-    OLLAMA_URL = "http://127.0.0.1:11434/"
+    OLLAMA_STATUS_URL = "http://ollama:11434/"
     try:
         # richiesta con metodo "head" per la sola intestazione. attende 1 secondo dopo l'invio della richiesta prima di proseguire
-        response = requests.head(OLLAMA_URL, timeout=1) 
+        response = requests.head(OLLAMA_STATUS_URL, timeout=1) 
         response.raise_for_status()
         ollama_status = "ok"
 
