@@ -1,0 +1,173 @@
+{
+  "identifier": "2144286",
+  "timestamp": "20260528-15:58",
+  "mode": "public",
+  "components": {
+    "backend": "ok",
+    "database": "ok",
+    "ollama": "ok",
+    "frontend": "ok"
+  },
+  "overall_score": 0.7193,
+  "all_pass": false,
+  "passed": 21,
+  "total": 29,
+  "gs_calibration": {
+    "public_avg": 0.9295,
+    "public_min": 0.859
+  },
+  "tests": {
+    "GET /status — componenti": {
+      "passed": true,
+      "score": 1.0,
+      "details": "backend=ok, database=ok, ollama=ok"
+    },
+    "Frontend :8004 — raggiungibile": {
+      "passed": true,
+      "score": 1.0,
+      "details": "OK (text/html; charset=utf-8)"
+    },
+    "GET /domains — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "4 domini"
+    },
+    "GET /domains — domini nella lista valida": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Tutti validi"
+    },
+    "GET /db_schema — tabelle obbligatorie": {
+      "passed": true,
+      "score": 1.0,
+      "details": "web_resources e gold_standard presenti"
+    },
+    "GET /db_stats — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "6 domini nelle statistiche"
+    },
+    "POST /evaluate — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Struttura corretta"
+    },
+    "POST /evaluate — correttezza metriche (public set)": {
+      "passed": true,
+      "score": 1.0,
+      "details": "tutti i 200 corretti"
+    },
+    "POST /evaluate — gestione input vuoti": {
+      "passed": true,
+      "score": 1.0,
+      "details": "OK"
+    },
+    "POST /evaluate_judge — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "model=llama3.2:3b, score=4"
+    },
+    "GET /gold_standard — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "OK url=https://www.nbcnews.com/business/markets/oil-prices-surge-tr..."
+    },
+    "GET /gold_standard — URL inesistente": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "GET /gold_standard — dominio non supportato": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "GET /gold_standard_urls — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "10 URL per www.nbcnews.com"
+    },
+    "GET /gold_standard_urls — dominio non supportato": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "POST /add_web_resource — struttura status": {
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTP 400"
+    },
+    "POST /add_gold_standard — struttura status": {
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTP 400"
+    },
+    "DELETE /web_resource — struttura status": {
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTP 422"
+    },
+    "DELETE /gold_standard — struttura status": {
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTP 422"
+    },
+    "CRUD — flusso completo risorsa e gold standard": {
+      "passed": false,
+      "score": 0.0,
+      "details": "add_web_resource fallito: HTTP 400"
+    },
+    "POST /parse local=true — struttura risposta": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Struttura corretta"
+    },
+    "POST /parse — output in markdown": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Markdown rilevato"
+    },
+    "POST /parse — dominio non supportato": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "POST /parse local=true — URL assente nel DB": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "POST /parse — qualità parsing (public set) (pass=0.70)": {
+      "passed": true,
+      "score": 0.859,
+      "details": "en.wikipedia.org: F1=0.962 (F1=0.949, F1=0.975); it.uefa.com: F1=0.874 (F1=0.874); weather.com: F1=0.721 (F1=0.721); www.nbcnews.com: F1=0.880 (F1=0.880)"
+    },
+    "GET /full_gs_eval — struttura risposta": {
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTPConnectionPool(host='localhost', port=8003): Read timed out. (read timeout=360)"
+    },
+    "GET /full_gs_eval — coerenza F1 aggregato": {
+      "passed": false,
+      "score": 0.0,
+      "details": "www.nbcnews.com: /full_gs_eval non disponibile; en.wikipedia.org: /full_gs_eval non disponibile; it.uefa.com: /full_gs_eval non disponibile; weather.com: /full_gs_eval non disponibile"
+    },
+    "GET /full_gs_eval — dominio non supportato": {
+      "passed": true,
+      "score": 1.0,
+      "details": "Errore gestito"
+    },
+    "GET /full_gs_eval — soglia F1 (pass=0.70)": {
+      "passed": false,
+      "score": 0.0,
+      "details": "www.nbcnews.com: errore; en.wikipedia.org: errore; it.uefa.com: errore; weather.com: errore"
+    }
+  },
+  "parse_f1_public": {
+    "en.wikipedia.org": 0.9618,
+    "it.uefa.com": 0.8736,
+    "weather.com": 0.7209,
+    "www.nbcnews.com": 0.8798
+  },
+  "parse_f1_secret": {}
+}
