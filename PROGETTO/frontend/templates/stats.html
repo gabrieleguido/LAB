@@ -2,70 +2,71 @@
 <HTML>
     <HEAD>
         <TITLE>Stats page</TITLE>
-        <LINK rel="stylesheet" href="../static/stats_style.css">
+        <LINK rel="stylesheet" href="/static/stats_style.css">
     </HEAD>
 
     <BODY>
         <H1>Stats</H1>
 
-        <H2>Numero di entry per dominio</H2>
-        <TABLE class="entry-table">
-            <TR class="entry-row">
-                <TH class="entry-head">Dominio</TH>
-                <TH class="entry-head">Numero di entry</TH>
-            </TR>
-            <TR class="entry-row">
-                <TD class="entry-item">
-                    en.wikipedia.org
-                </TD>
-                <TD class="entry-item">
-                    10
-                </TD>
-            </TR>
-        </TABLE>
+        {% if not stats_data or not stats_data.web_resources %}
+            <H2>Nessun dato presente nel database. Esegui il popolamento iniziale.</H2>
+        {% else %}
+        
+            <H2>Numero di entry per dominio</H2>
+            <TABLE class="entry-table">
+                <TR class="entry-row">
+                    <TH class="entry-head">Dominio</TH>
+                    <TH class="entry-head">Web Resources (Scraping)</TH>
+                    <TH class="entry-head">Gold Standard (Manuali)</TH>
+                </TR>
+                
+                {% for domain in stats_data.web_resources.keys() %}
+                <TR class="entry-row">
+                    <TD class="entry-item">{{ domain }}</TD>
+                    <TD class="entry-item">{{ stats_data.web_resources[domain] }}</TD>
+                    <TD class="entry-item">{{ stats_data.gold_standard.get(domain, 0) }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
 
-        <HR>
+            <HR>
 
-        <H2>Metriche medie per dominio</H2>
-        <TABLE class="stats-table">
-            <TR class="stats-row">
-                <TH class="stats-head">Dominio</TH>
-                <TH class="stats-head">Precision</TH>
-                <TH class="stats-head">Recall</TH>
-                <TH class="stats-head">F1</TH>
-            </TR>
-            <TR class="stats-row">
-                <TD class="stats-item">
-                    en.wikipedia.org
-                </TD>
-                <TD class="stats-item">
-                    0.75
-                </TD>
-                <TD class="stats-item">
-                    0.75
-                </TD>
-                <TD class="stats-item">
-                    0.75
-                </TD>
-            </TR>
-        </TABLE>
+            <H2>Metriche medie per dominio</H2>
+            <TABLE class="stats-table">
+                <TR class="stats-row">
+                    <TH class="stats-head">Dominio</TH>
+                    <TH class="stats-head">Precision</TH>
+                    <TH class="stats-head">Recall</TH>
+                    <TH class="stats-head">F1</TH>
+                </TR>
+                
+                {% for domain in stats_data.web_resources.keys() %}
+                <TR class="stats-row">
+                    <TD class="stats-item">{{ domain }}</TD>
+                    <TD class="stats-item">{{ stats_data.avg_eval.get(domain, {}).get("token_level_eval", {}).get("precision", 0.0) }}</TD>
+                    <TD class="stats-item">{{ stats_data.avg_eval.get(domain, {}).get("token_level_eval", {}).get("recall", 0.0) }}</TD>
+                    <TD class="stats-item">{{ stats_data.avg_eval.get(domain, {}).get("token_level_eval", {}).get("f1", 0.0) }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
 
-        <HR>
+            <HR>
 
-        <H2>Judge medio per dominio</H2>
-        <TABLE class="judge-table">
-            <TR class="stats-row">
-                <TH class="judge-head">Dominio</TH>
-                <TH class="judge-head">Score</TH>
-            </TR>
-            <TR class="judge-row">
-                <TD class="judge-item">
-                    en.wikipedia.org
-                </TD>
-                <TD class="judge-item">
-                    buono
-                </TD>
-            </TR>
-        </TABLE>
+            <H2>Judge medio per dominio</H2>
+            <TABLE class="judge-table">
+                <TR class="stats-row">
+                    <TH class="judge-head">Dominio</TH>
+                    <TH class="judge-head">Score</TH>
+                </TR>
+                
+                {% for domain in stats_data.web_resources.keys() %}
+                <TR class="judge-row">
+                    <TD class="judge-item">{{ domain }}</TD>
+                    <TD class="judge-item">{{ stats_data.avg_eval_judge.get(domain, {}).get("judge_score", 0.0) }} / 5</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
+
+        {% endif %}
     </BODY>
 </HTML>
