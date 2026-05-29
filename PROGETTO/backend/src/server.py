@@ -5,7 +5,7 @@ import requests
 import json
 from urllib.parse import urlparse,unquote
 import urllib.request
-from pydantic_models import StatsModelDB,AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DBStatsModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel
+from pydantic_models import StatsModelDB,AddGoldStandardInputModel, AddOutputModel, AddWebResourceInputModel, DBSchemaModel, DBStatsModel, DomainsListModel, EvaluateInputModel, EvaluateJudgeOutputModel, EvaluateOutputModel, FullEvaluateModel, GoldStandardModel, GoldStandardModelDB, GoldStandardUrlsOutputModel, ParseOutputModel, PostParseInputModel, StatusResponse, WebResourcesModel, DeleteInputModel
 from token_compare import TokenCompare
 import os
 from typing import List,Tuple, Optional 
@@ -484,9 +484,10 @@ def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
 
 #DELETE/web_resource
 @app.delete("/web_resource")
-def remove_web_rsrc_in_db(url:str)->AddOutputModel:
+def remove_web_rsrc_in_db(input:DeleteInputModel)->AddOutputModel:
     """Cancella in web_resources le tuple con url in input """   
     status_str = ""
+    url = input.url
     try:
         # if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
         #     return AddOutputModel(status="error")
@@ -500,9 +501,10 @@ def remove_web_rsrc_in_db(url:str)->AddOutputModel:
 
 #DELETE/gold_standard
 @app.delete("/gold_standard")
-def remove_gs_in_db(url:str)->AddOutputModel:
+def remove_gs_in_db(input:DeleteInputModel)->AddOutputModel:
     """Cancella da gold_standard la entry con url in input"""   
     status_str = ""
+    url = input.url
     try:
         # if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
         #     return AddOutputModel(status="error")

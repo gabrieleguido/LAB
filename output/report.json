@@ -1,6 +1,6 @@
 {
   "identifier": "2139688",
-  "timestamp": "20260529-15:49",
+  "timestamp": "20260529-17:23",
   "mode": "public",
   "components": {
     "backend": "ok",
@@ -8,9 +8,9 @@
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.8448,
+  "overall_score": 0.9482,
   "all_pass": false,
-  "passed": 24,
+  "passed": 27,
   "total": 29,
   "gs_calibration": {
     "public_avg": 0.9295,
@@ -43,9 +43,9 @@
       "details": "web_resources e gold_standard presenti"
     },
     "GET /db_stats — struttura risposta": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 500"
+      "passed": true,
+      "score": 1.0,
+      "details": "4 domini nelle statistiche"
     },
     "POST /evaluate — struttura risposta": {
       "passed": true,
@@ -95,27 +95,27 @@
     "POST /add_web_resource — struttura status": {
       "passed": true,
       "score": 1.0,
-      "details": "status=error"
+      "details": "status=ok"
     },
     "POST /add_gold_standard — struttura status": {
       "passed": true,
       "score": 1.0,
-      "details": "status=error"
+      "details": "status=ok"
     },
     "DELETE /web_resource — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 422"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=ok"
     },
     "DELETE /gold_standard — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 422"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=ok"
     },
     "CRUD — flusso completo risorsa e gold standard": {
       "passed": false,
       "score": 0.0,
-      "details": "add_web_resource fallito: HTTP 200"
+      "details": "GET gold_standard fallito: HTTP 404"
     },
     "POST /parse local=true — struttura risposta": {
       "passed": true,
@@ -150,7 +150,7 @@
     "GET /full_gs_eval — coerenza F1 aggregato": {
       "passed": false,
       "score": 0.75,
-      "details": "www.nbcnews.com: OK (student=0.933, manual=0.938); en.wikipedia.org: diff=0.077 (student=0.873, manual=0.949); it.uefa.com: OK (student=0.900, manual=0.874); weather.com: OK (student=0.852, manual=0.870)"
+      "details": "www.nbcnews.com: OK (student=0.933, manual=0.938); en.wikipedia.org: diff=0.060 (student=0.873, manual=0.933); it.uefa.com: OK (student=0.900, manual=0.874); weather.com: OK (student=0.852, manual=0.870)"
     },
     "GET /full_gs_eval — dominio non supportato": {
       "passed": true,

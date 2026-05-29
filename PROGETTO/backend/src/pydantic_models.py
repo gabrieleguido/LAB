@@ -110,6 +110,9 @@ class AddOutputModel(BaseModel):
     status:str
 
 
+class DeleteInputModel(BaseModel):
+    url:str
+
 #modello per il web_resources
 class WebResourcesModel(BaseModel):
     """
