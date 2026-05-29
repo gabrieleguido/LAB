@@ -478,9 +478,9 @@ def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
 
 #DELETE/web_resource
 @app.delete("/web_resource")
-def remove_web_rsrc_in_db(input:str)->AddOutputModel:
+def remove_web_rsrc_in_db(url:str)->AddOutputModel:
     """Cancella in web_resources le tuple con url in input """   
-    url = input
+    # url = input
     try:
         if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
             raise HTTPException(status_code=404, detail=f"url assente")
@@ -494,9 +494,9 @@ def remove_web_rsrc_in_db(input:str)->AddOutputModel:
 
 #DELETE/gold_standard
 @app.delete("/gold_standard")
-def remove_web_rsrc_in_db(input:str)->AddOutputModel:
+def remove_web_rsrc_in_db(url:str)->AddOutputModel:
     """Cancella da gold_standard la entry con url in input"""   
-    url = input
+    # url = input
     try:
         if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
             raise HTTPException(status_code=404, detail=f"url assente")

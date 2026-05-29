@@ -400,7 +400,7 @@ def salva_in_db(
 @app.post("/elimina_dal_db")
 def elimina_dal_db(url_da_eliminare:str = Form(...),domain: str = Form(...)):
     try: 
-        delete_url = f"{backend_url}/web_resource?input={url_da_eliminare}"
+        delete_url = f"{backend_url}/web_resource?url={url_da_eliminare}"
         res_web = requests.delete(delete_url, timeout=5)
         res_web.raise_for_status()
         
