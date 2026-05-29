@@ -409,3 +409,28 @@ def elimina_dal_db(url_da_eliminare:str = Form(...),domain: str = Form(...)):
         raise HTTPException(status_code=500, detail=f"Errore nell'eliminazione: {e}")
         
         
+@app.get("/stats", response_class=HTMLResponse)
+def database_stats_page(request:Request): 
+    stats_data = {
+        "web_resources":{},
+        "gold_standard":{},
+        "avg_eval":{},
+        "avg_eval_judge":{}
+        
+    }
+    try: 
+        url_stats = f"{backend_url}/db_stats"
+        response = requests.get(url_stats, timeout=5)
+        response.raise_for_status()
+        stats_data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Errore durante la connessione al server per le stats: {str(e)}")
+    except json.JSONDecodeError:
+        print(f"Errore nella decodifica del json delle stats")
+    except Exception as e:
+        print(f"Errore critico in GET/db_stats: {e}")
+    ui_data = {
+        "request":request,
+        "stats_data":stats_data
+    }
+    return templates.TemplateResponse(request=request, name="stats.html", context=ui_data)
