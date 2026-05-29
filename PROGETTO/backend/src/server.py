@@ -445,7 +445,8 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
         execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
 
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"{e}")
+        # raise HTTPException(status_code=400, detail=f"{e}")
+        return AddOutputModel(status="error")
 
 
     return AddOutputModel(status='ok')
