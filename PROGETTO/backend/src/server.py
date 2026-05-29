@@ -64,16 +64,24 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
 
 #connessione al db 
 conn = None
-conn = create_connection(conn)
+# conn = create_connection(conn)
 
-cnt = 10
-while cnt:
+# cnt = 10
+# while cnt:
+#     try:
+#         conn.ping() 
+#         cnt = 0
+#     except:
+#         conn = create_connection(conn)
+#         cnt-=1 
+#         time.sleep(5)
+
+for i in range(10):
     try:
-        conn.ping() 
-        cnt = 0
-    except:
         conn = create_connection(conn)
-        cnt-=1 
+        conn.ping()
+        break
+    except mariadb.Error as e:
         time.sleep(5)
     
         
