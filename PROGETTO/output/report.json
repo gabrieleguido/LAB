@@ -1,6 +1,6 @@
 {
   "identifier": "2144286",
-  "timestamp": "20260528-15:58",
+  "timestamp": "20260529-14:31",
   "mode": "public",
   "components": {
     "backend": "ok",
@@ -8,9 +8,9 @@
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.7193,
+  "overall_score": 0.7882,
   "all_pass": false,
-  "passed": 21,
+  "passed": 23,
   "total": 29,
   "gs_calibration": {
     "public_avg": 0.9295,
@@ -93,14 +93,14 @@
       "details": "Errore gestito"
     },
     "POST /add_web_resource — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 400"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=error"
     },
     "POST /add_gold_standard — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 400"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=error"
     },
     "DELETE /web_resource — struttura status": {
       "passed": false,
@@ -115,7 +115,7 @@
     "CRUD — flusso completo risorsa e gold standard": {
       "passed": false,
       "score": 0.0,
-      "details": "add_web_resource fallito: HTTP 400"
+      "details": "add_web_resource fallito: HTTP 200"
     },
     "POST /parse local=true — struttura risposta": {
       "passed": true,

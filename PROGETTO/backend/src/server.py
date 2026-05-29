@@ -445,7 +445,6 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
         execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
 
     except Exception as e:
-        # raise HTTPException(status_code=400, detail=f"{e}")
         return AddOutputModel(status="error")
 
 
@@ -454,7 +453,7 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 
 #POST/add_gold_standard
 @app.post("/add_gold_standard")
-def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
+def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
     """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
     url = input.url
     gold_text = input.gold_text
@@ -464,14 +463,13 @@ def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
             "INSERT INTO gold_standard (url, gold_text) VALUES (?,?)",
             (url,gold_text)
         )
-    except mariadb.IntegrityError as e:
-        if e.errno == 1452:
-            raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
-        else:
-            raise HTTPException(status_code=400, detail="Errore query")
+    # except mariadb.IntegrityError as e:
+    #     if e.errno == 1452:
+    #         raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
+    #     else:
+    #         raise HTTPException(status_code=400, detail="Errore query")
     except Exception:
-            raise HTTPException(status_code=400, detail = f"{e}")
-
+        return AddOutputModel(status="error")
 
     return AddOutputModel(status='ok')
 
@@ -480,34 +478,35 @@ def add_web_rsrc_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
 @app.delete("/web_resource")
 def remove_web_rsrc_in_db(url:str)->AddOutputModel:
     """Cancella in web_resources le tuple con url in input """   
-    # url = input
+    status_str = ""
     try:
-        if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
-            raise HTTPException(status_code=404, detail=f"url assente")
+        # if(len(execute_query(conn,"SELECT url FROM web_resources WHERE url = ?",(url,)))==0):
+        #     return AddOutputModel(status="error")
         execute_query(conn,"DELETE FROM web_resources WHERE url = ?",(url,))
+        status_str = "ok"
+    except:
+        status_str = "error"
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"{e}")
-
-    return AddOutputModel(status='ok')
+    return AddOutputModel(status=status_str)
 
 
 #DELETE/gold_standard
 @app.delete("/gold_standard")
-def remove_web_rsrc_in_db(url:str)->AddOutputModel:
+def remove_gs_in_db(url:str)->AddOutputModel:
     """Cancella da gold_standard la entry con url in input"""   
-    # url = input
+    status_str = ""
     try:
-        if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
-            raise HTTPException(status_code=404, detail=f"url assente")
+        # if(len(execute_query(conn,"SELECT url FROM gold_standard WHERE url = ?",(url,)))==0):
+        #     return AddOutputModel(status="error")
         execute_query(
             conn,
             "DELETE FROM gold_standard WHERE url = ?",
             (url,)
         )
-    except Exception as e:
-            raise HTTPException(status_code=400, detail = f"{e}")
-    return AddOutputModel(status='ok')
+        status_str = "ok"
+    except:
+        status_str = "error"
+    return AddOutputModel(status=status_str)
 
 
 #GET/db_stats
