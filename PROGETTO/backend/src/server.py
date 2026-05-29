@@ -452,7 +452,7 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 
         execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
 
-    except Exception as e:
+    except:
         return AddOutputModel(status="error")
 
 
@@ -476,7 +476,7 @@ def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
     #         raise HTTPException(status_code=400, detail="Url assente in web_resources (FK-ERROR)")
     #     else:
     #         raise HTTPException(status_code=400, detail="Errore query")
-    except Exception:
+    except:
         return AddOutputModel(status="error")
 
     return AddOutputModel(status='ok')
