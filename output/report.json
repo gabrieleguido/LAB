@@ -1,6 +1,6 @@
 {
   "identifier": "2139688",
-  "timestamp": "20260529-17:23",
+  "timestamp": "20260530-07:28",
   "mode": "public",
   "components": {
     "backend": "ok",
@@ -8,7 +8,7 @@
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.9482,
+  "overall_score": 0.9483,
   "all_pass": false,
   "passed": 27,
   "total": 29,
@@ -150,7 +150,7 @@
     "GET /full_gs_eval — coerenza F1 aggregato": {
       "passed": false,
       "score": 0.75,
-      "details": "www.nbcnews.com: OK (student=0.933, manual=0.938); en.wikipedia.org: diff=0.060 (student=0.873, manual=0.933); it.uefa.com: OK (student=0.900, manual=0.874); weather.com: OK (student=0.852, manual=0.870)"
+      "details": "www.nbcnews.com: OK (student=0.934, manual=0.938); en.wikipedia.org: diff=0.053 (student=0.880, manual=0.933); it.uefa.com: OK (student=0.900, manual=0.874); weather.com: OK (student=0.855, manual=0.870)"
     },
     "GET /full_gs_eval — dominio non supportato": {
       "passed": true,
@@ -159,8 +159,8 @@
     },
     "GET /full_gs_eval — soglia F1 (pass=0.70)": {
       "passed": true,
-      "score": 0.8895,
-      "details": "www.nbcnews.com: F1=0.933; en.wikipedia.org: F1=0.873; it.uefa.com: F1=0.900; weather.com: F1=0.852"
+      "score": 0.8921,
+      "details": "www.nbcnews.com: F1=0.934; en.wikipedia.org: F1=0.880; it.uefa.com: F1=0.900; weather.com: F1=0.855"
     }
   },
   "parse_f1_public": {

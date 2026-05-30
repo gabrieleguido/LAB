@@ -205,7 +205,7 @@ def get_gold_standard(url: str)->GoldStandardModel:
     
     res = execute_query(conn,"select w.url,w.domain,w.title,w.html_text,g.gold_text from "
         "web_resources as w join gold_standard as g on w.url = g.url "
-        "where w.url = ? ",(url,))
+        "where w.url = ? ",(url_pulito,))
     if res:
         gs = res[0]
         return GoldStandardModel(url = gs[0],
@@ -426,10 +426,21 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         }
         score = 0
     else:
+        # final_stats = {
+        #     "precision":float(precision/count),
+        #     "recall":float(recall/count),
+        #     "f1":float(f1/count)
+        # }
+        avg_precision = float(precision/count)
+        avg_recall = float(recall/count)
+        if avg_precision+avg_recall>0:
+            avg_f1 = 2*(avg_precision*avg_recall) / (avg_precision+avg_recall)
+        else:
+            avg_f1 = 0.0
         final_stats = {
-            "precision":float(precision/count),
-            "recall":float(recall/count),
-            "f1":float(f1/count)
+            "precision":avg_precision,
+            "recall":avg_recall,
+            "f1":avg_f1
         }
         score = float(score/count)
         
@@ -440,7 +451,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
 @app.post("/add_web_resource")
 def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
     """Aggiunge in web_resources i dati del body """   
-    url = input.url
+    url = unquote(input.url).strip()
     html = input.html_text
     try:
         #ESTRAZIONE DOMINIO:
@@ -450,7 +461,8 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
         #se non trova il titolo, il titolo sarà "Titolo sconosciuto"
         title = Cleaner.get_title_from_html(html) 
 
-        execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?)",(url,domain,title,html))
+        execute_query(conn,"INSERT INTO web_resources (url, domain, title, html_text) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE domain=VALUES(domain), title=VALUES(title), html_text=VALUES(html_text)",
+                      (url,domain,title,html))
 
     except:
         return AddOutputModel(status="error")
@@ -463,12 +475,12 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 @app.post("/add_gold_standard")
 def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
     """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
-    url = input.url
+    url = unquote(input.url).strip()
     gold_text = input.gold_text
     try:
         execute_query(
             conn,
-            "INSERT INTO gold_standard (url, gold_text) VALUES (?,?)",
+            "INSERT INTO gold_standard (url, gold_text) VALUES (?,?) ON DUPLICATE KEY UPDATE gold_text=VALUES(gold_text)",
             (url,gold_text)
         )
     # except mariadb.IntegrityError as e:
