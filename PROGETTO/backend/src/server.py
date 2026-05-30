@@ -192,7 +192,7 @@ def get_gold_standard(url: str)->GoldStandardModel:
     """
     Restituisce oggetto JSON contenente il gold standard del dominio in input
     """
-    url_pulito = unquote(url).strip().rstrip('/')
+    url_pulito = unquote(url).strip()
     try:
         domain = Cleaner.get_domain_from_url(url_pulito)
     except:
@@ -451,7 +451,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
 @app.post("/add_web_resource")
 def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
     """Aggiunge in web_resources i dati del body """   
-    url = unquote(input.url).strip().rstrip('/')
+    url = unquote(input.url).strip()
     html = input.html_text
     try:
         #ESTRAZIONE DOMINIO:
@@ -475,7 +475,7 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 @app.post("/add_gold_standard")
 def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
     """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
-    url = unquote(input.url).strip().rstrip('/')
+    url = unquote(input.url).strip()
     gold_text = input.gold_text
     try:
         execute_query(
