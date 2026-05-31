@@ -18,7 +18,7 @@ import asyncio
 import mariadb
 from populate_db import Populator
 
-DEBUG = 1
+DEBUG = 0
 status_mariadb = {"mariadb":False}
 
 #region MARIADB & OLLAMA SETUP
