@@ -198,14 +198,11 @@ def get_gold_standard(url: str)->GoldStandardModel:
     except:
         raise HTTPException(status_code=404, detail="Url non valido")
 
-    
-    if domain not in domains_list:
-        raise HTTPException(status_code=404, detail="Dominio non supportato")
-    
-    
     res = execute_query(conn,"select w.url,w.domain,w.title,w.html_text,g.gold_text from "
         "web_resources as w join gold_standard as g on w.url = g.url "
         "where w.url = ? ",(url_pulito,))
+    
+    
     if res:
         gs = res[0]
         return GoldStandardModel(url = gs[0],
@@ -215,6 +212,8 @@ def get_gold_standard(url: str)->GoldStandardModel:
                                 gold_text=gs[4]
                                 )
     else:
+        if domain not in domains_list:
+            raise HTTPException(status_code=404, detail="Dominio non supportato")
         raise HTTPException(status_code=404, detail="GS non disponibile")
 
 

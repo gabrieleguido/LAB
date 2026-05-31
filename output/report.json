@@ -1,6 +1,6 @@
 {
   "identifier": "2139688",
-  "timestamp": "20260531-09:21",
+  "timestamp": "20260531-10:28",
   "mode": "public",
   "components": {
     "backend": "ok",
@@ -8,9 +8,9 @@
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.9575,
-  "all_pass": false,
-  "passed": 28,
+  "overall_score": 0.992,
+  "all_pass": true,
+  "passed": 29,
   "total": 29,
   "gs_calibration": {
     "public_avg": 0.9315,
@@ -113,9 +113,9 @@
       "details": "status=ok"
     },
     "CRUD — flusso completo risorsa e gold standard": {
-      "passed": false,
-      "score": 0.0,
-      "details": "GET gold_standard fallito: HTTP 404"
+      "passed": true,
+      "score": 1.0,
+      "details": "add_web_resource → add_gold_standard → GET → DELETE GS → DELETE resource OK"
     },
     "POST /parse local=true — struttura risposta": {
       "passed": true,
