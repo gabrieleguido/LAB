@@ -426,22 +426,22 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
         }
         score = 0
     else:
-        # final_stats = {
-        #     "precision":float(precision/count),
-        #     "recall":float(recall/count),
-        #     "f1":float(f1/count)
-        # }
-        avg_precision = float(precision/count)
-        avg_recall = float(recall/count)
-        if avg_precision+avg_recall>0:
-            avg_f1 = 2*(avg_precision*avg_recall) / (avg_precision+avg_recall)
-        else:
-            avg_f1 = 0.0
         final_stats = {
-            "precision":avg_precision,
-            "recall":avg_recall,
-            "f1":avg_f1
+            "precision":float(precision/count),
+            "recall":float(recall/count),
+            "f1":float(f1/count)
         }
+        # avg_precision = float(precision/count)
+        # avg_recall = float(recall/count)
+        # if avg_precision+avg_recall>0:
+        #     avg_f1 = 2*(avg_precision*avg_recall) / (avg_precision+avg_recall)
+        # else:
+        #     avg_f1 = 0.0
+        # final_stats = {
+        #     "precision":avg_precision,
+        #     "recall":avg_recall,
+        #     "f1":avg_f1
+        # }
         score = float(score/count)
         
     return FullEvaluateModel(token_level_eval=final_stats,judge_score=score)
