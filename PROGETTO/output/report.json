@@ -1,6 +1,6 @@
 {
   "identifier": "2144286",
-  "timestamp": "20260529-14:31",
+  "timestamp": "20260607-13:54",
   "mode": "public",
   "components": {
     "backend": "ok",
@@ -8,13 +8,13 @@
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.7882,
+  "overall_score": 0.8918,
   "all_pass": false,
-  "passed": 23,
+  "passed": 26,
   "total": 29,
   "gs_calibration": {
-    "public_avg": 0.9295,
-    "public_min": 0.859
+    "public_avg": 0.9315,
+    "public_min": 0.8631
   },
   "tests": {
     "GET /status — componenti": {
@@ -45,7 +45,7 @@
     "GET /db_stats — struttura risposta": {
       "passed": true,
       "score": 1.0,
-      "details": "6 domini nelle statistiche"
+      "details": "4 domini nelle statistiche"
     },
     "POST /evaluate — struttura risposta": {
       "passed": true,
@@ -95,27 +95,27 @@
     "POST /add_web_resource — struttura status": {
       "passed": true,
       "score": 1.0,
-      "details": "status=error"
+      "details": "status=ok"
     },
     "POST /add_gold_standard — struttura status": {
       "passed": true,
       "score": 1.0,
-      "details": "status=error"
+      "details": "status=ok"
     },
     "DELETE /web_resource — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 422"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=ok"
     },
     "DELETE /gold_standard — struttura status": {
-      "passed": false,
-      "score": 0.0,
-      "details": "HTTP 422"
+      "passed": true,
+      "score": 1.0,
+      "details": "status=ok"
     },
     "CRUD — flusso completo risorsa e gold standard": {
-      "passed": false,
-      "score": 0.0,
-      "details": "add_web_resource fallito: HTTP 200"
+      "passed": true,
+      "score": 1.0,
+      "details": "add_web_resource → add_gold_standard → GET → DELETE GS → DELETE resource OK"
     },
     "POST /parse local=true — struttura risposta": {
       "passed": true,
@@ -139,8 +139,8 @@
     },
     "POST /parse — qualità parsing (public set) (pass=0.70)": {
       "passed": true,
-      "score": 0.859,
-      "details": "en.wikipedia.org: F1=0.962 (F1=0.949, F1=0.975); it.uefa.com: F1=0.874 (F1=0.874); weather.com: F1=0.721 (F1=0.721); www.nbcnews.com: F1=0.880 (F1=0.880)"
+      "score": 0.8631,
+      "details": "en.wikipedia.org: F1=0.978 (F1=0.964, F1=0.992); it.uefa.com: F1=0.874 (F1=0.874); weather.com: F1=0.721 (F1=0.721); www.nbcnews.com: F1=0.880 (F1=0.880)"
     },
     "GET /full_gs_eval — struttura risposta": {
       "passed": false,
@@ -164,7 +164,7 @@
     }
   },
   "parse_f1_public": {
-    "en.wikipedia.org": 0.9618,
+    "en.wikipedia.org": 0.9781,
     "it.uefa.com": 0.8736,
     "weather.com": 0.7209,
     "www.nbcnews.com": 0.8798

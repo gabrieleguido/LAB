@@ -6,7 +6,7 @@ services:
     volumes:
       - ollama_volume:/root/.ollama
 
-  ollama-pull-model:
+  ollama_pull_model:
     image: ollama/ollama
     volumes:
       - ollama_volume:/root/.ollama
@@ -17,18 +17,22 @@ services:
 
   db:
     image: mariadb:11.7.2-ubi9
-    volumes:
-      - ./mariadb_data/:/var/lib/mysql:Z
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql:Z
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 3306:3306
+    depends_on:
+      ollama_pull_model:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
       interval: 5s
       timeout: 5s
       retries: 10
+  
 
   
   backend:
@@ -54,4 +58,5 @@ services:
 
 volumes:
   ollama_volume:
+  mariadb_data:
  

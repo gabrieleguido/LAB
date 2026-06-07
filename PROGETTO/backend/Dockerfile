@@ -5,6 +5,7 @@ COPY gs_data/ ./gs_data/
 RUN apt-get update -y
 RUN apt-get install -y gcc libmariadb-dev
 COPY backend/requirements.txt ./backend/
+RUN pip install --upgrade pip 
 RUN pip install -r ./backend/requirements.txt 
 WORKDIR /app/backend/src
 RUN crawl4ai-setup

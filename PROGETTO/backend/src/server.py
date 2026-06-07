@@ -312,7 +312,9 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
         "messages": msg_list,
         "format":"json",
         "stream":False,
-        "options":{"temperature":0.1}
+        "options":{
+            "temperature":0.1
+            }
     }
 
 
@@ -687,5 +689,3 @@ def extract_stats_for_gs(name:str)->AddOutputModel:
     return AddOutputModel(status="ok")
 
               
-
-#endregion
