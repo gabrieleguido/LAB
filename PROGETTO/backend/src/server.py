@@ -64,18 +64,6 @@ def create_connection(conn:mariadb.Connection)->mariadb.Connection:
 
 #connessione al db 
 conn = None
-# conn = create_connection(conn)
-
-# cnt = 10
-# while cnt:
-#     try:
-#         conn.ping() 
-#         cnt = 0
-#     except:
-#         conn = create_connection(conn)
-#         cnt-=1 
-#         time.sleep(5)
-
 for i in range(10):
     try:
         conn = create_connection(conn)
@@ -451,7 +439,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
 @app.post("/add_web_resource")
 def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
     """Aggiunge in web_resources i dati del body """   
-    url = unquote(input.url).strip().rstrip('/')
+    url = input.url
     html = input.html_text
     try:
         #ESTRAZIONE DOMINIO:
@@ -475,7 +463,7 @@ def add_web_rsrc_in_db(input:AddWebResourceInputModel)->AddOutputModel:
 @app.post("/add_gold_standard")
 def add_gs_in_db(input:AddGoldStandardInputModel)->AddOutputModel:
     """Aggiunge in gold_standard i dati del body, solo se l'url è già in web_sources"""   
-    url = unquote(input.url).strip().rstrip('/')
+    url = input.url
     gold_text = input.gold_text
     try:
         execute_query(

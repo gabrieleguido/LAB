@@ -9,7 +9,7 @@ Considerare che in fase di valutazione il progetto verrà valutato come consegna
 Per utilizzare il grader, caricare l’immagine Docker:
 
 ```bash
-docker load -i lab-grader-progetto-finale_1.0.3.tar.gz
+docker load -i lab-grader-progetto-finale_1.0.4.tar.gz
 ```
 ## Prerequisiti
 
@@ -25,7 +25,7 @@ Porte attese: backend `8003`, frontend `8004`, MariaDB `3306`, Ollama `11434`.
 ## Esecuzione (solo test pubblici)
 
 ```bash
-docker run --network host lab-grader-progetto-finale:1.0.3 2144286
+docker run --network host lab-grader-progetto-finale:1.0.4 2144286
 ```
 
 Per generare un report JSON su file locale:
@@ -33,7 +33,7 @@ Per generare un report JSON su file locale:
 ```bash
 docker run --network host \
   -v "$(pwd)/output:/output" \
-  lab-grader-progetto-finale:1.0.3 2144286 --machine -o /output/report.json
+  lab-grader-progetto-finale:1.0.4 2144286 --machine -o /output/report.json
 ```
 
 Il report JSON viene scritto in `./output/report.json` e stampato su stdout.
