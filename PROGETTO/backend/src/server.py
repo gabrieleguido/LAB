@@ -19,7 +19,6 @@ import mariadb
 from populate_db import Populator
 
 DEBUG = 0
-status_mariadb = {"mariadb":False}
 
 #region MARIADB & OLLAMA SETUP
 
@@ -250,6 +249,12 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     """
     Utilizza ollama per valutare la qualità del testo parsato rispetto al gold standard
     """
+    if(DEBUG):
+        return EvaluateJudgeOutputModel(
+        model_name="DEBUGGING_MODEL",
+        judge_score=5,
+        judge_feedback="Messaggio di default per debugging"
+        )
 
     # pulisco parsed e gold text
     clean_parsed_text = Cleaner.remove_markdown(req.parsed_text)
@@ -321,7 +326,6 @@ def judge(req:EvaluateInputModel)->EvaluateJudgeOutputModel:
     # valori di default da restituire se la richiesta non va a buon fine
     final_score = 1
     final_feedback = "Impossibile valutare a causa di errori"
-
     try:
         response = requests.post(OLLAMA_URL, json=payload)
         response.raise_for_status() # lancia un eccezione in automatico se trova codici di errore
@@ -420,17 +424,7 @@ def get_full_gs_eval(domain:str)->FullEvaluateModel:
             "recall":float(recall/count),
             "f1":float(f1/count)
         }
-        # avg_precision = float(precision/count)
-        # avg_recall = float(recall/count)
-        # if avg_precision+avg_recall>0:
-        #     avg_f1 = 2*(avg_precision*avg_recall) / (avg_precision+avg_recall)
-        # else:
-        #     avg_f1 = 0.0
-        # final_stats = {
-        #     "precision":avg_precision,
-        #     "recall":avg_recall,
-        #     "f1":avg_f1
-        # }
+
         score = float(score/count)
         
     return FullEvaluateModel(token_level_eval=final_stats,judge_score=score)

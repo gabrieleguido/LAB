@@ -1,22 +1,16 @@
 {
   "identifier": "2144286",
-  "timestamp": "20260610-14:44",
+  "timestamp": "20260607-13:54",
   "mode": "public",
-  "domains": [
-    "www.nbcnews.com",
-    "en.wikipedia.org",
-    "it.uefa.com",
-    "weather.com"
-  ],
   "components": {
     "backend": "ok",
     "database": "ok",
     "ollama": "ok",
     "frontend": "ok"
   },
-  "overall_score": 0.9829,
+  "overall_score": 0.8918,
   "all_pass": false,
-  "passed": 28,
+  "passed": 26,
   "total": 29,
   "gs_calibration": {
     "public_avg": 0.9315,
@@ -71,7 +65,7 @@
     "POST /evaluate_judge — struttura risposta": {
       "passed": true,
       "score": 1.0,
-      "details": "model=DEBUGGING_MODEL, score=5"
+      "details": "model=llama3.2:3b, score=4"
     },
     "GET /gold_standard — struttura risposta": {
       "passed": true,
@@ -149,14 +143,14 @@
       "details": "en.wikipedia.org: F1=0.978 (F1=0.964, F1=0.992); it.uefa.com: F1=0.874 (F1=0.874); weather.com: F1=0.721 (F1=0.721); www.nbcnews.com: F1=0.880 (F1=0.880)"
     },
     "GET /full_gs_eval — struttura risposta": {
-      "passed": true,
-      "score": 1.0,
-      "details": "OK per dominio www.nbcnews.com"
+      "passed": false,
+      "score": 0.0,
+      "details": "HTTPConnectionPool(host='localhost', port=8003): Read timed out. (read timeout=360)"
     },
     "GET /full_gs_eval — coerenza F1 aggregato": {
       "passed": false,
-      "score": 0.75,
-      "details": "www.nbcnews.com: OK (student=0.933, manual=0.938); en.wikipedia.org: diff=0.061 (student=0.879, manual=0.940); it.uefa.com: OK (student=0.900, manual=0.874); weather.com: OK (student=0.852, manual=0.870)"
+      "score": 0.0,
+      "details": "www.nbcnews.com: /full_gs_eval non disponibile; en.wikipedia.org: /full_gs_eval non disponibile; it.uefa.com: /full_gs_eval non disponibile; weather.com: /full_gs_eval non disponibile"
     },
     "GET /full_gs_eval — dominio non supportato": {
       "passed": true,
@@ -164,9 +158,9 @@
       "details": "Errore gestito"
     },
     "GET /full_gs_eval — soglia F1 (pass=0.70)": {
-      "passed": true,
-      "score": 0.8912,
-      "details": "www.nbcnews.com: F1=0.933; en.wikipedia.org: F1=0.879; it.uefa.com: F1=0.900; weather.com: F1=0.852"
+      "passed": false,
+      "score": 0.0,
+      "details": "www.nbcnews.com: errore; en.wikipedia.org: errore; it.uefa.com: errore; weather.com: errore"
     }
   },
   "parse_f1_public": {
