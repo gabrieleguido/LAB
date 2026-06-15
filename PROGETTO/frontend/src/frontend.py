@@ -399,8 +399,9 @@ def salva_in_db(
 @app.post("/elimina_dal_db")
 def elimina_dal_db(url_da_eliminare:str = Form(...),domain: str = Form(...)):
     try: 
-        delete_url = f"{backend_url}/web_resource?url={url_da_eliminare}"
-        res_web = requests.delete(delete_url, timeout=5)
+        payload = {"url": url_da_eliminare}
+        delete_url = f"{backend_url}/web_resource"
+        res_web = requests.delete(delete_url, json=payload, timeout=5)
         res_web.raise_for_status()
         
         return RedirectResponse(url=f"/gold_standard_builder?domain={domain}", status_code=303)
