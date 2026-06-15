@@ -326,7 +326,8 @@ def gold_standard_builder(request: Request, domain: str = None, url: str = None,
     html_grezzo = ""
     domains_list = []
     titolo_estratto = ""
-    
+    if action != "carica":
+        url = None  
     #RECUPERO DOMINI
     try:
         url_domini = f"{backend_url}/domains"

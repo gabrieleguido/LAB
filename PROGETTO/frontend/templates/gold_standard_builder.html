@@ -9,50 +9,52 @@
 <body>
     <h1>Gold standard builder</h1>
     <div class="gold-standard-builder">
+        
         <form action="/gold_standard_builder" method="GET" class="control-panel">        
-        <!-- Pannello di Controllo -->
         <div class="control-panel">
             <div class="input-group">
                 <label for="dominio-supportato">Dominio Supportato:</label>
-                <select id="dominio-supportato" name="domain" required>
+                
+                <select id="dominio-supportato" name="domain" required onchange="this.form.submit()">
                     <option value="" disabled {% if not dominio_scelto %}selected{% endif %}>Seleziona un dominio</option>
                     {% for d in domains %}
                         <option value="{{ d }}" {% if d == dominio_scelto %}selected{% endif %}>{{ d }}</option>
                     {% endfor %}
                 </select>
             </div>
+            
             <div class="input-group">
                 <label for="url-input">URL:</label>
-                <input type="text" id="url-input" name="url" placeholder="Inserisci l'URL qui" value="{{ url_scelto if url_scelto else '' }}" required>
-
+                <input type="text" id="url-input" name="url" placeholder="Inserisci l'URL qui" value="{{ url_scelto if url_scelto else '' }}">
             </div>
+            
             <div class="input-group">
                 <button type="submit" name="action" value="carica" class="btn-primary">CARICA HTML</button>
             </div>
         </div>
         </form>
 
-        <!-- Area di Lavoro (Textareas) -->
         <div class="workspace">
             <form action="/salva_in_db" method="POST" style="display: contents;">
-                <input type="hidden" name="domain" value="{{ dominio_scelto }}">
-                <input type="hidden" name="url" value="{{ url_scelto }}">
+                <input type="hidden" name="domain" value="{{ dominio_scelto if dominio_scelto else '' }}">
+                <input type="hidden" name="url" value="{{ url_scelto if url_scelto else '' }}">
                 <input type="hidden" name="title" value="{{ titolo_estratto if titolo_estratto else '' }}">
-            <div class="editor-section">
-                <label for="html-scaricato">HTML Scaricato:</label>
-                <textarea id="html-scaricato" name="html_content" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..." required>{{ testo_html }}</textarea> 
-                <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA HTML</button>
-            </div>
-            
-            <div class="editor-section">
-                <label for="gold-textarea">Gold Standard:</label>
-                <textarea id="gold-textarea" name="gold_text" class="code-area gold-code" rows="15" placeholder="Incolla il testo del Gold Standard qui..." required></textarea>
-                <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA GOLD STANDARD</button>
-            </div>
-            <button type="submit" class="salva_db">SALVA NEL DATABASE</button>
+                
+                <div class="editor-section">
+                    <label for="html-scaricato">HTML Scaricato:</label>
+                    <textarea id="html-scaricato" name="html_content" class="code-area html-code" rows="15" placeholder="Il codice HTML scaricato apparirà qui..." required>{{ testo_html }}</textarea> 
+                    <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA HTML</button>
+                </div>
+                
+                <div class="editor-section">
+                    <label for="gold-textarea">Gold Standard:</label>
+                    <textarea id="gold-textarea" name="gold_text" class="code-area gold-code" rows="15" placeholder="Incolla il testo del Gold Standard qui..." required></textarea>
+                    <button type="button" class="btn-secondary" onclick="copyToClipboard()">COPIA GOLD STANDARD</button>
+                </div>
+                <button type="submit" class="salva_db">SALVA NEL DATABASE</button>
+            </form>
         </div>
-    </form>
-        <!-- Tabella URL -->
+
         <div class="url-presenti-nel-GS">
             <table>
                 <thead>
@@ -63,25 +65,22 @@
                 </thead>
                 <tbody>
                     {% if urls %}
-                       {%for item in urls%}
+                       {% for item in urls %}
                        <tr>
-                        <td>
-                            {{item}}
-                        </td>
+                        <td>{{ item }}</td>
                         <td>
                             <form action="/elimina_dal_db" method="POST" class="form-elimina">
-                                    <input type="hidden" name="url_da_eliminare" value="{{ item }}">
-                                    <input type="hidden" name="domain" value="{{ dominio_scelto }}">
-                                    <button type="submit" class="btn-danger">Elimina</button>
-                        </td>
+                                <input type="hidden" name="url_da_eliminare" value="{{ item }}">
+                                <input type="hidden" name="domain" value="{{ dominio_scelto if dominio_scelto else '' }}">
+                                <button type="submit" class="btn-danger">Elimina</button>
+                            </form> </td>
                        </tr>
-                       {%endfor%}
-                    {%else%}
-
+                       {% endfor %}
+                    {% else %}
                     <tr>
                         <td colspan="2">Nessun URL estratto al momento.</td>
                     </tr>
-                    {%endif%}
+                    {% endif %}
                 </tbody>
             </table>
         </div>
@@ -89,10 +88,8 @@
     </div>
     <br>
 
-    <A class="link-pages" href="/">Home</A>
-    <A class="link-pages" href="/parser_evaluation">Parser & evaluation</A>
-    <A class="link-pages" href="/stats">Stats</A>
+    <a class="link-pages" href="/">Home</a>
+    <a class="link-pages" href="/parser_evaluation">Parser & evaluation</a>
+    <a class="link-pages" href="/stats">Stats</a>
 </body>
 </html>
-
-
