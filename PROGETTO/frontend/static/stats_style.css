@@ -82,3 +82,27 @@ tr:last-child td {
 tr:hover td {
     background-color: rgba(255, 255, 255, 0.03);
 }
+
+a.link-pages {
+    color: #94a3b8; /* Colore sobrio di base, uguale alle label */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-right: 25px; /* Spaziatura tra un link e l'altro */
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Trasparente di base, si anima con l'hover */
+    transition: all 0.3s ease;
+}
+
+a.link-pages:hover {
+    color: #38bdf8; /* Si accende del tuo azzurro neon */
+    border-bottom: 2px solid #38bdf8; /* Sottolineatura elegante animata */
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); /* Leggero effetto glow */
+}
+
+/* Rimuove il margin destro dall'ultimo link per allineamenti perfetti */
+a.link-pages:last-child {
+    margin-right: 0;
+}

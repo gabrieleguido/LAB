@@ -6,16 +6,14 @@ import urllib.parse
 import json
 import requests
 
-##   esegui con comando --->  uvicorn src.frontend:app --reload --port 8004    ##
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")    # aggancia i css per le pagine html
-templates = Jinja2Templates(directory="templates")  # pagine html
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 
-# backend_url = "http://127.0.0.1:8003" # url backend per test senza docker --- DA ELIMINARE!!!
-backend_url = "http://backend:8003"   # url del backend server.py da lanciare su porta 8003
+backend_url = "http://backend:8003"
 
 # funzione per web ui
 @app.get("/", response_class=HTMLResponse)
