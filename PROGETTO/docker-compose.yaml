@@ -20,7 +20,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
     volumes:
-      - mariadb_data:/var/lib/mysql:Z
+      - mariadb_volume:/var/lib/mysql:Z
       - ./mariadb_data/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 3306:3306
@@ -58,5 +58,5 @@ services:
 
 volumes:
   ollama_volume:
-  mariadb_data:
+  mariadb_volume:
  
